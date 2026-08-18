@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 6: Límite continuo y series de Fourier — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 6: Límite continuo y series de Fourier —
+8.03SC Física III: Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-6-límite-continuo-y-series-de-fourier"
+id="toc-capítulo-6-límite-continuo-y-series-de-fourier">Capítulo 6:
+Límite continuo y series de Fourier</a>
+<ul>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#el-límite-continuo" id="toc-el-límite-continuo">6.1 El
+límite continuo</a>
+<ul>
+<li><a href="#filosofía-y-especulación"
+id="toc-filosofía-y-especulación">6.1.1 Filosofía y
+especulación</a></li>
+</ul></li>
+<li><a href="#series-de-fourier" id="toc-series-de-fourier">6.2 Series
+de Fourier</a>
+<ul>
+<li><a href="#la-cuerda-con-extremos-fijos"
+id="toc-la-cuerda-con-extremos-fijos">6.2.1 La cuerda con extremos
+fijos</a></li>
+<li><a href="#extremos-libres" id="toc-extremos-libres">6.2.2 Extremos
+libres</a></li>
+<li><a href="#ejemplos-de-series-de-fourier"
+id="toc-ejemplos-de-series-de-fourier">6.2.3 Ejemplos de series de
+Fourier</a></li>
+<li><a href="#pulsar-una-cuerda" id="toc-pulsar-una-cuerda">6.2.4 Pulsar
+una cuerda</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-6-límite-continuo-y-series-de-fourier">Capítulo 6:
+Límite continuo y series de Fourier</h1>
+<p>«Continuo» está en el ojo del observador. La mayoría de los sistemas
+que consideramos continuos están en realidad formados por partes
+discretas. En este capítulo mostramos que un sistema discreto puede
+parecer continuo a escalas de distancia mucho mayores que la separación
+entre sus partes. También exploraremos la física y las matemáticas de
+las series de Fourier.</p>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>En este capítulo discutimos la ecuación de ondas, el punto de partida
+de otros tratamientos de las ondas. La obtendremos como resultado
+natural de nuestros principios generales de invariancia bajo traslación
+espacial e interacciones locales, aplicados a sistemas continuos.</p>
+<ol type="i">
+<li><p>Estudiaremos los sistemas discretos invariantes bajo traslación
+espacial discutidos en el capítulo anterior, en el límite en que la
+separación entre partes tiende a cero. Argumentaremos que el resultado
+genérico es un sistema continuo que obedece la ecuación de
+ondas.</p></li>
+<li><p>El límite continuo de la cuerda con cuentas es una cuerda
+continua con oscilaciones transversales. Discutiremos sus modos normales
+para diversas condiciones de contorno. Veremos que los modos normales de
+un sistema continuo invariante bajo traslación espacial son los mismos
+que los de un sistema finito; la única diferencia es que hay un número
+infinito de ellos. La suma sobre el número infinito de modos normales
+necesaria para resolver el problema de valores iniciales de tal sistema
+continuo se llama serie de Fourier.</p></li>
+</ol>
+<h2 id="el-límite-continuo">6.1 El límite continuo</h2>
+<p>Considere un sistema discreto invariante bajo traslación espacial en
+el que la separación entre masas vecinas es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es muy pequeño, el sistema discreto parece continuo. Para entender esta
+afirmación, considere la acción de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>,
+(5.8), en la notación del capítulo anterior, en la que los grados de
+libertad se etiquetan por su posición de equilibrio. La matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+actúa sobre un vector para producir otro vector. Hemos reemplazado
+nuestros vectores por funciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+así que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+es algo que actúa sobre una función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math>
+para dar otra función. Llamémosla
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M^{-1}KA(x)</annotation></semantics></math>.
+Es más fácil ver qué ocurre para la cuerda con cuentas, para la cual
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>C</mi><mo>=</mo><mi>T</mi><mi>/</mi><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">B=C=T/ma</annotation></semantics></math>.
+Entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>T</mi><mrow><mi>m</mi><mi>a</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.1)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}KA(x) = \left(\frac{T}{ma}\right)\left(2A(x)-A(x+a)-A(x-a)\right)\,. \qquad \text{(6.1)}
+</annotation></semantics></math></p>
+<p>Hasta aquí, (6.1) es correcta para cualquier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+grande o pequeño.</p>
+<p>Siempre que diga que una cantidad dimensional, como la longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+es grande o pequeña, debe especificar una cantidad de comparación: debe
+decir grande o pequeña <em>comparada con qué</em> (una cantidad
+adimensional no requiere este paso: un número adimensional es grande si
+es mucho mayor que uno, y pequeño si es mucho menor que uno). En este
+caso, la otra cantidad dimensional del problema con dimensiones de
+longitud es la longitud de onda del modo que nos interesa. Aquí es donde
+entra el que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+sea pequeño. Si solo nos interesan modos con longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\lambda=2\pi/k</annotation></semantics></math>
+muy grande comparada con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>
+es un número adimensional muy pequeño, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A(x+a)</annotation></semantics></math>
+está muy cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math>.
+Podemos expandirla en una serie de Taylor rápidamente convergente.
+Expandiendo (6.1) en serie de Taylor obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mi>T</mi><mi>a</mi></mrow><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>⋯</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.2)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}KA(x) = -\frac{Ta}{m}\,\frac{\partial^2A(x)}{\partial x^2} + \cdots \qquad \text{(6.2)}
+</annotation></semantics></math></p>
+<p>donde los puntos suspensivos representan términos de derivadas
+superiores, más pequeños por potencias del número pequeño
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>
+que el primer término de (6.2). En el límite en que tomamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+realmente diminuto (siempre en comparación con las longitudes de onda
+que queremos estudiar), podemos reemplazar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">m/a</annotation></semantics></math>
+por la densidad de masa lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>,
+o masa por unidad de longitud de la cuerda ahora casi continua, e
+ignorar los términos de orden superior. En este límite, podemos
+reemplazar la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+por la combinación de derivadas que aparece en el primer término
+superviviente de la serie de Taylor, (6.2),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>→</mo><mi>−</mi><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.3)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}K \to -\frac{T}{\rho_L}\,\frac{\partial^2}{\partial x^2}\,. \qquad \text{(6.3)}
+</annotation></semantics></math></p>
+<p>Entonces la ecuación de movimiento para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>
+se convierte en la ecuación de ondas:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.4)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\partial^2}{\partial t^2}\psi(x,t) = \frac{T}{\rho_L}\,\frac{\partial^2}{\partial x^2}\psi(x,t)\,. \qquad \text{(6.4)}
+</annotation></semantics></math></p>
+<p>La relación de dispersión es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.5)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \frac{T}{\rho_L}\,k^2\,. \qquad \text{(6.5)}
+</annotation></semantics></math></p>
+<p>Esto puede verse directamente sustituyendo el modo normal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>
+en (6.4), o tomando el límite de (5.37)-(5.38) cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>.
+La ecuación (6.5) es la relación de dispersión de la cuerda continua
+ideal. La cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><mi>T</mi><mi>/</mi><msub><mi>ρ</mi><mi>L</mi></msub></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{T/\rho_L}</annotation></semantics></math>
+tiene dimensiones de velocidad; se llama la «velocidad de fase»,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>φ</mi></msub><annotation encoding="application/x-tex">v_\varphi</annotation></semantics></math>.
+Como discutiremos con mucho más detalle en el capítulo 8 y siguientes,
+esta es la velocidad con la que las ondas viajeras se mueven por la
+cuerda.</p>
+<p>Llamaremos «aproximación del continuo» a la aproximación de
+reemplazar un sistema discreto por un sistema continuo que se ve
+aproximadamente igual para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≫</mo><mn>1</mn><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k\gg1/a</annotation></semantics></math>.
+En realidad, todos los sistemas mecánicos que consideraremos son
+discretos, al menos a nivel atómico. Sin embargo, si solo nos preocupan
+las ondas con longitudes de onda macroscópicas, la aproximación del
+continuo es muy buena.</p>
+<h3 id="filosofía-y-especulación">6.1.1 Filosofía y especulación</h3>
+<p>Nuestro tratamiento de la ecuación de ondas en (6.4) es un poco
+inusual. En muchos tratamientos de los fenómenos ondulatorios, se le da
+a la ecuación de ondas un lugar de honor. De hecho, la ecuación de ondas
+es solo una reformulación de la relación de dispersión, (6.5), que
+habitualmente es solo una aproximación a lo que realmente está
+ocurriendo. Casi todos los sistemas que habitualmente tratamos con la
+ecuación de ondas son en realidad discretos a distancias muy pequeñas.
+En realidad no podemos llegar del todo al límite continuo que da (6.5).
+Las ondas de luz, que estudiaremos en los próximos capítulos, hasta
+donde sabemos, podrían ser una excepción a esta regla, y ser
+completamente continuas. Sin embargo, en realidad no tenemos derecho a
+suponer ni siquiera eso. Podría ser que, a distancias muy cortas, muy
+por debajo de todo lo que podemos observar hoy, la naturaleza de la luz
+e incluso del espacio y el tiempo cambie de alguna manera, de modo que
+el espacio y el tiempo mismos tengan cierta escala de longitud
+característica diminuta,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+El análisis anterior muestra que ¡esto no importa! Mientras solo podamos
+observar el espacio y el tiempo a distancias mucho mayores que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+nos parecerán continuos. Entonces, como somos científicos, preocupados
+por cómo se ve el mundo en nuestros experimentos, y no por cómo se
+comporta en algún régimen ideal muy más allá de lo que podemos sondear
+experimentalmente, bien podemos tratarlos como continuos.</p>
+<h2 id="series-de-fourier">6.2 Series de Fourier</h2>
+<h3 id="la-cuerda-con-extremos-fijos">6.2.1 La cuerda con extremos
+fijos</h3>
+<p><em>(Referencia al programa interactivo 6-1 del disco de programas
+del curso original.)</em></p>
+<p>Si estiramos nuestra cuerda continua entre paredes fijas, de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(0)=\psi(\ell)=0</annotation></semantics></math>,
+los modos vienen dados por (5.33) y (5.34), igual que para el sistema
+discreto. La única diferencia es que ahora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+va de 1 a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>,
+o al menos hasta un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+tan grande que la longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>/</mi><mi>k</mi><mo>=</mo><mn>2</mn><mi>ℓ</mi><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">2\pi/k=2\ell/n</annotation></semantics></math>
+sea tan pequeña que la aproximación del continuo deje de valer. Esto se
+sigue de (5.28), que, como aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es real, se convierte en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><mi>π</mi><mi>a</mi></mfrac><mo>&lt;</mo><mi>k</mi><mo>≤</mo><mfrac><mi>π</mi><mi>a</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.6)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\pi}{a} &lt; k \le \frac{\pi}{a}\,. \qquad \text{(6.6)}
+</annotation></semantics></math></p>
+<p>A medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>,
+el rango permitido de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+crece hasta el infinito.</p>
+<p>Estos modos de onda estacionaria se animan en el programa 6-1 del
+disco de programas, suponiendo la relación de dispersión (6.5).</p>
+<p>Ahora podemos discutir la base física de la serie de Fourier. En
+(3.77), en el capítulo 3, mostramos que los modos normales de un sistema
+discreto son linealmente independientes y completos. Eso significa que
+cualquier desplazamiento del sistema discreto puede escribirse como una
+única combinación lineal de los modos normales. Físicamente, esto debe
+ser así para poder resolver el problema de valores iniciales. Nuestra
+imagen de la cuerda continua es un límite de la cuerda con cuentas en el
+que el número de cuentas,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>,
+tiende a infinito y las cuentas se acercan infinitamente entre sí. Para
+cada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>,
+el desplazamiento más general del sistema puede desarrollarse como una
+combinación lineal de los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+modos normales. Si el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">N\to\infty</annotation></semantics></math>
+se comporta razonablemente bien, cabría esperar que el desplazamiento
+más general de la cuerda continua límite pudiera desarrollarse en
+términos del número infinito de modos normales del sistema continuo.
+Este desarrollo es una serie de Fourier. El desplazamiento del sistema
+continuo se describe mediante una función de la posición a lo largo de
+la cuerda. Si la función no es demasiado discontinua, el desarrollo en
+modos normales funciona bien.</p>
+<p>Considere la cuerda continua, estirada entre paredes fijas en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>.
+El desplazamiento transversal de este sistema en cualquier instante se
+describe mediante una función continua de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>,
+con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.7)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0) = \psi(\ell) = 0\,. \qquad \text{(6.7)}
+</annotation></semantics></math></p>
+<p>Así, esperamos, por el argumento anterior, poder expresar cualquier
+función que no sea demasiado discontinua y que satisfaga (6.7) como una
+suma de los modos normales dados por (5.33) y (5.34),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mo accent="false">∞</mo></munderover><msub><mi>c</mi><mi>n</mi></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.8)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \sum_{n=1}^{\infty}c_n\sin\frac{n\pi x}{\ell}\,. \qquad \text{(6.8)}
+</annotation></semantics></math></p>
+<p>Las constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>n</mi></msub><annotation encoding="application/x-tex">c_n</annotation></semantics></math>
+se llaman los «coeficientes de Fourier». Pueden encontrarse usando la
+siguiente identidad:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>ℓ</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><msup><mi>n</mi><mo>′</mo></msup><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>ℓ</mi><mi>/</mi><mn>2</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><msup><mi>n</mi><mo>′</mo></msup></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>≠</mo><msup><mi>n</mi><mo>′</mo></msup></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.9)</mtext></mrow><annotation encoding="application/x-tex">
+\int_0^\ell dx\,\sin\frac{n\pi x}{\ell}\sin\frac{n&#39;\pi x}{\ell} = \begin{cases}\ell/2 &amp; \text{si } n=n&#39;\\ 0 &amp; \text{si } n\neq n&#39;\end{cases} \qquad \text{(6.9)}
+</annotation></semantics></math></p>
+<p>de modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>2</mn><mi>ℓ</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>ℓ</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.10)</mtext></mrow><annotation encoding="application/x-tex">
+c_n = \frac{2}{\ell}\int_0^\ell dx\,\sin\frac{n\pi x}{\ell}\,\psi(x)\,. \qquad \text{(6.10)}
+</annotation></semantics></math></p>
+<p>Este es simplemente el método de las coordenadas normales adaptado a
+la situación continua.</p>
+<h3 id="extremos-libres">6.2.2 Extremos libres</h3>
+<p><em>(Referencia al programa interactivo 6-2 del disco de programas
+del curso original.)</em></p>
+<p>La ecuación (6.8) se llama la serie de Fourier de una función que
+satisface (6.7). Otras condiciones de contorno dan series distintas. Por
+ejemplo, considere una cuerda con el extremo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+fijo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>.
+Suponga que el otro extremo, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>,
+está unido a un anillo sin masa que puede deslizar libremente a lo largo
+de una varilla sin fricción en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+como se muestra en la figura 6.1. Decimos que este sistema tiene un
+«extremo libre», porque el extremo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+es libre de deslizar en la dirección transversal, aunque está fijo en la
+dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+<p><em>(Figura 6.1: cuerda continua con el extremo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+fijo y el extremo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+unido a un anillo sin masa que desliza libremente sobre una varilla sin
+fricción, perpendicular a la cuerda.)</em></p>
+<p>Como la varilla no tiene fricción, la fuerza sobre el anillo debida a
+la varilla no puede tener componente en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Pero, como el anillo no tiene masa, la fuerza total sobre él debe
+anularse. Por tanto, la fuerza sobre el anillo debida a la cuerda
+tampoco puede tener componente en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Esto implica que la cuerda es horizontal en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>.
+Pero la forma de la cuerda en un instante dado viene dada por la gráfica
+del desplazamiento transversal,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>,
+frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+(esta es la razón por la que las oscilaciones transversales son más
+fáciles de visualizar que las longitudinales; compárese con (7.5)). Así,
+la pendiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+debe anularse. Por tanto, las condiciones de contorno apropiadas para el
+desplazamiento son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.11)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0,t) = 0\,,\qquad \left.\frac{\partial}{\partial x}\psi(x,t)\right|_{x=\ell} = 0\,. \qquad \text{(6.11)}
+</annotation></semantics></math></p>
+<p>Esto implica que los modos normales también satisfacen condiciones de
+contorno similares:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>A</mi><mi>n</mi><mo>′</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.12)</mtext></mrow><annotation encoding="application/x-tex">
+A_n(0)=0\,,\qquad A_n&#39;(\ell)=0\,. \qquad \text{(6.12)}
+</annotation></semantics></math></p>
+<p>La primera condición implica que la solución debe tener la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>∝</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.13)</mtext></mrow><annotation encoding="application/x-tex">
+A_n(x) \propto \sin k_nx \qquad \text{(6.13)}
+</annotation></semantics></math></p>
+<p>para cierto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>n</mi></msub><annotation encoding="application/x-tex">k_n</annotation></semantics></math>.
+La segunda condición determina los posibles valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>n</mi></msub><annotation encoding="application/x-tex">k_n</annotation></semantics></math>:
+implica que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin k_nx</annotation></semantics></math>
+debe tener un máximo o un mínimo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>,
+lo que a su vez implica que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mo>=</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>+</mo><mi>n</mi><mi>π</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.14)</mtext></mrow><annotation encoding="application/x-tex">
+k_n\ell = \frac{\pi}{2}+n\pi \qquad \text{(6.14)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+es un entero no negativo (no negativo porque podemos elegir todos los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_n&gt;0</annotation></semantics></math>
+en (6.13); los valores negativos solo cambian el signo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A_n(x)</annotation></semantics></math>
+y no dan lugar a soluciones nuevas). Las soluciones tienen la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>π</mi><mi>x</mi></mrow><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mi>∞</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.15)</mtext></mrow><annotation encoding="application/x-tex">
+\sin\left(\frac{(2n+1)\pi x}{2\ell}\right) \quad\text{para } n=0\text{ a }\infty\,. \qquad \text{(6.15)}
+</annotation></semantics></math></p>
+<p>Estos modos normales se animan en el programa 6-2. Con estos modos
+normales, podemos describir una función arbitraria,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>,
+que satisfaga las condiciones de contorno de este sistema, (6.11),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>ψ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.16)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0)=0\,,\qquad \psi&#39;(\ell)=0\,. \qquad \text{(6.16)}
+</annotation></semantics></math></p>
+<p>Así, para tal función, podemos escribir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mo accent="false">∞</mo></munderover><msub><mi>c</mi><mi>n</mi></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>π</mi><mi>x</mi></mrow><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.17)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \sum_{n=1}^{\infty}c_n\sin\left(\frac{(2n+1)\pi x}{2\ell}\right) \qquad \text{(6.17)}
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>2</mn><mi>ℓ</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>ℓ</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>π</mi><mi>x</mi></mrow><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.18)</mtext></mrow><annotation encoding="application/x-tex">
+c_n = \frac{2}{\ell}\int_0^\ell dx\,\sin\left(\frac{(2n+1)\pi x}{2\ell}\right)\psi(x)\,. \qquad \text{(6.18)}
+</annotation></semantics></math></p>
+<h3 id="ejemplos-de-series-de-fourier">6.2.3 Ejemplos de series de
+Fourier</h3>
+<p><em>(Referencia al programa interactivo 6-3 del disco de programas
+del curso original.)</em></p>
+<p>Encontremos los coeficientes de Fourier de la siguiente función,
+definida en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>≤</mo><mi>w</mi><mspace width="0.167em"></mspace><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="true"><mfrac><mrow><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mo>−</mo><mi>w</mi></mrow></mfrac></mstyle></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mi>w</mi><mspace width="0.167em"></mspace><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.19)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \begin{cases} x &amp; \text{para } x\le w\,,\\ \dfrac{w(1-x)}{1-w} &amp; \text{para } x&gt;w\,. \end{cases} \qquad \text{(6.19)}
+</annotation></semantics></math></p>
+<p>Para concretar, tomaremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">w=0.75</annotation></semantics></math>,
+de modo que la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+tiene la forma mostrada en la figura 6.2.</p>
+<p><em>(Figura 6.2: la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">w=0.75</annotation></semantics></math>
+— un triángulo asimétrico que sube linealmente desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0.75</mn><mo>,</mo><mn>0.75</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0.75,0.75)</annotation></semantics></math>
+y baja linealmente hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math>.)</em></p>
+<p>Calculamos los coeficientes de Fourier usando (6.10). Como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ell=1</annotation></semantics></math>,
+esto toma la siguiente forma (véase el problema 6.2):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>π</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>w</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>x</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>π</mi><mi>x</mi><mo>+</mo><msubsup><mo>∫</mo><mi>w</mi><mn>1</mn></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mo>−</mo><mi>w</mi></mrow></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>π</mi><mi>x</mi><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>π</mi><mi>w</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>n</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.20)</mtext></mrow><annotation encoding="application/x-tex">
+c_n = \int_0^1 dx\,\sin n\pi x\,\psi(x) = \int_0^w dx\,x\sin n\pi x + \int_w^1 dx\,\frac{w(1-x)}{1-w}\sin n\pi x = \frac{\sin n\pi w}{(1-w)n^2\pi^2}\,. \qquad \text{(6.20)}
+</annotation></semantics></math></p>
+<p>Podemos reconstruir la función,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>,
+como una suma sobre los modos normales de la cuerda. Veamos los primeros
+términos de la serie para hacernos una idea de cómo funciona esto. El
+primer término de la suma, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">w=0.75</annotation></semantics></math>,
+se muestra en la figura 6.3. Esta es necesariamente una mala
+aproximación, porque la función no es simétrica respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x=1/2</annotation></semantics></math>,
+mientras que el primer término de la suma sí lo es. Los dos primeros
+términos se muestran en la figura 6.4; esto se ve mucho mejor.</p>
+<p><em>(Figuras 6.3-6.5: aproximaciones sucesivas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+mediante 1, 2 y 6 términos de la serie de Fourier, respectivamente,
+comparadas con la función triangular original mostrada con línea
+punteada; la aproximación mejora progresivamente salvo cerca del pico
+angular.)</em></p>
+<p>Los primeros seis términos se muestran en la figura 6.5. Esta es ya
+una muy buena aproximación, salvo donde la función tiene un pico
+angular.</p>
+<p>Lo que ocurre aquí es que, si incluimos términos de la serie de
+Fourier solo hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">n=N</annotation></semantics></math>,
+podemos ver cómo funciona esto con más detalle estudiando la figura 6.6.
+La curva de trazos largos es el primer término de la serie de Fourier.
+Evidentemente, es menor que la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+(el triángulo punteado) para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+grande, y mayor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+pequeño. El signo y la magnitud del segundo término de la serie de
+Fourier, la curva de trazos cortos en la figura 6.6, se eligen para
+compensar esta discrepancia, de modo que la suma (la curva continua)
+queda mucho más cerca de la función real. El mismo proceso se repite una
+y otra vez a medida que se avanza a órdenes superiores en la serie de
+Fourier truncada.</p>
+<p><em>(Figura 6.6: los dos primeros términos de la serie de Fourier de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+y su suma, mostrando cómo el primer término sobreestima la función para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+pequeño y la subestima para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+grande, y cómo el segundo término corrige esta discrepancia.)</em></p>
+<p>Puede jugar con la serie de Fourier truncada de la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+en el programa 6-3. Este programa le permite variar el parámetro
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+y también el número de términos de la serie de Fourier. Debería observar
+qué ocurre cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w=1</annotation></semantics></math>.
+Podría pensar que esto causaría problemas para la serie de Fourier,
+porque el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1-w)</annotation></semantics></math>
+del denominador de (6.20) tiende a cero. Sin embargo, el límite en
+realidad se comporta bien, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>π</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">\sin n\pi w</annotation></semantics></math>
+también tiende a cero cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w\to1</annotation></semantics></math>.
+Sin embargo, la serie de Fourier tiene que «trabajar duro» para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w=1</annotation></semantics></math>,
+para reproducir una función que no se anula en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math>
+como suma de funciones seno, cada una de las cuales sí se anula en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math>.
+Esta dificultad se refleja en las oscilaciones cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math>
+para cualquier número razonable de términos en la serie de Fourier.</p>
+<h3 id="pulsar-una-cuerda">6.2.4 Pulsar una cuerda</h3>
+<p><em>(Referencia a los programas interactivos 6-4 y 6-5 del disco de
+programas del curso original.)</em></p>
+<p>Usemos ahora estas matemáticas para resolver un problema de física.
+Resolveremos el problema de valores iniciales para la cuerda con extremo
+fijo, para una forma inicial concreta. El problema de valores iniciales
+aquí es casi exactamente igual al discutido en el capítulo 3,
+(3.98)-(3.100), para un sistema con un número finito de grados de
+libertad. La única diferencia es que ahora, como el número de grados de
+libertad es infinito, la suma sobre modos llega hasta el infinito. No
+debería preocuparse por el hecho de que el número de modos sea infinito:
+lo que ese «infinito» realmente significa es «más grande que cualquier
+número que nos vaya a importar». En la práctica, como vimos en los
+ejemplos anteriores, los modos superiores eventualmente no marcan mucha
+diferencia; están asociados a rasgos cada vez más pequeños de la forma.
+Cuando decimos que el sistema es continuo y que tiene un número infinito
+de grados de libertad, en realidad estamos suponiendo que los rasgos más
+pequeños que nos importan en las ondas siguen siendo mucho mayores que
+la distancia entre las partes del sistema, de modo que podemos truncar
+nuestra serie de Fourier muy por debajo del límite y aun así tener una
+buena descripción aproximada del movimiento.</p>
+<p>Supongamos que pulsamos la cuerda. Concretamente, supongamos que la
+cuerda tiene densidad de masa lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>,
+tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+y extremos fijos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>.
+Supongamos además que en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+la cuerda está en reposo, pero desplazada de su posición de equilibrio
+hacia la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+dada por (6.19). Si la cuerda se suelta entonces en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+podemos encontrar el movimiento posterior sumando sobre todos los modos
+normales con coeficientes fijos multiplicados por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\cos\omega_nt</annotation></semantics></math>
+y/o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\sin\omega_nt</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\omega_n</annotation></semantics></math>
+es la frecuencia del modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mi>π</mi><mi>x</mi><mi>/</mi><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sin(n\pi x/\ell)</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi><mi>π</mi><mi>/</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">k=n\pi/\ell</annotation></semantics></math>
+(la frecuencia viene dada por (6.5)):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.22)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_n = \sqrt{\frac{T}{\rho_L}}\,k_n = \sqrt{\frac{T}{\rho_L}}\,\frac{n\pi}{\ell}\,. \qquad \text{(6.22)}
+</annotation></semantics></math></p>
+<p>En este caso, solo aparecen los términos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\cos\omega_nt</annotation></semantics></math>,
+porque la velocidad es cero en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>.
+Así, podemos escribir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mo accent="false">∞</mo></munderover><msub><mi>c</mi><mi>n</mi></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6.23)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x,t) = \sum_{n=1}^{\infty}c_n\sin\frac{n\pi x}{\ell}\cos\omega_nt\,. \qquad \text{(6.23)}
+</annotation></semantics></math></p>
+<p>Esto satisface las condiciones de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+en virtud de la serie de Fourier, (6.8). La desventaja de (6.23) es que
+nos queda una suma infinita. Para la relación de dispersión simple,
+(6.5), hay otras formas de resolver este problema, que discutiremos más
+adelante cuando estudiemos las ondas viajeras. Sin embargo, la ventaja
+de la solución (6.23) es que no depende de la relación de
+dispersión.</p>
+<p>Podemos resolver el problema aproximadamente usando (6.23), sumando
+solo los primeros términos de la serie. El ordenador puede hacer esto
+rápidamente. En el programa 6-4 se muestran los primeros veinte términos
+de la serie, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">w=1/2</annotation></semantics></math>
+(y con la relación de dispersión todavía dada por (6.5)). El resultado
+es sorprendentemente simple; ¡compruébelo! El programa 6-5 sigue la
+misma idea, pero le permite variar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+y el número de términos de la serie de Fourier. Pruebe con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">w=0.75</annotation></semantics></math>
+y compare con las figuras 6.3-6.5.</p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<p>Ahora debería ser capaz de:</p>
+<ol type="i">
+<li><p>Tomar el límite de un sistema discreto invariante bajo traslación
+espacial cuando la distancia entre las partes tiende a cero, interpretar
+la física del sistema continuo resultante, y encontrar su relación de
+dispersión;</p></li>
+<li><p>Usar la serie de Fourier para plantear y resolver el problema de
+valores iniciales de una cuerda masiva con diversas condiciones de
+contorno.</p></li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>6.1.</strong> Considere la cuerda continua de (6.7)-(6.10)
+como el límite continuo de una cuerda con cuentas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+cuentas, cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">W\to\infty</annotation></semantics></math>.
+Escriba el análogo de (6.8) y (6.10) para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+finito. Demuestre que el límite cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">W\to\infty</annotation></semantics></math>
+da (6.10). Pista: esto es un ejercicio sobre la definición de una
+integral como límite de una suma. Pero para hacer la primera parte,
+necesitará usar coordenadas normales, o demostrar la identidad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>W</mi></munderover><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>k</mi><mi>π</mi></mrow><mrow><mi>W</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><msup><mi>n</mi><mo>′</mo></msup><mi>k</mi><mi>π</mi></mrow><mrow><mi>W</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>b</mi></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><msup><mi>n</mi><mo>′</mo></msup><mo>≠</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>≠</mo><msup><mi>n</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>,</mo><msup><mi>n</mi><mo>′</mo></msup><mo>&gt;</mo><mn>0</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+\sum_{k=1}^{W}\sin\frac{nk\pi}{W+1}\sin\frac{n&#39;k\pi}{W+1} = \begin{cases} b &amp; \text{si } n=n&#39;\neq0\\ 0 &amp; \text{si } n\neq n&#39; \text{ y } n,n&#39;&gt;0 \end{cases}
+</annotation></semantics></math></p>
+<p>para una constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+y encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.</p>
+<p><strong>6.2.</strong> Haga las integrales de (6.20). Pista: use
+integración por partes y esté atento a cancelaciones milagrosas.</p>
+<p><strong>6.3.</strong> Encuentre los modos normales de la cuerda con
+dos extremos libres, mostrada en la figura 6.7.</p>
+<p><em>(Figura 6.7: cuerda continua con ambos extremos, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>,
+unidos a anillos sin masa que deslizan libremente sobre varillas sin
+fricción perpendiculares a la cuerda.)</em></p>
+<p><strong>6.4.</strong> Diversión con series de Fourier y fractales</p>
+<p>En este problema explorará la serie de Fourier de un conjunto
+interesante de funciones. Considere una función de la siguiente forma,
+definida en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><msup><mi>h</mi><mi>j</mi></msup><mspace width="0.167em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">frac</mtext><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>j</mi></msup><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(t) = \sum_{j=0}^{\infty}h^j\,g(\text{frac}(2^jt))\,.
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mi>w</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>w</mi><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mn>1</mn><mo>−</mo><mi>w</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mn>1</mn><mo>−</mo><mi>w</mi><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+g(t) = \begin{cases} 1 &amp; \text{para } 0\le t\le w\\ 0 &amp; \text{para } w&lt;t&lt;1-w\\ 1 &amp; \text{para } 1-w\le t\le1 \end{cases}
+</annotation></semantics></math></p>
+<p>y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">frac</mtext><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\text{frac}(x)</annotation></semantics></math>
+denota la parte fraccionaria, es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">frac</mtext><mo stretchy="false" form="prefix">(</mo><mn>4.39</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.39</mn></mrow><annotation encoding="application/x-tex">\text{frac}(4.39)=0.39</annotation></semantics></math>.
+Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math>
+depende de los dos parámetros
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>h</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;h&lt;1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>w</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">0&lt;w&lt;1/2</annotation></semantics></math>.
+Por ejemplo, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">h=1/2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">w=1/4</annotation></semantics></math>,
+el término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mn>0</mn></msup><annotation encoding="application/x-tex">h^0</annotation></semantics></math>
+se muestra en la figura 6.8.</p>
+<p><em>(Figura 6.8: el término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mn>0</mn></msup><annotation encoding="application/x-tex">h^0</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">h=1/2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">w=1/4</annotation></semantics></math>
+— una onda cuadrada de altura 2 con “mesetas” de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+en cada extremo del intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>,
+unidas por rampas lineales.)</em></p>
+<p>Si añadimos el término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mn>1</mn></msup><annotation encoding="application/x-tex">h^1</annotation></semantics></math>
+obtenemos la figura 6.9, y añadiendo el término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mn>2</mn></msup><annotation encoding="application/x-tex">h^2</annotation></semantics></math>
+obtenemos la figura 6.10, y así sucesivamente.</p>
+<p><em>(Figuras 6.9 y 6.10: sumas parciales de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math>
+incluyendo los términos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>h</mi><mn>0</mn></msup><mo>+</mo><msup><mi>h</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">h^0+h^1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>h</mi><mn>0</mn></msup><mo>+</mo><msup><mi>h</mi><mn>1</mn></msup><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">h^0+h^1+h^2</annotation></semantics></math>
+respectivamente, mostrando una estructura cada vez más fina y
+autosimilar, típica de un fractal.)</em></p>
+<p>El resultado final es una función muy accidentada, llamada «fractal».
+No se puede calcular esta función exactamente, pero se pueden incluir
+suficientes términos para alcanzar cualquier precisión deseada. Como la
+función es simétrica respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">t=1/2</annotation></semantics></math>,
+en realidad solo es necesario graficarla de 0 a 1/2. También, debido a
+la simetría, puede expresarse mediante una serie de Fourier de
+cosenos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><msub><mi>b</mi><mi>k</mi></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(t) = \sum_{k=0}^{\infty}b_k\cos2\pi kt\,.
+</annotation></semantics></math></p>
+<p>Demuestre que los coeficientes de Fourier vienen dados por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>k</mi></msub><mo>=</mo><mfrac><mn>2</mn><mrow><mi>π</mi><mi>k</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></munderover><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>h</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>j</mi></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>k</mi><mi>w</mi><mi>/</mi><msup><mn>2</mn><mi>j</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+b_k = \frac{2}{\pi k}\sum_{j=0}^{\xi(k)}(2h)^j\sin(2\pi kw/2^j)
+</annotation></semantics></math></p>
+<p>para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>,
+y</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>w</mi></mrow><mrow><mn>1</mn><mo>−</mo><mi>h</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+b_0 = \frac{2w}{1-h}
+</annotation></semantics></math></p>
+<p>donde la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\xi(k)</annotation></semantics></math>
+es el número de veces que el 2 aparece como factor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi(0)=\xi(1)=\xi(3)=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\xi(2)=1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\xi(4)=2</annotation></semantics></math>,
+etc.</p>
+<p>Escriba un programa que muestre e imprima el fractal para cierto
+conjunto de parámetros
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>.
+Muestre también la serie de Fourier truncada,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>b</mi><mi>k</mi></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">
+f_m(t) = \sum_{k=0}^{m-1}b_k\cos2\pi kt
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+términos, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">m=5</annotation></semantics></math>,
+10 y 20 (o más, si dispone de un ordenador rápido).</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
