@@ -28,6 +28,12 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
+<div class="font-ctrl" role="group" aria-label="Tamaño del texto">
+<button type="button" data-action="down" title="Reducir texto">A&minus;</button>
+<button type="button" data-action="reset" title="Restablecer">A</button>
+<button type="button" data-action="up" title="Aumentar texto">A+</button>
+</div>
+
 <header id="title-block-header">
 <h1 class="title">Capítulo 1: Características clave de la mecánica
 cuántica</h1>
@@ -1268,5 +1274,32 @@ original en inglés.</em></p>
 <p>Para obtener información sobre cómo citar estos materiales o sobre
 nuestras condiciones de uso, visite: <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var KEY = "mit804-fontscale";
+  var STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  function clampIndex(pct) {
+    var idx = STEPS.indexOf(pct);
+    return idx === -1 ? STEPS.indexOf(100) : idx;
+  }
+  function apply(pct) {
+    document.documentElement.style.fontSize = pct + "%";
+  }
+  var saved = parseInt(localStorage.getItem(KEY), 10);
+  var idx = clampIndex(STEPS.indexOf(saved) !== -1 ? saved : 100);
+  apply(STEPS[idx]);
+
+  document.querySelectorAll(".font-ctrl button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var action = btn.dataset.action;
+      if (action === "up") idx = Math.min(idx + 1, STEPS.length - 1);
+      else if (action === "down") idx = Math.max(idx - 1, 0);
+      else idx = clampIndex(100);
+      apply(STEPS[idx]);
+      localStorage.setItem(KEY, STEPS[idx]);
+    });
+  });
+})();
+</script>
 </body>
 </html>
