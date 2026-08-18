@@ -10,6 +10,12 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ## Contenido
 
+### Capítulos del libro de texto
+
+| Archivo | Tema |
+|---|---|
+| `MIT8.03_TextCh1_ES.epub` | Oscilación armónica |
+
 ### Listas de problemas (Problem Sets 1-10)
 
 | Archivo | Tema |
@@ -27,7 +33,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ### Próximamente
 
-Los **13 capítulos del libro de texto** (`Text_Ch1`-`Text_Ch13`, apuntes principales del curso, equivalentes a los "Lecture Notes" de 8.04) se irán añadiendo progresivamente en este repositorio. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+Quedan **12 capítulos del libro de texto** (`Text_Ch2`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
