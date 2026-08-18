@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Capítulo 1: Características clave de la mecánica cuántica</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Capítulo 1: Características clave de la mecánica
+cuántica</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-1-características-clave-de-la-mecánica-cuántica"
+id="toc-capítulo-1-características-clave-de-la-mecánica-cuántica">Capítulo
+1: Características clave de la mecánica cuántica</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#linealidad-de-las-ecuaciones-de-movimiento"
+id="toc-linealidad-de-las-ecuaciones-de-movimiento">1. Linealidad de las
+ecuaciones de movimiento</a></li>
+<li><a href="#los-números-complejos-son-esenciales"
+id="toc-los-números-complejos-son-esenciales">2. Los números complejos
+son esenciales</a></li>
+<li><a href="#pérdida-del-determinismo"
+id="toc-pérdida-del-determinismo">3. Pérdida del determinismo</a></li>
+<li><a href="#superposiciones-cuánticas"
+id="toc-superposiciones-cuánticas">4. Superposiciones cuánticas</a></li>
+<li><a href="#entrelazamiento" id="toc-entrelazamiento">5.
+Entrelazamiento</a></li>
+</ul></li>
+</ul>
+</nav>
+<p><em>B. Zwiebach</em> <em>9 de febrero de 2016</em></p>
+<h1
+id="capítulo-1-características-clave-de-la-mecánica-cuántica">Capítulo
+1: Características clave de la mecánica cuántica</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 1: An overview of quantum mechanics.</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=jANZxzetPaQ">Quantum
+mechanics as a framework. Defining linearity</a> (17:46)</li>
+<li><a href="https://www.youtube.com/watch?v=kiuwtaprFjk">Linearity and
+nonlinear theories. Schrödinger’s equation</a> (10:01)</li>
+<li><a href="https://www.youtube.com/watch?v=f079K1f2WQk">Necessity of
+complex numbers</a> (07:38)</li>
+<li><a href="https://www.youtube.com/watch?v=8OsUQ1yXCcI">Photons and
+the loss of determinism</a> (17:20)</li>
+<li><a href="https://www.youtube.com/watch?v=CR-eOhdxbes">The nature of
+superposition. Mach-Zehnder interferometer</a> (14:30)</li>
+</ul>
+<hr />
+<p>La mecánica cuántica tiene ya casi cien años, pero todavía estamos
+descubriendo algunas de sus sorprendentes características y sigue siendo
+objeto de mucha investigación y especulación. El marco de la mecánica
+cuántica es una extensión rica y elegante del marco de la física
+clásica. También es contraintuitivo y casi paradójico.</p>
+<p>La física cuántica ha reemplazado a la física clásica como la
+descripción fundamental correcta de nuestro universo físico. Se usa
+rutinariamente para describir la mayoría de los fenómenos que ocurren a
+distancias cortas. La física cuántica es el resultado de aplicar el
+marco de la mecánica cuántica a diferentes fenómenos físicos. Así,
+tenemos la Electrodinámica Cuántica, cuando la mecánica cuántica se
+aplica al electromagnetismo; la Óptica Cuántica, cuando se aplica a la
+luz y a los dispositivos ópticos; o la Gravedad Cuántica, cuando se
+aplica a la gravitación. La mecánica cuántica proporciona, en efecto, un
+marco notablemente coherente y elegante. La era de la física cuántica
+comienza en 1925, con los descubrimientos de Schrödinger y Heisenberg.
+Las semillas de estos descubrimientos fueron sembradas por Planck,
+Einstein, Bohr, de Broglie y otros. Es un tributo a la imaginación
+humana que hayamos sido capaces de descubrir el conjunto de reglas
+contraintuitivo y abstracto que define la mecánica cuántica. Aquí
+pretendemos explicar y ofrecer cierta perspectiva sobre las
+características principales de este marco.</p>
+<p>Comenzaremos discutiendo la propiedad de linealidad, que la mecánica
+cuántica comparte con la teoría electromagnética. Esta propiedad nos
+dice qué tipo de teoría es la mecánica cuántica y por qué, podría
+argumentarse, es más simple que la mecánica clásica. A continuación
+pasamos a los fotones, las partículas de luz. Usamos fotones y
+polarizadores para explicar por qué la física cuántica no es
+determinista y, en contraste con la física clásica, los resultados de
+algunos experimentos no pueden predecirse. La mecánica cuántica es un
+marco en el que solo podemos predecir las probabilidades de los
+distintos resultados de un experimento dado. Nuestro siguiente tema son
+las superposiciones cuánticas, en las que un objeto cuántico de alguna
+manera consigue existir simultáneamente en dos estados mutuamente
+incompatibles. Una bombilla cuántica, por ejemplo, podría estar en un
+estado en el que está encendida y apagada al mismo tiempo.</p>
+<h2 id="linealidad-de-las-ecuaciones-de-movimiento">1. Linealidad de las
+ecuaciones de movimiento</h2>
+<p>En física, una teoría se describe habitualmente mediante un conjunto
+de ecuaciones para ciertas cantidades llamadas variables dinámicas de la
+teoría. Tras escribir una teoría, la tarea más importante es encontrar
+soluciones de las ecuaciones. Una solución de las ecuaciones describe
+una realidad posible, según la teoría. Como un universo en expansión es
+una solución de las ecuaciones gravitacionales de Albert Einstein, por
+ejemplo, se sigue que un universo en expansión es posible, según esta
+teoría. Una única teoría puede tener muchas soluciones, cada una
+describiendo una realidad posible.</p>
+<p>Hay teorías lineales y teorías no lineales. Las teorías no lineales
+son más complejas que las lineales. En una teoría lineal ocurre un hecho
+notable: si se tienen dos soluciones, se obtiene una tercera solución de
+la teoría simplemente sumando las dos soluciones. Un ejemplo de una
+hermosa teoría lineal es la teoría de Maxwell del electromagnetismo, una
+teoría que gobierna el comportamiento de los campos eléctrico y
+magnético. Un campo, como probablemente ya sabe, es una cantidad cuyos
+valores pueden depender de la posición y del tiempo. Una solución simple
+de esta teoría describe una onda electromagnética que se propaga en una
+dirección dada. Otra solución simple podría describir una onda
+electromagnética propagándose en una dirección distinta. Debido a que la
+teoría es lineal, tener las dos ondas propagándose simultáneamente, cada
+una en su propia dirección y sin afectarse mutuamente, es una solución
+nueva y consistente. La suma es una solución en el sentido de que el
+campo eléctrico en la nueva solución es la suma del campo eléctrico en
+la primera solución más el campo eléctrico en la segunda solución. Lo
+mismo ocurre con el campo magnético: el campo magnético en la nueva
+solución es la suma del campo magnético en la primera solución más el
+campo magnético en la segunda solución. De hecho, se puede sumar
+cualquier número de soluciones y seguir obteniendo una solución. Aunque
+esto suene esotérico, usted está totalmente familiarizado con ello. El
+aire a su alrededor está lleno de ondas electromagnéticas, cada una
+propagándose ajena a las demás. Están las ondas de miles de teléfonos
+móviles, las ondas que transportan cientos de mensajes de internet
+inalámbrico, las ondas de multitud de emisoras de radio, canales de
+televisión, y muchas, muchas más. Hoy en día, un único cable
+transatlántico puede transportar simultáneamente millones de llamadas
+telefónicas, junto con enormes cantidades de vídeo y datos de internet.
+Todo ello gracias a la linealidad.</p>
+<p>Más concretamente, decimos que las ecuaciones de Maxwell son
+ecuaciones lineales. Una solución de la ecuación de Maxwell se describe
+mediante un campo eléctrico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+un campo magnético
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+una densidad de carga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+y una densidad de corriente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>,
+todos denotados colectivamente como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>ρ</mi><mo>,</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(E, B, \rho, J)</annotation></semantics></math>.
+Esta colección de campos y fuentes satisface las ecuaciones de Maxwell.
+La linealidad implica que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>ρ</mi><mo>,</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(E, B, \rho, J)</annotation></semantics></math>
+es una solución, también lo es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>E</mi><mo>,</mo><mi>α</mi><mi>B</mi><mo>,</mo><mi>α</mi><mi>ρ</mi><mo>,</mo><mi>α</mi><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\alpha E, \alpha B, \alpha \rho, \alpha J)</annotation></semantics></math>,
+donde todos los campos y fuentes han sido multiplicados por la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.
+Dadas dos soluciones</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo>,</mo><msub><mi>ρ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>J</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>2</mn></msub><mo>,</mo><msub><mi>B</mi><mn>2</mn></msub><mo>,</mo><msub><mi>ρ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>J</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+(E_1, B_1, \rho_1, J_1), \quad \text{y} \quad (E_2, B_2, \rho_2, J_2), \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>la linealidad también implica que podemos obtener una nueva solución
+sumándolas</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>+</mo><msub><mi>E</mi><mn>2</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo>+</mo><msub><mi>B</mi><mn>2</mn></msub><mo>,</mo><msub><mi>ρ</mi><mn>1</mn></msub><mo>+</mo><msub><mi>ρ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>J</mi><mn>1</mn></msub><mo>+</mo><msub><mi>J</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+(E_1 + E_2, B_1 + B_2, \rho_1 + \rho_2, J_1 + J_2). \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>La nueva solución puede llamarse la superposición de las dos
+soluciones originales.</p>
+<p>No es difícil explicar qué es, en general, una ecuación lineal o un
+conjunto lineal de ecuaciones. Consideremos la ecuación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>u</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+Lu = 0, \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>donde, esquemáticamente,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+denota la incógnita. La incógnita puede ser un número, o una función del
+tiempo, una función del espacio, una función del tiempo y del espacio,
+esencialmente cualquier cosa desconocida. De hecho,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+podría representar una colección de incógnitas, en cuyo caso
+reemplazaríamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><msub><mi>u</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">u_1, u_2, \ldots</annotation></semantics></math>.
+El símbolo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+denota un operador lineal, un objeto que satisface las dos propiedades
+siguientes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>L</mi><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><mi>L</mi><msub><mi>u</mi><mn>2</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><mi>L</mi><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+L(u_1 + u_2) = Lu_1 + Lu_2, \qquad L(au) = aLu, \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es un número. Nótese que estas condiciones implican que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><mi>β</mi><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>α</mi><mi>L</mi><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><mi>β</mi><mi>L</mi><msub><mi>u</mi><mn>2</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+L(\alpha u_1 + \beta u_2) = \alpha Lu_1 + \beta Lu_2, \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>lo que muestra que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mn>1</mn></msub><annotation encoding="application/x-tex">u_1</annotation></semantics></math>
+es una solución
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><msub><mi>u</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Lu_1 = 0</annotation></semantics></math>)
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mn>2</mn></msub><annotation encoding="application/x-tex">u_2</annotation></semantics></math>
+es una solución
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><msub><mi>u</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Lu_2 = 0</annotation></semantics></math>),
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><mi>β</mi><msub><mi>u</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\alpha u_1 + \beta u_2</annotation></semantics></math>
+también es una solución. Llamamos a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><msub><mi>u</mi><mn>1</mn></msub><mo>+</mo><mi>β</mi><msub><mi>u</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\alpha u_1 + \beta u_2</annotation></semantics></math>
+la superposición general de las soluciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mn>1</mn></msub><annotation encoding="application/x-tex">u_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mn>2</mn></msub><annotation encoding="application/x-tex">u_2</annotation></semantics></math>.
+Un ejemplo puede ayudar. Consideremos la ecuación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mi>τ</mi></mfrac><mi>u</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{du}{dt} + \frac{1}{\tau} u = 0, \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+es una constante con unidades de tiempo. Esta es, de hecho, una ecuación
+diferencial lineal, y toma la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Lu = 0</annotation></semantics></math>
+si definimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>u</mi><mo>≡</mo><mfrac><mrow><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mi>τ</mi></mfrac><mi>u</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+Lu \equiv \frac{du}{dt} + \frac{1}{\tau} u \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p><strong>Ejercicio 1.</strong> Verifique que (1.7) satisface las
+condiciones para un operador lineal.</p>
+<p>La teoría de la relatividad general de Einstein es una teoría no
+lineal cuya variable dinámica es un campo gravitacional, el campo que
+describe, por ejemplo, cómo se mueven los planetas alrededor de una
+estrella. Al ser una teoría no lineal, sencillamente no se pueden sumar
+los campos gravitacionales de distintas soluciones para hallar una nueva
+solución. Esto hace que la teoría de Einstein sea bastante complicada,
+según todos los indicios mucho más complicada que la teoría de Maxwell.
+De hecho, ¡la mecánica clásica, tal como fue inventada principalmente
+por Isaac Newton, también es una teoría no lineal! En mecánica clásica
+las variables dinámicas son las posiciones y velocidades de las
+partículas, sobre las que actúan fuerzas. No existe una forma general de
+usar dos soluciones para construir una tercera.</p>
+<p>En efecto, consideremos la ecuación de movimiento para una partícula
+en una línea bajo la influencia de un potencial independiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>,
+que en general es una función arbitraria de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+La variable dinámica en este problema es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>,
+la posición en función del tiempo. Denotando por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mo>′</mo></msup><annotation encoding="application/x-tex">V&#39;</annotation></semantics></math>
+la derivada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+respecto a su argumento, la segunda ley de Newton toma la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+m \frac{d^2 x(t)}{dt^2} = -V&#39;(x(t)). \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>El lado izquierdo es la masa por la aceleración y el lado derecho es
+la fuerza experimentada por la partícula en el potencial. Probablemente
+vale la pena resaltar que el lado derecho es la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V&#39;(x)</annotation></semantics></math>
+evaluada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+igualado a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><msub><mrow><mfrac><mrow><mi>∂</mi><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+V&#39;(x(t)) \equiv \left. \frac{\partial V(x)}{\partial x} \right|_{x = x(t)}. \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>Aunque aquí podríamos haber usado una derivada ordinaria, escribimos
+una derivada parcial, como es habitual para el caso general de
+potenciales dependientes del tiempo. La razón por la que la ecuación
+(1.8) no es una ecuación lineal es que la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V&#39;(x)</annotation></semantics></math>
+no es lineal. En general, para funciones arbitrarias
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+esperamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mi>a</mi><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="1.0em"></mspace><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+V&#39;(au) \neq aV&#39;(u), \quad \text{y} \quad V&#39;(u+v) \neq V&#39;(u) + V&#39;(v). \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>Como resultado, dada una solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>,
+no se espera que la solución escalada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha x(t)</annotation></semantics></math>
+sea también una solución. Dadas dos soluciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x_1(t)</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x_2(t)</annotation></semantics></math>,
+tampoco está garantizado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x_1(t) + x_2(t)</annotation></semantics></math>
+sea una solución.</p>
+<p><strong>Ejercicio.</strong> ¿Cuál es el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+más general para el cual la ecuación de movimiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>
+es lineal?</p>
+<p>La mecánica cuántica es una teoría lineal. La ecuación distintiva de
+esta teoría, la llamada ecuación de Schrödinger, es una ecuación lineal
+para una cantidad llamada función de onda, y determina su evolución
+temporal. La función de onda es la variable dinámica en mecánica
+cuántica pero, curiosamente, su interpretación física no estaba clara
+para Erwin Schrödinger cuando escribió la ecuación en 1925. Fue Max Born
+quien, meses después, sugirió que la función de onda codifica
+probabilidades. Esta fue la interpretación física correcta, pero fue
+profundamente rechazada por muchos, incluido el propio Schrödinger,
+quien permaneció descontento con ella el resto de su vida. La linealidad
+de la mecánica cuántica implica una profunda simplicidad. En cierto
+sentido, la mecánica cuántica es más simple que la mecánica clásica. En
+mecánica cuántica las soluciones pueden sumarse para formar nuevas
+soluciones.</p>
+<p>La función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+depende del tiempo y también puede depender del espacio. La ecuación de
+Schrödinger (ES) es una ecuación diferencial parcial que toma la
+forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi, \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>donde el hamiltoniano (u operador de energía)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+es un operador lineal que puede actuar sobre funciones de onda:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>+</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}(a\Psi) = a\hat{H}\Psi, \qquad \hat{H}(\Psi_1 + \Psi_2) = \hat{H}(\Psi_1) + \hat{H}(\Psi_2), \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+una constante que, de hecho, no necesita ser real; puede ser un número
+complejo. Por supuesto,
+¡<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+en sí mismo no depende de la función de onda! Para comprobar que la
+ecuación de Schrödinger es lineal, la escribimos en la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi mathvariant="normal">Ψ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L\Psi = 0</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+definido como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi mathvariant="normal">Ψ</mi><mo>≡</mo><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>−</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+L\Psi \equiv i\hbar \frac{\partial \Psi}{\partial t} - \hat{H}\Psi \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>Ahora es sencillo verificar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+es un operador lineal. Físicamente, esto significa que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\Psi_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\Psi_2</annotation></semantics></math>
+son soluciones de la ecuación de Schrödinger, entonces también lo es la
+superposición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>+</mo><mi>β</mi><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\alpha\Psi_1 + \beta\Psi_2</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+son ambos números complejos, es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo>∈</mo><mi>ℂ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\alpha, \beta \in \mathbb{C})</annotation></semantics></math>.</p>
+<h2 id="los-números-complejos-son-esenciales">2. Los números complejos
+son esenciales</h2>
+<p>La mecánica cuántica es la primera teoría física que realmente hace
+uso de los números complejos. Los números que la mayoría usamos en la
+vida cotidiana (enteros, fracciones, decimales) son números reales. El
+conjunto de los números complejos se denota por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
+y el conjunto de los números reales se denota por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>.
+Los números complejos aparecen cuando combinamos números reales con la
+unidad imaginaria
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+definida como igual a la raíz cuadrada de menos uno:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≡</mo><msqrt><mrow><mi>−</mi><mn>1</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">i \equiv \sqrt{-1}</annotation></semantics></math>.
+Al ser la raíz cuadrada de menos uno, significa que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+al cuadrado debe dar menos uno:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>.
+Los números complejos son fundamentales en matemáticas. Una ecuación
+como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mi>−</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">x^2 = -4</annotation></semantics></math>,
+para una incógnita
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+no puede resolverse si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+ha de ser real. Ningún número real al cuadrado da menos uno. Pero si
+permitimos números complejos, tenemos las soluciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>±</mi><mn>2</mn><mi>i</mi></mrow><annotation encoding="application/x-tex">x = \pm 2i</annotation></semantics></math>.
+Los matemáticos han demostrado que todas las ecuaciones polinómicas
+pueden resolverse en términos de números complejos.</p>
+<p>Un número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+en toda su generalidad, es un número de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo>∈</mo><mi>ℂ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>a</mi><mo>,</mo><mi>b</mi><mo>∈</mo><mi>ℝ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.1)</mtext></mrow><annotation encoding="application/x-tex">
+z = a + ib \in \mathbb{C}, \qquad a, b \in \mathbb{R}. \qquad \text{(2.1)}
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+son números reales, e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">ib</annotation></semantics></math>
+denota el producto de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+El número
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+se llama parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+se llama parte imaginaria de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>z</mi><mo>=</mo><mi>a</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">Im</mtext><mspace width="0.167em"></mspace><mi>z</mi><mo>=</mo><mi>b</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.2)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Re}\, z = a, \qquad \text{Im}\, z = b. \qquad \text{(2.2)}
+</annotation></semantics></math></p>
+<p>El conjugado complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mo>*</mo></msup><annotation encoding="application/x-tex">z^*</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+se define como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.3)</mtext></mrow><annotation encoding="application/x-tex">
+z^* = a - ib. \qquad \text{(2.3)}
+</annotation></semantics></math></p>
+<p>Puede verificar rápidamente que un número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+es real si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">z^* = z</annotation></semantics></math>,
+y que es puramente imaginario si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mi>−</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">z^* = -z</annotation></semantics></math>.
+Para cualquier número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">z = a + ib</annotation></semantics></math>
+se puede definir la norma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|z|</annotation></semantics></math>
+del número complejo como un número real positivo dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.4)</mtext></mrow><annotation encoding="application/x-tex">
+|z| = \sqrt{a^2 + b^2}. \qquad \text{(2.4)}
+</annotation></semantics></math></p>
+<p>Puede comprobar rápidamente que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mi>z</mi><msup><mi>z</mi><mo>*</mo></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.5)</mtext></mrow><annotation encoding="application/x-tex">
+|z|^2 = zz^*, \qquad \text{(2.5)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>≡</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">z^* \equiv a - ib</annotation></semantics></math>
+se llama el conjugado complejo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">z = a + ib</annotation></semantics></math>.
+Los números complejos se representan como vectores en un «plano
+complejo» bidimensional. La parte real del número complejo es la
+componente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+del vector y la parte imaginaria del número complejo es la componente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+Si consideramos el vector de longitud unidad en el plano complejo que
+forma un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+con el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+tiene componente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math>
+y componente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math>.
+El vector es, por tanto, el número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>+</mo><mi>i</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta + i\sin\theta</annotation></semantics></math>.
+La identidad de Euler relaciona esto con la exponencial de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">i\theta</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>+</mo><mi>i</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.6)</mtext></mrow><annotation encoding="application/x-tex">
+e^{i\theta} = \cos\theta + i\sin\theta. \qquad \text{(2.6)}
+</annotation></semantics></math></p>
+<p>Un número complejo de la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>χ</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\chi}</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>χ</mi><annotation encoding="application/x-tex">\chi</annotation></semantics></math>
+real, se llama fase pura.</p>
+<p>Aunque los números complejos son a veces útiles en mecánica clásica o
+en la teoría de Maxwell, no son estrictamente necesarios. Ninguna de las
+variables dinámicas, que corresponden a cantidades medibles, es un
+número complejo. De hecho, los números complejos no pueden medirse en
+absoluto: todas las mediciones en física dan como resultado números
+reales. En mecánica cuántica, sin embargo, los números complejos son
+fundamentales. La ecuación de Schrödinger involucra números complejos.
+Más aún, la función de onda, la variable dinámica de la mecánica
+cuántica, es en sí misma un número complejo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>∈</mo><mi>ℂ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.7)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi \in \mathbb{C}. \qquad \text{(2.7)}
+</annotation></semantics></math></p>
+<p>Dado que los números complejos no se pueden medir, la relación entre
+la función de onda y una cantidad medible debe ser de alguna manera
+indirecta. La idea de Born de identificar las probabilidades, que son
+siempre números reales positivos, con el cuadrado de la norma de la
+función de onda, resultó muy natural. Si escribimos la función de onda
+de nuestro sistema cuántico como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>,
+las probabilidades de los posibles eventos se calculan a partir de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\Psi|^2</annotation></semantics></math>.
+El marco matemático necesario para expresar las leyes de la mecánica
+cuántica consiste en espacios vectoriales complejos. En cualquier
+espacio vectorial tenemos objetos llamados vectores que pueden sumarse
+entre sí. En un espacio vectorial complejo, un vector multiplicado por
+un número complejo sigue siendo un vector. Como veremos en nuestro
+estudio de la mecánica cuántica, muchas veces es útil pensar en la
+función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+como un vector en algún espacio vectorial complejo.</p>
+<h2 id="pérdida-del-determinismo">3. Pérdida del determinismo</h2>
+<p>El mayor logro de Maxwell fue darse cuenta de que sus ecuaciones del
+electromagnetismo permitían la existencia de ondas propagantes. En
+particular, en 1865 conjeturó que la luz era una onda electromagnética,
+una fluctuación propagante de campos eléctrico y magnético. Los
+experimentos posteriores le dieron la razón. Hacia finales del siglo XIX
+los físicos estaban convencidos de que la luz era una onda. Sin embargo,
+la certeza no duró mucho. Los experimentos sobre la radiación de cuerpo
+negro y sobre la fotoemisión de electrones sugerían que el
+comportamiento de la luz debía ser más complicado que el de una simple
+onda. Max Planck y Albert Einstein fueron los contribuyentes más
+destacados a la resolución de los enigmas planteados por esos
+experimentos.</p>
+<p>Para explicar las características del efecto fotoeléctrico, Einstein
+postuló (1905) que en un haz de luz la energía viene en cuantos: el haz
+está compuesto de paquetes de energía. Einstein implicaba esencialmente
+que la luz estaba hecha de partículas, cada una portando una cantidad
+fija de energía. Él mismo encontraba esta idea inquietante, convencido,
+como la mayoría de sus contemporáneos, de que, como había demostrado
+Maxwell, la luz era una onda. Anticipó que una entidad física, como la
+luz, que pudiera comportarse tanto como partícula como onda, podría
+provocar el fin de la física clásica y requeriría una teoría física
+completamente nueva. De hecho, tenía razón. Aunque nunca llegó a
+apreciar realmente la mecánica cuántica, sus ideas sobre las partículas
+de luz, más tarde llamadas fotones, ayudaron a construir esta
+teoría.</p>
+<p>Los físicos tardaron hasta 1925 en aceptar que la luz podía
+comportarse como una partícula. Los experimentos de Arthur Compton
+(1923) terminaron por convencer a la mayoría de los escépticos. Hoy en
+día, las partículas de luz, o fotones, se manipulan rutinariamente en
+laboratorios de todo el mundo. Aunque sigan siendo misteriosos, nos
+hemos acostumbrado a ellos. Cada fotón de luz visible transporta muy
+poca energía: un pequeño pulso de láser puede contener miles de millones
+de fotones. Nuestro ojo, sin embargo, es un muy buen detector de
+fotones: en total oscuridad, somos capaces de ver luz cuando tan solo
+diez fotones inciden sobre nuestra retina. Cuando decimos que la luz se
+comporta como una partícula, nos referimos a una partícula
+mecánico-cuántica: un paquete de energía y momento que no está compuesto
+de paquetes más pequeños. No nos referimos a una partícula puntual
+clásica o corpúsculo newtoniano, que es un objeto de tamaño nulo con
+posición y velocidad definidas.</p>
+<p>Resulta que la energía de un fotón depende únicamente del color de la
+luz. Como descubrió Einstein, la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+y la frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+de un fotón están relacionadas por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>h</mi><mi>ν</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.1)</mtext></mrow><annotation encoding="application/x-tex">
+E = h\nu \qquad \text{(3.1)}
+</annotation></semantics></math></p>
+<p>La frecuencia de un fotón determina la longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+de la luz mediante la relación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mi>λ</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\nu\lambda = c</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+es la velocidad de la luz. Todos los fotones verdes, por ejemplo, tienen
+la misma energía. Para aumentar la energía en un haz de luz manteniendo
+el mismo color, simplemente se necesitan más fotones.</p>
+<p>Como explicaremos ahora, la existencia de fotones implica que la
+mecánica cuántica no es determinista. Con esto queremos decir que el
+resultado de un experimento no puede determinarse, como ocurriría en
+física clásica, mediante las condiciones que están bajo el control del
+experimentador.</p>
+<p>Consideremos un polarizador cuya dirección preferencial está alineada
+a lo largo de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>,
+como se muestra en la Figura 1. La luz linealmente polarizada a lo largo
+de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>,
+es decir, luz cuyo campo eléctrico apunta en esa dirección, atraviesa el
+polarizador. Si la polarización de la luz incidente es ortogonal a la
+dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>,
+la luz no pasará en absoluto. Así, la luz polarizada linealmente en la
+dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>y</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math>
+será absorbida totalmente por el polarizador. Consideremos ahora luz
+polarizada a lo largo de una dirección que forma un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+con el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+como se muestra en la Figura 2. ¿Qué ocurre?</p>
+<p><em>Figura 1: Un polarizador que transmite luz linealmente polarizada
+a lo largo de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>.</em></p>
+<p><em>Figura 2: Luz linealmente polarizada a lo largo de la dirección
+que forma un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+incidiendo sobre el polarizador.</em></p>
+<p>Pensando en la luz como una onda propagante, el campo eléctrico
+incidente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>α</mi></msub><annotation encoding="application/x-tex">E_\alpha</annotation></semantics></math>
+forma un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+con el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+y por lo tanto toma la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>α</mi></msub><mo>=</mo><msub><mi>E</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><mspace width="0.167em"></mspace><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><msub><mi>E</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>α</mi><mspace width="0.167em"></mspace><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.2)</mtext></mrow><annotation encoding="application/x-tex">
+E_\alpha = E_0 \cos\alpha\, \hat{x} + E_0 \sin\alpha\, \hat{y}. \qquad \text{(3.2)}
+</annotation></semantics></math></p>
+<p>Este es un campo eléctrico de magnitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>0</mn></msub><annotation encoding="application/x-tex">E_0</annotation></semantics></math>.
+Aquí estamos ignorando la dependencia temporal y espacial de la onda; no
+son relevantes para nuestra discusión. Cuando este campo eléctrico
+incide sobre el polarizador, la componente a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>
+pasa y la componente a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>y</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math>
+es absorbida. Así,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Más allá del polarizador:</mtext><mspace width="1.0em"></mspace><mi>E</mi><mo>=</mo><msub><mi>E</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><mspace width="0.167em"></mspace><mover><mi>x</mi><mo accent="true">̂</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.3)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Más allá del polarizador:} \quad E = E_0 \cos\alpha\, \hat{x}. \qquad \text{(3.3)}
+</annotation></semantics></math></p>
+<p>Probablemente recuerde que la energía de una onda electromagnética es
+proporcional al cuadrado de la magnitud del campo eléctrico. Esto
+significa que la fracción de la energía del haz que pasa a través del
+polarizador es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(\cos\alpha)^2</annotation></semantics></math>.
+También es bien sabido que la luz que emerge del polarizador tiene la
+misma frecuencia que la luz incidente.</p>
+<p>Hasta aquí todo bien. Pero ahora, intentemos entender este resultado
+pensando en los fotones que componen la luz incidente. La premisa aquí
+es que todos los fotones del haz incidente son idénticos. Además, los
+fotones no interactúan entre sí. Podríamos incluso imaginar enviar toda
+la energía del haz de luz incidente un fotón a la vez. Puesto que toda
+la luz que emerge del polarizador tiene la misma frecuencia que la luz
+incidente, debemos concluir que cada fotón individual, o bien pasa, o
+bien es absorbido. Si una fracción de un fotón pasara, sería un fotón de
+menor energía y, por tanto, de menor frecuencia, algo que no ocurre.</p>
+<p>Pero ahora tenemos un problema. Como sabemos por el análisis
+ondulatorio, aproximadamente una fracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(\cos\alpha)^2</annotation></semantics></math>
+de los fotones debe pasar, ya que esa es la fracción de la energía que
+se transmite. En consecuencia, una fracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1 - (\cos\alpha)^2</annotation></semantics></math>
+de los fotones debe ser absorbida. Pero si todos los fotones son
+idénticos, ¿por qué lo que le ocurre a un fotón no les ocurre a todos
+ellos?</p>
+<p>La respuesta de la mecánica cuántica es que, en efecto, hay una
+pérdida de determinismo. Nadie puede predecir si un fotón pasará o será
+absorbido. Lo mejor que cualquiera puede hacer es predecir
+probabilidades. En este caso, habría una probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(\cos\alpha)^2</annotation></semantics></math>
+de pasar y una probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1 - (\cos\alpha)^2</annotation></semantics></math>
+de no pasar.</p>
+<p>Se sugieren dos vías de escape. Quizás el polarizador no es realmente
+un objeto homogéneo y, dependiendo exactamente de dónde incide el fotón,
+o bien se absorbe o bien pasa. Los experimentos demuestran que no es
+así. Una posibilidad más intrigante fue sugerida por Einstein y otros.
+Una posible salida, afirmaban, era la existencia de variables ocultas.
+Los fotones, aunque aparentemente idénticos, tendrían otras propiedades
+ocultas, actualmente no comprendidas, que determinarían con certeza qué
+fotón pasa y cuál es absorbido. Las teorías de variables ocultas
+parecerían ser imposibles de comprobar, pero sorprendentemente sí pueden
+ponerse a prueba. Mediante el trabajo de John Bell y otros, los físicos
+han diseñado experimentos ingeniosos que descartan la mayoría de las
+versiones de las teorías de variables ocultas. Nadie ha logrado
+averiguar cómo restaurar el determinismo en la mecánica cuántica. Parece
+ser una tarea imposible.</p>
+<p>Cuando intentamos describir fotones cuánticamente, podríamos usar
+funciones de onda, o de forma equivalente, el lenguaje de estados. Un
+fotón polarizado a lo largo de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>
+no se representa mediante un campo eléctrico, sino que simplemente le
+damos un nombre a su estado:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.4)</mtext></mrow><annotation encoding="application/x-tex">
+|\text{fotón}; x\rangle. \qquad \text{(3.4)}
+</annotation></semantics></math></p>
+<p>Aprenderemos las reglas necesarias para manipular tales objetos, pero
+por el momento puede pensar en ello como un vector en algún espacio
+todavía por definir. Otro estado de un fotón, o vector, es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.5)</mtext></mrow><annotation encoding="application/x-tex">
+|\text{fotón}; y\rangle, \qquad \text{(3.5)}
+</annotation></semantics></math></p>
+<p>que representa un fotón polarizado a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>y</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math>.
+Estos estados son las funciones de onda que representan al fotón.
+Afirmamos ahora que los fotones del haz que está polarizado a lo largo
+de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+están en un estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>α</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\text{fotón}; \alpha\rangle</annotation></semantics></math>
+que puede escribirse como una superposición de los dos estados
+anteriores:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>α</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>α</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.6)</mtext></mrow><annotation encoding="application/x-tex">
+|\text{fotón}; \alpha\rangle = \cos\alpha\, |\text{fotón}; x\rangle + \sin\alpha\, |\text{fotón}; y\rangle. \qquad \text{(3.6)}
+</annotation></semantics></math></p>
+<p>Esta ecuación debe compararse con (3.2). Aunque hay algunas
+similitudes —ambas son superposiciones—, una se refiere a campos
+eléctricos y la otra a «estados» de un único fotón. Cualquier fotón que
+emerja del polarizador estará necesariamente polarizado en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>
+y, por lo tanto, estará en el estado</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Más allá del polarizador:</mtext><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.7)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Más allá del polarizador:} \quad |\text{fotón}; x\rangle. \qquad \text{(3.7)}
+</annotation></semantics></math></p>
+<p>Esto puede compararse con (3.3), que con el factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\cos\alpha</annotation></semantics></math>
+lleva información sobre la amplitud de la onda. Aquí, para un único
+fotón, no hay lugar para tal factor.</p>
+<p>En la famosa Quinta Conferencia Internacional Solvay de 1927, los
+físicos más notables del mundo se reunieron para discutir la teoría
+cuántica recién formulada. Diecisiete de los veintinueve asistentes
+fueron o llegaron a ser ganadores del Premio Nobel. Einstein, disgustado
+con la incertidumbre de la mecánica cuántica, pronunció la ahora famosa
+frase: «Dios no juega a los dados», a lo que Niels Bohr respondió, según
+se cuenta: «Einstein, deja de decirle a Dios lo que tiene que hacer».
+Bohr estaba dispuesto a aceptar la pérdida del determinismo; Einstein
+no.</p>
+<h2 id="superposiciones-cuánticas">4. Superposiciones cuánticas</h2>
+<p>Ya hemos discutido el concepto de linealidad: la idea de que la suma
+de dos soluciones que representan realidades físicas representa una
+nueva realidad física permitida. Esta superposición de soluciones tiene
+un significado directo en física clásica. En el caso del
+electromagnetismo, por ejemplo, si tenemos dos soluciones, cada una con
+su propio campo eléctrico y magnético, la solución «suma» se entiende de
+manera sencilla: su campo eléctrico es la suma de los campos eléctricos
+de las dos soluciones y su campo magnético es la suma de los campos
+magnéticos de las dos soluciones. En mecánica cuántica, como hemos
+explicado, la linealidad se cumple. La interpretación de una
+superposición, sin embargo, es muy sorprendente.</p>
+<p>Un ejemplo interesante lo proporciona un interferómetro de
+Mach-Zehnder: un arreglo de divisores de haz, espejos y detectores usado
+por Ernst Mach y Ludwig Zehnder en la década de 1890 para estudiar la
+interferencia entre dos haces de luz.</p>
+<p>Un divisor de haz, como su nombre indica, divide un haz incidente en
+dos haces, uno que se refleja en el divisor y otro que lo atraviesa.
+Nuestros divisores de haz estarán equilibrados: dividen un haz dado en
+dos haces de igual intensidad (Figura 3). La luz que rebota se llama haz
+reflejado, la luz que atraviesa se llama haz transmitido. El haz
+incidente puede incidir sobre el divisor desde arriba o desde abajo.</p>
+<p>La configuración de Mach-Zehnder, mostrada en la Figura 4, tiene un
+divisor de haz izquierdo (BS1) y un divisor de haz derecho (BS2). En
+medio tenemos los dos espejos, M1 arriba y M2 abajo. Un haz entrante
+desde la izquierda es dividido por BS1 en dos haces, cada uno de los
+cuales incide sobre un espejo y luego es enviado a BS2. En BS2 los haces
+se recombinan y se envían a dos haces salientes que van hacia los
+detectores de fotones D0 y D1.</p>
+<p>Es relativamente sencillo disponer los divisores de haz de modo que
+el haz entrante, tras dividirse en BS1 y recombinarse en BS2, emerja en
+el haz superior, que va hacia D0. En este arreglo, no llega luz en
+absoluto a D1. Esto requiere un efecto de interferencia preciso en BS2.
+Nótese que tenemos dos haces incidiendo sobre BS2; el haz superior se
+llama ‘a’ y el haz inferior se llama ‘b’. Dos contribuciones van hacia
+D0: la reflexión de ‘a’ en BS2 y la transmisión de ‘b’ en BS2. Estas dos
+contribuciones interfieren constructivamente para dar un haz que va
+hacia D0. También van dos contribuciones hacia D1: la transmisión de ‘a’
+en BS2 y la reflexión de ‘b’ en BS2. Estas dos, en efecto, pueden
+disponerse para interferir destructivamente y así no dar ningún haz
+hacia D1.</p>
+<p><em>Figura 3: Un haz incidente que incide sobre un divisor de haz da
+como resultado un haz reflejado y un haz transmitido. Izquierda: haz
+incidente proveniente de arriba. Derecha: haz incidente proveniente de
+abajo.</em></p>
+<p><em>Figura 4: Un interferómetro de Mach-Zehnder consta de dos
+divisores de haz BS1 y BS2, dos espejos M1 y M2, y dos detectores D0 y
+D1. Un haz incidente se divide en dos haces mediante BS1. Un haz recorre
+la rama superior, que contiene M1; el otro haz recorre la rama inferior,
+que contiene M2. Los haces de las dos ramas se recombinan en BS2 y luego
+se envían a los detectores. La configuración está preparada para
+producir una interferencia tal que todos los fotones incidentes terminen
+en el detector D0, y ninguno en D1.</em></p>
+<p>Es instructivo pensar en el haz entrante como una secuencia de
+fotones que enviamos al interferómetro, uno a la vez. Esto muestra que,
+a nivel de fotones, la interferencia no es interferencia de un fotón con
+otro fotón. Cada fotón debe interferir consigo mismo para dar el
+resultado. En efecto, la interferencia entre dos fotones no es posible:
+la interferencia destructiva, por ejemplo, requeriría que dos fotones
+dieran como resultado ningún fotón, lo cual es imposible por
+conservación de la energía.</p>
+<p>Por lo tanto, cada fotón hace la cosa muy extraña de atravesar ambas
+ramas del interferómetro. Cada fotón está en una superposición de dos
+estados: un estado en el que el fotón está en el haz superior o rama
+superior, sumado a un estado en el que el fotón está en el haz inferior
+o rama inferior. Así, el estado del fotón en el interferómetro es un
+estado curioso en el que el fotón parece estar haciendo dos cosas
+incompatibles al mismo tiempo.</p>
+<p>La ecuación (3.6) es otro ejemplo de superposición cuántica. El
+estado del fotón tiene una componente a lo largo de un fotón polarizado
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+y una componente a lo largo de un fotón polarizado en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<p>Cuando hablamos de una función de onda, también la llamamos a veces
+estado, porque la función de onda especifica el «estado» de nuestro
+sistema cuántico. También nos referimos a veces a los estados como
+vectores. Un estado cuántico puede no ser un vector como los vectores
+familiares en el espacio tridimensional, pero es un vector de todos
+modos, porque tiene sentido sumar estados y multiplicar estados por
+números. Del mismo modo que los vectores pueden sumarse, la linealidad
+garantiza que sumar funciones de onda o estados es algo con sentido. Al
+igual que cualquier vector puede escribirse como suma de otros vectores
+de muchas maneras distintas, haremos lo mismo con nuestros estados. Al
+escribir nuestro estado físico como sumas de otros estados, podemos
+aprender sobre las propiedades de nuestro estado.</p>
+<p>Consideremos ahora dos estados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|A\rangle</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|B\rangle</annotation></semantics></math>.
+Supongamos, además, que al medir cierta propiedad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|A\rangle</annotation></semantics></math>
+la respuesta es siempre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+y que al medir la misma propiedad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|B\rangle</annotation></semantics></math>
+la respuesta es siempre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Supongamos ahora que nuestro estado físico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>
+es la superposición</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>α</mi><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mi>β</mi><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>α</mi><mo>,</mo><mi>β</mi><mo>∈</mo><mi>ℂ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.1)</mtext></mrow><annotation encoding="application/x-tex">
+|\Psi\rangle = \alpha |A\rangle + \beta |B\rangle, \qquad \alpha, \beta \in \mathbb{C}. \qquad \text{(4.1)}
+</annotation></semantics></math></p>
+<p>¿Qué ocurre ahora si medimos la propiedad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+en el sistema descrito por el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>?
+Podría parecer razonable que se obtuviera algún valor intermedio entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+pero eso no es lo que ocurre. Una medición de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+dará como resultado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+No hay una respuesta cierta, el determinismo clásico se pierde, pero la
+respuesta es siempre uno de estos dos valores y no uno intermedio. Los
+coeficientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+en la superposición anterior afectan a las probabilidades con las que
+podemos obtener los dos valores posibles. De hecho, las probabilidades
+de obtener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Probabilidad</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">Probabilidad</mtext><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.2)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Probabilidad}(a) \sim |\alpha|^2, \qquad \text{Probabilidad}(b) \sim |\beta|^2. \qquad \text{(4.2)}
+</annotation></semantics></math></p>
+<p>Puesto que las únicas dos posibilidades son medir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+las probabilidades reales deben sumar uno y, por lo tanto, vienen dadas
+por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Probabilidad</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">Probabilidad</mtext><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.3)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Probabilidad}(a) = \frac{|\alpha|^2}{|\alpha|^2 + |\beta|^2}, \qquad \text{Probabilidad}(b) = \frac{|\beta|^2}{|\alpha|^2 + |\beta|^2}. \qquad \text{(4.3)}
+</annotation></semantics></math></p>
+<p>Si obtenemos el valor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+mediciones repetidas inmediatas seguirían dando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+por lo que el estado tras la medición debe ser
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|A\rangle</annotation></semantics></math>.
+Lo mismo ocurre para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+de modo que tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Tras medir </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> el estado se convierte en </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\text{Tras medir } a \text{ el estado se convierte en } |\Psi\rangle = |A\rangle,
+</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Tras medir </mtext><mspace width="0.333em"></mspace></mrow><mi>b</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> el estado se convierte en </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.4)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Tras medir } b \text{ el estado se convierte en } |\Psi\rangle = |B\rangle. \qquad \text{(4.4)}
+</annotation></semantics></math></p>
+<p>En mecánica cuántica se hace la siguiente suposición: superponer un
+estado consigo mismo no cambia la física, ni cambia el estado de manera
+no trivial. Puesto que superponer un estado consigo mismo simplemente
+cambia el número global que lo multiplica, tenemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">\alpha\Psi</annotation></semantics></math>
+representan la misma física para cualquier número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+distinto de cero. Así, dejando que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>≅</mo><annotation encoding="application/x-tex">\cong</annotation></semantics></math>
+represente equivalencia física,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mo>≅</mo><mn>2</mn><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mo>≅</mo><mi>i</mi><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mo>≅</mo><mi>−</mi><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.5)</mtext></mrow><annotation encoding="application/x-tex">
+|A\rangle \cong 2|A\rangle \cong i|A\rangle \cong -|A\rangle. \qquad \text{(4.5)}
+</annotation></semantics></math></p>
+<p>Esta suposición es necesaria para verificar que el estado de
+polarización de un fotón tiene el número esperado de grados de libertad.
+La polarización de una onda plana, tal como se estudia en
+electromagnetismo, se describe mediante dos números reales. Para esto,
+consideremos una onda polarizada elípticamente, como se muestra en la
+Figura 5. En un punto dado, el vector de campo eléctrico traza una
+elipse cuya forma queda codificada por la razón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a/b</annotation></semantics></math>
+de los semiejes (el primer parámetro real) y una inclinación codificada
+por el ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+(el segundo parámetro real). Consideremos para ello un estado general de
+fotón formado por la superposición de los dos estados de polarización
+independientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\text{fotón}; x\rangle</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\text{fotón}; y\rangle</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mi>β</mi><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>α</mi><mo>,</mo><mi>β</mi><mo>∈</mo><mi>ℂ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.6)</mtext></mrow><annotation encoding="application/x-tex">
+\alpha|\text{fotón}; x\rangle + \beta|\text{fotón}; y\rangle, \qquad \alpha, \beta \in \mathbb{C}. \qquad \text{(4.6)}
+</annotation></semantics></math></p>
+<p>A primera vista parece que tenemos dos parámetros complejos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+o de manera equivalente, cuatro parámetros reales. Pero como el factor
+global no importa, podemos multiplicar este estado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">1/\alpha</annotation></semantics></math>
+para obtener el estado equivalente que codifica toda la física</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mfrac><mi>β</mi><mi>α</mi></mfrac><mo stretchy="false" form="prefix">|</mo><mtext mathvariant="normal">fotón</mtext><mo>;</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.7)</mtext></mrow><annotation encoding="application/x-tex">
+|\text{fotón}; x\rangle + \frac{\beta}{\alpha}|\text{fotón}; y\rangle, \qquad \text{(4.7)}
+</annotation></semantics></math></p>
+<p>lo que muestra que en realidad tenemos un único parámetro complejo,
+la razón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\beta/\alpha</annotation></semantics></math>.
+Esto equivale a dos parámetros reales, como se esperaba.</p>
+<p><em>Figura 5: Parámetros que definen un estado polarizado
+elípticamente.</em></p>
+<p>Hagamos otro ejemplo de superposición usando electrones. Los
+electrones son partículas con espín. Clásicamente, los imaginamos como
+pequeñas bolas girando alrededor de un eje que pasa por la propia
+partícula. Una vez fijado un eje, el electrón tiene dos y solo dos
+opciones: su rotación puede ser en sentido horario o antihorario
+alrededor del eje, pero en ambos casos gira a la misma velocidad fija.
+Estas formas opuestas de girar se llaman espín arriba y espín abajo a lo
+largo del eje (véase la Figura 6). El arriba y el abajo se refieren a la
+dirección del momento angular asociado con la rotación, y se indica
+mediante una flecha. Según la mecánica cuántica, y como se ha verificado
+en múltiples experimentos, surgen las mismas posibilidades, arriba o
+abajo, sea cual sea el eje que usemos para medir el espín del
+electrón.</p>
+<p>Los físicos habitualmente configuran sistemas de coordenadas en el
+espacio eligiendo tres direcciones ortogonales, las direcciones de los
+ejes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Elijamos describir nuestros electrones con espín usando el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Un posible estado de un electrón es tener espín arriba a lo largo del
+eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Tal estado se describe como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\uparrow; z\rangle</annotation></semantics></math>,
+con una flecha apuntando hacia arriba, y la etiqueta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+indicando que la flecha de espín apunta a lo largo de la dirección
+creciente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Otro posible estado de un electrón es espín abajo a lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Tal estado se describe como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\downarrow; z\rangle</annotation></semantics></math>,
+con una flecha apuntando hacia abajo, indicando esta vez que el espín
+apunta a lo largo de la dirección decreciente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Si estas dos son realidades posibles, también lo sería el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>
+que representa la suma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|\Psi\rangle = |\!\uparrow; z\rangle + |\!\downarrow; z\rangle.
+</annotation></semantics></math></p>
+<p>El estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>
+está en una superposición de un estado de espín arriba y uno de espín
+abajo. ¿Qué tipo de física representa esta suma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>?
+Representa un estado en el que una medición del espín a lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+daría como resultado dos posibles desenlaces con igual probabilidad: un
+electrón con espín arriba o un electrón con espín abajo. Puesto que solo
+podemos hablar de probabilidades, cualquier experimento debe implicar
+repetición hasta que las probabilidades puedan determinarse. Supongamos
+que tuviéramos un gran conjunto de tales electrones, todos ellos en el
+estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>
+anterior. Al medir su espín a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+uno a la vez, encontraríamos que aproximadamente la mitad de ellos giran
+hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y la otra mitad gira hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+No hay manera de predecir qué opción se realizará al medir cada
+electrón. No es fácil imaginar la superposición, pero se puede intentar
+de la siguiente manera. Un electrón en el estado anterior se encuentra
+en un tipo de existencia diferente en la que es capaz tanto de girar
+hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+como de girar hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+simultáneamente. Se encuentra en un estado fantasmal e inquietante de
+este tipo, haciendo cosas incompatibles simultáneamente, hasta que se
+mide su espín. Una vez medido, el electrón debe elegir inmediatamente
+una de las dos opciones; siempre encontramos electrones girando hacia
+arriba o girando hacia abajo.</p>
+<p><em>Figura 6: Un electrón con espín a lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Izquierda: se dice que el electrón tiene espín arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Derecha: se dice que el electrón tiene espín abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Las flechas hacia arriba y hacia abajo representan la dirección del
+momento angular asociado al electrón que gira.</em></p>
+<p>Un crítico de la mecánica cuántica podría sugerir una explicación más
+simple para las observaciones anteriores. Él o ella afirmaría que el
+siguiente conjunto más simple produce resultados experimentales
+idénticos. En el conjunto del crítico tenemos un gran número de
+electrones, con el 50% de ellos en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\uparrow; z\rangle</annotation></semantics></math>
+y el 50% de ellos en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo>;</mo><mi>z</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\downarrow; z\rangle</annotation></semantics></math>.
+Entonces afirmaría, correctamente, que tal conjunto produciría las
+mismas mediciones de espín a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+que el conjunto de esos esotéricos estados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>.
+El nuevo conjunto podría ofrecer una explicación más simple del
+resultado sin tener que invocar superposiciones cuánticas.</p>
+<p>La mecánica cuántica, sin embargo, permite otros experimentos que
+pueden distinguir entre el conjunto de nuestro amigable crítico y el
+conjunto de estados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>.
+Aunque nos llevaría demasiado lejos explicarlo, si midiéramos el espín
+de los electrones en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+en lugar de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+los resultados serían diferentes en los dos conjuntos. En el conjunto de
+nuestro crítico encontraríamos el 50% de los electrones hacia arriba a
+lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+y el 50% de los electrones hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+En nuestro conjunto de estados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle</annotation></semantics></math>,
+sin embargo, encontraríamos un resultado muy simple: todos los estados
+apuntando hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+El conjunto del crítico no es equivalente a nuestro conjunto
+mecánico-cuántico. Así, se demuestra que el crítico está equivocado en
+su intento de mostrar que las superposiciones cuánticas no son
+necesarias.</p>
+<h2 id="entrelazamiento">5. Entrelazamiento</h2>
+<p>Cuando consideramos la superposición de estados de dos partículas
+podemos obtener el notable fenómeno llamado entrelazamiento
+mecánico-cuántico. Los estados entrelazados de dos partículas son
+aquellos en los que no podemos hablar por separado del estado de cada
+partícula. Las partículas están ligadas en un estado común en el que
+están entrelazadas entre sí.</p>
+<p>Consideremos dos partículas que no interactúan. La partícula 1 podría
+estar en cualquiera de los estados</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.1)</mtext></mrow><annotation encoding="application/x-tex">
+\{|u_1\rangle, |u_2\rangle, \ldots\}, \qquad \text{(5.1)}
+</annotation></semantics></math></p>
+<p>mientras que la partícula 2 podría estar en cualquiera de los
+estados</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.2)</mtext></mrow><annotation encoding="application/x-tex">
+\{|v_1\rangle, |v_2\rangle, \ldots\} \qquad \text{(5.2)}
+</annotation></semantics></math></p>
+<p>Podría parecer razonable concluir que el estado del sistema completo,
+incluyendo la partícula 1 y la partícula 2, quedaría especificado
+indicando el estado de la partícula 1 y el estado de la partícula 2. Si
+ese fuera el caso, los posibles estados se escribirían como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>i</mi><mo>,</mo><mi>j</mi><mo>∈</mo><mi>ℕ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.3)</mtext></mrow><annotation encoding="application/x-tex">
+|u_i\rangle \otimes |v_j\rangle, \qquad i, j \in \mathbb{N}, \qquad \text{(5.3)}
+</annotation></semantics></math></p>
+<p>para alguna elección específica de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+que especifican el estado de la partícula uno y de la partícula dos,
+respectivamente. Aquí hemos usado el símbolo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⊗</mi><annotation encoding="application/x-tex">\otimes</annotation></semantics></math>,
+que significa producto tensorial, para combinar los dos estados en un
+único estado para todo el sistema. Estudiaremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⊗</mi><annotation encoding="application/x-tex">\otimes</annotation></semantics></math>
+más adelante, pero por ahora podemos pensarlo como una especie de
+producto que se distribuye sobre la suma y obedece reglas simples, tal
+como sigue</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>α</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>α</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo><mo>⊗</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>β</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>β</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>α</mi><mn>1</mn></msub><msub><mi>β</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>α</mi><mn>1</mn></msub><msub><mi>β</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">
+(\alpha_1|u_1\rangle + \alpha_2|u_2\rangle) \otimes (\beta_1|v_1\rangle + \beta_2|v_2\rangle) = \alpha_1\beta_1 |u_1\rangle\otimes|v_1\rangle + \alpha_1\beta_2 |u_1\rangle\otimes|v_2\rangle
+</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><msub><mi>α</mi><mn>2</mn></msub><msub><mi>β</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>α</mi><mn>2</mn></msub><msub><mi>β</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.4)</mtext></mrow><annotation encoding="application/x-tex">
++ \alpha_2\beta_1 |u_2\rangle\otimes|v_1\rangle + \alpha_2\beta_2 |u_2\rangle\otimes|v_2\rangle. \qquad \text{(5.4)}
+</annotation></semantics></math></p>
+<p>Los números pueden desplazarse a través del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⊗</mi><annotation encoding="application/x-tex">\otimes</annotation></semantics></math>,
+pero el orden de los estados debe conservarse. El estado del lado
+izquierdo —desarrollado en el lado derecho— sigue siendo del tipo en el
+que combinamos un estado de la primera partícula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>α</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>α</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\alpha_1|u_1\rangle + \alpha_2|u_2\rangle)</annotation></semantics></math>
+con un estado de la segunda partícula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>β</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><msub><mi>β</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\beta_1|v_1\rangle + \beta_2|v_2\rangle)</annotation></semantics></math>.
+Al igual que cualquiera de los estados listados en (5.3), este estado no
+está entrelazado.</p>
+<p>Usando los estados en (5.3), sin embargo, podemos construir
+superposiciones más intrigantes. Consideremos la siguiente</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.5)</mtext></mrow><annotation encoding="application/x-tex">
+|u_1\rangle \otimes |v_1\rangle + |u_2\rangle \otimes |v_2\rangle. \qquad \text{(5.5)}
+</annotation></semantics></math></p>
+<p>Se dice que un estado de dos partículas está entrelazado si no puede
+escribirse en la forma factorizada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>⋯</mi><mo stretchy="false" form="postfix">)</mo><mo>⊗</mo><mo stretchy="false" form="prefix">(</mo><mi>⋯</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\cdots)\otimes(\cdots)</annotation></semantics></math>,
+que nos permitiría describir el estado simplemente indicando el estado
+de cada partícula. Podemos ver fácilmente que el estado (5.5) no puede
+factorizarse. Si pudiera, tendría que ser con un producto como el
+indicado en (5.4). Claramente, involucrar estados como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>u</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|u_3\rangle</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|v_3\rangle</annotation></semantics></math>
+que no aparecen en (5.5) no ayudaría. Para determinar las constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>,</mo><msub><mi>α</mi><mn>2</mn></msub><mo>,</mo><msub><mi>β</mi><mn>1</mn></msub><mo>,</mo><msub><mi>β</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\alpha_1, \alpha_2, \beta_1, \beta_2</annotation></semantics></math>
+comparamos el lado derecho de (5.4) con nuestro estado y concluimos que
+necesitamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>1</mn></msub><msub><mi>β</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>α</mi><mn>1</mn></msub><msub><mi>β</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>α</mi><mn>2</mn></msub><msub><mi>β</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>α</mi><mn>2</mn></msub><msub><mi>β</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.6)</mtext></mrow><annotation encoding="application/x-tex">
+\alpha_1\beta_1 = 1, \quad \alpha_1\beta_2 = 0, \quad \alpha_2\beta_1 = 0, \quad \alpha_2\beta_2 = 1. \qquad \text{(5.6)}
+</annotation></semantics></math></p>
+<p>Está claro que no hay solución aquí. La segunda ecuación, por
+ejemplo, requiere que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\alpha_1</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\beta_2</annotation></semantics></math>
+sean cero. Tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_1 = 0</annotation></semantics></math>
+contradice la primera ecuación, y tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta_2 = 0</annotation></semantics></math>
+contradice la última ecuación. Esto confirma que el estado (5.5) es, en
+efecto, un estado entrelazado. No hay manera de describir el estado
+especificando un estado para cada una de las partículas.</p>
+<p>Ilustremos la discusión anterior usando electrones y sus estados de
+espín. Consideremos un estado de dos electrones denotado como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\uparrow\rangle \otimes |\!\downarrow\rangle</annotation></semantics></math>.
+Como indica la notación, el primer electrón, descrito por la primera
+flecha, está hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+mientras que el segundo electrón, descrito por la segunda flecha, está
+hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(omitimos la etiqueta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+en el estado por brevedad). Este no es un estado entrelazado. Otro
+estado posible es aquel en el que hacen exactamente lo contrario: en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\downarrow\rangle \otimes |\!\uparrow\rangle</annotation></semantics></math>
+el primer electrón está hacia abajo y el segundo está hacia arriba. Este
+segundo estado tampoco está entrelazado. Se sigue entonces que, por
+superposición, podemos considerar el estado</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.7)</mtext></mrow><annotation encoding="application/x-tex">
+|\!\uparrow\rangle \otimes |\!\downarrow\rangle + |\!\downarrow\rangle \otimes |\!\uparrow\rangle. \qquad \text{(5.7)}
+</annotation></semantics></math></p>
+<p>Este es un estado entrelazado del par de electrones.</p>
+<p><strong>Ejercicio.</strong> Demuestre que el estado anterior no puede
+factorizarse y, por lo tanto, está efectivamente entrelazado.</p>
+<p>En el estado (5.7), el primer electrón está hacia arriba a lo largo
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+si el segundo electrón está hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(primer término), o el primer electrón está hacia abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+si el segundo electrón está hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(segundo término). Hay una correlación entre los espines de las dos
+partículas; siempre apuntan en direcciones opuestas. Imaginemos que los
+dos electrones entrelazados están muy lejos el uno del otro: Alicia
+tiene un electrón del par en el planeta Tierra y Roberto tiene el otro
+electrón en la Luna. Nada de lo que conocemos conecta estas partículas,
+pero, sin embargo, los estados de los electrones están vinculados. Las
+mediciones que hacemos sobre las partículas separadas exhiben
+correlaciones. Supongamos que Alicia mide el espín del electrón en la
+Tierra. Si lo encuentra hacia arriba a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+significa que se realiza el primer sumando de la superposición anterior,
+porque en ese sumando la primera partícula está hacia arriba. Como se
+discutió antes, el estado de las dos partículas se convierte
+inmediatamente en el del primer sumando. Esto significa que el electrón
+en la Luna pasará instantáneamente a la configuración de espín hacia
+abajo a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+algo que podría confirmar Roberto, que está sentado en la Luna con esa
+partícula en su laboratorio. Este efecto sobre el electrón de Roberto
+ocurre antes de que un mensaje, transportado a la velocidad de la luz,
+pudiera llegar a la Luna informándole de que Alicia ha realizado una
+medición sobre la partícula terrestre y que el resultado fue espín hacia
+arriba. Por supuesto, los experimentos deben realizarse con un conjunto
+que contenga muchos pares de partículas, cada par en el mismo estado
+entrelazado anterior. La mitad de las veces el electrón en la Tierra se
+encontrará hacia arriba, con el electrón en la Luna hacia abajo, y la
+otra mitad de las veces el electrón en la Tierra se encontrará hacia
+abajo, con el electrón en la Luna hacia arriba.</p>
+<p>Nuestro amigable crítico podría decir ahora, correctamente, que tales
+correlaciones entre las mediciones de espín a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+podrían haberse producido preparando un conjunto convencional en el que
+el 50% de los pares están en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\uparrow\rangle \otimes |\!\downarrow\rangle</annotation></semantics></math>
+y el otro 50% de los pares están en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↓</mo><mo stretchy="false" form="postfix">⟩</mo><mo>⊗</mo><mo stretchy="false" form="prefix">|</mo><mspace width="-0.167em"></mspace><mo>↑</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">|\!\downarrow\rangle \otimes |\!\uparrow\rangle</annotation></semantics></math>.
+Tales objeciones fueron resueltas de manera concluyente en 1964 por John
+Bell, quien demostró que si Alicia y Roberto son capaces de medir el
+espín en tres direcciones arbitrarias, las correlaciones predichas por
+el estado cuántico entrelazado son diferentes de las correlaciones
+clásicas de cualquier conjunto convencional concebible. Las
+correlaciones cuánticas en estados entrelazados son muy sutiles y se
+necesitan experimentos sofisticados para mostrar que no son
+reproducibles como correlaciones clásicas. En efecto, los experimentos
+con estados entrelazados han confirmado la existencia de correlaciones
+cuánticas. El tipo de acción instantánea a distancia asociado con las
+mediciones sobre partículas entrelazadas bien separadas no conduce a
+paradojas ni, como podría parecer, a contradicciones con las ideas de la
+relatividad especial. No se pueden usar estados entrelazados
+mecánico-cuánticos para enviar información más rápido que la velocidad
+de la luz.</p>
+<hr />
+<p><em>Sarah Geller transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</em></p>
+<p><em>Traducción al español generada con asistencia de IA a partir del
+original en inglés.</em></p>
+<hr />
+<p>MIT OpenCourseWare</p>
+<p><a href="https://ocw.mit.edu">https://ocw.mit.edu</a></p>
+<p>8.04 Física Cuántica I</p>
+<p>Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+</body>
+</html>

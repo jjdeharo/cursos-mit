@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Lección 6: Normalización, evolución temporal y la corriente de probabilidad</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lección 6: Normalización, evolución temporal y la
+corriente de probabilidad</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lección-6" id="toc-lección-6">Lección 6</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#normalización-y-evolución-temporal"
+id="toc-normalización-y-evolución-temporal">1. Normalización y evolución
+temporal</a></li>
+<li><a href="#la-función-de-onda-como-amplitud-de-probabilidad"
+id="toc-la-función-de-onda-como-amplitud-de-probabilidad">2. La función
+de onda como amplitud de probabilidad</a></li>
+<li><a href="#la-corriente-de-probabilidad"
+id="toc-la-corriente-de-probabilidad">3. La corriente de
+probabilidad</a></li>
+<li><a
+href="#corriente-de-probabilidad-en-3d-y-conservación-de-la-corriente"
+id="toc-corriente-de-probabilidad-en-3d-y-conservación-de-la-corriente">4.
+Corriente de probabilidad en 3D y conservación de la corriente</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="lección-6">Lección 6</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 6: Probability density and current. Hermitian
+conjugation.</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=d4skxu7MpFI">Normalizable
+wavefunctions and the question of time evolution</a> (16:50)</li>
+<li><a href="https://www.youtube.com/watch?v=5L4QfjbK87M">Is probability
+conserved? Hermiticity of the Hamiltonian</a> (20:42)</li>
+<li><a href="https://www.youtube.com/watch?v=J2ltXyByPJA">Probability
+current and current conservation</a> (15:14)</li>
+<li><a href="https://www.youtube.com/watch?v=Ex_fFlwZoM0">Three
+dimensional current and conservation</a> (18:13)</li>
+</ul>
+<hr />
+<p>B. Zwiebach</p>
+<p>23 de febrero de 2016</p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>Normalización y evolución temporal</li>
+<li>La función de onda como amplitud de probabilidad</li>
+<li>La corriente de probabilidad</li>
+<li>Corriente de probabilidad en 3D y conservación de la corriente</li>
+</ol>
+<h2 id="normalización-y-evolución-temporal">1. Normalización y evolución
+temporal</h2>
+<p>La función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x, t)</annotation></semantics></math>
+que describe la mecánica cuántica de una partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+moviéndose en un potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x, t)</annotation></semantics></math>
+satisface la ecuación de Schrödinger</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial \Psi(x, t)}{\partial t} = \left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t) \right) \Psi(x, t) , \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>o, más brevemente,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial \Psi(x, t)}{\partial t} = \hat{H} \Psi(x, t) . \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>La interpretación de la función de onda surge al declarar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">dP</annotation></semantics></math>,
+definido por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>P</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+dP = |\Psi(x, t)|^2 \, dx , \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>es la probabilidad de encontrar la partícula en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>
+centrado en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+en el instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+De ahí se sigue que las probabilidades de encontrar la partícula en
+todos los puntos posibles deben sumar uno:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} \Psi^*(x, t) \, \Psi(x, t) \, dx = 1 . \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>Intentaremos entender cómo esta ecuación es compatible con la
+evolución temporal prescrita por la ecuación de Schrödinger. Pero antes
+de eso, examinemos qué tipo de condiciones se requieren de las funciones
+de onda para satisfacer (1.4).</p>
+<p>Supongamos que la función de onda tiene límites bien definidos cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">x \to \pm\infty</annotation></semantics></math>.
+Si esos límites son distintos de cero, la integral en el entorno del
+infinito produciría un resultado infinito, lo cual es incompatible con
+la afirmación de que la integral total vale uno. Por lo tanto, los
+límites deben ser cero:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow></munder><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+\lim_{x \to \pm\infty} \Psi(x, t) = 0 . \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>En principio es posible tener una función de onda que no tenga un
+límite bien definido en el infinito pero que aun así sea de cuadrado
+integrable. Pero tales casos no parecen aparecer en la práctica, así que
+supondremos que (1.5) se cumple. También sería natural suponer que la
+derivada espacial de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+se anula cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">x \to \pm\infty</annotation></semantics></math>
+pero, como veremos en breve, basta con suponer que el límite de la
+derivada espacial de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+está acotado</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow></munder><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>&lt;</mo><mi>∞</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\lim_{x \to \pm\infty} \frac{\partial \Psi(x, t)}{\partial x} &lt; \infty . \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>Hemos enfatizado antes que el factor numérico global que multiplica a
+la función de onda no es físico. Pero la ecuación (1.4) parece estar en
+conflicto con esto: ¡si una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+dada la satisface, la presuntamente equivalente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">2\Psi</annotation></semantics></math>
+no lo hará! Para dar un sentido preciso a las probabilidades es
+conveniente trabajar con funciones de onda normalizadas, pero no es
+necesario, como mostramos ahora. Dado que el tiempo no desempeña ningún
+papel en el argumento, supongamos en todo lo que sigue que las
+ecuaciones se refieren a algún instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math>
+arbitrario pero fijo. Supongamos que se tiene una función de onda tal
+que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mi>N</mi><mo>≠</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\int dx \, |\Psi|^2 = N \neq 1 . \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Entonces afirmo que la probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">dP</annotation></semantics></math>
+de encontrar la partícula en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>
+en torno a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+viene dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>P</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+dP = \frac{1}{N} |\Psi|^2 \, dx . \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Esto es consistente porque</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>P</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo>⋅</mo><mi>N</mi><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+\int dP = \frac{1}{N} \int dx \, |\Psi|^2 = \frac{1}{N} \cdot N = 1 . \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>Nótese que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">dP</annotation></semantics></math>
+no cambia cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+se multiplica por cualquier número. Así, esta interpretación deja claro
+que la escala global de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+no contiene física alguna. Mientras la integral
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\int |\Psi|^2 \, dx &lt; \infty</annotation></semantics></math>
+la función de onda se dice normalizable, o de cuadrado integrable.
+Ajustando el coeficiente global de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+podemos entonces hacerla normalizada. En efecto, suponiendo nuevamente
+(1.7), la nueva función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\Psi&#39;</annotation></semantics></math>
+definida por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="normal">Ψ</mi><mo>′</mo></msup><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>N</mi></msqrt></mfrac><mi mathvariant="normal">Ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi&#39; = \frac{1}{\sqrt{N}} \Psi , \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>está correctamente normalizada. En efecto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><msup><mi mathvariant="normal">Ψ</mi><mo>′</mo></msup><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo>∫</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+\int dx \, |\Psi&#39;|^2 = \frac{1}{N} \int |\Psi|^2 \, dx = 1 . \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>A veces trabajamos con funciones de onda para las cuales la integral
+(1.4) es infinita. Tales funciones de onda pueden ser muy útiles. De
+hecho, la onda plana de de Broglie
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mi>k</mi><mi>x</mi><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi = \exp(ikx - i\omega t)</annotation></semantics></math>
+para una partícula libre es un buen ejemplo: dado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\Psi|^2 = 1</annotation></semantics></math>,
+la integral es de hecho infinita. Lo que esto significa es que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mi>k</mi><mi>x</mi><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\exp(ikx - i\omega t)</annotation></semantics></math>
+no representa realmente a una sola partícula. Para construir una función
+de onda de cuadrado integrable podemos usar una superposición de ondas
+planas. Es en efecto una sorpresa agradable que ¡la superposición de
+infinitas ondas no normalizables sea de cuadrado integrable!</p>
+<h2 id="la-función-de-onda-como-amplitud-de-probabilidad">2. La función
+de onda como amplitud de probabilidad</h2>
+<p>Comencemos con una función de onda normalizada en el instante inicial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.1)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} \Psi^*(x, t_0) \Psi(x, t_0) \, dx = 1 . \qquad \text{(2.1)}
+</annotation></semantics></math></p>
+<p>Dado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x, t_0)</annotation></semantics></math>
+y la ecuación de Schrödinger determinan
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+para todos los tiempos, ¿tenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mi>?</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.2)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} \Psi^*(x, t) \Psi(x, t) \, dx = 1 \, ? \qquad \text{(2.2)}
+</annotation></semantics></math></p>
+<p>Definamos la densidad de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho(x, t)</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.3)</mtext></mrow><annotation encoding="application/x-tex">
+\rho(x, t) \equiv \Psi^*(x, t) \Psi(x, t) = |\Psi(x, t)|^2 . \qquad \text{(2.3)}
+</annotation></semantics></math></p>
+<p>Definamos también
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">N(t)</annotation></semantics></math>
+como la integral de la densidad de probabilidad en todo el espacio:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mo>∫</mo><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.4)</mtext></mrow><annotation encoding="application/x-tex">
+N(t) \equiv \int \rho(x, t) \, dx . \qquad \text{(2.4)}
+</annotation></semantics></math></p>
+<p>La afirmación en (2.1) de que la función de onda comienza bien
+normalizada es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.5)</mtext></mrow><annotation encoding="application/x-tex">
+N(t_0) = 1 , \qquad \text{(2.5)}
+</annotation></semantics></math></p>
+<p>y la condición de que permanezca normalizada en todos los tiempos
+posteriores es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N(t) = 1</annotation></semantics></math>.
+Esto quedaría garantizado si mostráramos que para todo tiempo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.6)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dN(t)}{dt} = 0 . \qquad \text{(2.6)}
+</annotation></semantics></math></p>
+<p>A esto lo llamamos conservación de la probabilidad. Comprobemos si la
+ecuación de Schrödinger garantiza que esta condición se cumpla:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mi>d</mi><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mfrac><mrow><mi>∂</mi><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.7)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\frac{dN(t)}{dt} &amp;= \int_{-\infty}^{\infty} \frac{\partial \rho(x, t)}{\partial t} \, dx \\
+&amp;= \int_{-\infty}^{\infty} \left( \frac{\partial \Psi^*}{\partial t} \Psi(x, t) + \Psi^*(x, t) \frac{\partial \Psi(x, t)}{\partial t} \right) dx .
+\end{aligned} \qquad \text{(2.7)}
+</annotation></semantics></math></p>
+<p>A partir de la ecuación de Schrödinger, y su conjugada compleja</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>⟹</mo><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial \Psi}{\partial t} = \hat{H} \Psi \implies \frac{\partial \Psi}{\partial t} = -\frac{i}{\hbar} \hat{H} \Psi , \qquad \text{(2.8)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mo>⟹</mo><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.9)</mtext></mrow><annotation encoding="application/x-tex">
+-i\hbar \frac{\partial \Psi^*}{\partial t} = (\hat{H} \Psi)^* \implies \frac{\partial \Psi^*}{\partial t} = \frac{i}{\hbar} (\hat{H} \Psi)^* . \qquad \text{(2.9)}
+</annotation></semantics></math></p>
+<p>Al conjugar de forma compleja la ecuación de Schrödinger usamos que
+el conjugado complejo de la derivada temporal de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es simplemente la derivada temporal del conjugado complejo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>.
+Para conjugar el lado derecho simplemente añadimos el asterisco a todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">\hat{H}\Psi</annotation></semantics></math>.
+Ahora usamos (2.8) y (2.9) en (2.7) para obtener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mi>d</mi><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>−</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>−</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.10)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\frac{dN(t)}{dt} &amp;= \int_{-\infty}^{\infty} \left( \frac{i}{\hbar} (\hat{H}\Psi)^* \Psi - \frac{i}{\hbar} \Psi^* (\hat{H}\Psi) \right) dx \\
+&amp;= \frac{i}{\hbar} \int_{-\infty}^{\infty} (\hat{H}\Psi)^* \Psi \, dx - \frac{i}{\hbar} \int_{-\infty}^{\infty} \Psi^* (\hat{H}\Psi) \, dx .
+\end{aligned} \qquad \text{(2.10)}
+</annotation></semantics></math></p>
+<p>Para mostrar que la derivada temporal de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">N(t)</annotation></semantics></math>
+se anula, basta con mostrar que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.11)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} (\hat{H}\Psi)^* \Psi = \int_{-\infty}^{\infty} \Psi^* (\hat{H}\Psi) . \qquad \text{(2.11)}
+</annotation></semantics></math></p>
+<p>La ecuación (2.11) es la condición sobre el operador hamiltoniano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+para la conservación de la probabilidad. De hecho, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+es un operador hermítico la condición se satisfará. El operador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+es un operador hermítico si satisface</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Operador hermítico:</mtext><mspace width="2.0em"></mspace><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.12)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Operador hermítico:} \qquad \int_{-\infty}^{\infty} (\hat{H}\Psi_1)^* \Psi_2 = \int_{-\infty}^{\infty} \Psi_1^* (\hat{H}\Psi_2) . \qquad \text{(2.12)}
+</annotation></semantics></math></p>
+<p>Aquí tenemos dos funciones de onda que son arbitrarias, pero que
+satisfacen las condiciones (1.5) y (1.6). Como se puede ver, un operador
+hermítico puede trasladarse de actuar sobre la primera función a actuar
+sobre la segunda función. Cuando las dos funciones son la misma,
+recuperamos la condición (2.11).</p>
+<p>Vale la pena cerrar este círculo de ideas definiendo el conjugado
+hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>T</mi><mo>†</mo></msup><annotation encoding="application/x-tex">T^\dagger</annotation></semantics></math>
+del operador lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Esto se hace de la siguiente manera:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>T</mi><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mo stretchy="false" form="prefix">(</mo><msup><mi>T</mi><mo>†</mo></msup><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.13)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} \Psi_1^* (T \Psi_2) = \int_{-\infty}^{\infty} (T^\dagger \Psi_1)^* \Psi_2 . \qquad \text{(2.13)}
+</annotation></semantics></math></p>
+<p>El operador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>T</mi><mo>†</mo></msup><annotation encoding="application/x-tex">T^\dagger</annotation></semantics></math>,
+que también es lineal, se calcula partiendo del lado izquierdo y
+tratando de reescribir la expresión sin ningún operador actuando sobre
+la segunda función. Se dice que un operador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+es hermítico si es igual a su conjugado hermítico:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> es hermítico si </mtext><mspace width="0.333em"></mspace></mrow><mspace width="1.0em"></mspace><msup><mi>T</mi><mo>†</mo></msup><mo>=</mo><mi>T</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.14)</mtext></mrow><annotation encoding="application/x-tex">
+T \text{ es hermítico si } \quad T^\dagger = T . \qquad \text{(2.14)}
+</annotation></semantics></math></p>
+<p>Los operadores hermíticos son muy importantes en mecánica cuántica.
+Tienen autovalores reales y siempre se puede encontrar una base del
+espacio de estados en términos de autoestados ortonormales. Resulta que
+los observables en mecánica cuántica están representados por operadores
+hermíticos, y los posibles valores medidos de esos observables vienen
+dados por sus autovalores. Nuestra búsqueda para mostrar que la
+normalización se preserva bajo la evolución temporal en mecánica
+cuántica se ha reducido a mostrar que el operador hamiltoniano es
+hermítico.</p>
+<h2 id="la-corriente-de-probabilidad">3. La corriente de
+probabilidad</h2>
+<p>Examinemos más de cerca el integrando de la ecuación (2.10). Usando
+la expresión explícita para el hamiltoniano tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.1)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\frac{\partial \rho}{\partial t} &amp;= \frac{i}{\hbar} \left( (\hat{H}\Psi)^* \Psi - \Psi^* (\hat{H}\Psi) \right) \\
+&amp;= \frac{i}{\hbar} \left( -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi^*}{\partial x^2} \Psi - \Psi^* \left( -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} \right) + V(x, t) \Psi^* \Psi - \Psi^* V(x, t) \Psi \right) .
+\end{aligned} \qquad \text{(3.1)}
+</annotation></semantics></math></p>
+<p>Las contribuciones del potencial se cancelan y obtenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mi>ℏ</mi><mrow><mn>2</mn><mi>i</mi><mi>m</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.2)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{i}{\hbar} \left( (\hat{H}\Psi)^* \Psi - \Psi^* (\hat{H}\Psi) \right) = \frac{\hbar}{2im} \left( \frac{\partial^2 \Psi^*}{\partial x^2} \Psi - \Psi^* \frac{\partial^2 \Psi}{\partial x^2} \right) . \qquad \text{(3.2)}
+</annotation></semantics></math></p>
+<p>La única posibilidad de mostrar que la integral del lado derecho es
+cero es mostrar que es una derivada total. ¡Y en efecto lo es!</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mi>i</mi><mi>ℏ</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mrow><mn>2</mn><mi>i</mi><mi>m</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi mathvariant="normal">Ψ</mi><mo>−</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mrow><mn>2</mn><mi>i</mi><mi>m</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mrow><mn>2</mn><mi>i</mi><mi>m</mi></mrow></mfrac><mspace width="0.167em"></mspace><mn>2</mn><mi>i</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.3)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\frac{i}{\hbar} \left( (\hat{H}\Psi)^* \Psi - \Psi^* (\hat{H}\Psi) \right)
+&amp;= \frac{\partial}{\partial x} \left[ \frac{\hbar}{2im} \left( \frac{\partial \Psi^*}{\partial x} \Psi - \Psi^* \frac{\partial \Psi}{\partial x} \right) \right] \\
+&amp;= -\frac{\partial}{\partial x} \left[ \frac{\hbar}{2im} \left( \Psi^* \frac{\partial \Psi}{\partial x} - \frac{\partial \Psi^*}{\partial x} \Psi \right) \right] \\
+&amp;= -\frac{\partial}{\partial x} \left[ \frac{\hbar}{2im} \, 2i \, \mathrm{Im}\!\left( \Psi^* \frac{\partial \Psi}{\partial x} \right) \right] \\
+&amp;= -\frac{\partial}{\partial x} \left[ \frac{\hbar}{m} \, \mathrm{Im}\!\left( \Psi^* \frac{\partial \Psi}{\partial x} \right) \right] ,
+\end{aligned} \qquad \text{(3.3)}
+</annotation></semantics></math></p>
+<p>donde usamos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>−</mo><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mn>2</mn><mi>i</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">z - z^* = 2i \, \mathrm{Im}(z)</annotation></semantics></math>.
+Recordemos que el lado izquierdo que hemos evaluado es en realidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{\partial \rho}{\partial t}</annotation></semantics></math>,
+y por lo tanto el resultado obtenido hasta ahora es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.4)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x} \left[ \frac{\hbar}{m} \, \mathrm{Im}\!\left( \Psi^* \frac{\partial \Psi}{\partial x} \right) \right] = 0 . \qquad \text{(3.4)}
+</annotation></semantics></math></p>
+<p>Esta ecuación codifica la conservación de la carga y es del tipo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>∂</mi><mi>J</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.5)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\partial \rho}{\partial t} + \frac{\partial J}{\partial x} = 0 , \qquad \text{(3.5)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J(x, t)</annotation></semantics></math>
+es la corriente asociada a la densidad de carga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>.
+Hemos identificado por lo tanto una corriente de probabilidad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.6)</mtext></mrow><annotation encoding="application/x-tex">
+J(x, t) \equiv \frac{\hbar}{m} \, \mathrm{Im}\!\left( \Psi^* \frac{\partial \Psi}{\partial x} \right) . \qquad \text{(3.6)}
+</annotation></semantics></math></p>
+<p>Solo hay una componente para esta corriente ya que la partícula se
+mueve en una dimensión. Las unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+son el inverso del tiempo, o probabilidad por unidad de tiempo, como
+verificamos ahora.</p>
+<p>Para una dimensión espacial,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><msup><mi>L</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">[\Psi] = L^{-1/2}</annotation></semantics></math>,
+lo cual se ve fácilmente a partir del requisito de que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\int dx \, |\Psi|^2</annotation></semantics></math>
+no tenga unidades. (Cuando se trabaja con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+dimensiones espaciales la función de onda tendrá unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mi>−</mi><mi>d</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">L^{-d/2}</annotation></semantics></math>).
+Tenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><mn>1</mn><msup><mi>L</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">[</mo><mi>ℏ</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mfrac><mrow><mi>M</mi><msup><mi>L</mi><mn>2</mn></msup></mrow><mi>T</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><msup><mi>L</mi><mn>2</mn></msup><mi>T</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.7)</mtext></mrow><annotation encoding="application/x-tex">
+\left[ \Psi^* \frac{\partial \Psi}{\partial x} \right] = \frac{1}{L^2} , \qquad [\hbar] = \frac{ML^2}{T} , \qquad \left[ \frac{\hbar}{m} \right] = \frac{L^2}{T} , \qquad \text{(3.7)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟹</mo><mo stretchy="false" form="prefix">[</mo><mi>J</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mfrac><mn>1</mn><mi>T</mi></mfrac><mo>=</mo><mtext mathvariant="normal">probabilidad por unidad de tiempo</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.8)</mtext></mrow><annotation encoding="application/x-tex">
+\implies [J] = \frac{1}{T} = \text{probabilidad por unidad de tiempo} \qquad \text{(3.8)}
+</annotation></semantics></math></p>
+<p>Ahora podemos mostrar que la derivada temporal de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+es cero. En efecto, usando (3.5) tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>N</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mfrac><mrow><mi>∂</mi><mi>J</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>−</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>∞</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>∞</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.9)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dN}{dt} = \int_{-\infty}^{\infty} \frac{\partial \rho}{\partial t} \, dx = -\int_{-\infty}^{\infty} \frac{\partial J}{\partial x} \, dx = -\big( J(\infty, t) - J(-\infty, t) \big) . \qquad \text{(3.9)}
+</annotation></semantics></math></p>
+<p>La derivada se anula si la corriente de probabilidad se anula en el
+infinito. Recordando que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mfrac><mi>ℏ</mi><mrow><mn>2</mn><mi>i</mi><mi>m</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mi mathvariant="normal">Ψ</mi><mfrac><mrow><mi>∂</mi><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.10)</mtext></mrow><annotation encoding="application/x-tex">
+J = \frac{\hbar}{2im} \left( \Psi^* \frac{\partial \Psi}{\partial x} - \Psi \frac{\partial \Psi^*}{\partial x} \right) , \qquad \text{(3.10)}
+</annotation></semantics></math></p>
+<p>vemos que la corriente en efecto se anula porque nos restringimos a
+funciones de onda para las cuales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>&#8289;</mo></mrow><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow></msub><mi mathvariant="normal">Ψ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to \pm\infty} \Psi = 0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>&#8289;</mo></mrow><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow></msub><mstyle displaystyle="true"><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\lim_{x \to \pm\infty} \dfrac{\partial \Psi}{\partial x}</annotation></semantics></math>
+permanece acotado. Por lo tanto tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>N</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.11)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dN}{dt} = 0 , \qquad \text{(3.11)}
+</annotation></semantics></math></p>
+<p>como queríamos mostrar.</p>
+<p>Para ilustrar cómo funciona la conservación de la probabilidad de
+manera más general en una dimensión, centrémonos en un segmento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [a, b]</annotation></semantics></math>.
+Entonces la probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub><annotation encoding="application/x-tex">P_{ab}</annotation></semantics></math>
+de encontrar la partícula en el segmento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>
+viene dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub><mo>=</mo><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.12)</mtext></mrow><annotation encoding="application/x-tex">
+P_{ab} = \int_a^b \rho(x, t) \, dx . \qquad \text{(3.12)}
+</annotation></semantics></math></p>
+<p>Si ahora tomamos la derivada temporal de esto y, como antes, usamos
+la conservación de la corriente, obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>P</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mfrac><mrow><mi>∂</mi><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>−</mi><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.13)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dP_{ab}}{dt} = -\int_a^b \frac{\partial J(x, t)}{\partial x} \, dx = -J(b, t) + J(a, t) . \qquad \text{(3.13)}
+</annotation></semantics></math></p>
+<p>Este es el resultado esperado. Si la cantidad de probabilidad en la
+región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>
+cambia en el tiempo, debe deberse a la corriente de probabilidad que
+fluye hacia dentro o hacia fuera en los bordes del intervalo. Suponiendo
+que las corrientes en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">x = b</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+son positivas, notamos que la probabilidad fluye hacia afuera en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">x = b</annotation></semantics></math>
+y entra en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Los signos en el lado derecho anterior reflejan correctamente el efecto
+de estos flujos sobre la tasa de cambio de la probabilidad total dentro
+del segmento.</p>
+<h2
+id="corriente-de-probabilidad-en-3d-y-conservación-de-la-corriente">4.
+Corriente de probabilidad en 3D y conservación de la corriente</h2>
+<p>La determinación de la corriente de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+para una partícula que se mueve en tres dimensiones sigue la misma ruta
+tomada antes, pero usamos la versión 3D de la ecuación de Schrödinger.
+Tras algo de trabajo (tarea) la densidad de probabilidad y la corriente
+resultan ser</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mi>∇</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.1)</mtext></mrow><annotation encoding="application/x-tex">
+\rho(\mathbf{x}, t) = |\Psi(\mathbf{x}, t)|^2 , \qquad J(\mathbf{x}, t) = \frac{\hbar}{m} \, \mathrm{Im}\!\left( \Psi^* \nabla \Psi \right) , \qquad \text{(4.1)}
+</annotation></semantics></math></p>
+<p>y satisfacen la ecuación de conservación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mi>∇</mi><mo>⋅</mo><mi>𝐉</mi><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.2)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0 . \qquad \text{(4.2)}
+</annotation></semantics></math></p>
+<p>En tres dimensiones espaciales,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><msup><mi>L</mi><mrow><mi>−</mi><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">[\Psi] = L^{-3/2}</annotation></semantics></math>
+y las unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+se determinan rápidamente</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mi>∇</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mfrac><mn>1</mn><msup><mi>L</mi><mn>4</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><msup><mi>L</mi><mn>2</mn></msup><mi>T</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.3)</mtext></mrow><annotation encoding="application/x-tex">
+[\Psi^* \nabla \Psi] = \frac{1}{L^4} , \qquad \left[ \frac{\hbar}{m} \right] = \frac{L^2}{T} , \qquad \text{(4.3)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟹</mo><mo stretchy="false" form="prefix">[</mo><mi>J</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>T</mi><msup><mi>L</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mtext mathvariant="normal">probabilidad por unidad de tiempo por unidad de área</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.4)</mtext></mrow><annotation encoding="application/x-tex">
+\implies [J] = \frac{1}{T L^2} = \text{probabilidad por unidad de tiempo por unidad de área} \qquad \text{(4.4)}
+</annotation></semantics></math></p>
+<p>La ecuación de conservación (4.2) resulta particularmente clara en
+lenguaje integral. Consideremos una región fija
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+del espacio y la probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>V</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Q_V(t)</annotation></semantics></math>
+de encontrar la partícula dentro de la región:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>V</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∫</mo><mi>V</mi></msub><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.5)</mtext></mrow><annotation encoding="application/x-tex">
+Q_V(t) = \int_V \rho(\mathbf{x}, t) \, d^3x . \qquad \text{(4.5)}
+</annotation></semantics></math></p>
+<p>La derivada temporal de la probabilidad se calcula entonces usando la
+ecuación de conservación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>Q</mi><mi>V</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mo>∫</mo><mi>V</mi></msub><mfrac><mrow><mi>∂</mi><mi>ρ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mo>=</mo><mi>−</mi><msub><mo>∫</mo><mi>V</mi></msub><mi>∇</mi><mo>⋅</mo><mi>𝐉</mi><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.6)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dQ_V}{dt} = \int_V \frac{\partial \rho}{\partial t} \, d^3x = -\int_V \nabla \cdot \mathbf{J} \, d^3x . \qquad \text{(4.6)}
+</annotation></semantics></math></p>
+<p>Finalmente, usando la ley de Gauss, encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>Q</mi><mi>V</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><msub><mo>∫</mo><mi>S</mi></msub><mi>𝐉</mi><mo>⋅</mo><mi>d</mi><mi>𝐚</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.7)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dQ_V}{dt} = -\int_S \mathbf{J} \cdot d\mathbf{a} , \qquad \text{(4.7)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+es la frontera del volumen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+La interpretación aquí es clara. La probabilidad de que la partícula
+esté dentro de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+puede cambiar en el tiempo si hay un flujo de la corriente de
+probabilidad a través de la frontera de la región. Cuando el volumen se
+extiende por todo el espacio, la frontera está en el infinito, y las
+condiciones sobre la función de onda (que no hemos discutido en el caso
+3D) implican que el flujo a través de la frontera en el infinito se
+anula.</p>
+<p>Nuestra densidad de probabilidad, corriente de probabilidad y
+conservación de la corriente están en perfecta analogía con la densidad
+de carga electromagnética, la densidad de corriente y la conservación de
+la corriente. En electromagnetismo las cargas fluyen, en mecánica
+cuántica la probabilidad fluye. Los términos de la correspondencia se
+resumen en la siguiente tabla.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>Electromagnetismo</th>
+<th>Mecánica cuántica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math></td>
+<td>densidad de carga</td>
+<td>densidad de probabilidad</td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>V</mi></msub><annotation encoding="application/x-tex">Q_V</annotation></semantics></math></td>
+<td>carga en un volumen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></td>
+<td>probabilidad de encontrar la partícula en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></td>
+<td>densidad de corriente</td>
+<td>densidad de corriente de probabilidad</td>
+</tr>
+</tbody>
+</table>
+<p>Sarah Geller transcribió las notas manuscritas de Zwiebach para crear
+la primera versión en LaTeX de este documento.</p>
+<hr />
+<p>MIT OpenCourseWare</p>
+<p>https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I</p>
+<p>Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+</body>
+</html>

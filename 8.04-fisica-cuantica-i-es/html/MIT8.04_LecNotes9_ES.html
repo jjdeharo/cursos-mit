@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Observables, operadores hermíticos e incertidumbre</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Observables, operadores hermíticos e
+incertidumbre</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#observables-operadores-hermíticos-e-incertidumbre"
+id="toc-observables-operadores-hermíticos-e-incertidumbre">Observables,
+operadores hermíticos e incertidumbre</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#observables-y-operadores-hermíticos"
+id="toc-observables-y-operadores-hermíticos">1. Observables y operadores
+hermíticos</a></li>
+<li><a href="#incertidumbre" id="toc-incertidumbre">2.
+Incertidumbre</a></li>
+</ul></li>
+<li><a href="#apéndice-lista-de-problemas-4-problem-set-4-2016"
+id="toc-apéndice-lista-de-problemas-4-problem-set-4-2016">Apéndice:
+Lista de problemas 4 (Problem Set 4, 2016)</a>
+<ul>
+<li><a
+href="#problema-1.-ejercicios-sobre-paquetes-que-cambian-de-forma-5-puntos"
+id="toc-problema-1.-ejercicios-sobre-paquetes-que-cambian-de-forma-5-puntos">Problema
+1. Ejercicios sobre paquetes que cambian de forma [5 puntos]</a></li>
+<li><a
+href="#problema-2.-corriente-de-probabilidad-en-tres-dimensiones-10-puntos"
+id="toc-problema-2.-corriente-de-probabilidad-en-tres-dimensiones-10-puntos">Problema
+2. Corriente de probabilidad en tres dimensiones [10 puntos]</a></li>
+<li><a
+href="#problema-3.-evolución-del-paquete-de-ondas-gaussiano-15-puntos"
+id="toc-problema-3.-evolución-del-paquete-de-ondas-gaussiano-15-puntos">Problema
+3. Evolución del paquete de ondas gaussiano [15 puntos]</a></li>
+<li><a
+href="#problema-4.-identidad-de-parseval-en-1d-y-3d-y-aplicación-10-puntos"
+id="toc-problema-4.-identidad-de-parseval-en-1d-y-3d-y-aplicación-10-puntos">Problema
+4. Identidad de Parseval en 1D y 3D, y aplicación [10 puntos]</a></li>
+<li><a href="#problema-5.-teorema-de-ehrenfest-10-puntos"
+id="toc-problema-5.-teorema-de-ehrenfest-10-puntos">Problema 5. Teorema
+de Ehrenfest [10 puntos]</a></li>
+<li><a href="#problema-6.-incertidumbre-del-momento-5-puntos"
+id="toc-problema-6.-incertidumbre-del-momento-5-puntos">Problema 6.
+Incertidumbre del momento [5 puntos]</a></li>
+<li><a
+href="#problema-7.-encontrando-el-significado-de-la-fase-de-la-función-de-onda-10-puntos"
+id="toc-problema-7.-encontrando-el-significado-de-la-fase-de-la-función-de-onda-10-puntos">Problema
+7. Encontrando el significado de la fase de la función de onda [10
+puntos]</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="observables-operadores-hermíticos-e-incertidumbre">Observables,
+operadores hermíticos e incertidumbre</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 9: Observables, Hermitian operators, measurement and
+uncertainty. Particle on a circle.</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qP6y2edM6Ms">Expectation
+value of Hermitian operators</a> (16:40)</li>
+<li><a href="https://www.youtube.com/watch?v=K3WI62VJqVo">Eigenfunctions
+of a Hermitian operator</a> (13:05)</li>
+<li><a href="https://www.youtube.com/watch?v=XF6FAEi_54I">Completeness
+of eigenvectors and measurement postulate</a> (16:56)</li>
+<li><a href="https://www.youtube.com/watch?v=_jPVD45YYlk">Consistency
+condition. Particle on a circle</a> (17:45)</li>
+<li><a href="https://www.youtube.com/watch?v=rCRH9CTThlo">Defining
+uncertainty</a> (10:31)</li>
+</ul>
+<hr />
+<p>B. Zwiebach</p>
+<p>3 de marzo de 2016</p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>Observables y operadores hermíticos</li>
+<li>Incertidumbre</li>
+</ol>
+<h2 id="observables-y-operadores-hermíticos">1. Observables y operadores
+hermíticos</h2>
+<p>Comencemos recordando la definición de un operador hermítico. El
+operador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+es hermítico si, para la clase de funciones de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+con las que trabajamos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+\int dx\, \Psi_1^* \hat{Q}\Psi_2 = \int dx\, (\hat{Q}\Psi_1)^* \Psi_2 \, . \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>A veces usaremos una notación más breve para las integrales de pares
+de funciones:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+(\Psi_1, \Psi_2) \equiv \int dx\, \Psi_1^*(x)\Psi_2(x) \, . \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>Nótese que para cualquier constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>a</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><mi>a</mi><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+(a\Psi_1, \Psi_2) = a^*(\Psi_1, \Psi_2) \, , \qquad (\Psi_1, a\Psi_2) = a\,(\Psi_1, \Psi_2) \, . \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>Con esta notación, la condición de hermiticidad se enuncia de forma
+más breve como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> es hermítico:</mtext></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{Q} \text{ es hermítico:} \qquad (\Psi_1, \hat{Q}\Psi_2) = (\hat{Q}\Psi_1, \Psi_2) \, . \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>El valor esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+se definió como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Ψ</mi><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+\langle Q \rangle_\Psi = \int dx\, \Psi^* \hat{Q}\Psi = (\Psi, \hat{Q}\Psi) \, . \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>Para que esta fórmula tenga sentido, el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+debe estar normalizado.</p>
+<p><strong>Afirmación 1.</strong> El valor esperado de un operador
+hermítico es real. Para demostrar esto, tomamos el complejo conjugado de
+la definición anterior. El complejo conjugado de la integral es la
+integral del complejo conjugado del integrando, por lo tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msubsup><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi><mo>*</mo></msubsup><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>*</mo></msup><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mi mathvariant="normal">Ψ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\langle Q \rangle_\Psi^* = \left( \int dx\, \Psi^* \hat{Q}\Psi \right)^* = \int dx\, \Psi (\hat{Q}\Psi)^* = \int dx\, (\hat{Q}\Psi)^* \Psi \, . \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>Nótese que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">\hat{Q}\Psi</annotation></semantics></math>
+es una función de onda, así que tiene sentido tomar su complejo
+conjugado (nunca tenemos que pensar en conjugar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>).
+Usando la hermiticidad del operador, lo trasladamos hacia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+para obtener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msubsup><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi><mo>*</mo></msubsup><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\langle Q \rangle_\Psi^* = \int dx\, \Psi^* \hat{Q}\Psi = \langle Q \rangle_\Psi \, , \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>demostrando así que el valor esperado es efectivamente real.</p>
+<p><strong>Afirmación 2.</strong> Los autovalores de un operador
+hermítico son reales. Supongamos que el operador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+tiene un autovalor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mn>1</mn></msub><annotation encoding="application/x-tex">q_1</annotation></semantics></math>
+asociado a una autofunción normalizada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_1(x)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mn>1</mn></msub><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{Q}\psi_1(x) = q_1 \psi_1(x) \, . \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Ahora calculemos el valor esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\psi_1</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mn>1</mn></msub></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>q</mi><mn>1</mn></msub><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+\langle \hat{Q} \rangle_{\psi_1} = (\psi_1, \hat{Q}\psi_1) = (\psi_1, q_1 \psi_1) = q_1 (\psi_1, \psi_1) = q_1 \, . \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>Por la afirmación 1, el valor esperado es real, y por tanto también
+lo es el autovalor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mn>1</mn></msub><annotation encoding="application/x-tex">q_1</annotation></semantics></math>,
+como queríamos demostrar. Obsérvese el hecho interesante de que el valor
+esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+en un autoestado está dado precisamente por el autovalor
+correspondiente.</p>
+<p>Consideremos ahora el conjunto de autofunciones y autovalores del
+operador hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mn>1</mn></msub><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{Q}\, \psi_1(x) = q_1 \psi_1(x) \, , \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mn>2</mn></msub><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{Q}\, \psi_2(x) = q_2 \psi_2(x) \, , \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">
+\ldots
+</annotation></semantics></math></p>
+<p>La lista puede ser finita o infinita.</p>
+<p><strong>Afirmación 3.</strong> Las autofunciones pueden organizarse
+de manera que satisfagan la ortonormalidad:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+(\psi_i, \psi_j) = \int dx\, \psi_i^*(x)\psi_j(x) = \delta_{ij} \, . \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i = j</annotation></semantics></math>,
+esto es simplemente cuestión de normalizar adecuadamente cada
+autofunción, lo cual podemos hacer fácilmente. La ecuación también
+establece que autofunciones distintas son ortogonales, es decir, tienen
+solapamiento nulo. Expliquemos ahora por qué esto es así para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \neq j</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">q_i \neq q_j</annotation></semantics></math>.
+En efecto, para ello evaluamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\psi_i, \hat{Q}\psi_j)</annotation></semantics></math>
+de dos maneras distintas. Primero</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>q</mi><mi>j</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+(\psi_i, \hat{Q}\psi_j) = (\psi_i, q_j \psi_j) = q_j (\psi_i, \psi_j) \, , \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>y segundo, usando la hermiticidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+y la realidad de los autovalores,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.14)</mtext></mrow><annotation encoding="application/x-tex">
+(\psi_i, \hat{Q}\psi_j) = (\hat{Q}\psi_i, \psi_j) = (q_i \psi_i, \psi_j) = q_i (\psi_i, \psi_j) \, . \qquad \text{(1.14)}
+</annotation></semantics></math></p>
+<p>Igualando los lados derechos finales de las dos evaluaciones
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mi>j</mi></msub><mo>−</mo><msub><mi>q</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.15)</mtext></mrow><annotation encoding="application/x-tex">
+(q_j - q_i)(\psi_i, \psi_j) = 0 \, . \qquad \text{(1.15)}
+</annotation></semantics></math></p>
+<p>Dado que los autovalores se supusieron distintos, esto demuestra que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(\psi_i, \psi_j) = 0</annotation></semantics></math>,
+como se afirmó. Esta no es aún una demostración completa de (1.12)
+porque es posible tener degeneraciones en el espectro, es decir,
+autofunciones distintas con el mismo autovalor. En ese caso, el
+argumento anterior no funciona. Entonces hay que demostrar que es
+posible elegir combinaciones lineales de las autofunciones degeneradas
+que sean mutuamente ortogonales (la ortogonalidad con las autofunciones
+fuera del espacio degenerado es automática). Esto se hace en 8.05.</p>
+<p><strong>Afirmación 4.</strong> Las autofunciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+forman un conjunto completo de funciones base. Cualquier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+razonable puede escribirse como una superposición de autofunciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>.
+(Este es el llamado teorema espectral, que se demuestra en 8.05 en el
+caso de dimensión finita.) Esto significa que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>α</mi><mn>1</mn></msub><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>α</mi><mn>2</mn></msub><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>⋯</mi><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>α</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.16)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \alpha_1 \psi_1(x) + \alpha_2 \psi_2(x) + \cdots = \sum_i \alpha_i \psi_i(x) \, , \qquad \text{(1.16)}
+</annotation></semantics></math></p>
+<p>con coeficientes calculables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\alpha_i</annotation></semantics></math>.
+En efecto, si conocemos las autofunciones tenemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\alpha_i</annotation></semantics></math>
+se calcula haciendo la integral de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><annotation encoding="application/x-tex">\psi_i^*</annotation></semantics></math>
+contra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo>,</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.17)</mtext></mrow><annotation encoding="application/x-tex">
+\alpha_i = (\psi_i, \Psi) \, . \qquad \text{(1.17)}
+</annotation></semantics></math></p>
+<p>Demostramos esto rápidamente haciendo la integral</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mi>α</mi><mi>j</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mi>α</mi><mi>j</mi></msub><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mi>α</mi><mi>j</mi></msub><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>α</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.18)</mtext></mrow><annotation encoding="application/x-tex">
+\int dx\, \psi_i^*(x)\Psi(x) = \int dx\, \psi_i^*(x) \sum_j \alpha_j \psi_j(x) = \sum_j \alpha_j \int dx\, \psi_i^*(x)\psi_j(x) = \sum_j \alpha_j \delta_{ij} = \alpha_i \, . \qquad \text{(1.18)}
+</annotation></semantics></math></p>
+<p>La condición de que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+esté normalizada implica una condición sobre los coeficientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\alpha_i</annotation></semantics></math>.
+Tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mi>α</mi><mi>j</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\int dx\, \Psi^*(x)\Psi(x) = \int dx\, \sum_i \alpha_i^* \psi_i^*(x) \sum_j \alpha_j \psi_j(x)
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>j</mi></msub><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.19)</mtext></mrow><annotation encoding="application/x-tex">
+= \sum_{i,j} \alpha_i^* \alpha_j \int dx\, \psi_i^*(x)\psi_j(x) \qquad \text{(1.19)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>j</mi></msub><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+= \sum_{i,j} \alpha_i^* \alpha_j \delta_{ij} = \sum_i \alpha_i^* \alpha_i \, ,
+</annotation></semantics></math></p>
+<p>de modo que la normalización de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+implica que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>i</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>i</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.20)</mtext></mrow><annotation encoding="application/x-tex">
+\sum_i |\alpha_i|^2 = 1 \, . \qquad \text{(1.20)}
+</annotation></semantics></math></p>
+<p>Ya estamos en condiciones de enunciar el postulado de la medición.
+Esta es la forma en que entendemos que los operadores hermíticos
+representan observables y aprendemos las reglas que estos siguen.</p>
+<p><strong>Postulado de la medición:</strong> Si medimos el operador
+hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>,
+los posibles resultados de la medición son los autovalores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>,</mo><msub><mi>q</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">q_1, q_2, \ldots</annotation></semantics></math>.
+La probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
+de medir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">q_i</annotation></semantics></math>
+está dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>i</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.21)</mtext></mrow><annotation encoding="application/x-tex">
+p_i = |\alpha_i|^2 \, , \qquad \text{(1.21)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>α</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x) = \sum_i \alpha_i \psi_i(x)</annotation></semantics></math>.
+Después del resultado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">q_i</annotation></semantics></math>,
+el estado del sistema pasa a ser</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>ψ</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.22)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \psi_i(x) \, . \qquad \text{(1.22)}
+</annotation></semantics></math></p>
+<p>Esto se denomina el colapso de la función de onda.</p>
+<p>El colapso de la función de onda implica que, inmediatamente después
+de la medición que arrojó
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">q_i</annotation></semantics></math>,
+una medición repetida de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+dará
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">q_i</annotation></semantics></math>
+sin incertidumbre. Ocurre una pequeña sutileza si tenemos autoestados
+degenerados. Supongamos que la función de onda contiene una parte</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>α</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub><mo>+</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mi>ψ</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>…</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.23)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi = (\alpha_i \psi_i + \alpha_k \psi_k) + \ldots \qquad \text{(1.23)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\psi_i</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\psi_k</annotation></semantics></math>
+tienen la misma autovalor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+y los puntos suspensivos representan otros términos. Entonces, si
+medimos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+el estado tras la medición colapsa a la suma de esos dos términos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mfrac><mrow><msub><mi>α</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub><mo>+</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mi>ψ</mi><mi>k</mi></msub></mrow><msqrt><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>i</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>j</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></msqrt></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.24)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi = \frac{\alpha_i \psi_i + \alpha_k \psi_k}{\sqrt{|\alpha_i|^2 + |\alpha_j|^2}} \, , \qquad \text{(1.24)}
+</annotation></semantics></math></p>
+<p>con el denominador de raíz cuadrada incluido para proporcionar la
+normalización adecuada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>.
+Como verificación de consistencia, nótese que las probabilidades
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
+de encontrar los diversos autovalores como resultados suman
+correctamente uno:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>i</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.25)</mtext></mrow><annotation encoding="application/x-tex">
+\sum_i p_i = \sum_i |\alpha_i|^2 = 1 \, , \qquad \text{(1.25)}
+</annotation></semantics></math></p>
+<p>por la condición de normalización para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+dada en (1.20). El postulado de la medición sigue la interpretación de
+Copenhague de la mecánica cuántica.</p>
+<p>Nótese que el postulado de la medición usa la propiedad de que
+cualquier vector en un espacio vectorial puede escribirse como una suma
+de vectores distintos de un número infinito de maneras. Si vamos a medir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>1</mn></msub><annotation encoding="application/x-tex">\hat{Q}_1</annotation></semantics></math>
+expandimos el estado en autoestados de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>1</mn></msub><annotation encoding="application/x-tex">\hat{Q}_1</annotation></semantics></math>;
+si vamos a medir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>2</mn></msub><annotation encoding="application/x-tex">\hat{Q}_2</annotation></semantics></math>
+expandimos el estado en autoestados de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>2</mn></msub><annotation encoding="application/x-tex">\hat{Q}_2</annotation></semantics></math>,
+y así sucesivamente. Cada descomposición es adecuada para una medición
+particular. Cada descomposición revela las diversas probabilidades para
+los resultados del observable específico.</p>
+<p><strong>Ejercicio.</strong> Use la expansión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>α</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\Psi = \sum_i \alpha_i \psi_i</annotation></semantics></math>
+para calcular el valor esperado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle Q \rangle</annotation></semantics></math>.
+Encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>Q</mi><mo accent="true">̂</mo></mover><munder><mo>∑</mo><mi>j</mi></munder><msub><mi>α</mi><mi>j</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\langle \hat{Q} \rangle = \int dx\, \sum_i \alpha_i^* \psi_i^*(x)\, \hat{Q} \sum_j \alpha_j \psi_j(x)
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>j</mi></msub><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+= \sum_{i,j} \alpha_i^* \alpha_j \int dx\, \psi_i^*(x) \hat{Q}\psi_j(x)
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>j</mi></msub><msub><mi>q</mi><mi>j</mi></msub><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.26)</mtext></mrow><annotation encoding="application/x-tex">
+= \sum_{i,j} \alpha_i^* \alpha_j q_j \int dx\, \psi_i^*(x)\psi_j(x) \qquad \text{(1.26)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><msubsup><mi>α</mi><mi>i</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>j</mi></msub><msub><mi>q</mi><mi>j</mi></msub><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi>α</mi><mi>i</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><msub><mi>q</mi><mi>i</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><msub><mi>q</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+= \sum_{i,j} \alpha_i^* \alpha_j q_j \delta_{ij} = \sum_i |\alpha_i|^2 q_i = \sum_i p_i q_i \, .
+</annotation></semantics></math></p>
+<p>Esto concuerda con nuestras expectativas: el valor esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+es la suma de los posibles resultados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">q_i</annotation></semantics></math>
+multiplicados por las probabilidades correspondientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>.
+Esta es una buena verificación de consistencia de nuestra definición de
+valores esperados.</p>
+<p><strong>Ejemplo.</strong> Partícula libre en el círculo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [0, L]</annotation></semantics></math>.</p>
+<p>Imaginamos que los puntos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>
+están identificados para formar un círculo de circunferencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+Una función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x)</annotation></semantics></math>
+en el círculo debe satisfacer la condición de periodicidad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.27)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x + L) = \Psi(x) \, , \qquad \text{(1.27)}
+</annotation></semantics></math></p>
+<p>Supongamos que en cierto instante fijo tenemos la función de onda</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mfrac><mn>2</mn><mi>L</mi></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msqrt><mfrac><mn>2</mn><mi>L</mi></mfrac></msqrt><mspace width="0.167em"></mspace><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>6</mn><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.28)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \sqrt{\frac{2}{L}}\, \frac{1}{\sqrt{3}} \sin\left(\frac{2\pi x}{L}\right) + \sqrt{\frac{2}{L}}\, \sqrt{\frac{2}{3}} \cos\left(\frac{6\pi x}{L}\right) \, . \qquad \text{(1.28)}
+</annotation></semantics></math></p>
+<p>Esta función de onda satisface la condición de periodicidad, como
+debería comprobar. Queremos saber cuáles son los valores posibles del
+momento y sus probabilidades correspondientes.</p>
+<p>Dada nuestra discusión, debemos encontrar el conjunto de autoestados
+de momento y reescribir la función de onda como una superposición de
+tales estados. Los autoestados de momento son exponenciales de la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>.
+En el círculo ocurren dos cosas que no ocurren en el espacio libre.
+Primero, el momento estará cuantizado como consecuencia de la condición
+de periodicidad (1.27). Segundo, dado que el espacio aquí es de longitud
+finita, las funciones de onda de momento serán normalizables.
+Consideremos la condición de periodicidad aplicada a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>.
+Necesitamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>L</mi></mrow></msup><mo>=</mo><mn>1</mn><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><mi>k</mi><mi>L</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>m</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>m</mi><mo>∈</mo><mi>ℤ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.29)</mtext></mrow><annotation encoding="application/x-tex">
+e^{ikx} = e^{ik(x+L)} \;\rightarrow\; e^{ikL} = 1 \;\rightarrow\; kL = 2\pi m \, , \quad m \in \mathbb{Z} \, . \qquad \text{(1.29)}
+</annotation></semantics></math></p>
+<p>Nótese que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+puede ser cualquier entero, positivo, negativo o cero. Escribimos
+entonces para los autoestados de momento, etiquetados por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>N</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>m</mi><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.30)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_m(x) = N\, e^{\frac{2\pi i m x}{L}} \, , \qquad \text{(1.30)}
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+una constante de normalización real. La condición de normalización
+da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>N</mi><mn>2</mn></msup><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>N</mi><mn>2</mn></msup><mi>L</mi><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><mi>N</mi><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.31)</mtext></mrow><annotation encoding="application/x-tex">
+1 = \int_0^L |\psi_m(x)|^2\, dx = N^2 \int_0^L dx = N^2 L \;\rightarrow\; N = \frac{1}{\sqrt{L}} \, . \qquad \text{(1.31)}
+</annotation></semantics></math></p>
+<p>Por lo tanto, nuestros autoestados de momento son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mspace width="0.167em"></mspace><msup><mi>e</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>m</mi><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.32)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_m(x) = \frac{1}{\sqrt{L}}\, e^{\frac{2\pi i m x}{L}} \, , \qquad \text{(1.32)}
+</annotation></semantics></math></p>
+<p>y estos son estados con momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>m</mi></msub><annotation encoding="application/x-tex">p_m</annotation></semantics></math>,
+que se calcula de la siguiente manera</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mi>m</mi></msub><mo>=</mo><mfrac><mi>ℏ</mi><mi>i</mi></mfrac><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><msub><mi>ψ</mi><mi>m</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>m</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><msub><mi>ψ</mi><mi>m</mi></msub><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><msub><mi>p</mi><mi>m</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>m</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.33)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{p}\, \psi_m = \frac{\hbar}{i} \frac{\partial}{\partial x} \psi_m = \frac{2\pi m \hbar}{L} \psi_m \;\rightarrow\; p_m = \frac{2\pi m \hbar}{L} \, . \qquad \text{(1.33)}
+</annotation></semantics></math></p>
+<p>Ahora que contamos con los autoestados de momento, debemos
+simplemente reescribir la función de onda (1.28) como una superposición
+de tales estados:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>x</mi></mrow><mi>L</mi></mfrac></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mfrac><mrow><mn>6</mn><mi>π</mi><mi>i</mi><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mrow><mn>6</mn><mi>π</mi><mi>i</mi><mi>x</mi></mrow><mi>L</mi></mfrac></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.34)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \sqrt{\frac{2}{3}}\, \frac{1}{2i}\, \frac{1}{\sqrt{L}}\left(e^{\frac{2\pi i x}{L}} - e^{-\frac{2\pi i x}{L}}\right) + \sqrt{\frac{2}{3}}\, \frac{1}{2}\, \frac{1}{\sqrt{L}}\left(e^{\frac{6\pi i x}{L}} + e^{-\frac{6\pi i x}{L}}\right) \, . \qquad \text{(1.34)}
+</annotation></semantics></math></p>
+<p>Reconocemos entonces que tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mrow><mi>−</mi><mn>3</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.35)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \sqrt{\frac{2}{3}}\, \frac{1}{2i}\, \psi_1(x) - \sqrt{\frac{2}{3}}\, \frac{1}{2i}\, \psi_{-1}(x) + \frac{1}{\sqrt{3}}\, \psi_3(x) + \frac{1}{\sqrt{3}}\, \psi_{-3}(x) \, . \qquad \text{(1.35)}
+</annotation></semantics></math></p>
+<p>Este es nuestro resultado clave: la función de onda original escrita
+como una superposición de autoestados de momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_m(x)</annotation></semantics></math>.
+Ahora podemos dar los valores posibles
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+del momento y sus probabilidades correspondientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+p = \frac{2\pi \hbar}{L} \, , \quad P = \left(\sqrt{\frac{2}{3}}\, \frac{1}{2i}\right)^2 = \frac{1}{6} \, ,
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><msqrt><mfrac><mn>2</mn><mn>3</mn></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+p = -\frac{2\pi \hbar}{L} \, , \quad P = \left(-\sqrt{\frac{2}{3}}\, \frac{1}{2i}\right)^2 = \frac{1}{6} \, ,
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mrow><mn>6</mn><mi>π</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.36)</mtext></mrow><annotation encoding="application/x-tex">
+p = \frac{6\pi \hbar}{L} \, , \quad P = \left(\frac{1}{\sqrt{3}}\right)^2 = \frac{1}{3} \, , \qquad \text{(1.36)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>6</mn><mi>π</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+p = -\frac{6\pi \hbar}{L} \, , \quad P = \left(\frac{1}{\sqrt{3}}\right)^2 = \frac{1}{3} \, .
+</annotation></semantics></math></p>
+<h2 id="incertidumbre">2. Incertidumbre</h2>
+<p>Para variables aleatorias, la incertidumbre es la desviación
+estándar: la raíz cuadrada del valor esperado del cuadrado de las
+desviaciones respecto al valor medio. Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+una variable aleatoria que toma valores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>Q</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">Q_1, \ldots, Q_n</annotation></semantics></math>
+con probabilidades
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">p_1, \ldots, p_n</annotation></semantics></math>,
+respectivamente. El valor esperado es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><msub><mi>Q</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.37)</mtext></mrow><annotation encoding="application/x-tex">
+\overline{Q} = \sum_i p_i Q_i \, , \qquad \text{(2.37)}
+</annotation></semantics></math></p>
+<p>y la varianza (el cuadrado de la desviación estándar) es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≡</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Q</mi><mi>i</mi></msub><mo>−</mo><mover><mi>Q</mi><mo accent="true">¯</mo></mover><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.38)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 \equiv \sum_i p_i (Q_i - \overline{Q})^2 \, . \qquad \text{(2.38)}
+</annotation></semantics></math></p>
+<p>Esta definición deja claro que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>Q</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta Q = 0</annotation></semantics></math>,
+entonces la variable aleatoria es constante: cada término en la suma
+anterior debe anularse, haciendo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub><mo>=</mo><mover><mi>Q</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">Q_i = \overline{Q}</annotation></semantics></math>
+para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>.
+Encontramos otra expresión útil expandiendo la definición anterior</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><msubsup><mi>Q</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mn>2</mn><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><msub><mi>Q</mi><mi>i</mi></msub><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mo>+</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><msup><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \sum_i p_i Q_i^2 - 2 \sum_i p_i Q_i \overline{Q} + \sum_i p_i \overline{Q}^2
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mover><msup><mi>Q</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><mo>−</mo><mn>2</mn><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mspace width="0.167em"></mspace><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mo>+</mo><msup><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mn>2</mn></msup><mo>=</mo><mover><msup><mi>Q</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><mo>−</mo><msup><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mn>2</mn></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.39)</mtext></mrow><annotation encoding="application/x-tex">
+= \overline{Q^2} - 2\overline{Q}\,\overline{Q} + \overline{Q}^2 = \overline{Q^2} - \overline{Q}^2 \, , \qquad \text{(2.39)}
+</annotation></semantics></math></p>
+<p>donde usamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sum_i p_i = 1</annotation></semantics></math>.
+Por lo tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mover><msup><mi>Q</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><mo>−</mo><msup><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.40)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \overline{Q^2} - \overline{Q}^2 \, . \qquad \text{(2.40)}
+</annotation></semantics></math></p>
+<p>Dado que, por definición,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(\Delta Q)^2 \geq 0</annotation></semantics></math>,
+tenemos la interesante desigualdad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><msup><mi>Q</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><mo>≥</mo><msup><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.41)</mtext></mrow><annotation encoding="application/x-tex">
+\overline{Q^2} \geq \overline{Q}^2 \, . \qquad \text{(2.41)}
+</annotation></semantics></math></p>
+<p>Consideremos ahora el caso mecánico-cuántico. Ya hemos definido los
+valores esperados de operadores hermíticos, así que ahora podemos imitar
+la definición (2.40) y declarar que la incertidumbre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>Q</mi><mi mathvariant="normal">Ψ</mi></msub></mrow><annotation encoding="application/x-tex">\Delta Q_\Psi</annotation></semantics></math>
+de un operador en un estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es un número real cuyo cuadrado está dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msubsup><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mn>2</mn></msubsup><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mi>Q</mi><mn>2</mn></msup><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.42)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)_\Psi^2 = \langle Q^2 \rangle_\Psi - (\langle Q \rangle_\Psi)^2 \, . \qquad \text{(2.42)}
+</annotation></semantics></math></p>
+<p>A veces, por brevedad, omitimos la etiqueta del estado,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mi>Q</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msup><mo stretchy="false" form="postfix">⟩</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.43)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \langle Q^2 \rangle - \langle Q \rangle^2 \, . \qquad \text{(2.43)}
+</annotation></semantics></math></p>
+<p><strong>Afirmación 1.</strong> La incertidumbre también puede
+escribirse como el valor esperado del cuadrado de la diferencia entre el
+operador y su valor esperado:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">⟨</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">⟩</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.44)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \left\langle \left(\hat{Q} - \langle \hat{Q} \rangle\right)^2 \right\rangle \, . \qquad \text{(2.44)}
+</annotation></semantics></math></p>
+<p>En efecto, expandiendo el lado derecho tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo>−</mo><mn>2</mn><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msup><mo stretchy="false" form="postfix">⟩</mo><mn>2</mn></msup><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>−</mo><mn>2</mn><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo>+</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msup><mo stretchy="false" form="postfix">⟩</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msup><mo stretchy="false" form="postfix">⟩</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.45)</mtext></mrow><annotation encoding="application/x-tex">
+\left\langle \hat{Q}^2 - 2\hat{Q}\langle \hat{Q} \rangle + \langle \hat{Q} \rangle^2 \right\rangle = \langle \hat{Q}^2 \rangle - 2\langle \hat{Q} \rangle \langle \hat{Q} \rangle + \langle \hat{Q} \rangle^2 = \langle \hat{Q}^2 \rangle - \langle \hat{Q} \rangle^2 \, . \qquad \text{(2.45)}
+</annotation></semantics></math></p>
+<p><strong>Afirmación 2.</strong> La incertidumbre puede escribirse como
+la integral del cuadrado de la norma de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">(\hat{Q} - \langle Q \rangle)\Psi</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mrow><mo stretchy="true" form="prefix">|</mo><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.46)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \int_{-\infty}^{\infty} dx\, \left| \left(\hat{Q} - \langle Q \rangle\right) \Psi(x) \right|^2 \, . \qquad \text{(2.46)}
+</annotation></semantics></math></p>
+<p>En efecto, para demostrar esto comenzamos con (2.44). Mediante una
+demostración muy similar, podemos mostrar que esto es equivalente a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">⟨</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><msup><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mi mathvariant="normal">Ψ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.47)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \left\langle \left(\hat{Q} - \langle Q \rangle\right)^2 \right\rangle = \int dx\, \Psi^* \left(\hat{Q} - \langle Q \rangle\right)^2 \Psi \, . \qquad \text{(2.47)}
+</annotation></semantics></math></p>
+<p>Usando la hermiticidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+y la realidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle \hat{Q} \rangle</annotation></semantics></math>,
+podemos trasladar uno de los dos factores para que actúe sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\Psi^*</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mrow><mo stretchy="true" form="prefix">[</mo><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>*</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mrow><mo stretchy="true" form="prefix">|</mo><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.48)</mtext></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \int dx\, \left[\left(\hat{Q} - \langle Q \rangle\right) \Psi\right]^* \left(\hat{Q} - \langle Q \rangle\right) \Psi = \int dx\, \left|\left(\hat{Q} - \langle Q \rangle\right)\Psi\right|^2 \, . \qquad \text{(2.48)}
+</annotation></semantics></math></p>
+<p>Esto completa la demostración de la afirmación 2.</p>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>Q</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta Q = 0</annotation></semantics></math>,
+entonces, por la afirmación 2, debemos tener que para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mo>→</mo><mspace width="1.0em"></mspace><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.49)</mtext></mrow><annotation encoding="application/x-tex">
+(\hat{Q} - \langle Q \rangle)\Psi(x) = 0 \, , \quad \rightarrow \quad \hat{Q}\Psi(x) = \langle Q \rangle \Psi(x) \, . \qquad \text{(2.49)}
+</annotation></semantics></math></p>
+<p>Vemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es un autoestado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>,
+lo cual efectivamente significa que no hay incertidumbre en la medición.
+Por supuesto, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es un autoestado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></mrow><annotation encoding="application/x-tex">\hat{Q}\Psi = \langle Q \rangle \Psi</annotation></semantics></math>
+y la incertidumbre se anula. En resumen, hemos establecido la
+equivalencia</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><mn>0</mn><mo>⇔</mo><mi mathvariant="normal">Ψ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> es un autoestado de </mtext><mspace width="0.333em"></mspace></mrow><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.50)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta \hat{Q}_\Psi = 0 \iff \Psi \text{ es un autoestado de } \hat{Q} \, . \qquad \text{(2.50)}
+</annotation></semantics></math></p>
+<p><em>Andrew Turner transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</em></p>
+<hr />
+<p>MIT OpenCourseWare</p>
+<p>https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I</p>
+<p>Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<h1 id="apéndice-lista-de-problemas-4-problem-set-4-2016">Apéndice:
+Lista de problemas 4 (Problem Set 4, 2016)</h1>
+<p><strong>Física Cuántica I (8.04), Primavera de 2016</strong>
+<strong>Tarea 4</strong></p>
+<p>Departamento de Física del MIT — Entrega: viernes 4 de marzo de 2016,
+12:00 del mediodía 25 de febrero de 2016</p>
+<p><strong>Anuncios</strong></p>
+<ul>
+<li>Lectura recomendada: Griffiths, secciones 1.5, 1.6, 2.4.</li>
+</ul>
+<h2
+id="problema-1.-ejercicios-sobre-paquetes-que-cambian-de-forma-5-puntos">Problema
+1. Ejercicios sobre paquetes que cambian de forma [5 puntos]</h2>
+<ol type="a">
+<li><p>Un protón libre está localizado dentro de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi><mo>=</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>10</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\Delta x = 10^{-10}</annotation></semantics></math>
+m. Estime el tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>s</mi></msub><annotation encoding="application/x-tex">t_s</annotation></semantics></math>
+que tarda el paquete en dispersarse apreciablemente. Repita el cálculo
+para un protón localizado dentro de 1 cm.</p></li>
+<li><p>Considere un paquete de ondas que satisface la relación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi><mi mathvariant="normal">Δ</mi><mi>p</mi><mo>∼</mo><mi>ℏ</mi></mrow><annotation encoding="application/x-tex">\Delta x \Delta p \sim \hbar</annotation></semantics></math>.
+Demuestre que la condición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>p</mi><mo>≪</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\Delta p \ll p</annotation></semantics></math>
+garantiza que el paquete no se dispersa apreciablemente en el tiempo que
+tarda en pasar por una posición fija.</p></li>
+</ol>
+<h2
+id="problema-2.-corriente-de-probabilidad-en-tres-dimensiones-10-puntos">Problema
+2. Corriente de probabilidad en tres dimensiones [10 puntos]</h2>
+<p>En la dispersión elástica de partículas en el espacio tridimensional,
+la función de onda toma la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>z</mi></mrow></msup><mo>+</mo><mfrac><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>r</mi></mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>r</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">válida para </mtext><mspace width="0.333em"></mspace></mrow><mi>r</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> grande</mtext></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Psi(\mathbf{x}) = e^{ikz} + \frac{f(\theta)}{r} e^{ikr} \, , \quad \text{válida para } r \text{ grande} .
+</annotation></semantics></math></p>
+<p>Se ha suprimido la dependencia temporal; se trata simplemente de una
+fase global dependiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><annotation encoding="application/x-tex">e^{-iEt/\hbar}</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E = \hbar^2 k^2/(2m)</annotation></semantics></math>.
+No jugará ningún papel aquí.</p>
+<p>El primer término representa las partículas incidentes, moviéndose en
+la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">+z</annotation></semantics></math>.
+El blanco se encuentra en el origen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math>
+y el segundo término representa la amplitud de las partículas que se
+mueven radialmente hacia afuera —las partículas dispersadas—. Esta
+amplitud depende de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+pero se supone independiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\theta)</annotation></semantics></math>
+es una función compleja de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+que contiene la información sobre la dispersión. Recuerde que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+es el ángulo polar y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>r</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">z = r\cos\theta</annotation></semantics></math>.</p>
+<p>Cuando se calcula la corriente de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐉</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{J}(\mathbf{x})</annotation></semantics></math>
+asociada a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>,
+habrá una contribución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_1</annotation></semantics></math>
+debida al primer término (la onda plana), una contribución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_2</annotation></semantics></math>
+debida al segundo término (las ondas esféricas), y una contribución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>12</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_{12}</annotation></semantics></math>
+debida a la interferencia entre el primer y el segundo término:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐉</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐉</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐉</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐉</mi><mn>12</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbf{J}(\mathbf{x}) = \mathbf{J}_1(\mathbf{x}) + \mathbf{J}_2(\mathbf{x}) + \mathbf{J}_{12}(\mathbf{x}) \, .
+</annotation></semantics></math></p>
+<ol type="a">
+<li><p>Calcule la corriente de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_1</annotation></semantics></math>
+y el flujo total de esta corriente sobre una esfera grande de radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+centrada en el origen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math>.</p></li>
+<li><p>Calcule la componente radial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>r</mi><mo accent="true">̂</mo></mover><mo>⋅</mo><msub><mi>𝐉</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{r} \cdot \mathbf{J}_2</annotation></semantics></math>
+de la corriente de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_2</annotation></semantics></math>.
+Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>r</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{r}</annotation></semantics></math>
+es el vector unitario en la dirección radial. Calcule el flujo de esta
+corriente sobre una esfera de radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+centrada en el origen, en el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">R \to \infty</annotation></semantics></math>.
+Su respuesta debe dejarse como una integral sobre el ángulo sólido
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\int d\Omega</annotation></semantics></math>,
+o sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">\int d\theta</annotation></semantics></math>,
+si lo prefiere.</p></li>
+<li><p>Calcule la componente radial del término de interferencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐉</mi><mn>12</mn></msub><annotation encoding="application/x-tex">\mathbf{J}_{12}</annotation></semantics></math>,
+pero quédese solo con la parte dominante en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+(es decir, ignore los términos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1/r^2</annotation></semantics></math>).
+Demuestre que la respuesta puede escribirse en la forma</p></li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>r</mi><mo accent="true">̂</mo></mover><mo>⋅</mo><msub><mi>𝐉</mi><mn>12</mn></msub><mo>=</mo><mfrac><mrow><mi>ℏ</mi><mi>k</mi></mrow><mrow><mi>m</mi><mi>r</mi></mrow></mfrac><mspace width="0.167em"></mspace><mtext mathvariant="normal">Im</mtext><mrow><mo stretchy="true" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>…</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\hat{r} \cdot \mathbf{J}_{12} = \frac{\hbar k}{mr} \, \text{Im}\left[i (\ldots)\right] \, ,
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>…</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\ldots)</annotation></semantics></math>
+representa términos que su cálculo debe determinar. Estos términos
+dependen de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\theta)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math>,
+y el producto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">kr</annotation></semantics></math>
+en exponenciales. Calcular el flujo de esta corriente sobre la esfera
+grande es delicado, así que lo dejaremos para más adelante (¡el
+resultado final es el llamado teorema óptico!).</p>
+<h2
+id="problema-3.-evolución-del-paquete-de-ondas-gaussiano-15-puntos">Problema
+3. Evolución del paquete de ondas gaussiano [15 puntos]</h2>
+<p>Considere el paquete de ondas normalizado que representa el estado de
+una partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><msqrt><mi>a</mi></msqrt></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Psi_a(x, 0) = \frac{1}{(2\pi)^{1/4}\sqrt{a}} \exp\left(-\frac{x^2}{4a^2}\right) \, .
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es un parámetro de longitud que representa la anchura del paquete en el
+instante inicial.</p>
+<ol type="a">
+<li><p>Confirme que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi_a(x, 0)</annotation></semantics></math>
+está correctamente normalizada.</p></li>
+<li><p>Encuentre la representación de Fourier de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi_a(x, 0)</annotation></semantics></math>,
+es decir, determine la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Phi_a(k)</annotation></semantics></math>
+tal que</p></li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msub><mi mathvariant="normal">Φ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Psi_a(x, 0) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Phi_a(k) e^{ikx} \, dk \, .
+</annotation></semantics></math></p>
+<ol start="3" type="a">
+<li>Suponiendo que la partícula es libre, encuentre la función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi_a(x, t)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t &gt; 0</annotation></semantics></math>
+arbitrario. La respuesta es un poco engorrosa, pero puede escribirse de
+manera más clara usando la constante de tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+construida a partir de las constantes del problema:</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup></mrow><mi>ℏ</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tau \equiv \frac{2ma^2}{\hbar} \, .
+</annotation></semantics></math></p>
+<ol start="4" type="a">
+<li>En el instante inicial la densidad de probabilidad es</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><mspace width="0.167em"></mspace><mi>a</mi></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>2</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>≡</mo><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>;</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+|\Psi_a(x, 0)|^2 = \frac{1}{\sqrt{2\pi}\, a} \exp\left(-\frac{x^2}{2a^2}\right) \equiv G(x; a) \, ,
+</annotation></semantics></math></p>
+<p>donde hemos definido la gaussiana
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>;</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">G(x; a)</annotation></semantics></math>
+con parámetro de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+¿Cuál es la densidad de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\Psi_a(x, t)|^2</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t &gt; 0</annotation></semantics></math>?
+Exprese su respuesta en términos de la gaussiana
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+con un parámetro de anchura dependiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a(t)</annotation></semantics></math>.
+Dé
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a(t)</annotation></semantics></math>.</p>
+<p>Integral útil: válida para constantes complejas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+con parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+positiva:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msqrt><mfrac><mi>π</mi><mi>a</mi></mfrac></msqrt><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>b</mi><mn>2</mn></msup><mrow><mn>4</mn><mi>a</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">cuando </mtext><mspace width="0.333em"></mspace></mrow><mtext mathvariant="normal">Re</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} e^{-ax^2 + bx} \, dx = \sqrt{\frac{\pi}{a}} \exp\left(\frac{b^2}{4a}\right) \, , \quad \text{cuando } \text{Re}(a) &gt; 0 \, .
+</annotation></semantics></math></p>
+<h2
+id="problema-4.-identidad-de-parseval-en-1d-y-3d-y-aplicación-10-puntos">Problema
+4. Identidad de Parseval en 1D y 3D, y aplicación [10 puntos]</h2>
+<ol type="a">
+<li>Considere el par de Fourier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\Psi(x), \Phi(p))</annotation></semantics></math>
+relevante para las funciones de onda unidimensionales (1D) y el par de
+Fourier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐩</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\Psi(\mathbf{x}), \Phi(\mathbf{p}))</annotation></semantics></math>
+relevante para las funciones de onda tridimensionales (3D). Use las
+relaciones de Fourier y la forma integral de la función delta para
+demostrar las versiones 1D y 3D de la identidad de Parseval:<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>p</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} dx\, |\Psi(x)|^2 = \int_{-\infty}^{\infty} dp\, |\Phi(p)|^2 \, ,
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>p</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐩</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int d^3x\, |\Psi(\mathbf{x})|^2 = \int d^3p\, |\Phi(\mathbf{p})|^2 \, .
+</annotation></semantics></math></p>
+<ol start="2" type="a">
+<li>En el átomo de hidrógeno, la función de onda del estado fundamental
+toma la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>N</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>r</mi><mi>/</mi><msub><mi>a</mi><mn>0</mn></msub></mrow></msup></mrow><annotation encoding="application/x-tex">\Psi(\mathbf{x}) = N e^{-r/a_0}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">r = |\mathbf{x}|</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math>
+es el radio de Bohr, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+es una constante de normalización. Encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+La transformada de Fourier (que no necesita derivar) toma la forma</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐩</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msup><mi>N</mi><mo>′</mo></msup><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><msubsup><mi>a</mi><mn>0</mn><mn>2</mn></msubsup><msup><mi>p</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac></mstyle><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\Phi(\mathbf{p}) = \frac{N&#39;}{\left(1 + \dfrac{a_0^2 p^2}{\hbar^2}\right)^{2}} \, ,
+</annotation></semantics></math></p>
+<p>para alguna constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>N</mi><mo>′</mo></msup><annotation encoding="application/x-tex">N&#39;</annotation></semantics></math>
+y con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≡</mo><mo stretchy="false" form="prefix">|</mo><mi>𝐩</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">p \equiv |\mathbf{p}|</annotation></semantics></math>.
+Encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>N</mi><mo>′</mo></msup><annotation encoding="application/x-tex">N&#39;</annotation></semantics></math>
+(puede usar un manipulador algebraico para hacer la integral). Calcule
+la probabilidad de que el electrón se encuentre con un momento cuya
+magnitud excede
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℏ</mi><mi>/</mi><msub><mi>a</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\hbar/a_0</annotation></semantics></math>.
+(Escriba sus integrales explícitamente, pero puede evaluarlas con un
+ordenador). [La distribución de momento fue medida mediante ionización
+de hidrógeno atómico por un haz de electrones de alta energía; véase
+Lohan, B. y Weigold, E. (1981) “Direct measurement of the Electron
+Momentum Probability Distribution in Atomic Hydrogen,” Phys. Lett. 86A,
+139-141.]</p>
+<h2 id="problema-5.-teorema-de-ehrenfest-10-puntos">Problema 5. Teorema
+de Ehrenfest [10 puntos]</h2>
+<p>Considere una partícula que se mueve en una dimensión con
+hamiltoniano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mfrac><msup><mi>p</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H = \frac{p^2}{2m} + V(x) \, .
+</annotation></semantics></math></p>
+<p>Demuestre que los valores esperados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle x \rangle</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle p \rangle</annotation></semantics></math>
+son funciones dependientes del tiempo que satisfacen las siguientes
+ecuaciones diferenciales:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mfrac><mn>1</mn><mi>m</mi></mfrac><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\frac{d}{dt}\langle x \rangle = \frac{1}{m}\langle p \rangle \, ,
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>−</mi><mrow><mo stretchy="true" form="prefix">⟨</mo><mfrac><mrow><mi>∂</mi><mi>V</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">⟩</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{d}{dt}\langle p \rangle = -\left\langle \frac{\partial V}{\partial x} \right\rangle \, .
+</annotation></semantics></math></p>
+<h2 id="problema-6.-incertidumbre-del-momento-5-puntos">Problema 6.
+Incertidumbre del momento [5 puntos]</h2>
+<p>Demuestre que, en un paquete de ondas de partícula libre, la
+incertidumbre del momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">\Delta p</annotation></semantics></math>
+no cambia en el tiempo.</p>
+<h2
+id="problema-7.-encontrando-el-significado-de-la-fase-de-la-función-de-onda-10-puntos">Problema
+7. Encontrando el significado de la fase de la función de onda [10
+puntos]</h2>
+<p>Suponga que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_o(x)</annotation></semantics></math>
+es una función de onda correctamente normalizada con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mi>o</mi></msub></msub><mo>=</mo><msub><mi>x</mi><mi>o</mi></msub></mrow><annotation encoding="application/x-tex">\langle x \rangle_{\psi_o} = x_o</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mi>o</mi></msub></msub><mo>=</mo><msub><mi>p</mi><mi>o</mi></msub></mrow><annotation encoding="application/x-tex">\langle p \rangle_{\psi_o} = p_o</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>o</mi></msub><annotation encoding="application/x-tex">x_o</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>o</mi></msub><annotation encoding="application/x-tex">p_o</annotation></semantics></math>
+son constantes. Defina el operador de impulso (boost)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>B</mi><mo accent="true">̂</mo></mover><mi>q</mi></msub><annotation encoding="application/x-tex">\hat{B}_q</annotation></semantics></math>
+como el operador que actúa sobre funciones arbitrarias de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+multiplicándolas por una fase dependiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>B</mi><mo accent="true">̂</mo></mover><mi>q</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>q</mi><mi>x</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\hat{B}_q f(x) = e^{iqx/\hbar} f(x) \, .
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+es un número real con las unidades apropiadas. Considere ahora una nueva
+función de onda obtenida aplicando el impulso a la función de onda
+inicial:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mtext mathvariant="normal">new</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mover><mi>B</mi><mo accent="true">̂</mo></mover><mi>q</mi></msub><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\psi_{\text{new}}(x) = \hat{B}_q \, \psi_o(x) \, .
+</annotation></semantics></math></p>
+<ol type="a">
+<li><p>¿Cuál es el valor esperado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mtext mathvariant="normal">new</mtext></msub></msub></mrow><annotation encoding="application/x-tex">\langle x \rangle_{\psi_{\text{new}}}</annotation></semantics></math>
+en el estado dado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mtext mathvariant="normal">new</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_{\text{new}}(x)</annotation></semantics></math>?</p></li>
+<li><p>¿Cuál es el valor esperado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mtext mathvariant="normal">new</mtext></msub></msub></mrow><annotation encoding="application/x-tex">\langle p \rangle_{\psi_{\text{new}}}</annotation></semantics></math>
+en el estado dado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mtext mathvariant="normal">new</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_{\text{new}}(x)</annotation></semantics></math>?</p></li>
+<li><p>Con base en sus resultados, ¿cuál es el significado físico de
+añadir un factor global
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>q</mi><mi>x</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><annotation encoding="application/x-tex">e^{iqx/\hbar}</annotation></semantics></math>
+a una función de onda?</p></li>
+<li><p>Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>,</mo><msub><mover><mi>B</mi><mo accent="true">̂</mo></mover><mi>q</mi></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\hat{p}, \hat{B}_q]</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>,</mo><msub><mover><mi>B</mi><mo accent="true">̂</mo></mover><mi>q</mi></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\hat{x}, \hat{B}_q]</annotation></semantics></math>.</p></li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a
+href="https://ocw.mit.edu">https://ocw.mit.edu</a></em></p>
+<p><em>8.04 Física Cuántica I</em> <em>Primavera de 2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>En matemáticas esto se llama teorema de Plancherel. El
+resultado de Parseval es el análogo para series de Fourier.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

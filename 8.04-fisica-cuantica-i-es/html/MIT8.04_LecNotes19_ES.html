@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Teorema de Levinson y Resonancias</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Teorema de Levinson y Resonancias</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#teorema-de-levinson-y-resonancias"
+id="toc-teorema-de-levinson-y-resonancias">Teorema de Levinson y
+Resonancias</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#el-teorema-de-levinson" id="toc-el-teorema-de-levinson">1.
+El teorema de Levinson</a></li>
+<li><a href="#resonancias" id="toc-resonancias">2. Resonancias</a></li>
+<li><a href="#modelando-la-resonancia"
+id="toc-modelando-la-resonancia">3. Modelando la resonancia</a></li>
+</ul></li>
+<li><a href="#apéndice-lista-de-problemas-8-problem-set-8-2016"
+id="toc-apéndice-lista-de-problemas-8-problem-set-8-2016">Apéndice:
+Lista de problemas 8 (Problem Set 8, 2016)</a>
+<ul>
+<li><a href="#problema-1-estados-del-oscilador-armónico-15-puntos"
+id="toc-problema-1-estados-del-oscilador-armónico-15-puntos">Problema 1:
+Estados del oscilador armónico [15 puntos]</a></li>
+<li><a href="#problema-2-dos-funciones-delta-otra-vez-15-puntos"
+id="toc-problema-2-dos-funciones-delta-otra-vez-15-puntos">Problema 2:
+Dos funciones delta — otra vez [15 puntos]</a></li>
+<li><a
+href="#problema-3-el-pozo-cuadrado-finito-convirtiéndose-en-el-pozo-cuadrado-infinito-5-puntos"
+id="toc-problema-3-el-pozo-cuadrado-finito-convirtiéndose-en-el-pozo-cuadrado-infinito-5-puntos">Problema
+3: El pozo cuadrado finito convirtiéndose en el pozo cuadrado infinito
+[5 puntos]</a></li>
+<li><a
+href="#problema-4-reflexión-de-un-paquete-de-ondas-contra-un-potencial-escalón-20-puntos"
+id="toc-problema-4-reflexión-de-un-paquete-de-ondas-contra-un-potencial-escalón-20-puntos">Problema
+4: Reflexión de un paquete de ondas contra un potencial escalón [20
+puntos]</a></li>
+<li><a
+href="#problema-5-dispersión-en-una-barrera-rectangular-10-puntos"
+id="toc-problema-5-dispersión-en-una-barrera-rectangular-10-puntos">Problema
+5: Dispersión en una barrera rectangular [10 puntos]</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="teorema-de-levinson-y-resonancias">Teorema de Levinson y
+Resonancias</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 19: Resonances and Breit-Wigner distribution. The
+complex k-plane.</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=mnvYIEbJXlM">Time delay and
+resonances</a> (18:18)</li>
+<li><a href="https://www.youtube.com/watch?v=VY-_xLxHQbA">Effects of
+resonance on phase shifts, wave amplitude and time delay</a>
+(14:53)</li>
+<li><a href="https://www.youtube.com/watch?v=8Dxo4LPK_9w">Modelling a
+resonance</a> (15:37)</li>
+<li><a href="https://www.youtube.com/watch?v=OQMczXtDnpU">Half-width and
+time delay</a> (08:17)</li>
+<li><a href="https://www.youtube.com/watch?v=0T83-47Vi-M">Resonances in
+the complex k plane</a> (15:14)</li>
+</ul>
+<hr />
+<p><em>B. Zwiebach</em> <em>28 de abril de 2016</em></p>
+<h2 id="el-teorema-de-levinson">1. El teorema de Levinson</h2>
+<p>El teorema de Levinson relaciona el número
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>b</mi></msub><annotation encoding="application/x-tex">N_b</annotation></semantics></math>
+de estados ligados de un potencial dado con la excursión del desfasaje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(E)</annotation></semantics></math>
+a medida que la energía va de cero a infinito:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>b</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>π</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+N_b = \frac{1}{\pi}\left(\delta(0) - \delta(\infty)\right) . \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>Para demostrar este resultado consideremos un potencial arbitrario
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+de alcance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+con una pared en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.
+Este potencial, mostrado a la izquierda en la Figura 1, tiene un número
+de estados ligados, todos no degenerados, que pueden contarse. Existe
+también un conjunto de autoestados de energía positiva: los estados de
+dispersión que, al pertenecer a un continuo, no pueden contarse. Nuestra
+demostración requiere la posibilidad de contar estados, así que
+introduciremos una segunda pared infinita, colocada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+grande. Por supuesto, esto cambiará el espectro, pero a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+se hace cada vez más grande los cambios se vuelven cada vez más
+pequeños. Pensamos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+como un regulador del potencial que discretiza el espectro y así nos
+permite enumerar los estados. Lo hace porque, con dos paredes, el
+potencial se convierte en un pozo infinito ancho y todos los estados
+pasan a ser estados ligados. El potencial con la pared reguladora se
+muestra a la derecha en la Figura 1.</p>
+<p><em>Figura 1: Izquierda: un potencial unidimensional arbitrario
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+de alcance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+Derecha: el mismo potencial con una pared reguladora colocada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>.</em></p>
+<p>La clave de la demostración será comparar el conteo de estados en el
+potencial regulado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V \neq 0</annotation></semantics></math>
+con el conteo de estados en el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V = 0</annotation></semantics></math>,
+también regulado con una segunda pared en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>.
+Consideremos entonces el potencial regulado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V = 0</annotation></semantics></math>
+y los autoestados de energía positiva. Estos corresponden a la función
+de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\phi(x) = \sin kx</annotation></semantics></math>,
+con la segunda pared exigiendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>=</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi(x = L) = 0</annotation></semantics></math>.
+Así obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>L</mi><mo>=</mo><mi>n</mi><mi>π</mi><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">con </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+kL = n\pi, \quad \text{con } n = 1, 2, \ldots \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>Los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+están ahora cuantizados. Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>
+un intervalo infinitesimal en el número de onda, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">dn</annotation></semantics></math>
+el número de estados en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>
+cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V = 0</annotation></semantics></math>.
+Así,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi>L</mi><mo>=</mo><mi>d</mi><mi>n</mi><mspace width="0.167em"></mspace><mi>π</mi><mspace width="0.222em"></mspace><mo>→</mo><mspace width="0.222em"></mspace><mi>d</mi><mi>n</mi><mo>=</mo><mfrac><mi>L</mi><mi>π</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+dk\, L = dn\, \pi \ \to \ dn = \frac{L}{\pi}\, dk . \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p><em>Figura 2: Con la pared reguladora el número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+toma valores discretos.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>
+es un intervalo infinitesimal en el espacio de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</em></p>
+<p>Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) \neq 0</annotation></semantics></math>,
+las soluciones para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>,
+todas ellas soluciones de energía positiva, tienen la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = e^{i\delta} \sin(kx + \delta) . \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>La condición de frontera
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(L) = 0</annotation></semantics></math>
+implica una cuantización</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>L</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>n</mi><mo>′</mo></msup><mi>π</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+kL + \delta(k) = n&#39;\pi , \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mo>′</mo></msup><annotation encoding="application/x-tex">n&#39;</annotation></semantics></math>
+entero. Podemos nuevamente diferenciar para determinar el número de
+estados de energía positiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>n</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">dn&#39;</annotation></semantics></math>
+en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V \neq 0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi>L</mi><mo>+</mo><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mo>=</mo><mi>d</mi><msup><mi>n</mi><mo>′</mo></msup><mspace width="0.167em"></mspace><mi>π</mi><mspace width="0.222em"></mspace><mo>→</mo><mspace width="0.222em"></mspace><mi>d</mi><msup><mi>n</mi><mo>′</mo></msup><mo>=</mo><mfrac><mi>L</mi><mi>π</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mo>+</mo><mfrac><mn>1</mn><mi>π</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+dk\, L + \frac{d\delta}{dk}\, dk = dn&#39;\, \pi \ \to \ dn&#39; = \frac{L}{\pi}\, dk + \frac{1}{\pi}\frac{d\delta}{dk}\, dk . \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>El número de soluciones de energía positiva que se pierden en el
+intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>
+al encender el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+está dado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>n</mi><mo>−</mo><mi>d</mi><msup><mi>n</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">dn - dn&#39;</annotation></semantics></math>,
+que puede evaluarse usando (1.3) y (1.6):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>n</mi><mo>−</mo><mi>d</mi><msup><mi>n</mi><mo>′</mo></msup><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mi>π</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+dn - dn&#39; = -\frac{1}{\pi}\frac{d\delta}{dk}\, dk . \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>El número total de soluciones de energía positiva que se pierden a
+medida que se enciende el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+está dado integrando la expresión anterior sobre todo el rango de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">núm. de soluciones de energía positiva perdidas al encender </mtext><mspace width="0.333em"></mspace></mrow><mi>V</mi><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mfrac><mn>1</mn><mi>π</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>k</mi><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mi>π</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+\text{núm. de soluciones de energía positiva perdidas al encender } V = -\int_0^{\infty} \frac{1}{\pi}\frac{d\delta}{dk}\, dk = -\frac{1}{\pi}\left(\delta(\infty) - \delta(0)\right) . \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Aunque perdemos un número de soluciones de energía positiva al
+encender el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+los estados no desaparecen. Al encender el potencial de manera continua
+desde cero hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+podemos seguir la pista de cada autoestado de energía y ¡ningún estado
+puede desaparecer! Si perdemos algunos estados de energía positiva, esos
+estados deben reaparecer ahora como estados de energía negativa, ¡es
+decir, estados ligados! Denotando con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>b</mi></msub><annotation encoding="application/x-tex">N_b</annotation></semantics></math>
+el número de estados ligados en el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V \neq 0</annotation></semantics></math>,
+el resultado en (1.8) implica que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>b</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>π</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+N_b = \frac{1}{\pi}\left(\delta(0) - \delta(\infty)\right) . \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>¡Esto es lo que queríamos demostrar!</p>
+<h2 id="resonancias">2. Resonancias</h2>
+<p>Hemos calculado el retraso temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mn>2</mn><mi>ℏ</mi><mspace width="0.167em"></mspace><msup><mi>δ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Delta t = 2\hbar\,\delta&#39;(E)</annotation></semantics></math>
+asociado al paquete de ondas reflejado que emerge de los potenciales de
+alcance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+que hemos considerado. Si el retraso temporal es negativo, el paquete de
+ondas reflejado emerge antes de tiempo. Podemos preguntar: ¿podemos
+obtener un retraso temporal negativo arbitrariamente grande? La
+respuesta es no. Un retraso temporal muy grande sería una violación de
+la causalidad. Significaría que el paquete entrante se refleja incluso
+antes de alcanzar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x = R</annotation></semantics></math>,
+lo cual es imposible. De hecho, el mayor retraso temporal negativo se
+realizaría (al menos clásicamente) si tuviéramos reflexión perfecta
+cuando el paquete entrante llega a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x = R</annotation></semantics></math>.
+Si esto ocurre, el retraso temporal sería
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><mrow><mn>2</mn><mi>R</mi></mrow><msub><mi>v</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">-\frac{2R}{v_0}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>0</mn></msub><annotation encoding="application/x-tex">v_0</annotation></semantics></math>
+es la velocidad del paquete. En efecto,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mn>2</mn><mi>R</mi></mrow><msub><mi>v</mi><mn>0</mn></msub></mfrac><annotation encoding="application/x-tex">\frac{2R}{v_0}</annotation></semantics></math>
+es el tiempo que se ahorra el paquete que no tuvo que entrar y salir del
+alcance. Así, esperamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">retraso temporal</mtext><mo>=</mo><mn>2</mn><mi>ℏ</mi><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo>≥</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>R</mi></mrow><msub><mi>v</mi><mn>0</mn></msub></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.1)</mtext></mrow><annotation encoding="application/x-tex">
+\text{retraso temporal} = 2\hbar\frac{d\delta}{dE} \ge -\frac{2R}{v_0} . \qquad \text{(2.1)}
+</annotation></semantics></math></p>
+<p>Esto puede simplificarse un poco usando derivadas respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>ℏ</mi><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>ℏ</mi><mfrac><mn>1</mn><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><msub><mi>v</mi><mn>0</mn></msub></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>≥</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>R</mi></mrow><msub><mi>v</mi><mn>0</mn></msub></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.2)</mtext></mrow><annotation encoding="application/x-tex">
+2\hbar\frac{d\delta}{dE} = 2\hbar\frac{1}{\frac{dE}{dk}}\frac{d\delta}{dk} = \frac{2}{v_0}\frac{d\delta}{dk} \ge -\frac{2R}{v_0} , \qquad \text{(2.2)}
+</annotation></semantics></math></p>
+<p>lo que a su vez da la restricción</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>≥</mo><mi>−</mi><mi>R</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.3)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d\delta}{dk} \ge -R . \qquad \text{(2.3)}
+</annotation></semantics></math></p>
+<p>El argumento no fue riguroso, pero el resultado es bastante preciso,
+recibiendo correcciones que se anulan para paquetes de energía
+grande.</p>
+<p>Alternativamente, podemos preguntar: ¿podemos obtener un retraso
+temporal positivo arbitrariamente grande? La respuesta es sí. Esto puede
+ocurrir si el paquete de ondas queda temporalmente atrapado en el
+potencial. En ese caso esperaríamos que la amplitud de probabilidad se
+vuelva grande en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">0 &lt; x &lt; R</annotation></semantics></math>.
+Si el paquete de ondas queda atrapado durante un tiempo largo tenemos
+una resonancia. El estado se parece un poco a un estado ligado en el
+sentido de que se localiza en el potencial, al menos por un tiempo. Para
+obtener una resonancia ayuda tener un potencial atractivo y una barrera
+de energía positiva. Podemos lograr esto con el potencial</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>∞</mi></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>≤</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>V</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>2</mn><mi>a</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mn>2</mn><mi>a</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.4)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) =
+\begin{cases}
+\infty &amp; \text{para } x \le 0 \\
+-V_0 &amp; \text{para } 0 &lt; x &lt; a \\
+V_1 &amp; \text{para } a &lt; x &lt; 2a \\
+0 &amp; \text{para } x &gt; 2a .
+\end{cases} \qquad \text{(2.4)}
+</annotation></semantics></math></p>
+<p>El potencial, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo><msub><mi>V</mi><mn>1</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V_0, V_1 &gt; 0</annotation></semantics></math>,
+se muestra en la Figura 4. Para tener una resonancia exploramos energías
+en el rango de cero a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>1</mn></msub><annotation encoding="application/x-tex">V_1</annotation></semantics></math>.
+En ese rango de energías podemos esperar encontrar algunos valores
+particulares que conducen a un comportamiento resonante, es decir, gran
+retraso temporal y gran amplitud para la función de onda en el pozo.</p>
+<p><em>Figura 4: Buscamos resonancias con energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+en el rango
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><msub><mi>V</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0, V_1)</annotation></semantics></math>.
+En este rango la barrera
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>1</mn></msub><annotation encoding="application/x-tex">V_1</annotation></semantics></math>
+produce una región clásicamente prohibida
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>2</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x \in (a, 2a)</annotation></semantics></math>,
+que puede ayudar a localizar la amplitud alrededor del pozo.</em></p>
+<p>Dadas las tres regiones relevantes en el potencial, definimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>κ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>V</mi><mn>1</mn></msub><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.5)</mtext></mrow><annotation encoding="application/x-tex">
+k&#39;^2 = \frac{2m(E + V_0)}{\hbar^2}, \qquad \kappa^2 = \frac{2m(V_1 - E)}{\hbar^2}, \qquad k^2 = \frac{2mE}{\hbar^2} . \qquad \text{(2.5)}
+</annotation></semantics></math></p>
+<p>En la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0 &lt; x &lt; a</annotation></semantics></math>
+debemos usar funciones trigonométricas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>x</mi></mrow><annotation encoding="application/x-tex">k&#39;x</annotation></semantics></math>.
+En la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">a &lt; x &lt; 2a</annotation></semantics></math>
+usamos funciones hiperbólicas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\kappa a</annotation></semantics></math>
+y en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; 2a</annotation></semantics></math>
+usamos la solución canónica con desfasaje y número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+En la región intermedia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">a &lt; x &lt; 2a</annotation></semantics></math>
+podríamos usar una combinación de soluciones</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msup><mi>e</mi><mrow><mi>κ</mi><mi>x</mi></mrow></msup><mo>,</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mi>x</mi></mrow></msup><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">o</mtext><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">{</mo><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>x</mi><mo>,</mo><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>x</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">o</mtext><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">{</mo><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.6)</mtext></mrow><annotation encoding="application/x-tex">
+\{e^{\kappa x}, e^{-\kappa x}\}, \quad \text{o} \quad \{\cosh \kappa x, \sinh \kappa x\}, \quad \text{o} \quad \{\cosh \kappa(x-a), \sinh \kappa(x-a)\} . \qquad \text{(2.6)}
+</annotation></semantics></math></p>
+<p>El último par es el más adecuado para implementar directamente la
+continuidad de la función de onda en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Así podemos escribir para la función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>B</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>a</mi><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>2</mn><mi>a</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mn>2</mn><mi>a</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.7)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) =
+\begin{cases}
+A \sin(k&#39;x) &amp; 0 &lt; x &lt; a \\
+A \sin(k&#39;a) \cosh\kappa(x-a) + B \sinh\kappa(x-a) &amp; a &lt; x &lt; 2a \\
+e^{i\delta}\sin(kx+\delta) &amp; x &gt; 2a
+\end{cases} \qquad \text{(2.7)}
+</annotation></semantics></math></p>
+<p>Tras implementar las condiciones de frontera restantes podemos
+resolver para el desfasaje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>.
+Después de un trabajo moderado se obtiene:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>k</mi><mi>κ</mi></mfrac><mo>⋅</mo><mfrac><mrow><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mrow><mrow><msup><mi>k</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup></mrow></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow><mrow><mi>κ</mi><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mrow><msup><mi>k</mi><mo>′</mo></msup></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
+\tan(2ka + \delta) = \frac{k}{\kappa} \cdot \frac{a \sin k&#39;a \cosh\kappa a + \frac{k&#39;\kappa}{k&#39;^{2}}\cos k&#39;a \sinh\kappa a}{\kappa a \sin k&#39;a \sinh\kappa a + \frac{k&#39;\kappa}{k&#39;}\cos k&#39;a \cosh\kappa a} . \qquad \text{(2.8)}
+</annotation></semantics></math></p>
+<p>Esta expresión es bastante intrincada, por lo que es mejor hacer un
+trabajo numérico. Para ello definimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>z</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>1</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>u</mi><mo>≡</mo><mi>k</mi><mi>a</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.9)</mtext></mrow><annotation encoding="application/x-tex">
+z_0^2 = \frac{2mV_0 a^2}{\hbar^2}, \qquad z_1^2 = \frac{2mV_1 a^2}{\hbar^2}, \qquad u \equiv ka . \qquad \text{(2.9)}
+</annotation></semantics></math></p>
+<p>lo que nos permite expresar tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi></mrow><annotation encoding="application/x-tex">k&#39;a</annotation></semantics></math>
+como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\kappa a</annotation></semantics></math>
+como funciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msup><mi>u</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>κ</mi><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><msubsup><mi>z</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msup><mi>u</mi><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.10)</mtext></mrow><annotation encoding="application/x-tex">
+(k&#39;a)^2 = z_0^2 + u^2, \qquad (\kappa a)^2 = z_1^2 - u^2 . \qquad \text{(2.10)}
+</annotation></semantics></math></p>
+<p>En este punto (2.8) puede usarse para determinar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">u = ka</annotation></semantics></math>
+y las constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">z_0, z_1</annotation></semantics></math>.
+Supongamos que elegimos valores para nuestros parámetros que controlan
+las ecuaciones. En la Figura 5 mostramos resultados para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">z_0^2 = 1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">z_1^2 = 5</annotation></semantics></math>.</p>
+<p><em>Figura 5: Gráfico de varias cantidades en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">u = ka</annotation></semantics></math>,
+con el potencial caracterizado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">z_0^2 = 1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">z_1^2 = 5</annotation></semantics></math>.
+(a)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(E)</annotation></semantics></math>
+aumenta rápidamente alrededor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mo>*</mo></msub><mo>=</mo><mn>1.85</mn></mrow><annotation encoding="application/x-tex">u_* = 1.85</annotation></semantics></math>,
+o equivalentemente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mn>0.69</mn><mspace width="0.167em"></mspace><msub><mi>V</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">E = 0.69\,V_1</annotation></semantics></math>,
+cruzando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-\pi/2</annotation></semantics></math>
+y señalando comportamiento resonante. (b) Gráfico de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi></mrow><annotation encoding="application/x-tex">|A_s|^2 = \sin^2\delta</annotation></semantics></math>,
+mostrando picos cada vez que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>δ</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|\delta| = \pi/2</annotation></semantics></math>.
+(c) El coeficiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>
+de la función de onda en el pozo alcanza su pico en la resonancia,
+mostrando alta probabilidad de encontrar la partícula en el pozo. (d) El
+retraso temporal es positivo y alcanza su pico en la
+resonancia.</em></p>
+<p>Consideremos la parte (a) de la figura, que muestra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(ka)</annotation></semantics></math>.
+Al comienzo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+disminuye linealmente, señal de un retraso temporal negativo, ya que las
+ondas de baja energía se reflejan en el borde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x = 2a</annotation></semantics></math>
+de la barrera
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>1</mn></msub><annotation encoding="application/x-tex">V_1</annotation></semantics></math>.
+Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+cruza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-\pi/2</annotation></semantics></math>
+no hay resonancia, aunque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi></mrow><annotation encoding="application/x-tex">|A_s|^2 = \sin^2\delta</annotation></semantics></math>
+sea igual a uno. En efecto, no vemos ningún pico en la amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>.
+A medida que aumenta la energía y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msub><mi>u</mi><mo>*</mo></msub><mo>=</mo><mn>1.8523</mn></mrow><annotation encoding="application/x-tex">u = u_* = 1.8523</annotation></semantics></math>
+obtenemos una resonancia. Esta vez
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+está aumentando rápidamente y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+cruza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-\pi/2</annotation></semantics></math>
+nuevamente, haciendo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|A_s|^2 = 1</annotation></semantics></math>.
+La señal de resonancia es el muy alto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>,
+el pico en el retraso temporal. Este retraso temporal alcanza un valor
+de aproximadamente 14, lo que significa que el retraso es catorce veces
+el tiempo de tránsito libre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>a</mi><mi>/</mi><msub><mi>v</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">4a/v_0</annotation></semantics></math>.</p>
+<h2 id="modelando-la-resonancia">3. Modelando la resonancia</h2>
+<p>Nos gustaría tener más comprensión sobre la naturaleza de las
+resonancias. En particular, queremos apreciar las características
+generales del fenómeno. Además, hasta ahora podemos identificar
+resonancias observando el comportamiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+pero ¿podemos encontrar una ecuación que defina las resonancias?</p>
+<p>Como primer paso, modelamos el comportamiento de un desfasaje cerca
+de la resonancia. Recordando que una resonancia requiere que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>δ</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|\delta|</annotation></semantics></math>
+cruce el valor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
+y que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+físicamente, es lo mismo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+aumentado o disminuido en múltiplos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>,
+podemos elegir que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+varíe de casi cero a casi
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>.
+Podemos lograr esto con la siguiente función simple.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>β</mi><mrow><mi>α</mi><mo>−</mo><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">con </mtext><mspace width="0.333em"></mspace></mrow><mi>β</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>α</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.1)</mtext></mrow><annotation encoding="application/x-tex">
+\delta = \tan^{-1}\left(\frac{\beta}{\alpha - k}\right), \quad \text{con } \beta &gt; 0, \ \alpha &gt; 0 . \qquad \text{(3.1)}
+</annotation></semantics></math></p>
+<p>aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+son constantes positivas con las mismas unidades que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Para ver lo que hace esta función, primero graficamos el argumento de la
+arcotangente en la parte superior de la Figura 6. Nótese que el
+argumento varía rápidamente en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>−</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo>+</mo><mi>β</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\alpha - \beta, \alpha + \beta)</annotation></semantics></math>.
+La variación de la fase asociada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+se muestra en la figura de abajo. Para tener un aumento pronunciado en
+la fase, debemos tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+pequeño en comparación con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</p>
+<p><em>Figura 6: La constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+debe ser pequeña en comparación con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+para obtener una variación pronunciada. Una resonancia, como se muestra
+aquí, requiere que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+aumente con la energía.</em></p>
+<p>Dos cálculos relativamente cortos nos dan más comprensión:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mi>β</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi><mo>=</mo><mfrac><msup><mi>β</mi><mn>2</mn></msup><mrow><msup><mi>β</mi><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>−</mo><mi>k</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.2)</mtext></mrow><annotation encoding="application/x-tex">
+\left.\frac{d\delta}{dk}\right|_{k=\alpha} = \frac{1}{\beta}, \qquad |A_s|^2 = \sin^2\delta = \frac{\beta^2}{\beta^2 + (\alpha - k)^2} . \qquad \text{(3.2)}
+</annotation></semantics></math></p>
+<p>El primero nos informa que, en igualdad de condiciones, el retraso es
+grande si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+es pequeño. El segundo nos da la norma al cuadrado de la amplitud de
+dispersión en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+con un pico en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">k = \alpha</annotation></semantics></math>.
+Esta ecuación se expresa de manera más célebre en términos de la
+energía. Para esto notamos que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>−</mo><msub><mi>E</mi><mi>α</mi></msub><mo>=</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mn>2</mn></msup><mo>−</mo><msup><mi>α</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>α</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mi>α</mi><mo stretchy="false" form="postfix">)</mo><mo>≃</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>α</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mi>α</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.3)</mtext></mrow><annotation encoding="application/x-tex">
+E - E_\alpha = \frac{\hbar^2}{2m}(k^2 - \alpha^2) = \frac{\hbar^2}{2m}(k+\alpha)(k-\alpha) \simeq \frac{\hbar^2}{2m}(2\alpha)(k-\alpha) , \qquad \text{(3.3)}
+</annotation></semantics></math></p>
+<p>cuando trabajamos con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≈</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">k \approx \alpha</annotation></semantics></math>.
+De esto se sigue que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≃</mo><mfrac><msup><mi>m</mi><mn>2</mn></msup><mrow><msup><mi>ℏ</mi><mn>4</mn></msup><msup><mi>α</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><msub><mi>E</mi><mi>α</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.4)</mtext></mrow><annotation encoding="application/x-tex">
+(k-\alpha)^2 \simeq \frac{m^2}{\hbar^4 \alpha^2}(E - E_\alpha)^2 , \qquad \text{(3.4)}
+</annotation></semantics></math></p>
+<p>y por lo tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>≃</mo><mfrac><msup><mi>β</mi><mn>2</mn></msup><mrow><msup><mi>β</mi><mn>2</mn></msup><mo>+</mo><mfrac><msup><mi>m</mi><mn>2</mn></msup><mrow><msup><mi>ℏ</mi><mn>4</mn></msup><msup><mi>α</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><msub><mi>E</mi><mi>α</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><msub><mi>E</mi><mi>α</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.5)</mtext></mrow><annotation encoding="application/x-tex">
+|\psi_s|^2 \simeq \frac{\beta^2}{\beta^2 + \frac{m^2}{\hbar^4\alpha^2}(E-E_\alpha)^2} = \frac{\frac{1}{4}\Gamma^2}{(E-E_\alpha)^2 + \frac{1}{4}\Gamma^2} , \qquad \text{(3.5)}
+</annotation></semantics></math></p>
+<p>Donde hemos definido la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+con unidades de energía:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>4</mn></msup><msup><mi>β</mi><mn>2</mn></msup><msup><mi>α</mi><mn>2</mn></msup></mrow><msup><mi>m</mi><mn>2</mn></msup></mfrac><mspace width="0.222em"></mspace><mo>→</mo><mspace width="0.222em"></mspace><mi mathvariant="normal">Γ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>α</mi><mi>β</mi><msup><mi>ℏ</mi><mn>2</mn></msup></mrow><mi>m</mi></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.6)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{4}\Gamma^2 = \frac{\hbar^4\beta^2\alpha^2}{m^2} \ \to \ \Gamma = \frac{2\alpha\beta\hbar^2}{m} . \qquad \text{(3.6)}
+</annotation></semantics></math></p>
+<p>La dependencia en la energía de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\psi_s|^2</annotation></semantics></math>
+sigue la llamada distribución de Breit-Wigner,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>≃</mo><mfrac><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><msub><mi>E</mi><mi>α</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.7)</mtext></mrow><annotation encoding="application/x-tex">
+|\psi_s|^2 \simeq \frac{\frac{1}{4}\Gamma^2}{(E-E_\alpha)^2 + \frac{1}{4}\Gamma^2} . \qquad \text{(3.7)}
+</annotation></semantics></math></p>
+<p>La distribución se muestra en la Figura 8. El valor pico para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\psi_s|^2</annotation></semantics></math>
+se alcanza en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi>E</mi><mi>α</mi></msub></mrow><annotation encoding="application/x-tex">E = E_\alpha</annotation></semantics></math>
+y vale uno. Llamamos a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+el ancho a media altura porque el valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ψ</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\psi_s|^2</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi>E</mi><mi>α</mi></msub><mo>±</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi mathvariant="normal">Γ</mi></mrow><annotation encoding="application/x-tex">E = E_\alpha \pm \frac{1}{2}\Gamma</annotation></semantics></math>
+es un medio. Un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+pequeño corresponde a un ancho estrecho, o una resonancia estrecha.</p>
+<p><em>Figura 7: La distribución de Breit-Wigner.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+es el ancho de la distribución a media altura.</em></p>
+<p>Para comprender mejor el significado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+definimos el tiempo asociado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>,
+llamado el tiempo de vida de la resonancia:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>≡</mo><mfrac><mi>ℏ</mi><mi mathvariant="normal">Γ</mi></mfrac><mo>=</mo><mfrac><mi>m</mi><mrow><mn>2</mn><mi>α</mi><mi>β</mi><mi>ℏ</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.8)</mtext></mrow><annotation encoding="application/x-tex">
+\tau \equiv \frac{\hbar}{\Gamma} = \frac{m}{2\alpha\beta\hbar} . \qquad \text{(3.8)}
+</annotation></semantics></math></p>
+<p>Como probablemente esperaría, el tiempo de vida está estrechamente
+relacionado con el retraso temporal asociado a un paquete de ondas de
+energía media igual a la energía resonante. En efecto, podemos evaluar
+el retraso temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">k = \alpha</annotation></semantics></math>
+y obtener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><msub><mrow><mn>2</mn><mi>ℏ</mi><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>ℏ</mi><mfrac><mrow><mi>d</mi><mi>k</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>ℏ</mi></mrow><mrow><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mi>m</mi></mfrac><mi>k</mi></mrow></mfrac><mo>⋅</mo><mfrac><mn>1</mn><mi>β</mi></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><mrow><mi>ℏ</mi><mi>α</mi><mi>β</mi></mrow></mfrac><mo>=</mo><mn>4</mn><mi>τ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.9)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta t = \left.2\hbar\frac{d\delta}{dE}\right|_{k=\alpha} = 2\hbar\frac{dk}{dE}\frac{d\delta}{dk} = \frac{2\hbar}{\frac{\hbar^2}{m}k}\cdot\frac{1}{\beta} = \frac{2m}{\hbar\alpha\beta} = 4\tau . \qquad \text{(3.9)}
+</annotation></semantics></math></p>
+<p>Por lo tanto, concluimos que el tiempo de vida y el retraso temporal
+son la misma cantidad, salvo un factor de cuatro.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mfrac><mi>ℏ</mi><mi mathvariant="normal">Γ</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mi mathvariant="normal">Δ</mi><mi>t</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.10)</mtext></mrow><annotation encoding="application/x-tex">
+\tau = \frac{\hbar}{\Gamma} = \frac{1}{4}\Delta t . \qquad \text{(3.10)}
+</annotation></semantics></math></p>
+<p>Las partículas inestables a veces se llaman resonancias. El bosón de
+Higgs, descubierto en 2012, es una partícula inestable con masa de 125
+GeV. Puede desintegrarse en dos fotones, o en dos leptones tau, o en un
+par
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mover><mi>b</mi><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">b\bar{b}</annotation></semantics></math>,
+entre pocas otras posibilidades. El ancho
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+asociado a la partícula es de 4.07 MeV
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mn>4</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">\pm 4\%</annotation></semantics></math>).
+¡Su tiempo de vida
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+es de aproximadamente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.62</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>22</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1.62 \times 10^{-22}</annotation></semantics></math>
+segundos!</p>
+<p>Ahora intentamos comprender las resonancias de manera más matemática.
+Vimos que, en la resonancia, la norma de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+alcanza un valor máximo de uno. Exploremos cuándo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+es grande. Tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>s</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>δ</mi></mrow></msup></mfrac><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>−</mo><mi>i</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow><mrow><mn>1</mn><mo>−</mo><mi>i</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.11)</mtext></mrow><annotation encoding="application/x-tex">
+A_s = \sin\delta\, e^{i\delta} = \frac{\sin\delta}{e^{-i\delta}} = \frac{\sin\delta}{\cos\delta - i\sin\delta} = \frac{\tan\delta}{1 - i\tan\delta} . \qquad \text{(3.11)}
+</annotation></semantics></math></p>
+<p>En la resonancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\delta = \pi/2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>s</mi></msub><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">A_s = i</annotation></semantics></math>,
+usando la primera igualdad. Por otro lado, si bien normalmente pensamos
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+como un número real, la expresión final de arriba indica que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+se vuelve infinito para</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mi>−</mi><mi>i</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.12)</mtext></mrow><annotation encoding="application/x-tex">
+\tan\delta = -i , \qquad \text{(3.12)}
+</annotation></semantics></math></p>
+<p>¡lo que sea que eso signifique! Si recordamos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>i</mi><mi>z</mi><mo>=</mo><mi>i</mi><mrow><mi mathvariant="normal">tanh</mi><mo>&#8289;</mo></mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">\tan iz = i\tanh z</annotation></semantics></math>
+deducimos que la condición anterior requiere
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>→</mo><mi>−</mi><mi>i</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">\delta \to -i\infty</annotation></semantics></math>,
+un resultado bastante extraño. En todo caso,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+se vuelve infinito, o tiene un polo, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mi>−</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">\tan\delta = -i</annotation></semantics></math>.
+Veremos que el gran valor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|A_s| = 1</annotation></semantics></math>
+en la resonancia puede considerarse como la “sombra” del valor infinito
+que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+alcanza cerca en el plano complejo.</p>
+<p><em>Figura 8: En el plano complejo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+las resonancias se identifican como polos de la amplitud de dispersión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+ubicados ligeramente por debajo del eje real. Los estados ligados
+aparecen como polos sobre el eje imaginario positivo.</em></p>
+<p>En efecto, podemos ver cómo se comporta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+cerca de la resonancia insertando el comportamiento cercano a la
+resonancia (3.1) de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+en (3.11):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>s</mi></msub><mo>=</mo><mfrac><mfrac><mi>β</mi><mrow><mi>α</mi><mo>−</mo><mi>k</mi></mrow></mfrac><mrow><mn>1</mn><mo>−</mo><mi>i</mi><mfrac><mi>β</mi><mrow><mi>α</mi><mo>−</mo><mi>k</mi></mrow></mfrac></mrow></mfrac><mo>=</mo><mfrac><mi>β</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>−</mo><mi>i</mi><mi>β</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>k</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.13)</mtext></mrow><annotation encoding="application/x-tex">
+A_s = \frac{\frac{\beta}{\alpha-k}}{1 - i\frac{\beta}{\alpha-k}} = \frac{\beta}{(\alpha - i\beta) - k} . \qquad \text{(3.13)}
+</annotation></semantics></math></p>
+<p>Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">k = \alpha</annotation></semantics></math>,
+es decir, en la energía resonante, obtenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>s</mi></msub><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">A_s = i</annotation></semantics></math>,
+como se esperaba. Si ahora pensamos en el número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+como una variable compleja, vemos que el polo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+es un polo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><msub><mi>k</mi><mo>*</mo></msub><mo>=</mo><mi>α</mi><mo>−</mo><mi>i</mi><mi>β</mi></mrow><annotation encoding="application/x-tex">k = k_* = \alpha - i\beta</annotation></semantics></math>.
+La parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mo>*</mo></msub><annotation encoding="application/x-tex">k_*</annotation></semantics></math>
+es la energía resonante, y la parte imaginaria
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+codifica el tiempo de vida. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+pequeño la resonancia es un polo cercano al eje real, como se ilustra en
+la Figura 8. Cuanto menor es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+más aguda es la resonancia. Como podemos ver, el valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A_s|</annotation></semantics></math>
+sobre la línea real se vuelve grande para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">k = \alpha</annotation></semantics></math>
+porque en realidad es infinito un poco por debajo del eje.</p>
+<p>La lección de todo esto es que podemos, en efecto, tomar en serio
+(3.12) y buscar resonancias resolviendo para los valores complejos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+para los cuales</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Condición de resonancia: </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>i</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.14)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Condición de resonancia: } \tan\delta(k) = -i . \qquad \text{(3.14)}
+</annotation></semantics></math></p>
+<p>La parte real de esos valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+son las energías resonantes. Las partes imaginarias nos dan el tiempo de
+vida.</p>
+<p>La idea de un plano complejo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es muy poderosa. Supongamos que consideramos valores puramente
+imaginarios de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+de la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>i</mi><mi>κ</mi></mrow><annotation encoding="application/x-tex">k = i\kappa</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\kappa &gt; 0</annotation></semantics></math>.
+Entonces la energía toma la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>−</mi><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>κ</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>&lt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.15)</mtext></mrow><annotation encoding="application/x-tex">
+E = -\frac{\hbar^2\kappa^2}{2m} &lt; 0 , \qquad \text{(3.15)}
+</annotation></semantics></math></p>
+<p>que es adecuada para estados ligados. En efecto, se puede demostrar
+que los estados ligados aparecen como polos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+a lo largo del eje imaginario positivo, como se muestra en la Figura 8.
+¡El plano complejo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+tiene espacio para acomodar estados de dispersión, resonancias, y
+estados ligados!</p>
+<p><em>Sarah Geller transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</em></p>
+<hr />
+<p>MIT OpenCourseWare https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<h1 id="apéndice-lista-de-problemas-8-problem-set-8-2016">Apéndice:
+Lista de problemas 8 (Problem Set 8, 2016)</h1>
+<p><em>Departamento de Física del MIT</em> <em>13 de abril de 2016 —
+Fecha de entrega: viernes 22 de abril de 2016, 12:00 del
+mediodía</em></p>
+<p><strong>Lecturas recomendadas:</strong> Griffiths, páginas 73-76,
+81-82 (sobre estados de dispersión). Ohanian, Capítulo 11: Dispersión y
+resonancias.</p>
+<h2 id="problema-1-estados-del-oscilador-armónico-15-puntos">Problema 1:
+Estados del oscilador armónico [15 puntos]</h2>
+<p>Considere el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>
+definido por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>α</mi></msub><mo>≡</mo><mi>N</mi><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><msup><mover><mi>a</mi><mo accent="true">̂</mo></mover><mo>†</mo></msup><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi>φ</mi><mn>0</mn></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\psi_\alpha \equiv N \exp(\alpha \hat{a}^\dagger)\, \varphi_0 ,
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∈</mo><mi>ℂ</mi></mrow><annotation encoding="application/x-tex">\alpha \in \mathbb{C}</annotation></semantics></math>
+un número complejo. Para las dos primeras preguntas siguientes puede ser
+útil simplemente expandir la exponencial anterior.</p>
+<ol type="a">
+<li><p>Encuentre la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+necesaria para que el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>
+esté normalizado.</p></li>
+<li><p>Demuestre que el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>
+es un autoestado del operador de aniquilación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{a}</annotation></semantics></math>.
+¿Cuál es el autovalor?</p></li>
+<li><p>Encuentre el valor esperado del hamiltoniano en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>.</p></li>
+<li><p>Encuentre la incertidumbre en la energía en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>.</p></li>
+<li><p>Use la ecuación de autovalores, vista como una ecuación
+diferencial, para calcular la forma explícita de la función de onda
+normalizada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>α</mi></msub><annotation encoding="application/x-tex">\psi_\alpha</annotation></semantics></math>.</p></li>
+</ol>
+<h2 id="problema-2-dos-funciones-delta-otra-vez-15-puntos">Problema 2:
+Dos funciones delta — otra vez [15 puntos]</h2>
+<p>Considere de nuevo el problema de una partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+moviéndose en un potencial de doble pozo unidimensional</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>g</mi><mspace width="0.167em"></mspace><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>g</mi><mspace width="0.167em"></mspace><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>g</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+V(x) = -g\,\delta(x-a) - g\,\delta(x+a) , \qquad g &gt; 0 .
+</annotation></semantics></math></p>
+<p>En la tarea anterior encontró el valor de la energía del estado
+ligado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+para el estado par en términos de la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><msup><mi>ℏ</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E_0 = \hbar^2/(2ma^2)</annotation></semantics></math>.
+Había definido
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>κ</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\xi = \kappa a</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>E</mi><msub><mi>E</mi><mn>0</mn></msub></mfrac><mo>=</mo><mi>−</mi><msup><mi>ξ</mi><mn>2</mn></msup><mspace width="1.0em"></mspace><mtext mathvariant="normal">donde</mtext><mspace width="1.0em"></mspace><mfrac><mi>ξ</mi><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>ξ</mi></mrow></msup></mrow></mfrac><mo>=</mo><mi>λ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>λ</mi><mo>≡</mo><mfrac><mrow><mi>m</mi><mi>a</mi><mi>g</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\frac{E}{E_0} = -\xi^2 \quad \text{donde} \quad \frac{\xi}{1+e^{-2\xi}} = \lambda , \qquad \lambda \equiv \frac{mag}{\hbar^2} ,
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+adimensional, y que codifica la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+de las funciones delta, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es constante, o bien la separación entre las funciones delta, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+es constante. Podemos entonces escribir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mi>a</mi><msub><mi>a</mi><mn>0</mn></msub></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>a</mi><mn>0</mn></msub><mo>≡</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mi>m</mi><mi>g</mi></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\lambda = \frac{a}{a_0} , \qquad a_0 \equiv \frac{\hbar^2}{mg} ,
+</annotation></semantics></math></p>
+<p>siendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math>
+una escala de longitud natural del problema una vez fijado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Introduzcamos también la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">E_\infty</annotation></semantics></math>
+asociada a una única función delta:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>∞</mi></msub><mo>≡</mo><mfrac><mrow><mi>m</mi><msup><mi>g</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>ℏ</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_\infty \equiv \frac{mg^2}{2\hbar^2} .
+</annotation></semantics></math></p>
+<p>Suponga ahora que este es un modelo de una molécula diatómica con
+distancia interatómica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>.
+El electrón del estado ligado ayuda a superar la energía repulsiva entre
+los iones. Sea la energía potencial repulsiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V_r(x)</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+la distancia entre los átomos, dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mi>β</mi><mi>g</mi></mrow><mi>x</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>β</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+V_r(x) = \frac{\beta g}{x} , \qquad \beta &gt; 0 ,
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+es un número pequeño. La energía potencial total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mtext mathvariant="normal">tot</mtext></msub><annotation encoding="application/x-tex">V_{\text{tot}}</annotation></semantics></math>
+de la configuración es la suma de la energía negativa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+del estado ligado y la energía repulsiva positiva:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mtext mathvariant="normal">tot</mtext></msub><mo>=</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+V_{\text{tot}} = E + V_r(2a) .
+</annotation></semantics></math></p>
+<ol type="a">
+<li><p>Escriba
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>−</mi><msub><mi>E</mi><mi>∞</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo>,</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E = -E_\infty f(\xi,\lambda)</annotation></semantics></math>
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+es una función que debe determinar. Grafique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+como función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">a/a_0 = \lambda</annotation></semantics></math>
+para entender cómo varía la energía del estado fundamental en función de
+la separación entre las moléculas. ¿Cuáles son los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a \to 0</annotation></semantics></math>
+y para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">a \to \infty</annotation></semantics></math>?</p></li>
+<li><p>Escriba
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>r</mi></msub><annotation encoding="application/x-tex">V_r</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">E_\infty</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>.</p></li>
+<li><p>Considere ahora la energía potencial total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mtext mathvariant="normal">tot</mtext></msub><annotation encoding="application/x-tex">V_{\text{tot}}</annotation></semantics></math>
+y grafíquela como función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">a/a_0 = \lambda</annotation></semantics></math>
+para varios valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.
+Debería encontrar un punto crítico estable del potencial para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+suficientemente pequeño. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>0.31</mn></mrow><annotation encoding="application/x-tex">\beta = 0.31</annotation></semantics></math>,
+¿cuál es el valor aproximado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><msub><mi>a</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">a/a_0</annotation></semantics></math>
+en el punto crítico del potencial?</p></li>
+</ol>
+<h2
+id="problema-3-el-pozo-cuadrado-finito-convirtiéndose-en-el-pozo-cuadrado-infinito-5-puntos">Problema
+3: El pozo cuadrado finito convirtiéndose en el pozo cuadrado infinito
+[5 puntos]</h2>
+<p>Considere el potencial de pozo cuadrado estándar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>a</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>V</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+V(x) = \begin{cases} -V_0 , &amp; \text{para } |x| \le a,\ V_0 &gt; 0 , \\ 0 &amp; \text{para } |x| &gt; a , \end{cases} \qquad (1)
+</annotation></semantics></math></p>
+<p>y la función de onda para un estado par</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="true"><mfrac><mn>1</mn><msqrt><mi>a</mi></msqrt></mfrac></mstyle><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="true"><mfrac><mi>A</mi><msqrt><mi>a</mi></msqrt></mfrac></mstyle><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\psi(x) = \begin{cases} \dfrac{1}{\sqrt{a}}\cos kx , &amp; \text{para } |x| \le a, \\[4pt] \dfrac{A}{\sqrt{a}}\, e^{-\kappa|x|} , &amp; \text{para } |x| &gt; a , \end{cases} \qquad (2)
+</annotation></semantics></math></p>
+<p>donde incluimos el prefactor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>1</mn><msqrt><mi>a</mi></msqrt></mfrac><annotation encoding="application/x-tex">\frac{1}{\sqrt{a}}</annotation></semantics></math>
+para tener unidades consistentes para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>.</p>
+<p>Queremos comprender mejor el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">V_0 \to \infty</annotation></semantics></math>
+y entender por qué la discontinuidad en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+del pozo infinito no genera problemas. Mantener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+constantes mientras
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+crece equivale a dejar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+crezca.</p>
+<p>Un análisis previo demostró que para el estado fundamental, en la
+situación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+grande, el ansatz (2) está normalizado con precisión y</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mi>k</mi><mi>a</mi><mo>≃</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>κ</mi><mi>a</mi><mo>≃</mo><msub><mi>z</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>A</mi><mo>≃</mo><mfrac><mn>2</mn><mi>π</mi></mfrac><msub><mi>z</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><msub><mi>z</mi><mn>0</mn></msub></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\eta = ka \simeq \frac{\pi}{2}\left(1 - \frac{1}{z_0}\right) , \qquad \xi = \kappa a \simeq z_0 , \qquad A \simeq \frac{2}{\pi} z_0\, e^{z_0} .
+</annotation></semantics></math></p>
+<p>Queremos ver si el valor esperado del hamiltoniano recibe una
+contribución singular desde la región prohibida. Dado que el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+se anula allí, solo debemos preocuparnos por la contribución del
+operador de energía cinética
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>K</mi><mo accent="true">̂</mo></mover><mo>=</mo><msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mi>/</mi><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">\hat{K} = \hat{p}^2/2m</annotation></semantics></math>.
+Calcule la contribución al valor esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>K</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{K}</annotation></semantics></math>
+desde la región prohibida
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>K</mi><mo accent="true">̂</mo></mover><msub><mo stretchy="false" form="postfix">⟩</mo><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow></msub><mo>≡</mo><msubsup><mo>∫</mo><mi>a</mi><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>K</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\langle \hat{K} \rangle_{x&gt;a} \equiv \int_a^\infty dx\, \psi^*(x)\, \hat{K}\, \psi(x) .
+</annotation></semantics></math></p>
+<p>La respuesta debe darse en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>.
+Interprete su resultado.</p>
+<h2
+id="problema-4-reflexión-de-un-paquete-de-ondas-contra-un-potencial-escalón-20-puntos">Problema
+4: Reflexión de un paquete de ondas contra un potencial escalón [20
+puntos]</h2>
+<p>Considere un potencial escalón con altura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+V(x) = \begin{cases} V_0 , &amp; \text{para } x &gt; 0 \\ 0 , &amp; \text{para } x &lt; 0 . \end{cases} \qquad (1)
+</annotation></semantics></math></p>
+<p>Enviamos desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>−</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">x = -\infty</annotation></semantics></math>
+un paquete de ondas cuyas componentes de momento tienen todas energías
+menores que la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+del escalón. Para esto necesitamos modos con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+que satisfagan</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≤</mo><mover><mi>k</mi><mo accent="true">̂</mo></mover><mo>,</mo><mspace width="2.0em"></mspace><msup><mover><mi>k</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+k \le \hat{k} , \qquad \hat{k}^2 = \frac{2mV_0}{\hbar^2} . \qquad (2)
+</annotation></semantics></math></p>
+<p>Escribiremos entonces el paquete de ondas incidente como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mtext mathvariant="normal">inc</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mi>a</mi></msqrt><msubsup><mo>∫</mo><mn>0</mn><mover><mi>k</mi><mo accent="true">̂</mo></mover></msubsup><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\Psi_{\text{inc}}(x) = \sqrt{a} \int_0^{\hat{k}} dk\, \Phi(k)\, e^{ikx}\, e^{-iE(k)t/\hbar} , \qquad x &lt; 0 . \qquad (3)
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la constante con unidades de longitud, determinada de manera única
+por las constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℏ</mi><annotation encoding="application/x-tex">\hbar</annotation></semantics></math>
+de este problema, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Phi(k)</annotation></semantics></math>
+es una función real, adimensional, con un máximo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>0</mn></msub><mo>&lt;</mo><mover><mi>k</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">k_0 &lt; \hat{k}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≡</mo><mfrac><mi>ℏ</mi><msqrt><mrow><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub></mrow></msqrt></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>β</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><msub><mi>k</mi><mn>0</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+a \equiv \frac{\hbar}{\sqrt{mV_0}} , \qquad \Phi(k) = e^{-\beta^2 a^2 (k-k_0)^2} . \qquad (4)
+</annotation></semantics></math></p>
+<p>La constante real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+que se fijará más abajo, controla el ancho de la distribución de
+momento. Las unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mtext mathvariant="normal">inc</mtext></msub><annotation encoding="application/x-tex">\Psi_{\text{inc}}</annotation></semantics></math>
+son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">L^{-1/2}</annotation></semantics></math>,
+y por eso incluimos el prefactor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>a</mi></msqrt><annotation encoding="application/x-tex">\sqrt{a}</annotation></semantics></math>
+en (3). Recuerde que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math>
+tiene unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">L^{-1}</annotation></semantics></math>.</p>
+<ol type="a">
+<li>Escriba la función de onda reflejada (válida para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math>)
+como una integral similar a (3). Esta integral involucra el desfasaje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(E)</annotation></semantics></math>
+calculado en clase.</li>
+</ol>
+<p>Introduzca una versión adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+del número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+una versión adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+de la coordenada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+y una versión adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+de la siguiente manera:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≡</mo><mfrac><mi>K</mi><mi>a</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>≡</mo><mi>a</mi><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>t</mi><mo>≡</mo><mfrac><mi>ℏ</mi><msub><mi>V</mi><mn>0</mn></msub></mfrac><mi>τ</mi><mi>.</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+k \equiv \frac{K}{a} , \qquad x \equiv au , \qquad t \equiv \frac{\hbar}{V_0}\tau . \qquad (5)
+</annotation></semantics></math></p>
+<p>Naturalmente, escribiremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>0</mn></msub><mo>=</mo><msub><mi>K</mi><mn>0</mn></msub><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k_0 = K_0/a</annotation></semantics></math>.
+Note que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>x</mi><mo>=</mo><mi>K</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">kx = Ku</annotation></semantics></math>.</p>
+<ol start="2" type="a">
+<li>Demuestre que la velocidad de grupo y la relación de incertidumbre
+para el paquete entrante toman la forma</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>τ</mi></mrow></mfrac><mo>=</mo><mi>#</mi><mspace width="0.167em"></mspace><msub><mi>K</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Δ</mi><mi>u</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>K</mi><mo>≥</mo><mi>#</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\frac{du}{d\tau} = \#\, K_0 , \qquad \Delta u\, \Delta K \ge \# ,
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>#</mi><annotation encoding="application/x-tex">\#</annotation></semantics></math>
+representa constantes numéricas que debe determinar (¡constantes
+distintas!). Use la aproximación de que se tiene la gaussiana completa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\Phi(K)|^2</annotation></semantics></math>
+para determinar la incertidumbre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">\Delta K</annotation></semantics></math>
+en el paquete entrante en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.
+Suponiendo de nuevo que se tiene una gaussiana completa, ¿cuál sería (en
+términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>)
+el valor mínimo posible de la incertidumbre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\Delta u</annotation></semantics></math>
+para la distribución de probabilidad asociada en el espacio de
+coordenadas?</p>
+<ol start="3" type="a">
+<li>Complete las siguientes ecuaciones fijando las constantes
+representadas por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>#</mi><annotation encoding="application/x-tex">\#</annotation></semantics></math>:</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>#</mi><mspace width="0.167em"></mspace><msub><mi>V</mi><mn>0</mn></msub><msup><mi>K</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mi>#</mi><mo>+</mo><mi>#</mi><msup><mi>K</mi><mn>2</mn></msup><mo>+</mo><mi>i</mi><mi>K</mi><msqrt><mrow><mi>#</mi><mo>+</mo><mi>#</mi><msup><mi>K</mi><mn>2</mn></msup></mrow></msqrt><mo>≡</mo><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E(k) = \#\, V_0 K^2 , \qquad e^{2i\delta(E)} = \# + \#K^2 + iK\sqrt{\# + \#K^2} \equiv w(K) .
+</annotation></semantics></math></p>
+<ol start="4" type="a">
+<li>Demuestre que el retraso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mn>2</mn><mi>ℏ</mi><mspace width="0.167em"></mspace><msup><mi>δ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Delta t = 2\hbar\,\delta&#39;(E)</annotation></semantics></math>
+experimentado por la onda reflejada implica un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">\Delta\tau</annotation></semantics></math>
+dado por</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>τ</mi><mo>=</mo><mfrac><mi>#</mi><mrow><msub><mi>K</mi><mn>0</mn></msub><msqrt><mrow><mi>#</mi><mo>+</mo><mi>#</mi><msubsup><mi>K</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\Delta\tau = \frac{\#}{K_0\sqrt{\# + \#K_0^2}} ,
+</annotation></semantics></math></p>
+<p>donde debe fijar las constantes.</p>
+<ol start="5" type="a">
+<li>Demuestre que la función de onda completa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x,t)</annotation></semantics></math>,
+válida para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math>
+y todo tiempo, que ahora vemos como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>τ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(u,\tau)</annotation></semantics></math>
+válida para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u&lt;0</annotation></semantics></math>
+y todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>,
+toma la forma</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mfrac><mn>1</mn><mn>2</mn></mfrac></msup><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>τ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>#</mi></msubsup><mi>d</mi><mi>K</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>β</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo>−</mo><msub><mi>K</mi><mn>0</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>#</mi><msup><mi>K</mi><mn>2</mn></msup><mi>τ</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>K</mi><mi>u</mi></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>K</mi><mi>u</mi></mrow></msup><mspace width="0.167em"></mspace><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+a^{\frac{1}{2}}\Psi(u,\tau) = \int_0^{\#} dK\, e^{-\beta^2 (K-K_0)^2}\, e^{-i\#K^2\tau}\left( e^{iKu} - e^{-iKu}\, w(K) \right)
+</annotation></semantics></math></p>
+<p>y determine las dos constantes faltantes.</p>
+<ol start="6" type="a">
+<li>Fije
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\beta = 4</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K_0 = 1</annotation></semantics></math>.
+¿Cuáles son los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">\Delta K</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\Delta u</annotation></semantics></math>?
+¿Cuál es el retraso temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">\Delta\tau</annotation></semantics></math>
+predicho? (No se califica: ¿puede hacer una conjetura informada sobre si
+el paquete cambiará de forma rápidamente?)</li>
+</ol>
+<p>Ahora use Mathematica para calcular y graficar la densidad de
+probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msup><mi>a</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>τ</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|a^{1/2}\Psi(u,\tau)|^2</annotation></semantics></math>.
+Dé la gráfica de la función de onda para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>−</mi><mn>20</mn><mo>,</mo><mi>−</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">\tau = -20, -5</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>,
+usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>30</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">u \in [-30,0]</annotation></semantics></math>.
+Examine la gráfica para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\tau = 20</annotation></semantics></math>
+y determine el retraso temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">\Delta\tau</annotation></semantics></math>
+observando la posición del máximo del paquete. Su respuesta debería
+acercarse razonablemente al valor analítico determinado previamente.</p>
+<h2
+id="problema-5-dispersión-en-una-barrera-rectangular-10-puntos">Problema
+5: Dispersión en una barrera rectangular [10 puntos]</h2>
+<p>Basado en Griffiths 2.33, p. 83.</p>
+<p>Resuelva solamente los casos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&lt;</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E &lt; V_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E = V_0</annotation></semantics></math>.</p>
+<p>¿Puede obtener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T = 1</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&lt;</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E &lt; V_0</annotation></semantics></math>?</p>
+<p>Encuentre la respuesta para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E &gt; V_0</annotation></semantics></math>
+en algún libro (o hágalo usted mismo). ¿Cuándo se obtiene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T=1</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E &gt; V_0</annotation></semantics></math>?</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a
+href="https://ocw.mit.edu">https://ocw.mit.edu</a></em></p>
+<p><em>8.04 Física Cuántica I</em> <em>Primavera de 2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
+</body>
+</html>

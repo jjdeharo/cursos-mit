@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Capítulo 18: Dispersión en una dimensión</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Capítulo 18: Dispersión en una dimensión</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-18-dispersión-en-una-dimensión"
+id="toc-capítulo-18-dispersión-en-una-dimensión">Capítulo 18: Dispersión
+en una dimensión</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#dispersión-en-una-dimensión"
+id="toc-dispersión-en-una-dimensión">1. Dispersión en una dimensión</a>
+<ul>
+<li><a href="#retardo-temporal" id="toc-retardo-temporal">1.1 Retardo
+temporal</a></li>
+<li><a href="#un-ejemplo" id="toc-un-ejemplo">1.2 Un ejemplo</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-18-dispersión-en-una-dimensión">Capítulo 18: Dispersión
+en una dimensión</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 18: Scattering in 1D (cont.). Example. Levinson’s
+theorem.</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=EJWG9-etPFw">Incident
+packet and delay for reflection</a> (18:52)</li>
+<li><a href="https://www.youtube.com/watch?v=sWmY5KME7oo">Phase shift
+for a potential well</a> (09:13)</li>
+<li><a href="https://www.youtube.com/watch?v=Cb_3sOYLjUI">Excursion of
+the phase shift</a> (15:16)</li>
+<li><a href="https://www.youtube.com/watch?v=GyukKStk6Ls">Levinson’s
+theorem, part 1</a> (14:46)</li>
+<li><a href="https://www.youtube.com/watch?v=yhI3jTX4dY4">Levinson’s
+theorem, part 2</a> (09:30)</li>
+</ul>
+<hr />
+<p><em>B. Zwiebach</em> <em>26 de abril de 2016</em></p>
+<h2 id="dispersión-en-una-dimensión">1. Dispersión en una dimensión</h2>
+<p>Los físicos aprenden mucho de los experimentos de dispersión.
+Rutherford aprendió sobre la estructura del átomo dispersando partículas
+alfa contra láminas delgadas de oro. Tenemos dispersión elástica si las
+partículas no cambian de tipo; esto normalmente requiere energías bajas.
+A energías altas, la dispersión se vuelve bastante complicada debido a
+la creación de nuevas partículas.</p>
+<p>La dispersión de una partícula contra un blanco fijo se estudia
+trabajando con una partícula que se mueve en un potencial, el potencial
+creado por el blanco. Incluso en el caso de colisiones entre partículas,
+generalmente es posible estudiar el problema usando coordenadas del
+centro de masas y, de nuevo, considerando la dispersión en un
+potencial.</p>
+<p><em>Figura 1: Un potencial de alcance R. El potencial se anula para x
+&gt; R y es infinito para x ≤ 0.</em></p>
+<p>Consideramos la dispersión (elástica) en el potencial general
+mostrado en la Fig. 1. Este potencial viene dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>R</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mi>R</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>∞</mi></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) = \begin{cases} V(x) &amp; 0 &lt; x &lt; R, \\ 0 &amp; x &gt; R, \\ \infty &amp; x &lt; 0. \end{cases} \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>A esto lo llamamos un potencial de alcance finito, porque la parte no
+trivial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+del potencial no se extiende más allá de una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+desde el origen. Además, tenemos una pared de potencial infinito en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.
+Así, toda la física ocurre en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>,
+y las ondas entrantes desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">x \to \infty</annotation></semantics></math>
+acabarán reflejándose de vuelta, dando al físico información sobre el
+potencial. La restricción a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>
+también será útil cuando más adelante estudiemos el caso más físico de
+la dispersión en tres dimensiones. En ese caso, al usar coordenadas
+esféricas, tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math>
+y la mayoría de los conceptos que aprenderemos aquí se aplicarán.</p>
+<p>Consideremos primero el caso en que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) = 0</annotation></semantics></math>,
+de modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>∞</mi></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&lt;</mo><mn>0</mn><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) = \begin{cases} 0 &amp; x &gt; 0, \\ \infty &amp; x &lt; 0, \end{cases} \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>como se muestra en la figura 2. Tenemos una partícula libre, salvo
+por la pared en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.
+Las soluciones pueden construirse usando combinaciones lineales de
+autoestados de momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>
+donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 = \frac{2mE}{\hbar^2}. \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p><em>Figura 2: El potencial nulo y sus autoestados de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\varphi(x) = \sin kx</annotation></semantics></math>
+son necesarios para compararlos con el problema en el que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) \neq 0</annotation></semantics></math>.</em></p>
+<p>La solución tiene una onda entrante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{-ikx}</annotation></semantics></math>
+y una onda saliente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>
+combinadas de tal manera que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varphi(0) = 0</annotation></semantics></math>,
+como exige la presencia de la pared:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+\varphi(x) \sim e^{ikx} - e^{-ikx}. \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>Mejor aún, podemos dividir esta solución entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>i</mi></mrow><annotation encoding="application/x-tex">2i</annotation></semantics></math>
+para hallar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>+</mo><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+\varphi(x) = -\frac{e^{-ikx}}{2i} + \frac{e^{ikx}}{2i} = \sin kx. \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>La onda entrante es el primer término a la derecha del primer signo
+igual, y la onda reflejada es el segundo término. Ambas transportan la
+misma cantidad de flujo de probabilidad, pero en direcciones
+opuestas.</p>
+<p>Consideremos ahora el caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) \neq 0</annotation></semantics></math>.
+Este potencial actúa siempre sobre el rango finito
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">0 &lt; x &lt; R</annotation></semantics></math>,
+y eventualmente nos interesará calcular la función de onda del
+autoestado de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+en esta región. Por el momento, sin embargo, consideremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>.
+Tomaremos la onda entrante como la misma que teníamos para la solución
+de potencial nulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Onda entrante:</mtext><mspace width="2.0em"></mspace><mo>−</mo><mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Onda entrante:} \qquad -\frac{e^{-ikx}}{2i} \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>La onda saliente que debe añadirse a lo anterior requiere un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>,
+para tener la misma energía que la solución de la onda entrante. Ahora
+afirmamos que la solución más general incluye un factor de fase, de modo
+que tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Onda saliente:</mtext><mspace width="2.0em"></mspace><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>δ</mi></mrow></msup><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>δ</mi><mo>∈</mo><mi>ℝ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Onda saliente:} \qquad e^{2i\delta} \frac{e^{ikx}}{2i}, \qquad \delta \in \mathbb{R}. \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Observamos que la fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+no puede ser función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:
+la ecuación de Schrödinger libre para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>
+solo permite fases lineales en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+pero eso cambiaría el valor del momento asociado a la onda saliente, que
+ya hemos argumentado debe ser
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Además,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+no puede ser compleja, porque entonces dejaríamos de tener igualdad
+entre los flujos de probabilidad incidente y reflejado. Esta condición
+exige que la norma al cuadrado de los números que multiplican a las
+exponenciales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>
+sea la misma. Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+es una función real que depende de la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+del autoestado y, por supuesto, del potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>.
+Un rango natural para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+es de cero a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>,
+pero será más fácil dejar que recorra todos los números reales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>,
+con el fin de lograr una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+que sea una función continua de la energía. Reuniendo las componentes
+incidente y reflejada de la solución para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>,
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>i</mi><mi>δ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \frac{1}{2i}\left(-e^{-ikx} + e^{ikx+2i\delta}\right) = e^{i\delta}\sin(kx+\delta), \qquad \text{para } x &gt; R. \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>A esto se le llama la solución canónica para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>.
+Para cualquier rasgo particular de la solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)</annotation></semantics></math>
+que encontremos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>x</mi><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">kx = a_0</annotation></semantics></math>,
+es decir en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">x = a_0/k</annotation></semantics></math>,
+encontraríamos el mismo rasgo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mover><mi>x</mi><mo accent="true">̃</mo></mover><mo>+</mo><mi>δ</mi><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">k\tilde{x} + \delta = a_0</annotation></semantics></math>,
+es decir en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">̃</mo></mover><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><mi>/</mi><mi>k</mi><mo>−</mo><mi>δ</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\tilde{x} = a_0/k - \delta/k</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta &gt; 0</annotation></semantics></math>
+pequeño, la onda se ve arrastrada hacia adentro en una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\delta/k</annotation></semantics></math>,
+y el potencial ejerce atracción. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta &lt; 0</annotation></semantics></math>
+pequeño, la onda se ve empujada hacia afuera en una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>δ</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">|\delta|/k</annotation></semantics></math>,
+y el potencial ejerce repulsión. Nótese también que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>±</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\delta \pm \pi</annotation></semantics></math>
+dan exactamente el mismo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>.
+Esto se ve más fácilmente a partir de la primera forma en (1.8).</p>
+<p><em>Figura 3: La solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)</annotation></semantics></math>
+para potencial nulo se muestra con línea discontinua. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">x &gt; R</annotation></semantics></math>,
+la solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+se muestra como línea continua. En comparación con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)</annotation></semantics></math>,
+está desplazada espacialmente hacia el origen en una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\delta/k</annotation></semantics></math>.</em></p>
+<p>Definimos la onda dispersada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_s(x)</annotation></semantics></math>
+como la onda adicional en la solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+que se anularía en el caso de potencial nulo, es decir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>ψ</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \varphi(x) + \psi_s(x). \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>Nótese que tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+tienen la misma onda incidente, así que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\psi_s</annotation></semantics></math>
+debe ser una onda saliente. Encontramos, en efecto,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>+</mo><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>+</mo><mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>−</mo><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>−</mo><mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mrow><mn>2</mn><mi>i</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_s(x) = \psi(x) - \varphi(x) = -\frac{e^{-ikx}}{2i} + \frac{e^{ikx+2i\delta}}{2i} + \frac{e^{-ikx}}{2i} - \frac{e^{ikx}}{2i} = \frac{e^{ikx+2i\delta}}{2i} - \frac{e^{ikx}}{2i}, \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>y por lo tanto obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>=</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">con</mtext><mspace width="1.0em"></mspace><msub><mi>A</mi><mi>s</mi></msub><mo>≡</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_s(x) = e^{i\delta}\sin\delta \, e^{ikx} = A_s e^{ikx}, \qquad \text{con} \quad A_s \equiv e^{i\delta}\sin\delta. \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>A
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>s</mi></msub><annotation encoding="application/x-tex">A_s</annotation></semantics></math>
+se le llama la amplitud de dispersión, siendo la amplitud de la onda
+dispersada. Aunque todavía no podemos normalizar nuestros estados (para
+eso necesitamos paquetes de onda), la probabilidad de dispersión queda
+capturada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+|A_s|^2 = \sin^2\delta. \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<h3 id="retardo-temporal">1.1 Retardo temporal</h3>
+<p>La cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(E)</annotation></semantics></math>
+determina el retardo temporal de un paquete de ondas reflejado, en
+comparación con un paquete de ondas que encontrara un potencial nulo. En
+efecto, afirmamos que el retardo viene dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mn>2</mn><mi>ℏ</mi><mspace width="0.167em"></mspace><msup><mi>δ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta t = 2\hbar\, \delta&#39;(E), \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>donde la prima denota derivada respecto del argumento, y la
+evaluación se realiza para la energía central de la superposición que
+forma el paquete de ondas. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta t &lt; 0</annotation></semantics></math>,
+la partícula pasa menos tiempo cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>,
+ya sea porque el potencial es atractivo y la partícula se acelera, o
+porque el potencial es repulsivo y la partícula rebota antes de alcanzar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.
+Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta t &gt; 0</annotation></semantics></math>,
+la partícula pasa más tiempo cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>,
+típicamente porque se frena o queda temporalmente atrapada en el
+potencial.</p>
+<p>Escribimos la onda entrante en la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mtext mathvariant="normal">inc</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>&gt;</mo><mi>R</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.14)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_{\text{inc}}(x,t) = \int_0^\infty dk\, g(k)\, e^{-ikx} e^{-iE(k)t/\hbar}, \qquad x &gt; R, \qquad \text{(1.14)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(k)</annotation></semantics></math>
+es una función real con un máximo alrededor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">k = k_0</annotation></semantics></math>.
+Escribimos la onda reflejada asociada notando que lo anterior es una
+superposición de ondas como en (1.6), y la onda reflejada debe ser la
+superposición asociada de ondas como en (1.7). Debemos entonces cambiar
+el signo del momento, cambiar el signo global y multiplicar por la fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>δ</mi></mrow></msup><annotation encoding="application/x-tex">e^{2i\delta}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mtext mathvariant="normal">refl</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>&gt;</mo><mi>R</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.15)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_{\text{refl}}(x,t) = -\int_0^\infty dk\, g(k)\, e^{ikx} e^{2i\delta(k)} e^{-iE(k)t/\hbar}, \qquad x &gt; R. \qquad \text{(1.15)}
+</annotation></semantics></math></p>
+<p>Usamos ahora la aproximación de fase estacionaria para averiguar el
+movimiento del máximo del paquete de ondas. Debemos tener una fase
+estacionaria cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">k = k_0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><msub><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mfrac><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow><mi>ℏ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>k</mi><mn>0</mn></msub></msub></mrow><annotation encoding="application/x-tex">
+0 = \left. \frac{d}{dk}\left(kx + 2\delta(k) - \frac{E(k)t}{\hbar}\right) \right|_{k_0}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>k</mi><mn>0</mn></msub></msub><mo>−</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>k</mi><mn>0</mn></msub></msub><mfrac><mi>t</mi><mi>ℏ</mi></mfrac></mrow><annotation encoding="application/x-tex">
+= x + 2\left.\frac{d\delta}{dk}\right|_{k_0} - \left.\frac{dE}{dk}\right|_{k_0}\frac{t}{\hbar}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn><msub><mrow><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>k</mi><mn>0</mn></msub></msub><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>−</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>k</mi><mn>0</mn></msub></msub><mfrac><mi>t</mi><mi>ℏ</mi></mfrac></mrow><annotation encoding="application/x-tex">
+= x + 2\left.\frac{dE}{dk}\right|_{k_0} \left.\frac{d\delta}{dE}\right|_{E(k_0)} - \left.\frac{dE}{dk}\right|_{k_0}\frac{t}{\hbar}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi>x</mi><mo>+</mo><mfrac><mn>1</mn><mi>ℏ</mi></mfrac><msub><mrow><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>k</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>ℏ</mi><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>−</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+= x + \frac{1}{\hbar}\left.\frac{dE}{dk}\right|_{k=k_0}\left(2\hbar\left.\frac{d\delta}{dE}\right|_{E(k_0)} - t\right)
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi>x</mi><mo>+</mo><mfrac><mrow><mi>ℏ</mi><msub><mi>k</mi><mn>0</mn></msub></mrow><mi>m</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>ℏ</mi><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>−</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.16)</mtext></mrow><annotation encoding="application/x-tex">
+= x + \frac{\hbar k_0}{m}\left(2\hbar\left.\frac{d\delta}{dE}\right|_{E(k_0)} - t\right), \qquad \text{(1.16)}
+</annotation></semantics></math></p>
+<p>lo que da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mi>ℏ</mi><msub><mi>k</mi><mn>0</mn></msub></mrow><mi>m</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><mn>2</mn><mi>ℏ</mi><msub><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.17)</mtext></mrow><annotation encoding="application/x-tex">
+x = \frac{\hbar k_0}{m}\left(t - 2\hbar\left.\frac{d\delta}{dE}\right|_{E(k_0)}\right). \qquad \text{(1.17)}
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℏ</mi><msub><mi>k</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">\hbar k_0/m</annotation></semantics></math>
+es la conocida velocidad de grupo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>0</mn></msub><annotation encoding="application/x-tex">v_0</annotation></semantics></math>
+del paquete de ondas. Si no hubiera habido desfase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+digamos porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) = 0</annotation></semantics></math>,
+no habría retardo temporal y el máximo del paquete de ondas reflejado
+seguiría la recta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">x = v_0 t</annotation></semantics></math>.
+Por lo tanto, el retardo, como se afirmó, viene dado por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mn>2</mn><mi>ℏ</mi><mspace width="0.167em"></mspace><msup><mi>δ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.18)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta t = 2\hbar\, \delta&#39;(E(k_0)). \qquad \text{(1.18)}
+</annotation></semantics></math></p>
+<p>Podemos comparar el retardo temporal con un tiempo natural del
+problema. Reescribimos primero</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mn>2</mn><mi>ℏ</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>d</mi><mi>k</mi></mrow><mrow><mi>d</mi><mi>E</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mstyle></mrow><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>ℏ</mi></mfrac></mstyle><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mstyle></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.19)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta t = 2\hbar\, \frac{dk}{dE}\frac{d\delta}{dk} = \frac{2\dfrac{d\delta}{dk}}{\dfrac{1}{\hbar}\dfrac{dE}{dk}}. \qquad \text{(1.19)}
+</annotation></semantics></math></p>
+<p>Sabemos que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>ℏ</mi></mfrac><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>ω</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.20)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{\hbar}\frac{dE}{dk} = \frac{d\omega}{dk} = v_0, \qquad \text{(1.20)}
+</annotation></semantics></math></p>
+<p>de modo que podemos escribir entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mn>2</mn></mfrac><msub><mi>v</mi><mn>0</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.21)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d\delta}{dk} = \frac{\Delta t}{2}v_0. \qquad \text{(1.21)}
+</annotation></semantics></math></p>
+<p>Multiplicando esto por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>1</mn><mi>R</mi></mfrac><annotation encoding="application/x-tex">\frac{1}{R}</annotation></semantics></math>,
+tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>R</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mn>2</mn><mi>R</mi><mi>/</mi><msub><mi>v</mi><mn>0</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mtext mathvariant="normal">retardo</mtext><mtext mathvariant="normal">tiempo de tránsito libre</mtext></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.22)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{R}\frac{d\delta}{dk} = \frac{\Delta t}{2R/v_0} = \frac{\text{retardo}}{\text{tiempo de tránsito libre}}. \qquad \text{(1.22)}
+</annotation></semantics></math></p>
+<p>El lado izquierdo carece de unidades, y el lado derecho es el
+cociente entre el retardo temporal y el tiempo que tardaría la partícula
+libre en viajar hacia adentro y hacia afuera del rango
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.</p>
+<h3 id="un-ejemplo">1.2 Un ejemplo</h3>
+<p>Consideremos el siguiente ejemplo en el que tenemos un potencial
+atractivo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>∞</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.23)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) = \begin{cases} -V_0, &amp; \text{para } 0 &lt; x &lt; a, \\ 0, &amp; \text{para } x &gt; a, \\ \infty, &amp; \text{para } x &lt; 0. \end{cases} \qquad \text{(1.23)}
+</annotation></semantics></math></p>
+<p>El potencial se muestra en la Figura 4, donde la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E &gt; 0</annotation></semantics></math>
+del autoestado de energía se indica con una línea discontinua. La
+solución tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.24)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \begin{cases} e^{i\delta}\sin(kx+\delta) &amp; x &gt; a, \\ A\sin(k&#39;x) &amp; 0 &lt; x &lt; a. \end{cases} \qquad \text{(1.24)}
+</annotation></semantics></math></p>
+<p><em>Figura 4: Un potencial atractivo. Nos interesa calcular los
+autoestados de energía para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E &gt; 0</annotation></semantics></math>.</em></p>
+<p>La solución en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>
+es simplemente la solución canónica, y la solución en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &lt; a</annotation></semantics></math>
+se sigue de que debemos tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(0) = 0</annotation></semantics></math>.
+Las constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mo>′</mo></msup><annotation encoding="application/x-tex">k&#39;</annotation></semantics></math>
+vienen dadas por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>k</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.25)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 = \frac{2mE}{\hbar^2}, \qquad k&#39;^2 = \frac{2m(E+V_0)}{\hbar^2}. \qquad \text{(1.25)}
+</annotation></semantics></math></p>
+<p>Haciendo coincidir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+encontramos las condiciones que finalmente nos darán el desfase
+desconocido
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.26)</mtext></mrow><annotation encoding="application/x-tex">
+A\sin(k&#39;a) = e^{i\delta}\sin(ka+\delta) \qquad \text{(1.26)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.27)</mtext></mrow><annotation encoding="application/x-tex">
+k&#39;A\cos(k&#39;a) = k e^{i\delta}\cos(ka+\delta). \qquad \text{(1.27)}
+</annotation></semantics></math></p>
+<p>Dividiendo la segunda ecuación entre la primera, llegamos a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>k</mi><mo>′</mo></msup><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.28)</mtext></mrow><annotation encoding="application/x-tex">
+k\cot(ka+\delta) = k&#39;\cot k&#39;a. \qquad \text{(1.28)}
+</annotation></semantics></math></p>
+<p>Usamos ahora la identidad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>A</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>B</mi><mo>−</mo><mn>1</mn></mrow><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>A</mi><mo>+</mo><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>B</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.29)</mtext></mrow><annotation encoding="application/x-tex">
+\cot(A+B) = \frac{\cot A \cot B - 1}{\cot A + \cot B}, \qquad \text{(1.29)}
+</annotation></semantics></math></p>
+<p>a partir de la cual encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>k</mi></mfrac><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mo>=</mo><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>−</mo><mn>1</mn></mrow><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>+</mo><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.30)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{k&#39;}{k}\cot k&#39;a = \cot(ka+\delta) = \frac{\cot ka \cot\delta - 1}{\cot ka + \cot\delta}. \qquad \text{(1.30)}
+</annotation></semantics></math></p>
+<p>Resolviendo esta ecuación para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\cot\delta</annotation></semantics></math>
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>+</mo><mstyle displaystyle="true"><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>k</mi></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi></mrow><mrow><mn>1</mn><mo>−</mo><mstyle displaystyle="true"><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>k</mi></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.31)</mtext></mrow><annotation encoding="application/x-tex">
+\cot\delta = \frac{\tan ka + \dfrac{k&#39;}{k}\cot k&#39;a}{1 - \dfrac{k&#39;}{k}\cot k&#39;a \tan ka}. \qquad \text{(1.31)}
+</annotation></semantics></math></p>
+<p>Aunque esta es una fórmula complicada de analizar directamente,
+siempre podemos graficarla con una computadora para diferentes valores
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>.
+Como es habitual, caracterizamos el pozo por la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>,
+definida por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.32)</mtext></mrow><annotation encoding="application/x-tex">
+z_0^2 = \frac{2mV_0 a^2}{\hbar^2}. \qquad \text{(1.32)}
+</annotation></semantics></math></p>
+<p>Nótese también que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mo>=</mo><msqrt><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msqrt><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.33)</mtext></mrow><annotation encoding="application/x-tex">
+k&#39;a = \sqrt{z_0^2 + (ka)^2}. \qquad \text{(1.33)}
+</annotation></semantics></math></p>
+<p>La Figura 5 muestra el factor de fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+la cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi></mrow><annotation encoding="application/x-tex">\sin^2\delta</annotation></semantics></math>,
+el retardo temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>a</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{a}\frac{d\delta}{dk}</annotation></semantics></math>,
+y la amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>
+dentro del pozo como funciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>,
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>3.40</mn></mrow><annotation encoding="application/x-tex">z_0^2 = 3.40</annotation></semantics></math>.</p>
+<p>Nótese que la fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+comienza en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+para energía nula y alcanza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">-\pi</annotation></semantics></math>
+para energía infinita. La excursión de la fase es entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+y, como veremos, esto ocurre porque para este valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+el potencial tendría un estado ligado.</p>
+<p>El valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi></mrow><annotation encoding="application/x-tex">|A_s|^2 = \sin^2\delta</annotation></semantics></math>
+representa la probabilidad de dispersión y alcanza su máximo para el
+valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>
+en el que la fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+tiene valor absoluto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>.</p>
+<p>A continuación en la gráfica está el retardo adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>a</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{a}\frac{d\delta}{dk}</annotation></semantics></math>.
+Nótese que el retardo es negativo. Esto se explica fácilmente: al
+moverse la partícula sobre el pozo, su energía cinética aumenta en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>,
+la partícula se acelera al llegar y rebotar contra la pared.</p>
+<p>La última gráfica muestra la magnitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>
+de la constante que da la amplitud de la función de onda en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0 &lt; x &lt; a</annotation></semantics></math>.</p>
+<p>A energía muy grande
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>≫</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E \gg V_0</annotation></semantics></math>,
+la partícula apenas nota el potencial. En efecto, vemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+se aproxima a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">-\pi</annotation></semantics></math>,
+lo cual, como se señaló bajo (1.8), es equivalente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta = 0</annotation></semantics></math>
+y significa que no hay desfase. En consecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sin^2\delta \to 0</annotation></semantics></math>,
+lo que significa que no hay dispersión. También tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>a</mi></mfrac><mfrac><mrow><mi>d</mi><mi>δ</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{1}{a}\frac{d\delta}{dk} \to 0</annotation></semantics></math>,
+lo que significa que no hay retardo temporal y, finalmente,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|A| \to 1</annotation></semantics></math>
+como en la solución libre.</p>
+<p><em>Figura 5: Varias cantidades graficadas en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>,
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>3.40</mn></mrow><annotation encoding="application/x-tex">z_0^2 = 3.40</annotation></semantics></math>.
+Arriba: el desfase, yendo de cero a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">-\pi</annotation></semantics></math>.
+Segundo: la amplitud de dispersión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>s</mi></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>δ</mi></mrow><annotation encoding="application/x-tex">|A_s|^2 = \sin^2\delta</annotation></semantics></math>.
+Tercero: el retardo relativo al tiempo de tránsito libre. Último: la
+norma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>
+de la amplitud de la onda dentro del pozo.</em></p>
+<p><em>Andrew Turner transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</em></p>
+<hr />
+<p>MIT OpenCourseWare https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+</body>
+</html>

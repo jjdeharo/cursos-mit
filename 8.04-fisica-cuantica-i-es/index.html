@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8.04 Física Cuántica I (español)</title>
+<style>
+  :root {
+    --azul: #0b3d91;
+    --azul-claro: #eef2fb;
+    --texto: #1a1a1a;
+    --muted: #5a5a5a;
+    --borde: #dde2ee;
+    --fondo: #fdfdfb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+  }
+  header {
+    background: var(--azul);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 0.5rem; font-size: 1.9rem; }
+  header p { margin: 0.3rem 0; opacity: 0.92; }
+  header a { color: #cfe0ff; }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .aviso {
+    background: var(--azul-claro);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: #23345c;
+  }
+  h2 {
+    color: var(--azul);
+    border-bottom: 2px solid var(--borde);
+    padding-bottom: 0.4rem;
+    margin-top: 2.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.55rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  td.tema { min-width: 40%; }
+  .fmt a {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--borde);
+  }
+  .fmt a.epub { background: #f4ecff; color: #5a2ea6; }
+  .fmt a.html { background: #eaf6ee; color: #1e7a3c; }
+  .ps { color: var(--muted); font-size: 0.85rem; }
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--azul); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>8.04 Física Cuántica I</h1>
+  <p>Traducción al español (no oficial) de los apuntes, listas de problemas y exámenes</p>
+  <p>Basado en el curso de MIT OpenCourseWare — Prof. Barton Zwiebach</p>
+  <p><a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/">Curso original en inglés (ocw.mit.edu) ↗</a></p>
+</header>
+
+<main>
+
+<div class="aviso">
+  Esta es una traducción <strong>no oficial</strong>, generada con asistencia de inteligencia artificial y no revisada por el MIT ni por el Prof. Zwiebach. Cada tema está disponible en dos formatos: <strong>EPUB</strong> (para lectores de libros electrónicos, con fórmulas en MathML nativo) y <strong>HTML</strong> (para leer directamente en el navegador). Los vídeos de clase enlazados permanecen en inglés. Licencia CC BY-NC-SA 4.0 — ver <a href="LICENSE.md">LICENSE.md</a>.
+</div>
+
+<h2>Apuntes de clase (Lecture Notes)</h2>
+<table>
+  <thead><tr><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td class="tema">Características clave de la mecánica cuántica</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes1_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes1_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>2</td><td class="tema">Experimentos con fotones</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes2_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes2_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>3</td><td class="tema">Naturaleza corpuscular de la luz y ondulatoria de la materia</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes3_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes3_ES.html">HTML</a></td><td class="ps">PS1</td></tr>
+    <tr><td>4</td><td class="tema">de Broglie y transformaciones de Galileo; velocidad de fase y de grupo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes4_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes4_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>5</td><td class="tema">Ecuación de Schrödinger e interpretación de la función de onda</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes5_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes5_ES.html">HTML</a></td><td class="ps">PS2</td></tr>
+    <tr><td>6</td><td class="tema">Normalización, evolución temporal y corriente de probabilidad</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes6_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes6_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>7</td><td class="tema">Paquetes de onda e incertidumbre</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes7_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes7_ES.html">HTML</a></td><td class="ps">PS3</td></tr>
+    <tr><td>8</td><td class="tema">Espacio de momentos y valores esperados</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes8_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes8_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>9</td><td class="tema">Observables, operadores hermíticos e incertidumbre</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes9_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes9_ES.html">HTML</a></td><td class="ps">PS4</td></tr>
+    <tr><td>10</td><td class="tema">Ecuación de Schrödinger independiente del tiempo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes10_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes10_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>11</td><td class="tema">Pozo cuadrado infinito y finito</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes11_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes11_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>12</td><td class="tema">Estados ligados, aproximación semiclásica y método de disparo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes12_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes12_ES.html">HTML</a></td><td class="ps">PS5</td></tr>
+    <tr><td>13</td><td class="tema">Potencial delta, teorema del nodo y oscilador armónico</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes13_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes13_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>14-15</td><td class="tema">Oscilador armónico (enfoque algebraico)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes14_15_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes14_15_ES.html">HTML</a></td><td class="ps">PS6</td></tr>
+    <tr><td>16</td><td class="tema">Estados de dispersión y potencial escalón</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes16_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes16_ES.html">HTML</a></td><td class="ps">PS7</td></tr>
+    <tr><td>17</td><td class="tema">Transmisión resonante y efecto Ramsauer–Townsend</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes17_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes17_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>18</td><td class="tema">Dispersión en una dimensión</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes18_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes18_ES.html">HTML</a></td><td class="ps"></td></tr>
+    <tr><td>19</td><td class="tema">Teorema de Levinson y resonancias</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes19_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes19_ES.html">HTML</a></td><td class="ps">PS8</td></tr>
+    <tr><td>20-21</td><td class="tema">Mecánica cuántica en 3D y potenciales centrales</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes20_21_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes20_21_ES.html">HTML</a></td><td class="ps">PS9</td></tr>
+    <tr><td>22</td><td class="tema">El átomo de hidrógeno</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes22_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes22_ES.html">HTML</a></td><td class="ps">PS10</td></tr>
+  </tbody>
+</table>
+
+<h2>Exámenes</h2>
+<table>
+  <thead><tr><th class="tema">Examen</th><th>Formato</th><th>Cobertura</th></tr></thead>
+  <tbody>
+    <tr><td class="tema">Examen 1 (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_Examen1_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_Examen1_ES.html">HTML</a></td><td class="ps">Lecciones 1-10, con hoja de fórmulas</td></tr>
+    <tr><td class="tema">Examen 2 (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_Examen2_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_Examen2_ES.html">HTML</a></td><td class="ps">Lecciones 11-17, con hoja de fórmulas</td></tr>
+    <tr><td class="tema">Examen Final (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_ExamenFinal_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_ExamenFinal_ES.html">HTML</a></td><td class="ps">Todo el curso, con formulario completo</td></tr>
+  </tbody>
+</table>
+
+</main>
+
+<footer>
+  <p>Traducción generada con asistencia de IA a partir de los materiales de <a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/">MIT OpenCourseWare — 8.04 Quantum Physics I</a> (Prof. Barton Zwiebach). Licencia CC BY-NC-SA 4.0. Ver <a href="LICENSE.md">LICENSE.md</a> y <a href="README.md">README.md</a> para más información.</p>
+</footer>
+
+</body>
+</html>
