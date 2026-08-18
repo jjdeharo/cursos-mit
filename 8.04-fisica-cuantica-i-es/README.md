@@ -43,7 +43,17 @@ Cada archivo incluye, al principio, enlaces a los vídeos de YouTube de esa clas
 | `MIT8.04_Examen2_ES.epub` | Examen 2 (otoño 2015) — Lecciones 11-17, con hoja de fórmulas |
 | `MIT8.04_ExamenFinal_ES.epub` | Examen Final (otoño 2015) — todo el curso, con formulario completo |
 
-Todos los archivos están en la carpeta [`epubs/`](epubs/).
+Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
+
+### Escuchar los vídeos en español
+
+Los vídeos de clase enlazados en cada apunte están en inglés. Para escucharlos en español (u otro idioma) desde Google Chrome:
+
+1. Reproduce el vídeo y pulsa el icono de **engranaje ⚙** del reproductor de YouTube.
+2. Elige **Pista de audio** y selecciona tu idioma — YouTube dobla automáticamente con IA muchos vídeos educativos.
+3. Si esa opción no está disponible para un vídeo concreto, activa los **subtítulos con traducción en directo** de Chrome: ve a `chrome://settings/accessibility`, activa **"Subtítulos en directo"** y, durante la reproducción, pulsa el icono de traducir dentro del cuadro de subtítulos para elegir tu idioma.
+
+Cada página HTML incluye este mismo aviso justo encima de sus vídeos.
 
 ## Sobre esta traducción
 
