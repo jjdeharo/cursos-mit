@@ -28,19 +28,6 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-<div class="fp" id="fp" hidden>
-<div class="fp-bar" id="fp-bar">
-<span class="fp-title" id="fp-title">Vídeo</span>
-<div class="fp-actions">
-<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
-<button type="button" id="fp-close" title="Cerrar">&times;</button>
-</div>
-</div>
-<div class="fp-body" id="fp-body">
-<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</div>
-</div>
-
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -81,6 +68,19 @@
       <button type="button" data-value="dark">Oscuro</button>
     </div>
   </div>
+</div>
+
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
 </div>
 
 <header id="title-block-header">
@@ -1207,8 +1207,8 @@ la propia integral.</p>
 <p>Consideremos la integral de una gaussiana centrada en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x=2</annotation></semantics></math>
 multiplicada por un factor de fase:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mn>100</mn><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msup><msup><mi>e</mi><mrow><mi>i</mi><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>50</mn><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mstyle displaystyle="false"><mfrac><mn>3</mn><mn>2</mn></mfrac></mstyle><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>−</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle><mi>λ</mi><msup><mi>x</mi><mn>4</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mi>λ</mi><mo>∈</mo><mi>ℝ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
-f(\lambda) = \int_{-\infty}^{\infty} dx\, e^{-100(x-2)^2} e^{i\varphi(\lambda,x)} , \qquad \varphi(\lambda,x) = 50\left(x-\tfrac{3}{2}\right)^2 - \tfrac{1}{4}\lambda x^4 , \quad \lambda \in \mathbb{R} .
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mn>100</mn><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msup><msup><mi>e</mi><mrow><mi>i</mi><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>50</mn><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>32</mn></mfrac></mstyle><mi>λ</mi><msup><mi>x</mi><mn>4</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>λ</mi><mo>∈</mo><mi>ℝ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(\lambda) = \int_{-\infty}^{\infty} dx\, e^{-100(x-2)^2} e^{i\varphi(\lambda,x)} , \qquad \varphi(\lambda,x) = 50\left(x-\tfrac{1}{32}\lambda x^4\right) , \quad \lambda \in \mathbb{R} .
 </annotation></semantics></math></p>
 <p>Queremos confirmar que
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|f(\lambda)|</annotation></semantics></math>
@@ -1288,8 +1288,8 @@ para
 calculamos en clase el desfase
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(E)</annotation></semantics></math>,
 obteniendo</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mstyle displaystyle="true"><mfrac><mi>k</mi><msup><mi>k</mi><mo>′</mo></msup></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi></mrow><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>+</mo><mstyle displaystyle="true"><mfrac><mi>k</mi><msup><mi>k</mi><mo>′</mo></msup></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
-\tan\delta = \frac{1 - \dfrac{k}{k&#39;}\cot k&#39;a \, \tan ka}{\tan ka + \dfrac{k}{k&#39;}\cot k&#39;a} ,
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mstyle displaystyle="true"><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>k</mi></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi></mrow><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>+</mo><mstyle displaystyle="true"><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>k</mi></mfrac></mstyle><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\tan\delta = \frac{1 - \dfrac{k&#39;}{k}\cot k&#39;a \, \tan ka}{\tan ka + \dfrac{k&#39;}{k}\cot k&#39;a} ,
 </annotation></semantics></math></p>
 <p>con</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>k</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
@@ -1551,6 +1551,72 @@ sobre nuestras condiciones de uso, visite: <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
 <script>
 (function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+<script>
+(function () {
   var root = document.documentElement;
   var panel = document.getElementById("a11y-panel");
   var toggle = document.getElementById("a11y-toggle");
@@ -1631,72 +1697,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
       });
     });
   });
-})();
-</script>
-<script>
-(function () {
-  var fp = document.getElementById("fp");
-  var fpBar = document.getElementById("fp-bar");
-  var fpTitle = document.getElementById("fp-title");
-  var fpIframe = document.getElementById("fp-iframe");
-  var fpMin = document.getElementById("fp-min");
-  var fpClose = document.getElementById("fp-close");
-
-  function openVideo(vid, title) {
-    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
-    fpIframe.title = title;
-    fpTitle.textContent = title;
-    fp.hidden = false;
-    fp.classList.remove("minimizado");
-  }
-  function closeVideo() {
-    fp.hidden = true;
-    fpIframe.src = "";
-  }
-
-  document.querySelectorAll(".video-play").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      openVideo(btn.dataset.vid, btn.dataset.title);
-    });
-  });
-  fpClose.addEventListener("click", closeVideo);
-  fpMin.addEventListener("click", function () {
-    fp.classList.toggle("minimizado");
-  });
-
-  /* arrastrar el reproductor flotante */
-  var dragging = false, offX = 0, offY = 0;
-  function startDrag(x, y) {
-    dragging = true;
-    var r = fp.getBoundingClientRect();
-    offX = x - r.left;
-    offY = y - r.top;
-    fp.style.right = "auto";
-    fp.style.bottom = "auto";
-    fp.style.left = r.left + "px";
-    fp.style.top = r.top + "px";
-  }
-  function moveDrag(x, y) {
-    if (!dragging) return;
-    var w = fp.offsetWidth, h = fp.offsetHeight;
-    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
-    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
-    fp.style.left = left + "px";
-    fp.style.top = top + "px";
-  }
-  function endDrag() { dragging = false; }
-
-  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
-  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
-  window.addEventListener("mouseup", endDrag);
-
-  fpBar.addEventListener("touchstart", function (e) {
-    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchmove", function (e) {
-    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchend", endDrag);
 })();
 </script>
 </body>

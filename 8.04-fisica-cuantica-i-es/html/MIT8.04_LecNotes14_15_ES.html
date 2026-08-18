@@ -28,19 +28,6 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-<div class="fp" id="fp" hidden>
-<div class="fp-bar" id="fp-bar">
-<span class="fp-title" id="fp-title">Vídeo</span>
-<div class="fp-actions">
-<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
-<button type="button" id="fp-close" title="Cerrar">&times;</button>
-</div>
-</div>
-<div class="fp-body" id="fp-body">
-<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</div>
-</div>
-
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -81,6 +68,19 @@
       <button type="button" data-value="dark">Oscuro</button>
     </div>
   </div>
+</div>
+
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
 </div>
 
 <header id="title-block-header">
@@ -180,8 +180,8 @@ la ecuación de Schrödinger independiente del tiempo.</p>
 Con esto queremos decir, a grandes rasgos, escribir el hamiltoniano como
 el producto de un operador por su conjugado hermítico. Como primer paso,
 reescribimos el hamiltoniano como</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><msup><mover><mi>x</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo>+</mo><mfrac><msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
-\hat{H} = \tfrac{1}{2} m\omega^2 \hat{x}^2 + \frac{\hat{p}^2}{2m} \qquad \text{(1.1)}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mover><mi>x</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mo>+</mo><mfrac><msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mn>2</mn></msup><mrow><msup><mi>m</mi><mn>2</mn></msup><msup><mi>ω</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H} = \tfrac{1}{2} m\omega^2 \left(\hat{x}^2 + \frac{\hat{p}^2}{m^2\omega^2}\right) \qquad \text{(1.1)}
 </annotation></semantics></math></p>
 <p>Motivados por la identidad
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a^2 + b^2 = (a-ib)(a+ib)</annotation></semantics></math>,
@@ -1112,6 +1112,72 @@ sobre nuestras condiciones de uso, visite: <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
 <script>
 (function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+<script>
+(function () {
   var root = document.documentElement;
   var panel = document.getElementById("a11y-panel");
   var toggle = document.getElementById("a11y-toggle");
@@ -1192,72 +1258,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
       });
     });
   });
-})();
-</script>
-<script>
-(function () {
-  var fp = document.getElementById("fp");
-  var fpBar = document.getElementById("fp-bar");
-  var fpTitle = document.getElementById("fp-title");
-  var fpIframe = document.getElementById("fp-iframe");
-  var fpMin = document.getElementById("fp-min");
-  var fpClose = document.getElementById("fp-close");
-
-  function openVideo(vid, title) {
-    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
-    fpIframe.title = title;
-    fpTitle.textContent = title;
-    fp.hidden = false;
-    fp.classList.remove("minimizado");
-  }
-  function closeVideo() {
-    fp.hidden = true;
-    fpIframe.src = "";
-  }
-
-  document.querySelectorAll(".video-play").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      openVideo(btn.dataset.vid, btn.dataset.title);
-    });
-  });
-  fpClose.addEventListener("click", closeVideo);
-  fpMin.addEventListener("click", function () {
-    fp.classList.toggle("minimizado");
-  });
-
-  /* arrastrar el reproductor flotante */
-  var dragging = false, offX = 0, offY = 0;
-  function startDrag(x, y) {
-    dragging = true;
-    var r = fp.getBoundingClientRect();
-    offX = x - r.left;
-    offY = y - r.top;
-    fp.style.right = "auto";
-    fp.style.bottom = "auto";
-    fp.style.left = r.left + "px";
-    fp.style.top = r.top + "px";
-  }
-  function moveDrag(x, y) {
-    if (!dragging) return;
-    var w = fp.offsetWidth, h = fp.offsetHeight;
-    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
-    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
-    fp.style.left = left + "px";
-    fp.style.top = top + "px";
-  }
-  function endDrag() { dragging = false; }
-
-  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
-  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
-  window.addEventListener("mouseup", endDrag);
-
-  fpBar.addEventListener("touchstart", function (e) {
-    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchmove", function (e) {
-    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchend", endDrag);
 })();
 </script>
 </body>

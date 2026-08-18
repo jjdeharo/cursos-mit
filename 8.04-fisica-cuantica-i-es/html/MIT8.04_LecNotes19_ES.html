@@ -28,19 +28,6 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-<div class="fp" id="fp" hidden>
-<div class="fp-bar" id="fp-bar">
-<span class="fp-title" id="fp-title">Vídeo</span>
-<div class="fp-actions">
-<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
-<button type="button" id="fp-close" title="Cerrar">&times;</button>
-</div>
-</div>
-<div class="fp-body" id="fp-body">
-<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</div>
-</div>
-
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -81,6 +68,19 @@
       <button type="button" data-value="dark">Oscuro</button>
     </div>
   </div>
+</div>
+
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
 </div>
 
 <header id="title-block-header">
@@ -416,8 +416,8 @@ e^{i\delta}\sin(kx+\delta) &amp; x &gt; 2a
 resolver para el desfasaje
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>.
 Después de un trabajo moderado se obtiene:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>k</mi><mi>κ</mi></mfrac><mo>⋅</mo><mfrac><mrow><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mrow><mrow><msup><mi>k</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup></mrow></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow><mrow><mi>κ</mi><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><mrow><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mrow><msup><mi>k</mi><mo>′</mo></msup></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
-\tan(2ka + \delta) = \frac{k}{\kappa} \cdot \frac{a \sin k&#39;a \cosh\kappa a + \frac{k&#39;\kappa}{k&#39;^{2}}\cos k&#39;a \sinh\kappa a}{\kappa a \sin k&#39;a \sinh\kappa a + \frac{k&#39;\kappa}{k&#39;}\cos k&#39;a \cosh\kappa a} . \qquad \text{(2.8)}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>k</mi><mi>a</mi><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>k</mi><mi>κ</mi></mfrac><mo>⋅</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi><mo>+</mo><mfrac><msup><mi>k</mi><mo>′</mo></msup><mi>κ</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msup><mi>k</mi><mo>′</mo></msup><mi>a</mi><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mi>κ</mi><mi>a</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
+\tan(2ka + \delta) = \frac{k}{\kappa} \cdot \frac{\sin k&#39;a \cosh\kappa a + \frac{k&#39;}{\kappa}\cos k&#39;a \sinh\kappa a}{\sin k&#39;a \sinh\kappa a + \frac{k&#39;}{\kappa}\cos k&#39;a \cosh\kappa a} . \qquad \text{(2.8)}
 </annotation></semantics></math></p>
 <p>Esta expresión es bastante intrincada, por lo que es mejor hacer un
 trabajo numérico. Para ello definimos</p>
@@ -933,8 +933,8 @@ crezca.</p>
 situación de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
 grande, el ansatz (2) está normalizado con precisión y</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mi>k</mi><mi>a</mi><mo>≃</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>κ</mi><mi>a</mi><mo>≃</mo><msub><mi>z</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>A</mi><mo>≃</mo><mfrac><mn>2</mn><mi>π</mi></mfrac><msub><mi>z</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><msub><mi>z</mi><mn>0</mn></msub></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
-\eta = ka \simeq \frac{\pi}{2}\left(1 - \frac{1}{z_0}\right) , \qquad \xi = \kappa a \simeq z_0 , \qquad A \simeq \frac{2}{\pi} z_0\, e^{z_0} .
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mi>k</mi><mi>a</mi><mo>≃</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>κ</mi><mi>a</mi><mo>≃</mo><msub><mi>z</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>A</mi><mo>≃</mo><mfrac><mi>π</mi><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow></mfrac><mspace width="0.167em"></mspace><msup><mi>e</mi><msub><mi>z</mi><mn>0</mn></msub></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\eta = ka \simeq \frac{\pi}{2}\left(1 - \frac{1}{z_0}\right) , \qquad \xi = \kappa a \simeq z_0 , \qquad A \simeq \frac{\pi}{2 z_0}\, e^{z_0} .
 </annotation></semantics></math></p>
 <p>Queremos ver si el valor esperado del hamiltoniano recibe una
 contribución singular desde la región prohibida. Dado que el potencial
@@ -1145,6 +1145,72 @@ sobre nuestras condiciones de uso, visite: <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
 <script>
 (function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+<script>
+(function () {
   var root = document.documentElement;
   var panel = document.getElementById("a11y-panel");
   var toggle = document.getElementById("a11y-toggle");
@@ -1225,72 +1291,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
       });
     });
   });
-})();
-</script>
-<script>
-(function () {
-  var fp = document.getElementById("fp");
-  var fpBar = document.getElementById("fp-bar");
-  var fpTitle = document.getElementById("fp-title");
-  var fpIframe = document.getElementById("fp-iframe");
-  var fpMin = document.getElementById("fp-min");
-  var fpClose = document.getElementById("fp-close");
-
-  function openVideo(vid, title) {
-    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
-    fpIframe.title = title;
-    fpTitle.textContent = title;
-    fp.hidden = false;
-    fp.classList.remove("minimizado");
-  }
-  function closeVideo() {
-    fp.hidden = true;
-    fpIframe.src = "";
-  }
-
-  document.querySelectorAll(".video-play").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      openVideo(btn.dataset.vid, btn.dataset.title);
-    });
-  });
-  fpClose.addEventListener("click", closeVideo);
-  fpMin.addEventListener("click", function () {
-    fp.classList.toggle("minimizado");
-  });
-
-  /* arrastrar el reproductor flotante */
-  var dragging = false, offX = 0, offY = 0;
-  function startDrag(x, y) {
-    dragging = true;
-    var r = fp.getBoundingClientRect();
-    offX = x - r.left;
-    offY = y - r.top;
-    fp.style.right = "auto";
-    fp.style.bottom = "auto";
-    fp.style.left = r.left + "px";
-    fp.style.top = r.top + "px";
-  }
-  function moveDrag(x, y) {
-    if (!dragging) return;
-    var w = fp.offsetWidth, h = fp.offsetHeight;
-    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
-    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
-    fp.style.left = left + "px";
-    fp.style.top = top + "px";
-  }
-  function endDrag() { dragging = false; }
-
-  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
-  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
-  window.addEventListener("mouseup", endDrag);
-
-  fpBar.addEventListener("touchstart", function (e) {
-    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchmove", function (e) {
-    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener("touchend", endDrag);
 })();
 </script>
 </body>
