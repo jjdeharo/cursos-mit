@@ -22,6 +22,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 | `MIT8.03_TextCh6_ES.epub` | Límite continuo y series de Fourier |
 | `MIT8.03_TextCh7_ES.epub` | Oscilaciones longitudinales y sonido |
 | `MIT8.03_TextCh8_ES.epub` | Ondas viajeras |
+| `MIT8.03_TextCh9_ES.epub` | La frontera en el infinito |
 
 ### Listas de problemas (Problem Sets 1-10)
 
@@ -40,7 +41,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ### Próximamente
 
-Quedan **5 capítulos del libro de texto** (`Text_Ch9`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+Quedan **4 capítulos del libro de texto** (`Text_Ch10`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
