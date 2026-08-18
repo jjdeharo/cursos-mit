@@ -97,6 +97,9 @@
   }
   .parte-desc { color: var(--muted); font-size: 0.92rem; margin-top: -0.5rem; margin-bottom: 1rem; }
 
+  /* La tabla se desliza dentro de su caja cuando no cabe, en vez de
+     empujar la página entera hacia los lados. */
+  .tabla { overflow-x: auto; }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -110,20 +113,41 @@
     vertical-align: top;
   }
   th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
-  td.tema { min-width: 36%; }
+  td.tema { min-width: 32%; }
+  /* La columna se encoge a lo que ocupan los botones y cede el resto al tema:
+     así los tres caben en una línea en vez de partirse en dos. */
+  td.fmt { width: 1%; white-space: nowrap; }
   .fmt a {
     display: inline-block;
-    margin-right: 0.5rem;
-    padding: 0.15rem 0.6rem;
-    border-radius: 5px;
+    min-width: 3.6rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 6px;
+    text-align: center;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    border: 1px solid var(--borde);
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
+    transition: filter 0.15s ease;
   }
-  .fmt a.epub { background: #f4ecff; color: #5a2ea6; }
-  .fmt a.html { background: var(--verde-claro); color: var(--verde); }
+  .fmt a + a { margin-left: 0.35rem; }
+  .fmt a:hover { filter: brightness(0.94); }
+  .fmt a.epub { background: #f4ecff; color: #5a2ea6; border-color: #ddc9f5; }
+  .fmt a.html { background: var(--verde-claro); color: var(--verde); border-color: #bfe0cb; }
   .fmt a.pk { background: #e8eeff; color: var(--azul); border-color: #c3d3f5; }
+  /* En el móvil los tres botones caben igual, pero solo si se les quita el
+     ancho mínimo y se deja de reservar un tercio de la fila para el tema. */
+  @media (max-width: 640px) {
+    th, td { padding: 0.5rem 0.35rem; }
+    td.tema { min-width: 0; }
+    .fmt a {
+      min-width: 0;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.72rem;
+    }
+    .fmt a + a { margin-left: 0.2rem; }
+    .extra { font-size: 0.75rem; }
+  }
   .extra { color: var(--muted); font-size: 0.85rem; }
 
   tr.examen td { background: #fff8ec; font-weight: 600; }
@@ -176,6 +200,7 @@
 
 <h2 class="parte">Parte 1 — Conceptos básicos</h2>
 <p class="parte-desc">Interpretación de la función de onda, ecuación de Schrödinger, operadores hermíticos y productos internos, paquetes de onda, evolución temporal, teorema de Ehrenfest e incertidumbre.</p>
+<div class="tabla">
 <table>
   <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
   <tbody>
@@ -201,9 +226,11 @@
       <td class="fmt"><a class="epub" href="epubs/MIT8.04_Examen1_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_Examen1_ES.html">HTML</a><a class="pk" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_Examen1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Con hoja de fórmulas</td></tr>
   </tbody>
 </table>
+</div>
 
 <h2 class="parte">Parte 2 — Física cuántica en potenciales unidimensionales</h2>
 <p class="parte-desc">Soluciones de la ecuación de Schrödinger en 1D: partícula en un círculo, pozo infinito, pozo finito, potencial delta. El oscilador armónico resuelto de dos formas (ecuación diferencial y operadores de creación/aniquilación). Penetración de barreras y efecto Ramsauer–Townsend.</p>
+<div class="tabla">
 <table>
   <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
   <tbody>
@@ -227,9 +254,11 @@
       <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes18_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes18_ES.html">HTML</a><a class="pk" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes18_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
   </tbody>
 </table>
+</div>
 
 <h2 class="parte">Parte 3 — Dispersión en 1D, momento angular y potenciales centrales</h2>
 <p class="parte-desc">Dispersión en la semirrecta: onda dispersada, desfases, retrasos temporales, teorema de Levinson y resonancias. Operadores de momento angular y su álgebra de conmutadores. Reducción a la ecuación radial. El átomo de hidrógeno en detalle.</p>
+<div class="tabla">
 <table>
   <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
   <tbody>
@@ -243,6 +272,7 @@
       <td class="fmt"><a class="epub" href="epubs/MIT8.04_ExamenFinal_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_ExamenFinal_ES.html">HTML</a><a class="pk" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_ExamenFinal_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Formulario completo</td></tr>
   </tbody>
 </table>
+</div>
 
 </main>
 
