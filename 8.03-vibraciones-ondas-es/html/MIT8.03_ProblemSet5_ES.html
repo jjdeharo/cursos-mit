@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Problem Set 5 — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Problem Set 5 — 8.03SC Física III: Vibraciones y
+Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul>
+</nav>
+<p><em>Massachusetts Institute of Technology</em></p>
+<p><strong>Física 8.03SC — Otoño de 2016</strong></p>
+<p><strong>Tarea 5</strong></p>
+<h2 id="problemas">Problemas</h2>
+<p><strong>Problema 5.1 (20 pts)</strong></p>
+<p>En un laboratorio, un estudiante de posgrado estudiaba una cuerda de
+longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+fija en ambos extremos.</p>
+<ol type="a">
+<li>Encuentre la energía total de una vibración de la cuerda oscilando
+en su
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésimo
+modo normal con amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+La tensión en la cuerda es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+y su masa total es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+(Pista: considere la energía cinética integrada en el instante en que la
+cuerda está recta, de modo que la energía potencial debida a la
+vibración es cero.)</li>
+<li>Calcule la energía total de vibración de la misma cuerda si vibra en
+la siguiente superposición de modos normales. Suponga que es la suma de
+las energías de los dos modos tomados por separado.</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>A</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>A</mi><mn>3</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>3</mn><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>3</mn></msub><mi>t</mi><mo>−</mo><mi>π</mi><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\psi(x,t) = A_1 \sin\!\left(\frac{\pi x}{L}\right)\cos(\omega_1 t) + A_3 \sin\!\left(\frac{3\pi x}{L}\right)\cos(\omega_3 t - \pi/4)
+</annotation></semantics></math></p>
+<p><strong>Problema 5.2 (20 pts)</strong></p>
+<p>Una cuerda de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+y masa por unidad de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>,
+fija en ambos extremos, se deforma como se muestra en la figura 1. La
+altura del pulso cuadrado es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
+La cuerda está obligada a vibrar solo en la dirección vertical. En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+la cuerda se suelta cuidadosamente de modo que su velocidad inicial es
+0.</p>
+<p><em>(Figura 1: pulso cuadrado de altura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+en el centro de una cuerda de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+fija en ambos extremos.)</em></p>
+<ol type="a">
+<li>¿Cuál es la velocidad de una onda progresiva en esta cuerda?</li>
+<li>Dibuje a escala la forma de la cuerda en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>L</mi><mn>4</mn></mfrac></mstyle><msqrt><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>/</mi><mi>T</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">t = \dfrac{L}{4}\sqrt{\rho_L/T}</annotation></semantics></math>.</li>
+<li>Dibuje a escala la forma de la cuerda en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>L</mi><msqrt><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>/</mi><mi>T</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">t = L\sqrt{\rho_L/T}</annotation></semantics></math>.</li>
+</ol>
+<p><strong>Problema 5.3 (20 pts)</strong></p>
+<p>Considere una cuerda de densidad de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+bajo tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Un pulso viaja por la cuerda, produciendo un desplazamiento vertical
+dado por:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>v</mi><mi>t</mi></mrow><mi>σ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">
+y(x,t) = y_0\, e^{-\frac{1}{2}\left(\frac{x-vt}{\sigma}\right)^2}
+</annotation></semantics></math></p>
+<p>La energía de la onda es la suma de la energía cinética de la cuerda
+en movimiento y la energía potencial de la deformación de la cuerda,
+integradas a lo largo de toda su longitud.</p>
+<ol type="a">
+<li>Para el desplazamiento dado arriba, encuentre una expresión para la
+densidad de energía cinética de la cuerda en un instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+y esboce el resultado en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</li>
+<li>Encuentre una expresión para la densidad de energía potencial de la
+cuerda. Compárela con la densidad de energía cinética.</li>
+<li>Encuentre una expresión para la energía total del pulso en términos
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mn>0</mn></msub><annotation encoding="application/x-tex">y_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.
+Compruebe las unidades. Recuerde que la energía debe variar como el
+cuadrado de la amplitud. (Pista: puede necesitar la integral gaussiana
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>x</mi><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mstyle><msqrt><mrow><mi>π</mi><mi>/</mi><mi>a</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\int_{-\infty}^{\infty} x^2 e^{-ax^2}\,dx = \dfrac{1}{2a}\sqrt{\pi/a}</annotation></semantics></math>.)</li>
+<li>Encuentre una expresión para la potencia (en vatios) que atraviesa
+el punto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x=x_0</annotation></semantics></math>
+en función del tiempo. Esboce el resultado.</li>
+</ol>
+<p><strong>Problema 5.4 (20 pts)</strong></p>
+<p>Considere una cuerda con densidad lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>
+dividida en dos tramos. Las dos mitades están unidas a un anillo sin
+masa que desliza verticalmente sin fricción por una varilla en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+como se muestra en la figura 2. Una de las dos mitades está estirada en
+la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+negativa con tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>L</mi></msub><annotation encoding="application/x-tex">T_L</annotation></semantics></math>,
+y la otra en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+positiva con tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>R</mi></msub><annotation encoding="application/x-tex">T_R</annotation></semantics></math>.
+Note que la varilla vertical es necesaria para equilibrar las fuerzas
+horizontales sobre la cuerda sin masa que surgen de los dos tramos con
+tensiones distintas.</p>
+<p>Suponga que hay una onda viajera de amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+que llega desde la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+negativa.</p>
+<p><em>(Figura 2: cuerda dividida en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+mediante un anillo sin masa que desliza por una varilla vertical; el
+tramo izquierdo tiene tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>L</mi></msub><annotation encoding="application/x-tex">T_L</annotation></semantics></math>
+y el derecho tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>R</mi></msub><annotation encoding="application/x-tex">T_R</annotation></semantics></math>.)</em></p>
+<ol type="a">
+<li>Suponiendo que la onda incidente tiene la forma funcional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>α</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>−</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t) = \alpha\cos(kx-\omega t)</annotation></semantics></math>,
+escriba la expresión general para el desplazamiento de la cuerda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>
+a ambos lados del anillo.</li>
+<li>Escriba las expresiones para las condiciones de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.
+(Pista: como el anillo no tiene masa, la fuerza total sobre él es
+0.)</li>
+<li>Encuentre los coeficientes de reflexión
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>)
+y transmisión
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>)
+para este sistema.</li>
+<li>Demuestre que la energía se conserva en la unión.</li>
+<li>¿Cuáles son los coeficientes de reflexión y transmisión en los
+siguientes tres casos:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>=</mo><msub><mi>T</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">T_R = T_L</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>≫</mo><msub><mi>T</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">T_R \gg T_L</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>≪</mo><msub><mi>T</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">T_R \ll T_L</annotation></semantics></math>?
+¿Tiene sentido su resultado?</li>
+</ol>
+<p><strong>Problema 5.5 (20 pts)</strong></p>
+<p>Una cuerda de densidad de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>
+bajo tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+está unida mediante un anillo sin masa a un alambre cubierto de grasa
+viscosa. El anillo experimenta una fuerza de arrastre vertical
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>y</mi></msub><mo>=</mo><mi>−</mi><mi>b</mi><mspace width="0.167em"></mspace><mi>∂</mi><mi>y</mi><mi>/</mi><mi>∂</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">F_y = -b\,\partial y/\partial t</annotation></semantics></math>
+cuando el extremo de la cuerda se mueve.</p>
+<p><em>(Figura: cuerda de tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+unida a un anillo sin masa que desliza por un alambre vertical cubierto
+de grasa.)</em></p>
+<ol type="a">
+<li>Aplique la segunda ley de Newton al anillo para encontrar la
+condición de contorno en el extremo de la cuerda, como una relación
+entre las derivadas parciales de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y(x,t)</annotation></semantics></math>
+en ese punto. (Pista: hay tres fuerzas actuando sobre el anillo: la
+tensión de la cuerda, la fuerza normal del alambre y la fuerza de
+arrastre vertical.)</li>
+<li>Demuestre que la condición de contorno se satisface con un pulso
+incidente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mi>x</mi><mi>/</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(t-x/v)</annotation></semantics></math>
+y un pulso reflejado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mi>x</mi><mi>/</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(t+x/v)</annotation></semantics></math>.
+Encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.</li>
+<li>Demuestre que su resultado tiene el comportamiento adecuado en los
+límites
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b\to 0</annotation></semantics></math>
+(deslizamiento libre) y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">b\to\infty</annotation></semantics></math>
+(cuerda fija).</li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

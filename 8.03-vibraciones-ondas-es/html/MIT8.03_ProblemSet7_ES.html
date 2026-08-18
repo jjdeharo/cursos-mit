@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Problem Set 7 — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Problem Set 7 — 8.03SC Física III: Vibraciones y
+Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul>
+</nav>
+<p><em>Massachusetts Institute of Technology</em></p>
+<p><strong>Física 8.03SC — Otoño de 2016</strong></p>
+<p><strong>Tarea 7</strong></p>
+<h2 id="problemas">Problemas</h2>
+<p><strong>Problema 7.1 (40 pts)</strong></p>
+<p>En sus <em>Lectures on Physics</em>, Richard Feynman escribe: «las
+ondas de agua, que todo el mundo ve fácilmente y que se suelen usar como
+ejemplo de ondas en cursos elementales, son el peor ejemplo posible;
+tienen todas las complicaciones que las ondas pueden tener». Este
+problema explora la complicación principal: las propiedades dispersivas
+de las ondas de agua.</p>
+<p>Considere ondas en la superficie del agua (también llamadas ondas de
+gravedad superficiales). Suponga que las deformaciones de la superficie
+están influidas por la gravedad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+(en la Tierra) y por la tensión superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+del agua (expresada en newtons por metro). Si la densidad del agua es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+y la profundidad no perturbada es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+puede demostrarse que la velocidad de fase de las ondas superficiales
+viene dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>v</mi><mi>p</mi><mn>2</mn></msubsup><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>k</mi></mfrac><mo>+</mo><mfrac><mrow><mi>T</mi><mi>k</mi></mrow><mi>ρ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">tanh</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>h</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+v_p^2(k) = \left(\frac{g}{k} + \frac{Tk}{\rho}\right)\tanh(kh)
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>/</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">k = 2\pi/\lambda</annotation></semantics></math>
+es el número de onda,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tanh</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>h</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tanh(kh)</annotation></semantics></math>
+es la tangente hiperbólica, y se desprecia la viscosidad. Para el agua,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">g</mtext><mspace width="0.167em"></mspace><msup><mtext mathvariant="normal">cm</mtext><mrow><mi>−</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\rho = 1\ \text{g}\,\text{cm}^{-3}</annotation></semantics></math>.</p>
+<ol type="a">
+<li>En términos de las cantidades dadas, ¿a qué longitud de onda
+aproximada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mtext mathvariant="normal">crítica</mtext></msub><annotation encoding="application/x-tex">\lambda_{\text{crítica}}</annotation></semantics></math>
+el efecto de la tensión superficial se vuelve comparable al de la
+gravedad? Para agua a 20 °C, la longitud de onda crítica es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mtext mathvariant="normal">crítica</mtext></msub><mo>=</mo><mn>2</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">cm</mtext></mrow><annotation encoding="application/x-tex">\lambda_{\text{crítica}} = 2\ \text{cm}</annotation></semantics></math>.
+¿Cuál es la tensión superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+del agua?</li>
+<li>Suponga que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≫</mo><msub><mi>λ</mi><mtext mathvariant="normal">crítica</mtext></msub></mrow><annotation encoding="application/x-tex">\lambda \gg \lambda_{\text{crítica}}</annotation></semantics></math>,
+de modo que la tensión superficial es despreciable. ¿Cuáles son la
+velocidad de fase y la velocidad de grupo para ondas de agua en aguas
+poco profundas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≫</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\lambda \gg h</annotation></semantics></math>)?
+¿Son dispersivas las ondas en esta condición?</li>
+<li>Suponga que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≫</mo><msub><mi>λ</mi><mtext mathvariant="normal">crítica</mtext></msub></mrow><annotation encoding="application/x-tex">\lambda \gg \lambda_{\text{crítica}}</annotation></semantics></math>,
+de modo que la tensión superficial es despreciable. ¿Cuáles son la
+velocidad de fase y la velocidad de grupo para ondas en aguas profundas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≪</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\lambda \ll h</annotation></semantics></math>)?
+¿Son dispersivas las ondas en esta condición?</li>
+<li>Suponga que el agua es profunda,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≪</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\lambda \ll h</annotation></semantics></math>,
+y que las longitudes de onda son tan cortas que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≪</mo><msub><mi>λ</mi><mtext mathvariant="normal">crítica</mtext></msub></mrow><annotation encoding="application/x-tex">\lambda \ll \lambda_{\text{crítica}}</annotation></semantics></math>,
+de modo que domina la tensión superficial y la gravedad es despreciable.
+Estas ondas se llaman ondas capilares. ¿Cuáles son su velocidad de fase
+y de grupo? ¿Son dispersivas las ondas capilares?</li>
+</ol>
+<p><strong>Problema 7.2 (30 pts)</strong></p>
+<p>La figura 1 muestra la curva de dispersión de cierto medio. (No haga
+ninguna suposición sobre la forma matemática de esta curva.)</p>
+<p><em>(Figura 1: relación de dispersión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+de un medio genérico, con una forma curva no especificada.)</em></p>
+<ol type="a">
+<li>¿Para qué frecuencia(s) angular(es)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+aproximadamente, son iguales la velocidad de fase y la velocidad de
+grupo
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>p</mi></msub><annotation encoding="application/x-tex">v_p</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>g</mi></msub><annotation encoding="application/x-tex">v_g</annotation></semantics></math>)?</li>
+<li>¿Qué frecuencia angular media elegiría para transmitir un pulso a la
+mayor velocidad posible? ¿Cuánto vale esa velocidad?</li>
+<li>¿Cuál será la respuesta del medio si lo excita en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">s</mtext><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\omega = \omega_0 = 1\times10^4\ \text{s}^{-1}</annotation></semantics></math>?
+(Pista: para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>→</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega \to \omega_0</annotation></semantics></math>,
+¿cuáles son los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>p</mi></msub><annotation encoding="application/x-tex">v_p</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>g</mi></msub><annotation encoding="application/x-tex">v_g</annotation></semantics></math>?)</li>
+</ol>
+<p><strong>Problema 7.3 (30 pts)</strong></p>
+<p>Considere una cuerda infinita de densidad lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>
+bajo tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Un pulso de forma gaussiana viaja por la cuerda, produciendo un
+desplazamiento vertical dado por:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>v</mi><mi>t</mi></mrow><mi>σ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+y(x,t) = \exp\!\left[-\frac{1}{2}\left(\frac{x-vt}{\sigma}\right)^2\right]
+</annotation></semantics></math></p>
+<ol type="a">
+<li>Encuentre la distribución de frecuencias
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega)</annotation></semantics></math>
+que contribuyen a este pulso calculando la «transformada inversa de
+Fourier» (ec. 10.37 de Georgi). Esta es una integral muy conocida;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega)</annotation></semantics></math>
+es también una gaussiana de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>ω</mi></msub><annotation encoding="application/x-tex">\sigma_\omega</annotation></semantics></math>,
+puede usar herramientas en línea para encontrarla. Asegúrese de que
+todas las constantes sean correctas.</li>
+<li>Calcule el producto de las anchuras de las dos gaussianas,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>⋅</mo><msub><mi>σ</mi><mi>ω</mi></msub></mrow><annotation encoding="application/x-tex">\sigma \cdot \sigma_\omega</annotation></semantics></math>.</li>
+<li>Esboce la forma del pulso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y(x,0)</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sigma=1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\sigma=5</annotation></semantics></math>.</li>
+<li>Esboce la forma de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega)</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sigma=1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\sigma=5</annotation></semantics></math>
+(no para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>ω</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sigma_\omega=1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>ω</mi></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\sigma_\omega=5</annotation></semantics></math>).</li>
+<li>Compare las formas obtenidas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y(x,0)</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega)</annotation></semantics></math>
+para distintos valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.
+¿Observa alguna tendencia interesante?</li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

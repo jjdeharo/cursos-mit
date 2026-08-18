@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Problem Set 9 — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Problem Set 9 — 8.03SC Física III: Vibraciones y
+Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul>
+</nav>
+<p><em>Massachusetts Institute of Technology</em></p>
+<p><strong>Física 8.03SC — Otoño de 2016</strong></p>
+<p><strong>Tarea 9</strong></p>
+<h2 id="problemas">Problemas</h2>
+<p><strong>Problema 9.1 (20 pts)</strong></p>
+<p>La ionosfera puede verse como un medio dieléctrico con índice de
+refracción</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msqrt><mrow><mn>1</mn><mo>−</mo><mfrac><msubsup><mi>ω</mi><mi>p</mi><mn>2</mn></msubsup><msup><mi>ω</mi><mn>2</mn></msup></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">
+n = \sqrt{1 - \frac{\omega_p^2}{\omega^2}}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+es la frecuencia y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>p</mi></msub><annotation encoding="application/x-tex">\omega_p</annotation></semantics></math>
+es la frecuencia de plasma, que se supone constante.</p>
+<ol type="a">
+<li>Haga una gráfica de la magnitud del vector de propagación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+en función de la frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+para una onda electromagnética que se propaga por la ionosfera.</li>
+<li>Calcule la velocidad de fase y la velocidad de grupo de una onda de
+radio que se propaga con frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msqrt><mn>2</mn></msqrt><mspace width="0.167em"></mspace><msub><mi>ω</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">\omega = \sqrt{2}\,\omega_p</annotation></semantics></math>.</li>
+<li>¿Qué le ocurre a una perturbación electromagnética dentro de la
+ionosfera cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>&lt;</mo><msub><mi>ω</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">\omega &lt; \omega_p</annotation></semantics></math>?</li>
+</ol>
+<p><strong>Problema 9.2 (20 pts)</strong></p>
+<p>Considere dos polarizadores y una lámina de cuarto de onda como se
+muestra en la figura 1.</p>
+<p><em>(Figura 1: haz de luz atravesando, en orden, el polarizador A, el
+polarizador B y una lámina de cuarto de onda, cada uno con su eje
+“fácil” o “rápido/lento” orientado con un ángulo distinto.)</em></p>
+<p>Primero se insertan los dos polarizadores A y B en la trayectoria de
+un haz de luz, como se muestra en la figura 2. El haz incidente viaja a
+lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y está polarizado linealmente en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+La intensidad inicial de la luz es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>.
+En este problema se le pide determinar la intensidad de la luz relativa
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+a lo largo de la trayectoria del haz. Los polarizadores son perfectos:
+transmiten el 100 % de la luz polarizada a lo largo de su eje «fácil» y
+detienen toda la luz perpendicular a ese eje. Los ángulos de los ejes
+fáciles de los dos polarizadores
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>A</mi></msub><annotation encoding="application/x-tex">\theta_A</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>B</mi></msub><annotation encoding="application/x-tex">\theta_B</annotation></semantics></math>)
+se miden respecto a la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+Nota: la intensidad de la luz es proporcional al promedio temporal de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mn>2</mn></msup><annotation encoding="application/x-tex">E^2</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>∝</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mi>E</mi><mn>2</mn></msup><msub><mo stretchy="false" form="postfix">⟩</mo><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">I \propto \langle E^2 \rangle_t</annotation></semantics></math>.</p>
+<p><em>(Figura 2: haz de intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+propagándose en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+atravesando el polarizador A en el punto a y el polarizador B en el
+punto b.)</em></p>
+<ol type="a">
+<li>Encuentre la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>a</mi></msub><annotation encoding="application/x-tex">I_a</annotation></semantics></math>
+del haz después de pasar por el polarizador A, en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>A</mi></msub><annotation encoding="application/x-tex">\theta_A</annotation></semantics></math>.</li>
+<li>Encuentre la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>b</mi></msub><annotation encoding="application/x-tex">I_b</annotation></semantics></math>
+del haz después de pasar por ambos polarizadores, en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>A</mi></msub><annotation encoding="application/x-tex">\theta_A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>B</mi></msub><annotation encoding="application/x-tex">\theta_B</annotation></semantics></math>.</li>
+</ol>
+<p>Ahora el polarizador A se sustituye por una lámina de cuarto de onda
+C (véase la figura 3). La lámina de cuarto de onda afecta solo a la fase
+de la luz transmitida. Tiene dos ejes perpendiculares, «lento» y
+«rápido». La fase de la luz polarizada a lo largo del eje «lento» se
+retrasa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
+respecto a la fase de la luz polarizada a lo largo del eje «rápido». La
+lámina se coloca de modo que el ángulo del eje «rápido» respecto al eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\theta_C</annotation></semantics></math>.</p>
+<p><em>(Figura 3: haz atravesando la lámina de cuarto de onda C en el
+punto c y luego el polarizador B en el punto b.)</em></p>
+<ol start="4" type="a">
+<li>Encuentre la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>c</mi></msub><annotation encoding="application/x-tex">I_c</annotation></semantics></math>
+del haz después de pasar por la lámina de cuarto de onda C, en función
+de los parámetros dados.</li>
+<li>La intensidad de la luz que pasa por el polarizador B se verá
+afectada, en general, por la presencia de la lámina de cuarto de onda.
+Suponga que el eje fácil del polarizador B está orientado a lo largo del
+eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>B</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta_B=0</annotation></semantics></math>).
+Encuentre la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>b</mi></msub><annotation encoding="application/x-tex">I_b</annotation></semantics></math>
+del haz después de pasar por el polarizador B, en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\theta_C</annotation></semantics></math>.</li>
+</ol>
+<p><strong>Problema 9.3 (20 pts)</strong></p>
+<p>Una onda electromagnética plana y monocromática viaja en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">+z</annotation></semantics></math>
+dentro de un medio dieléctrico. La onda está polarizada linealmente, con
+el campo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec E</annotation></semantics></math>
+formando 30° con el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+La frecuencia angular de la onda es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+y la constante dieléctrica del medio es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\kappa_e</annotation></semantics></math>.</p>
+<ol type="a">
+<li>Escriba las expresiones para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>x</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E_x(z,t)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>y</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E_y(z,t)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">B_x(z,t)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>y</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">B_y(z,t)</annotation></semantics></math>,
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\kappa_e</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>0</mn></msub><annotation encoding="application/x-tex">E_0</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>0</mn></msub><annotation encoding="application/x-tex">E_0</annotation></semantics></math>
+es la amplitud del campo eléctrico.</li>
+<li>¿Cuál es la tasa de flujo de energía por unidad de área y por unidad
+de tiempo que se transporta a través de una superficie perpendicular a
+la dirección de propagación?</li>
+<li>¿Cuál es la ecuación de ondas para las ondas electromagnéticas que
+viajan dentro del medio?</li>
+</ol>
+<p><strong>Problema 9.4 (20 pts)</strong></p>
+<p>Un electrón realiza un movimiento en espiral en un campo magnético,
+como se muestra en la figura 4. Su velocidad no es relativista. La
+posición del electrón viene dada por:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>r</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mover><mi>x</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><mi>α</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>β</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mover><mi>y</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><mi>α</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>β</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mover><mi>z</mi><mo accent="true">̂</mo></mover><mspace width="0.167em"></mspace><mi>γ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">
+\vec r(t) = \hat x\, \alpha\cos(\beta t) + \hat y\, \alpha\sin(\beta t) + \hat z\, \gamma t
+</annotation></semantics></math></p>
+<p><em>(Figura 4: electrón describiendo una trayectoria helicoidal a lo
+largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+con radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+y avance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\gamma t</annotation></semantics></math>.)</em></p>
+<ol type="a">
+<li>Dé la frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>,
+el vector de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>k</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec k</annotation></semantics></math>
+y el estado de polarización de la radiación observada por un
+radioastrónomo situado lejos, en las siguientes direcciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z)</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≫</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">R \gg \alpha</annotation></semantics></math>):
+<ol type="i">
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0,R)</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mi>/</mi><msqrt><mn>2</mn></msqrt><mo>,</mo><mspace width="0.167em"></mspace><mn>0</mn><mo>,</mo><mspace width="0.167em"></mspace><mi>R</mi><mi>/</mi><msqrt><mn>2</mn></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(R/\sqrt2,\,0,\,R/\sqrt2)</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(R,0,0)</annotation></semantics></math></li>
+</ol></li>
+<li>Dé la expresión completa de los vectores de campo eléctrico y
+magnético de las ondas observadas en el punto B sobre el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+con coordenadas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z)=(0,0,R)</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≫</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">R \gg \alpha</annotation></semantics></math>.</li>
+<li>Dé una expresión para la energía total radiada por segundo por el
+electrón, en términos de las constantes dadas. (Pista: puede usar la
+fórmula de Larmor, potencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">|</mo><mi>a</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mn>6</mn><mi>π</mi><msub><mi>ϵ</mi><mn>0</mn></msub><msup><mi>c</mi><mn>3</mn></msup></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">P = \dfrac{q^2|a|^2}{6\pi\epsilon_0 c^3}</annotation></semantics></math>.)</li>
+<li>En una esfera de radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+alrededor de la fuente, ¿cuál es la razón entre el valor máximo y el
+mínimo del vector de Poynting promediado en el tiempo?</li>
+</ol>
+<p><strong>Problema 9.5 (20 pts)</strong></p>
+<p>Un rayo de luz con componentes del campo eléctrico paralela
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mo>∥</mo></msub><annotation encoding="application/x-tex">E_\parallel</annotation></semantics></math>)
+y perpendicular
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mo>⟂</mo></msub><annotation encoding="application/x-tex">E_\perp</annotation></semantics></math>)
+al plano de incidencia de una interfaz vidrio-aire se muestra en la
+figura 5.</p>
+<p><em>(Figura 5: rayo de luz incidiendo sobre una interfaz vidrio-aire,
+con las componentes paralela y perpendicular del campo eléctrico
+indicadas mediante flechas y puntos.)</em></p>
+<ol type="a">
+<li>Si el rayo incide sobre el vidrio con el ángulo de Brewster, muestre
+mediante esquemas (como se hace para el rayo incidente en la figura 5)
+las componentes de polarización de los rayos reflejado y
+refractado.</li>
+<li>Dé la ecuación que define el ángulo de Brewster
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>B</mi></msub><annotation encoding="application/x-tex">\theta_B</annotation></semantics></math>.
+(Pista: use la ley de Snell.)</li>
+<li>Explique, a partir de la aceleración de las cargas en el vidrio, la
+dirección de polarización de la luz reflejada. ¿Por qué la luz reflejada
+está polarizada paralelamente a la interfaz?</li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

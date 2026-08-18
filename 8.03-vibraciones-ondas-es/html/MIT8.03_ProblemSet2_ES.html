@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Problem Set 2 — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Problem Set 2 — 8.03SC Física III: Vibraciones y
+Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul>
+</nav>
+<p><em>Massachusetts Institute of Technology</em></p>
+<p><strong>Física 8.03SC — Otoño de 2016</strong></p>
+<p><strong>Tarea 2</strong></p>
+<h2 id="problemas">Problemas</h2>
+<p><strong>Problema 2.1 (20 pts)</strong></p>
+<p>En el circuito de la figura 1,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>2</mn><mspace width="0.222em"></mspace><mi>μ</mi><mtext mathvariant="normal">F</mtext></mrow><annotation encoding="application/x-tex">C = 2\ \mu\text{F}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>2</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">mH</mtext></mrow><annotation encoding="application/x-tex">L = 2\ \text{mH}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>20</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">R = 20\ \Omega</annotation></semantics></math>.
+Inicialmente, en el instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>5</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">V</mtext></mrow><annotation encoding="application/x-tex">V_C(t=0) = 5\ \text{V}</annotation></semantics></math>
+y corriente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.5</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">A</mtext></mrow><annotation encoding="application/x-tex">i(t=0) = 0.5\ \text{A}</annotation></semantics></math>.</p>
+<p><em>(Figura 1: circuito RLC con un condensador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+una bobina
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y una resistencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+en serie, recorridos por la corriente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">i(t)</annotation></semantics></math>.)</em></p>
+<ol type="a">
+<li>Traduzcamos ahora esta situación física a matemáticas. Escriba la
+ecuación de movimiento en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Q(t)</annotation></semantics></math>,
+la carga almacenada en el condensador.</li>
+<li>¿Qué tipo de oscilador estamos considerando aquí? (¿No amortiguado,
+subamortiguado, con amortiguamiento crítico o sobreamortiguado?)
+Explique por qué lo cree así.</li>
+<li>Encuentre una expresión analítica para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V_C(t)</annotation></semantics></math>
+para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&gt;0</annotation></semantics></math>.</li>
+</ol>
+<p><strong>Problema 2.2 (20 pts)</strong></p>
+<p>En un laboratorio cercano al Gran Colisionador de Hadrones, un
+delicado cristal de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+está sostenido por cuatro muelles sin masa en paralelo, cada uno con
+constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Todo el montaje se coloca sobre una mesa. Cuando los estudiantes de
+posgrado del laboratorio mueven la mesa por el suelo, el tablero vibra,
+produciendo una fuerza vertical efectiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>M</mi><msub><mi>A</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">F = MA_0\cos(\omega_d t)</annotation></semantics></math>
+sobre la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+en el sistema de referencia del tablero.</p>
+<ol type="a">
+<li>Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+el desplazamiento vertical del cristal respecto a su posición de
+equilibrio. Escriba la ecuación de movimiento del instrumento. (Puede
+suponer que no hay fuerza de rozamiento en esta parte del
+problema.)</li>
+<li>Encuentre la amplitud de vibración del cristal (la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>)
+en el estado estacionario. (Suponiendo que hay pérdidas de energía muy
+pequeñas en este sistema, de modo que la solución homogénea se extingue
+cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">t \to \infty</annotation></semantics></math>.)</li>
+<li>Para reducir en un factor diez la amplitud de vibración del cristal
+obtenida en (a), ¿cómo propondría modificar los cuatro muelles?, es
+decir, ¿cuánto más largos (o cortos) deberían ser los nuevos muelles?
+Suponga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>/</mi><mi>M</mi><mo>≫</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">k/M \gg \omega_d^2</annotation></semantics></math>.
+(Pista: la constante de un muelle es proporcional a su área e
+inversamente proporcional a su longitud.)</li>
+<li>Una forma mejor de reducir esta amplitud de vibración en un factor
+diez respecto a la original es insertar una especie de amortiguador
+blando y sin masa entre el cristal y la mesa, en paralelo con los
+muelles. Suponiendo que el amortiguador produce una fuerza resistiva
+igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">-b</annotation></semantics></math>
+veces la velocidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+deduzca una ecuación que le permita determinar el valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
+y resuelva para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+suponiendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>/</mi><mi>M</mi><mo>≫</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">k/M \gg \omega_d^2</annotation></semantics></math>.</li>
+</ol>
+<p><strong>Problema 2.3 (20 pts)</strong></p>
+<p>Durante un huracán reciente, una física esperaba en un cruce. Observó
+el semáforo, suspendido sobre la calle por cables, oscilar verticalmente
+con el viento. Como había cursado 8.03 cuando era estudiante de grado en
+el MIT, notó de inmediato que el sistema se comportaba como un oscilador
+masa-muelle amortiguado, con la suspensión de cables desempeñando el
+papel del muelle. Observó que las perturbaciones de la amplitud tardaban
+4 segundos (el tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">e^{-1}</annotation></semantics></math>)
+en amortiguarse (es decir, la amplitud pasa de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">e^{-1}A</annotation></semantics></math>
+en 4 segundos). De repente, la mitad inferior del semáforo se desprendió
+y cayó al pavimento. La nueva posición de equilibrio de la mitad
+restante quedó 0.1 metros más alta que antes.</p>
+<ol type="a">
+<li>¿Cuál es la frecuencia natural no amortiguada (en hercios) del
+semáforo tras la separación?</li>
+<li>Suponga que toda la disipación ocurre en el sistema de suspensión.
+¿Cuál es el tiempo de decaimiento (el tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">e^{-1}</annotation></semantics></math>)
+de las oscilaciones de amplitud del semáforo tras la separación?</li>
+<li>Escriba una expresión analítica para el desplazamiento vertical,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y(t)</annotation></semantics></math>,
+del semáforo respecto a su nueva posición de equilibrio tras la
+separación. Suponga que el semáforo estaba en reposo
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̇</mo></mover><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\dot y = 0</annotation></semantics></math>)
+en la posición de equilibrio anterior en el instante de la separación,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>.
+Dé valores numéricos, con unidades, para cualquier constante que
+aparezca en la expresión.</li>
+</ol>
+<p><strong>Problema 2.4 (20 pts)</strong></p>
+<p>Considere una masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+que se mueve sobre un carril de aire horizontal. La masa está unida por
+ambos lados a dos muelles idénticos, cada uno con constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y longitud relajada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ℓ</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\ell_0</annotation></semantics></math>
+(véase la figura 2). El extremo del primer muelle está fijo. El extremo
+del segundo muelle está conectado a un motor eléctrico que le hace
+realizar un movimiento armónico con amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+y frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>.
+En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+los muelles están relajados, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><msub><mi>ℓ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\ell = \ell_0</annotation></semantics></math>,
+y la masa está en reposo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">̇</mo></mover><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\dot x(0) = 0</annotation></semantics></math>.
+Defina el origen del sistema de coordenadas en la posición de la masa en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x(0)=0</annotation></semantics></math>.</p>
+<p>En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+se enciende el motor, de forma que el extremo del muelle empieza a
+moverse según la ecuación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mtext mathvariant="normal">ext</mtext></msub><mo>=</mo><mi mathvariant="normal">Δ</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>ℓ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">
+x_{\text{ext}} = \Delta \sin(\omega t) + \ell_0
+</annotation></semantics></math></p>
+<p>Suponga que el movimiento de la masa está afectado por una pequeña
+fricción del aire dependiente de la velocidad,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>b</mi><mover><mi>x</mi><mo accent="true">̇</mo></mover></mrow><annotation encoding="application/x-tex">-b\dot x</annotation></semantics></math>.</p>
+<p><em>(Figura 2: masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+sobre un carril de aire, unida a la izquierda a un muelle fijo de
+constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>,</mo><msub><mi>ℓ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">k, \ell_0</annotation></semantics></math>
+y a la derecha a otro muelle idéntico cuyo extremo se mueve como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Delta\sin(\omega t)</annotation></semantics></math>.)</em></p>
+<ol type="a">
+<li>Plantee cuidadosamente la ecuación de movimiento unidimensional para
+la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+incluyendo todas las fuerzas. Organice la ecuación de forma que se
+distingan claramente los términos del oscilador y los términos
+relacionados con la fuerza externa.</li>
+<li>Postule, sin resolver, la solución completa para el movimiento de la
+masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>x</mi><mtext mathvariant="normal">libre</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>x</mi><mtext mathvariant="normal">forzada</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = x_{\text{libre}}(t) + x_{\text{forzada}}(t)</annotation></semantics></math>.
+Indique qué constantes de la solución dependen solo de las propiedades
+del oscilador, cuáles de las propiedades de la fuerza externa y cuáles
+deben determinarse a partir de las condiciones iniciales.</li>
+<li>Encuentre la amplitud y la fase del movimiento estacionario de la
+masa. Esboce su dependencia con la frecuencia de la fuerza impulsora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+y con los parámetros dados.</li>
+<li>Encuentre la frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mtext mathvariant="normal">máx</mtext></msub><annotation encoding="application/x-tex">\omega_{\text{máx}}</annotation></semantics></math>
+para la que la amplitud es máxima.</li>
+<li>Use las condiciones iniciales para encontrar la solución específica,
+incluyendo tanto el oscilador libre como la solución estacionaria, con
+la elección adecuada de todos los parámetros.</li>
+</ol>
+<p><strong>Problema 2.5 (20 pts)</strong></p>
+<p>Considere un sistema de tres muelles y dos masas como se muestra en
+la figura 3, donde las masas están obligadas a moverse solo en la
+dirección vertical. El sistema se prepara en un laboratorio en la
+Tierra, con la fuerza gravitatoria apuntando hacia abajo. Las constantes
+de los muelles son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>A</mi></msub><mo>=</mo><mn>78</mn></mrow><annotation encoding="application/x-tex">K_A = 78</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>B</mi></msub><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">K_B = 60</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>C</mi></msub><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">K_C = 24</annotation></semantics></math>,
+medidas en N/m. Las dos masas son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">m_1 = 4</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">m_2 = 12</annotation></semantics></math>,
+medidas en kg. Las longitudes naturales de los muelles A y B son iguales
+a la longitud natural de C.</p>
+<p><em>(Figura 3: dos masas colgando verticalmente; el muelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>A</mi></msub><annotation encoding="application/x-tex">K_A</annotation></semantics></math>
+conecta un soporte fijo con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>,
+el muelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>C</mi></msub><annotation encoding="application/x-tex">K_C</annotation></semantics></math>
+conecta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>
+con otro soporte fijo lateral, y el muelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>B</mi></msub><annotation encoding="application/x-tex">K_B</annotation></semantics></math>
+conecta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>,
+colgando esta última en el extremo inferior.)</em></p>
+<ol type="a">
+<li>Defina el/los sistema(s) de coordenadas y escriba las ecuaciones de
+movimiento de las dos masas.</li>
+<li>Escriba la ecuación de movimiento en forma matricial. Muestre
+claramente la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+tal como se define en el libro de texto.</li>
+<li>Encuentre los modos normales de oscilación y sus frecuencias
+angulares asociadas.</li>
+<li>Si la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+se desplaza 1 cm hacia arriba desde su posición de equilibrio y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>
+se mantiene en su posición de equilibrio original, y ambos bloques se
+sueltan desde el reposo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+escriba las expresiones para el movimiento posterior de ambos
+bloques.</li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
