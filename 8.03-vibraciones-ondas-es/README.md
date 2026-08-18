@@ -2,7 +2,7 @@
 
 Traducción al español, no oficial, de los materiales del curso **[8.03SC Physics III: Vibrations and Waves](https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/)** (Fall 2016) del **Prof. Yen-Jie Lee**, impartido en el MIT y publicado por MIT OpenCourseWare.
 
-Este curso es la continuación natural de [8.04 Física Cuántica I](https://jjdeharo.github.io/8.04-fisica-cuantica-i-es/), pero cronológicamente es su **prerrequisito** recomendado: conviene cursar 8.03SC (oscilaciones, ondas, electromagnetismo y óptica) antes de 8.04 (mecánica cuántica).
+Este curso es el **prerrequisito recomendado** de [8.04 Física Cuántica I](https://jjdeharo.github.io/8.04-fisica-cuantica-i-es/): conviene cursar 8.03SC (oscilaciones, ondas, electromagnetismo y óptica) antes de 8.04 (mecánica cuántica).
 
 El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas renderizadas como **MathML nativo** (no como imágenes), por lo que se ven nítidas a cualquier tamaño de letra y son compatibles con lectores como Apple Books, Thorium Reader, calibre, Google Play Books, etc.
 
@@ -16,6 +16,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 |---|---|
 | `MIT8.03_TextCh1_ES.epub` | Oscilación armónica |
 | `MIT8.03_TextCh2_ES.epub` | Oscilación forzada y resonancia |
+| `MIT8.03_TextCh3_ES.epub` | Modos normales |
 
 ### Listas de problemas (Problem Sets 1-10)
 
@@ -34,7 +35,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ### Próximamente
 
-Quedan **11 capítulos del libro de texto** (`Text_Ch3`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+Quedan **10 capítulos del libro de texto** (`Text_Ch4`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
