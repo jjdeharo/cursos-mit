@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 5: Ondas — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 5: Ondas — 8.03SC Física III: Vibraciones y
+Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-5-ondas" id="toc-capítulo-5-ondas">Capítulo 5:
+Ondas</a>
+<ul>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#invariancia-bajo-traslación-espacial"
+id="toc-invariancia-bajo-traslación-espacial">5.1 Invariancia bajo
+traslación espacial</a>
+<ul>
+<li><a href="#el-sistema-infinito" id="toc-el-sistema-infinito">5.1.1 El
+sistema infinito</a></li>
+<li><a href="#condiciones-de-contorno"
+id="toc-condiciones-de-contorno">5.1.2 Condiciones de contorno</a></li>
+</ul></li>
+<li><a href="#k-y-relaciones-de-dispersión"
+id="toc-k-y-relaciones-de-dispersión">5.2
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y relaciones de dispersión</a>
+<ul>
+<li><a href="#la-relación-de-dispersión"
+id="toc-la-relación-de-dispersión">5.2.1 La relación de
+dispersión</a></li>
+</ul></li>
+<li><a href="#ondas" id="toc-ondas">5.3 Ondas</a>
+<ul>
+<li><a href="#la-cuerda-con-cuentas"
+id="toc-la-cuerda-con-cuentas">5.3.1 La cuerda con cuentas</a></li>
+<li><a href="#extremos-fijos" id="toc-extremos-fijos">5.3.2 Extremos
+fijos</a></li>
+</ul></li>
+<li><a href="#extremos-libres" id="toc-extremos-libres">5.4 Extremos
+libres</a>
+<ul>
+<li><a href="#modos-normales-para-extremos-libres"
+id="toc-modos-normales-para-extremos-libres">5.4.1 Modos normales para
+extremos libres</a></li>
+</ul></li>
+<li><a href="#oscilaciones-forzadas-y-condiciones-de-contorno"
+id="toc-oscilaciones-forzadas-y-condiciones-de-contorno">5.5
+Oscilaciones forzadas y condiciones de contorno</a>
+<ul>
+<li><a href="#oscilaciones-forzadas-con-un-extremo-libre"
+id="toc-oscilaciones-forzadas-con-un-extremo-libre">5.5.1 Oscilaciones
+forzadas con un extremo libre</a></li>
+<li><a href="#generalización" id="toc-generalización">5.5.2
+Generalización</a></li>
+</ul></li>
+<li><a href="#circuitos-lc-acoplados"
+id="toc-circuitos-lc-acoplados">5.6 Circuitos LC acoplados</a>
+<ul>
+<li><a href="#un-ejemplo-de-circuitos-lc-acoplados"
+id="toc-un-ejemplo-de-circuitos-lc-acoplados">5.6.1 Un ejemplo de
+circuitos LC acoplados</a></li>
+<li><a
+href="#un-problema-de-oscilación-forzada-para-circuitos-lc-acoplados"
+id="toc-un-problema-de-oscilación-forzada-para-circuitos-lc-acoplados">5.6.2
+Un problema de oscilación forzada para circuitos LC acoplados</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-5-ondas">Capítulo 5: Ondas</h1>
+<p>El clímax de este libro llega pronto. Aquí identificamos las
+características cruciales de un sistema que admite ondas: la invariancia
+bajo traslación espacial y las interacciones locales.</p>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>Identificamos la invariancia bajo traslación espacial de la clase de
+sistemas infinitos en los que ocurren los fenómenos ondulatorios.</p>
+<ol type="1">
+<li>Los argumentos de simetría no pueden aplicarse directamente a
+sistemas finitos que admiten ondas, como una serie de péndulos
+acoplados. Sin embargo, mostramos que, si los acoplamientos son solo
+entre bloques vecinos, el concepto de simetría todavía puede usarse para
+entender las oscilaciones. En este caso decimos que las interacciones
+son «locales». La idea es separar la física en dos componentes
+distintos: la física del interior y la física de las fronteras, que se
+incorpora en forma de condiciones de contorno. El interior puede
+considerarse parte de un sistema infinito con invariancia bajo
+traslación espacial, una simetría bajo traslaciones en cierta distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+En este caso, los modos normales se llaman ondas estacionarias.</li>
+<li>Después introducimos una notación diseñada para aprovechar al máximo
+la invariancia bajo traslación espacial del sistema infinito.
+Introducimos el número de onda angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+que desempeña para la dependencia espacial de la onda el mismo papel que
+la frecuencia angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+desempeña para su dependencia temporal.</li>
+<li>Describimos los modos normales de oscilación transversal de una
+cuerda con cuentas. Los modos son «ondulados».</li>
+<li>Estudiamos los modos normales de una cuerda con cuentas finita con
+extremos libres, como otro ejemplo de condiciones de contorno.</li>
+<li>Estudiamos un tipo de problema de oscilación forzada particularmente
+importante para sistemas invariantes bajo traslación con interacciones
+locales. Si la fuerza impulsora actúa solo en los extremos del sistema,
+la solución puede encontrarse simplemente usando condiciones de
+contorno.</li>
+<li>Aplicamos la idea de invariancia bajo traslación espacial a un
+sistema de circuitos LC acoplados.</li>
+</ol>
+<h2 id="invariancia-bajo-traslación-espacial">5.1 Invariancia bajo
+traslación espacial</h2>
+<p><em>(Figura 5.1: sistema finito de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+péndulos acoplados idénticos, en línea, cada uno conectado a sus vecinos
+mediante un muelle, con los dos extremos anclados a paredes
+fijas.)</em></p>
+<p>El sistema típico de osciladores acoplados que admite ondas es como
+el sistema de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+péndulos acoplados idénticos mostrado en la figura 5.1. Este sistema es
+una generalización del sistema de dos péndulos acoplados que estudiamos
+en los capítulos 3 y 4. Suponga que cada masa de péndulo tiene masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+cada péndulo tiene longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>,
+cada muelle tiene constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+y la separación de equilibrio entre masas es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Suponga además que no hay fricción y que los péndulos están obligados a
+oscilar solo en la dirección en la que se estiran los muelles. Nos
+interesa la oscilación libre de este sistema, sin fuerza externa. Tal
+oscilación, cuando el movimiento es paralelo a la dirección en la que el
+sistema se extiende en el espacio, se llama «oscilación longitudinal».
+Llame
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\psi_j</annotation></semantics></math>
+al desplazamiento longitudinal de la
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésima
+masa respecto al equilibrio. Podemos organizar los desplazamientos en un
+vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+(por razones que quedarán claras más abajo, sería confuso usar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+así que elegimos otra letra, la griega psi, que se escribe
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+en minúscula y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+en mayúscula):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mi>N</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.1)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi = \begin{pmatrix}\psi_1\\\psi_2\\\psi_3\\\vdots\\\psi_N\end{pmatrix}\,. \qquad \text{(5.1)}
+</annotation></semantics></math></p>
+<p>Entonces las ecuaciones de movimiento (para pequeñas oscilaciones
+longitudinales) son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.2)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\Psi}{dt^2} = -M^{-1}K\,\Psi \qquad \text{(5.2)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+es la matriz diagonal con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+en la diagonal,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>m</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.3)</mtext></mrow><annotation encoding="application/x-tex">
+M = \begin{pmatrix} m&amp;0&amp;0&amp;\cdots&amp;0\\ 0&amp;m&amp;0&amp;\cdots&amp;0\\ 0&amp;0&amp;m&amp;\cdots&amp;0\\ \vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\ 0&amp;0&amp;0&amp;\cdots&amp;m \end{pmatrix}\,, \qquad \text{(5.3)}
+</annotation></semantics></math></p>
+<p>y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+tiene elementos diagonales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(mg/\ell+2\kappa)</annotation></semantics></math>,
+elementos en la subdiagonal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>κ</mi></mrow><annotation encoding="application/x-tex">-\kappa</annotation></semantics></math>,
+y ceros en el resto,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.4)</mtext></mrow><annotation encoding="application/x-tex">
+K = \begin{pmatrix} mg/\ell+2\kappa &amp; -\kappa &amp; 0 &amp; \cdots &amp; 0\\ -\kappa &amp; mg/\ell+2\kappa &amp; -\kappa &amp; \cdots &amp; 0\\ 0 &amp; -\kappa &amp; mg/\ell+2\kappa &amp; \cdots &amp; 0\\ \vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\ 0&amp;0&amp;0&amp;\cdots&amp;mg/\ell+2\kappa \end{pmatrix}\,. \qquad \text{(5.4)}
+</annotation></semantics></math></p>
+<p>El
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>κ</mi></mrow><annotation encoding="application/x-tex">-\kappa</annotation></semantics></math>
+de la subdiagonal tiene exactamente el mismo origen que el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>κ</mi></mrow><annotation encoding="application/x-tex">-\kappa</annotation></semantics></math>
+de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times2</annotation></semantics></math>
+de (3.78): describe el acoplamiento de dos bloques vecinos por el
+muelle. El
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(mg/\ell+2\kappa)</annotation></semantics></math>
+de la diagonal es análogo al
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mi>κ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(mg/\ell+\kappa)</annotation></semantics></math>
+de la diagonal de (3.78). La diferencia en el factor 2 del coeficiente
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+surge porque hay dos muelles, uno a cada lado, que contribuyen a la
+fuerza restauradora sobre cada bloque en el sistema de la figura 5.1,
+mientras que solo había uno en el sistema de la figura 3.1. Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.5)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}K = \begin{pmatrix} 2B&amp;-C&amp;0&amp;\cdots&amp;0\\ -C&amp;2B&amp;-C&amp;\cdots&amp;0\\ 0&amp;-C&amp;2B&amp;\cdots&amp;0\\ \vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\ 0&amp;0&amp;0&amp;\cdots&amp;2B \end{pmatrix} \qquad \text{(5.5)}
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>B</mi><mo>=</mo><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mn>2</mn><mi>κ</mi><mi>/</mi><mi>m</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>C</mi><mo>=</mo><mi>κ</mi><mi>/</mi><mi>m</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.6)</mtext></mrow><annotation encoding="application/x-tex">
+2B = g/\ell+2\kappa/m\,,\qquad C=\kappa/m\,. \qquad \text{(5.6)}
+</annotation></semantics></math></p>
+<p>Es interesante comparar la matriz (5.5) con la matriz (4.43) del
+capítulo anterior. En ambos casos, los elementos diagonales son todos
+iguales, por la simetría; lo mismo ocurre con los elementos de la
+subdiagonal. Sin embargo, en (5.5), todos los demás elementos son cero,
+porque las interacciones son solo entre bloques vecinos más cercanos.
+Llamamos «locales» a tales interacciones. En (4.43), en cambio, cada
+masa interactúa con todas las demás. Usaremos la naturaleza local de las
+interacciones más abajo.</p>
+<p>Podríamos intentar encontrar los modos normales de este sistema
+directamente, hallando los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>,
+pero hay una técnica mucho más fácil y de utilidad más general. Podemos
+dividir la física del sistema en dos partes: la física de los péndulos
+acoplados, y la física de las paredes. Para ello, primero consideramos
+un sistema infinito sin paredes en absoluto.</p>
+<h3 id="el-sistema-infinito">5.1.1 El sistema infinito</h3>
+<p><em>(Figura 5.2: fragmento de un sistema infinito de péndulos
+acoplados, extendiéndose indefinidamente a ambos lados del bloque 1 al
+N, con los mismos muelles de acoplamiento.)</em></p>
+<p>Note que en la figura 5.2 no hemos cambiado en absoluto el interior
+del sistema de la figura 5.1: simplemente hemos reemplazado las paredes
+por una continuación del interior.</p>
+<p>Ahora podemos encontrar todos los modos del sistema infinito de la
+figura 5.2 muy fácilmente, aprovechando un argumento de simetría. El
+sistema infinito de la figura 5.2 se ve igual si se traslada, moviéndolo
+a la izquierda o a la derecha en un múltiplo de la separación de
+equilibrio,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Tiene la propiedad de «invariancia bajo traslación espacial». La
+invariancia bajo traslación espacial es la simetría del sistema infinito
+bajo traslaciones en múltiplos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+En este ejemplo, debido a los bloques discretos y a la longitud finita
+de los muelles, la invariancia bajo traslación espacial es «discreta»:
+solo las traslaciones por múltiplos enteros de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+dan la misma física. Más adelante discutiremos sistemas continuos que
+tienen invariancia bajo traslación espacial continua; sin embargo,
+veremos que tales sistemas pueden analizarse con las mismas técnicas que
+introducimos en este capítulo.</p>
+<p>Podemos usar la simetría de la invariancia bajo traslación espacial,
+igual que usamos las simetrías de reflexión y rotación discutidas en el
+capítulo anterior, para encontrar los modos normales del sistema
+infinito. La invariancia discreta bajo traslación espacial del sistema
+infinito (la simetría bajo traslaciones en múltiplos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>)
+nos permite encontrar los modos normales del sistema infinito de forma
+simple.</p>
+<p>La mayoría de los modos que encontremos usando la invariancia bajo
+traslación espacial del sistema infinito de la figura 5.2 no tendrán
+nada que ver con el sistema finito de la figura 5.1. Pero si podemos
+encontrar combinaciones lineales de los modos normales del sistema
+infinito de la figura 5.2 en las que los bloques
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N+1</annotation></semantics></math>
+permanezcan fijos, entonces deben ser soluciones de las ecuaciones de
+movimiento del sistema de la figura 5.1. La razón es que las
+interacciones entre los bloques son «locales» —ocurren solo entre
+bloques vecinos más cercanos—. Así, el bloque 1 «sabe» qué hace el
+bloque 0, pero no qué hace el bloque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.
+Si el bloque 0 está inmóvil, bien podría ser una pared, porque los
+bloques del otro lado no afectan en absoluto al bloque 1 (ni a ninguno
+de los bloques 1 a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>).
+La naturaleza local de la interacción nos permite incorporar la física
+de las paredes como una condición de contorno, después de resolver el
+problema infinito. Este mismo truco también nos permitirá resolver
+muchos otros problemas.</p>
+<p>Veamos cómo funciona esto para el sistema de la figura 5.1. Primero,
+usamos la simetría bajo traslaciones para encontrar los modos normales
+del sistema infinito de la figura 5.2. Como en los dos capítulos
+anteriores, describimos las soluciones en términos de un vector,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Pero ahora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+tiene un número infinito de componentes,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>,
+donde el entero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+va de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">+\infty</annotation></semantics></math>.
+Es un poco incómodo escribir este vector infinito, pero podemos
+representar un fragmento de él:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mi>N</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.7)</mtext></mrow><annotation encoding="application/x-tex">
+A = \begin{pmatrix}\vdots\\A_0\\A_1\\A_2\\A_3\\\vdots\\A_N\\A_{N+1}\\\vdots\end{pmatrix}\,. \qquad \text{(5.7)}
+</annotation></semantics></math></p>
+<p>Del mismo modo, la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+del sistema es una matriz infinita, no fácil de escribir en su
+totalidad, pero cualquier fragmento de ella (a lo largo de la diagonal)
+se ve como el interior de (5.5):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.8)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix}\ddots&amp;\ddots&amp;\ddots&amp;\ddots&amp;\ddots&amp;\ddots\\ \cdots&amp;2B&amp;-C&amp;0&amp;0&amp;\cdots\\ \cdots&amp;-C&amp;2B&amp;-C&amp;0&amp;\cdots\\ \cdots&amp;0&amp;-C&amp;2B&amp;-C&amp;\cdots\\ \cdots&amp;0&amp;0&amp;-C&amp;2B&amp;\cdots\\ \ddots&amp;\ddots&amp;\ddots&amp;\ddots&amp;\ddots&amp;\ddots \end{pmatrix}\,. \qquad \text{(5.8)}
+</annotation></semantics></math></p>
+<p>Este sistema es «invariante bajo traslación espacial» porque se ve
+igual si se desplaza una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+hacia la izquierda. Esto mueve el bloque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j+1</annotation></semantics></math>
+a donde estaba el bloque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
+así que, si hay un modo con componentes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>,
+debe haber otro modo con la misma frecuencia, representado por un vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>′</mo></msup><mo>=</mo><mi>S</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">A&#39;=SA</annotation></semantics></math>,
+con componentes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>j</mi><mo>′</mo></msubsup><mo>=</mo><msub><mi>A</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.9)</mtext></mrow><annotation encoding="application/x-tex">
+A&#39;_j = A_{j+1}\,. \qquad \text{(5.9)}
+</annotation></semantics></math></p>
+<p>La matriz de simetría,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+es una matriz infinita con unos en la subdiagonal. Estos son análogos a
+los unos de la subdiagonal en (4.40). Sin embargo, ahora la
+transformación nunca se cierra sobre sí misma: no hay análogo del 1 de
+la esquina inferior izquierda de (4.40), porque la matriz infinita no
+tiene esquina. Queremos encontrar los autovalores y autovectores de la
+matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+que satisfacen</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>′</mo></msup><mo>=</mo><mi>S</mi><mi>A</mi><mo>=</mo><mi>β</mi><mi>A</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.10)</mtext></mrow><annotation encoding="application/x-tex">
+A&#39; = SA = \beta A \qquad \text{(5.10)}
+</annotation></semantics></math></p>
+<p>o, equivalentemente (de (5.9)), los modos en los que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>A</mi><mi>j</mi><mo>′</mo></msubsup><annotation encoding="application/x-tex">A&#39;_j</annotation></semantics></math>
+son proporcionales:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>j</mi><mo>′</mo></msubsup><mo>=</mo><mi>β</mi><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><msub><mi>A</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.11)</mtext></mrow><annotation encoding="application/x-tex">
+A&#39;_j = \beta A_j = A_{j+1} \qquad \text{(5.11)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+es alguna constante no nula (el cero no sirve para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+porque la ecuación de autovalores no tendría solución).</p>
+<p>La ecuación (5.11) puede resolverse así: elija
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A_0=1</annotation></semantics></math>.
+Entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>=</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">A_1=\beta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>2</mn></msub><mo>=</mo><msup><mi>β</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A_2=\beta^2</annotation></semantics></math>,
+etc., de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>β</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">A_j=(\beta)^j</annotation></semantics></math>
+para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+no negativo. También podemos reescribir (5.11) como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>A</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_{j-1}=\beta^{-1}A_j</annotation></semantics></math>,
+de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>−</mi><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">A_{-1}=\beta^{-1}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>−</mi><mn>2</mn></mrow></msub><mo>=</mo><msup><mi>β</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">A_{-2}=\beta^{-2}</annotation></semantics></math>,
+etc. Así, la solución es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>β</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>j</mi></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.12)</mtext></mrow><annotation encoding="application/x-tex">
+A_j = (\beta)^j \qquad \text{(5.12)}
+</annotation></semantics></math></p>
+<p>para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>.
+Note que esta solución funciona para cualquier valor no nulo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+a diferencia de los ejemplos que discutimos en el capítulo anterior. La
+razón es que una traslación en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+a diferencia de las simetrías de reflexión y rotación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">60°</annotation></semantics></math>
+discutidas en el capítulo 4, nunca lo devuelve a donde empezó, sin
+importar cuántas veces la repita. Además, el sistema infinito, con un
+número infinito de grados de libertad, tiene un número infinito de modos
+normales distintos, correspondientes a distintos valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</p>
+<p>Para cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+hay un autovector único (salvo multiplicación por una constante global),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Sabemos que es único porque lo hemos construido explícitamente en
+(5.12). Por tanto, todos los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son distintos. Así, de (4.22), sabemos que cada uno de los autovectores
+es un modo normal del sistema infinito. Como hay una correspondencia
+biunívoca entre números no nulos,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+y modos normales, podemos (al menos por ahora —encontraremos una
+notación mejor más adelante) etiquetar los modos normales por el
+autovalor,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+de la matriz de simetría
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Llamaremos al autovector correspondiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>β</mi></msup><annotation encoding="application/x-tex">A^\beta</annotation></semantics></math>,
+de modo que (5.12) puede escribirse</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>j</mi><mi>β</mi></msubsup><mo>=</mo><msup><mi>β</mi><mi>j</mi></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.13)</mtext></mrow><annotation encoding="application/x-tex">
+A_j^\beta = \beta^j\,. \qquad \text{(5.13)}
+</annotation></semantics></math></p>
+<p>Ahora que conocemos la forma de los modos normales, es fácil obtener
+las frecuencias correspondientes haciendo actuar la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>,
+(5.8), sobre (5.12). Esto da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><msubsup><mi>A</mi><mi>j</mi><mi>β</mi></msubsup><mo>=</mo><mn>2</mn><mi>B</mi><msubsup><mi>A</mi><mi>j</mi><mi>β</mi></msubsup><mo>−</mo><mi>C</mi><msubsup><mi>A</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow><mi>β</mi></msubsup><mo>−</mo><mi>C</mi><msubsup><mi>A</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><mi>β</mi></msubsup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.14)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2A_j^\beta = 2BA_j^\beta - CA_{j+1}^\beta - CA_{j-1}^\beta\,, \qquad \text{(5.14)}
+</annotation></semantics></math></p>
+<p>o, sustituyendo (5.13),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>β</mi><mi>j</mi></msup><mo>=</mo><mn>2</mn><mi>B</mi><msup><mi>β</mi><mi>j</mi></msup><mo>−</mo><mi>C</mi><msup><mi>β</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>β</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>B</mi><mo>−</mo><mi>C</mi><mi>β</mi><mo>−</mo><mi>C</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><msup><mi>β</mi><mi>j</mi></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.15)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2\beta^j = 2B\beta^j - C\beta^{j+1} - C\beta^{j-1} = (2B-C\beta-C\beta^{-1})\beta^j\,. \qquad \text{(5.15)}
+</annotation></semantics></math></p>
+<p>Esto es cierto para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
+lo que muestra que (5.13) es en efecto un autovector (ya lo sabíamos por
+el argumento de simetría, (4.22), pero está bien comprobarlo cuando es
+posible), y el autovalor es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo>−</mo><mi>C</mi><mi>β</mi><mo>−</mo><mi>C</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.16)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B - C\beta - C\beta^{-1}\,. \qquad \text{(5.16)}
+</annotation></semantics></math></p>
+<p>Note que, para casi cualquier valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\omega^2</annotation></semantics></math>,
+hay dos modos normales, porque podemos intercambiar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\beta^{-1}</annotation></semantics></math>
+sin cambiar (5.16). Las únicas excepciones son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo>±</mo><mn>2</mn><mi>C</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.17)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B \pm 2C\,, \qquad \text{(5.17)}
+</annotation></semantics></math></p>
+<p>correspondientes a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta=\pm1</annotation></semantics></math>.
+El hecho de que haya como máximo dos modos normales para cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\omega^2</annotation></semantics></math>
+tendrá una consecuencia dramática: significa que solo tenemos que tratar
+con dos modos normales a la vez para implementar la física de la
+frontera. Esta es una característica especial del sistema unidimensional
+que no comparten los sistemas bidimensionales y tridimensionales. Como
+veremos, esto hace que el sistema unidimensional sea muy fácil de
+manejar.</p>
+<h3 id="condiciones-de-contorno">5.1.2 Condiciones de contorno</h3>
+<p><em>(Referencia al programa interactivo 5-1 del disco de programas
+del curso original.)</em></p>
+<p>Ya hemos resuelto el problema de la oscilación del sistema infinito.
+Armados con este resultado, podemos reincorporar la física de las
+paredes. Cualquier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+(salvo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta=\pm1</annotation></semantics></math>)
+da un par de modos normales para el sistema infinito de la figura 5.2.
+Pero solo valores especiales de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+funcionarán para el sistema finito de la figura 5.1. Para encontrar los
+modos normales del sistema de la figura 5.1, usamos (4.56), el hecho de
+que cualquier combinación lineal de los dos modos normales con la misma
+frecuencia angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+también es un modo normal. Si podemos encontrar una combinación lineal
+que se anule en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=N+1</annotation></semantics></math>,
+será un modo normal del sistema de la figura 5.1. Es la anulación del
+modo normal en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=N+1</annotation></semantics></math>
+lo que constituye las «condiciones de contorno» de este sistema finito
+en particular.</p>
+<p>Empecemos tratando de satisfacer la condición de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>.
+Para cada posible valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\omega^2</annotation></semantics></math>,
+solo tenemos que preocuparnos por dos modos normales, las dos soluciones
+de (5.16) para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.
+Mientras
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>≠</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta\neq\pm1</annotation></semantics></math>,
+podemos encontrar una combinación que se anule en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>;
+basta restar los dos modos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>β</mi></msup><annotation encoding="application/x-tex">A^\beta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msup><annotation encoding="application/x-tex">A^{\beta^{-1}}</annotation></semantics></math>
+para obtener un vector</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msup><mi>A</mi><mi>β</mi></msup><mo>−</mo><msup><mi>A</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.18)</mtext></mrow><annotation encoding="application/x-tex">
+A = A^\beta - A^{\beta^{-1}}\,, \qquad \text{(5.18)}
+</annotation></semantics></math></p>
+<p>o, en componentes,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>∝</mo><msubsup><mi>A</mi><mi>j</mi><mi>β</mi></msubsup><mo>−</mo><msubsup><mi>A</mi><mi>j</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msubsup><mo>=</mo><msup><mi>β</mi><mi>j</mi></msup><mo>−</mo><msup><mi>β</mi><mrow><mi>−</mi><mi>j</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.19)</mtext></mrow><annotation encoding="application/x-tex">
+A_j \propto A_j^\beta - A_j^{\beta^{-1}} = \beta^j-\beta^{-j}\,. \qquad \text{(5.19)}
+</annotation></semantics></math></p>
+<p>Lo primero que hay que notar sobre (5.19) es que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>
+no puede anularse para ningún
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\neq0</annotation></semantics></math>
+a menos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>β</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\beta|=1</annotation></semantics></math>.
+Así, si vamos a tener alguna posibilidad de satisfacer la condición de
+contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=N+1</annotation></semantics></math>,
+debemos suponer que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.20)</mtext></mrow><annotation encoding="application/x-tex">
+\beta = e^{i\theta}\,. \qquad \text{(5.20)}
+</annotation></semantics></math></p>
+<p>Entonces, de (5.19),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>∝</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>j</mi><mi>θ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.21)</mtext></mrow><annotation encoding="application/x-tex">
+A_j \propto \sin j\theta\,. \qquad \text{(5.21)}
+</annotation></semantics></math></p>
+<p>Ahora podemos satisfacer la condición de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=N+1</annotation></semantics></math>
+imponiendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A_{N+1}=0</annotation></semantics></math>.
+Esto implica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>θ</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sin[(N+1)\theta]=0</annotation></semantics></math>,
+o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>n</mi><mi>π</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> entero</mtext></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.22)</mtext></mrow><annotation encoding="application/x-tex">
+\theta = n\pi/(N+1)\,,\quad\text{para } n\text{ entero}\,. \qquad \text{(5.22)}
+</annotation></semantics></math></p>
+<p>Así, los modos normales del sistema de la figura 5.1 son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>j</mi><mi>n</mi></msubsup><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>j</mi><mi>n</mi><mi>π</mi></mrow><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>N</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.23)</mtext></mrow><annotation encoding="application/x-tex">
+A_j^n = \sin\left(\frac{jn\pi}{N+1}\right)\,,\quad\text{para } n=1,2,\ldots,N\,. \qquad \text{(5.23)}
+</annotation></semantics></math></p>
+<p>Otros valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+no dan modos nuevos: simplemente repiten los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+modos ya mostrados en (5.23). Las frecuencias correspondientes se
+obtienen sustituyendo (5.20)-(5.21) en (5.16), dando</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo>−</mo><mn>2</mn><mi>C</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>=</mo><mn>2</mn><mi>B</mi><mo>−</mo><mn>2</mn><mi>C</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.24)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B - 2C\cos\theta = 2B - 2C\cos\left(\frac{n\pi}{N+1}\right)\,. \qquad \text{(5.24)}
+</annotation></semantics></math></p>
+<p>A partir de aquí, el análisis del movimiento del sistema es igual que
+para cualquier otro sistema de osciladores acoplados. Como se discutió
+en el capítulo 3, podemos descomponer un movimiento general y expresarlo
+como suma de los modos normales. Esto se ilustra para el sistema de
+péndulos acoplados en el programa 5-1 del disco de programas. Lo nuevo
+de este sistema es la manera en que obtuvimos los modos normales, y su
+forma peculiarmente simple, en términos de funciones trigonométricas.
+Obtendremos más intuición sobre el significado de estos modos en la
+siguiente sección. Mientras tanto, note la forma en que los modos
+simples pueden combinarse para dar el movimiento muy complicado del
+sistema completo.</p>
+<h2 id="k-y-relaciones-de-dispersión">5.2
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y relaciones de dispersión</h2>
+<p>Hasta ahora, la separación de equilibrio entre los bloques,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+no ha aparecido en el análisis. Todo lo que hemos dicho hasta ahora
+sería cierto incluso si los muelles tuvieran longitudes aleatorias,
+siempre que todas las constantes de muelle fueran iguales. En tal caso,
+la «invariancia bajo traslación espacial» que usamos para resolver el
+problema sería un artificio puramente matemático, que transforma el
+sistema original en un sistema distinto con el mismo tipo de pequeñas
+oscilaciones. Sin embargo, habitualmente, en aplicaciones físicas, la
+invariancia bajo traslación espacial es real y todas las distancias
+entre bloques son iguales. Entonces es muy útil etiquetar los bloques
+por su posición de equilibrio. Tomemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+como la posición de la pared izquierda (o del bloque 0). Entonces el
+primer bloque está en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=a</annotation></semantics></math>,
+el segundo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x=2a</annotation></semantics></math>,
+etc., como se muestra en la figura 5.3. Podemos describir el
+desplazamiento de todos los bloques mediante una función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(ja,t)</annotation></semantics></math>
+es el desplazamiento del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+bloque (el que tiene posición de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ja</annotation></semantics></math>).
+Por supuesto, esta función no está muy bien definida, porque solo nos
+importan sus valores en un conjunto discreto de puntos. Sin embargo,
+como veremos más abajo al discutir la cuerda con cuentas, nos ayudará a
+entender lo que ocurre si dibujamos una curva suave que pase por estos
+puntos.</p>
+<p><em>(Figura 5.3: los péndulos acoplados etiquetados por su posición
+de equilibrio,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>a</mi><mo>,</mo><mn>2</mn><mi>a</mi><mo>,</mo><mi>…</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=0, a, 2a, \ldots, (N+1)a</annotation></semantics></math>.)</em></p>
+<p>Del mismo modo, podemos describir un modo normal del sistema de la
+figura 5.1 (o del sistema infinito de la figura 5.2) como una función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math>,
+donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>A</mi><mi>j</mi></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.25)</mtext></mrow><annotation encoding="application/x-tex">
+A(ja) = A_j\,. \qquad \text{(5.25)}
+</annotation></semantics></math></p>
+<p>En este lenguaje, la invariancia bajo traslación espacial, (5.11), se
+convierte en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>β</mi><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.26)</mtext></mrow><annotation encoding="application/x-tex">
+A(x+a) = \beta A(x)\,. \qquad \text{(5.26)}
+</annotation></semantics></math></p>
+<p>Es convencional escribir la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+como una exponencial</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.27)</mtext></mrow><annotation encoding="application/x-tex">
+\beta = e^{ika}\,. \qquad \text{(5.27)}
+</annotation></semantics></math></p>
+<p>Cualquier número complejo no nulo puede escribirse como una
+exponencial de esta forma. De hecho, podemos cambiar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+por un múltiplo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">2\pi/a</annotation></semantics></math>
+sin cambiar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+así que podemos elegir la parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>π</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">-\pi/a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\pi/a</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><mi>π</mi><mi>a</mi></mfrac><mo>&lt;</mo><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>k</mi><mo>≤</mo><mfrac><mi>π</mi><mi>a</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.28)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\pi}{a} &lt; \text{Re}\,k \le \frac{\pi}{a}\,. \qquad \text{(5.28)}
+</annotation></semantics></math></p>
+<p>Si sustituimos (5.13) y (5.27) en (5.25), obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>β</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>j</mi><mi>a</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.29)</mtext></mrow><annotation encoding="application/x-tex">
+A^\beta(ja) = e^{ikja}\,. \qquad \text{(5.29)}
+</annotation></semantics></math></p>
+<p>Esto sugiere que tomemos la función que describe el modo normal
+correspondiente a (5.27) como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.30)</mtext></mrow><annotation encoding="application/x-tex">
+A(x) = e^{ikx}\,. \qquad \text{(5.30)}
+</annotation></semantics></math></p>
+<p>El modo queda determinado por el número
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+que satisface (5.28).</p>
+<p>El parámetro
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+(cuando es real) se llama el número de onda angular del modo. Mide la
+«ondulación» del modo normal, en radianes por unidad de distancia. La
+«longitud de onda» del modo es la longitud más pequeña,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+(letra griega lambda), tal que un cambio de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+deja el modo sin cambiar,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.31)</mtext></mrow><annotation encoding="application/x-tex">
+A(x+\lambda) = A(x)\,. \qquad \text{(5.31)}
+</annotation></semantics></math></p>
+<p>En otras palabras, la longitud de onda es la longitud de un ciclo
+completo de la onda,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>
+radianes. Así, la longitud de onda,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>,
+y el número de onda angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+son inversamente proporcionales, con un factor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>k</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.32)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda = \frac{2\pi}{k}\,. \qquad \text{(5.32)}
+</annotation></semantics></math></p>
+<p>En este lenguaje, los modos normales del sistema de la figura 5.1 se
+describen mediante las funciones</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.33)</mtext></mrow><annotation encoding="application/x-tex">
+A^n(x) = \sin kx\,, \qquad \text{(5.33)}
+</annotation></semantics></math></p>
+<p>con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.34)</mtext></mrow><annotation encoding="application/x-tex">
+k = \frac{n\pi}{L}\,, \qquad \text{(5.34)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">L=(N+1)a</annotation></semantics></math>
+es la longitud total del sistema. Lo importante de (5.33) y (5.34) es
+que no dependen de los detalles del sistema; ni siquiera dependen de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+Los modos normales siempre tienen la misma forma, cuando el sistema
+tiene longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+Por supuesto, a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+aumenta, aumenta el número de modos. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+fija, esto ocurre porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>L</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a=L/(N+1)</annotation></semantics></math>
+disminuye cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+aumenta, y por tanto el rango permitido de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+(recuerde (5.28)) aumenta.</p>
+<p>Las formas (5.33) de los modos normales del sistema invariante bajo
+traslación espacial se llaman «ondas estacionarias». Veremos con más
+detalle más abajo por qué la palabra «onda» es apropiada. La palabra
+«estacionaria» se refiere al hecho de que, aunque las ondas cambian con
+el tiempo, no parecen moverse en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+a diferencia de las «ondas viajeras» que discutiremos en el capítulo 8 y
+más adelante.</p>
+<h3 id="la-relación-de-dispersión">5.2.1 La relación de dispersión</h3>
+<p>En términos del número de onda angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+la frecuencia del modo es (de (5.16) y (5.27))</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo>−</mo><mn>2</mn><mi>C</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.35)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B - 2C\cos ka\,. \qquad \text{(5.35)}
+</annotation></semantics></math></p>
+<p>Tal relación entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+(en realidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mn>2</mn></msup><annotation encoding="application/x-tex">k^2</annotation></semantics></math>,
+porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\cos ka</annotation></semantics></math>
+es una función par de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>)
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\omega^2</annotation></semantics></math>
+se llama «relación de dispersión» (más adelante aprenderemos por qué el
+nombre es apropiado). La forma específica (5.35) es una característica
+del sistema infinito particular de la figura 5.2: depende de las masas,
+las constantes de los muelles, las longitudes de los péndulos y las
+separaciones.</p>
+<p>Pero no depende de las condiciones de contorno. De hecho, veremos más
+abajo que (5.35) será útil para condiciones de contorno muy distintas de
+las del sistema de la figura 5.1.</p>
+<p>La relación de dispersión depende únicamente de la física del sistema
+infinito.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.36)</mtext></mrow><annotation encoding="application/x-tex">\qquad \text{(5.36)}</annotation></semantics></math></p>
+<p>De hecho, es solo a través de la relación de dispersión que los
+detalles de la física del sistema infinito entran en el problema. La
+forma de los modos,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>,
+ya está determinada por las propiedades generales de linealidad e
+invariancia bajo traslación espacial.</p>
+<p>Llamaremos a (5.35) la relación de dispersión de los péndulos
+acoplados. Le hemos dado un nombre especial porque volveremos a ella
+muchas veces en lo que sigue. La física esencial es que hay dos fuentes
+de fuerza restauradora: la gravedad, que tiende a mantener todas las
+masas en equilibrio; y los muelles de acoplamiento, que tienden a
+mantener fijas las separaciones entre las masas, pero no se ven
+afectados si todas las masas se desplazan la misma distancia. En (5.35),
+las constantes siempre satisfacen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>≥</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B\ge C</annotation></semantics></math>,
+como se ve en (5.6).</p>
+<p>El límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B=C</annotation></semantics></math>
+es especialmente interesante: ocurre cuando no hay gravedad (o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\ell\to\infty</annotation></semantics></math>).
+La relación de dispersión es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>4</mn><mi>B</mi><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.37)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B(1-\cos ka) = 4B\sin^2\frac{ka}{2}\,. \qquad \text{(5.37)}
+</annotation></semantics></math></p>
+<p>Note que el modo con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>
+tiene ahora frecuencia cero, porque todas las masas pueden desplazarse a
+la vez sin fuerza restauradora.</p>
+<h2 id="ondas">5.3 Ondas</h2>
+<h3 id="la-cuerda-con-cuentas">5.3.1 La cuerda con cuentas</h3>
+<p><em>(Figura 5.4: cuerda con cuentas en equilibrio, mostrando varias
+cuentas espaciadas regularmente sobre una cuerda tensa y
+recta.)</em></p>
+<p>Otro sistema instructivo es la cuerda con cuentas, sometida a
+oscilaciones transversales. Las oscilaciones se llaman «transversales»
+si el movimiento es perpendicular a la dirección en la que se extiende
+el sistema. Considere una cuerda sin masa, con tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+a la que se atan cuentas idénticas de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+a intervalos regulares,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Una parte de tal sistema, en su configuración de equilibrio, se muestra
+en la figura 5.4. Las cuentas no pueden oscilar longitudinalmente,
+porque la cuerda se rompería (más precisamente, la cuerda tiene una
+constante de fuerza muy grande y no lineal para el estiramiento
+longitudinal; las oscilaciones longitudinales tienen una frecuencia
+mucho mayor y están mucho más fuertemente amortiguadas que las
+transversales, así que podemos ignorarlas en el rango de frecuencias de
+los modos transversales; véase la discusión del muelle masivo «ligero»
+en el capítulo 7). Sin embargo, para pequeñas oscilaciones
+transversales, el estiramiento de la cuerda es despreciable, y la
+tensión y la componente horizontal de la fuerza de la cuerda son
+aproximadamente constantes. La componente horizontal de la fuerza sobre
+cada bloque, debida a la cuerda de su derecha, se cancela con la
+componente horizontal debida a la cuerda de su izquierda. La fuerza
+horizontal total sobre cada bloque es cero (debe serlo, porque los
+bloques no se mueven horizontalmente). Pero las cuerdas producen una
+fuerza restauradora transversal cuando las cuentas vecinas no tienen el
+mismo desplazamiento transversal, como se ilustra en la figura 5.5. Se
+muestra la fuerza de la cuerda sobre la cuenta 1, junto con su
+componente transversal. Las líneas punteadas completan triángulos
+semejantes, de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>/</mi><mi>T</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F/T=(\psi_2-\psi_1)/a</annotation></semantics></math>.
+Puede ver en la figura 5.5 que la fuerza restauradora,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+en la figura, es lineal para pequeñas oscilaciones transversales, y
+corresponde a una constante de muelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">T/a</annotation></semantics></math>.</p>
+<p><em>(Figura 5.5: dos cuentas vecinas, 1 y 2, en una cuerda con
+cuentas, mostrando la fuerza de tensión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+a lo largo de la cuerda entre ambas y su componente transversal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>≈</mo><mo stretchy="false" form="prefix">(</mo><mi>T</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">F \approx (T/a)(\psi_2-\psi_1)</annotation></semantics></math>
+sobre la cuenta 1.)</em></p>
+<p>Así, (5.37) es también la relación de dispersión para las pequeñas
+oscilaciones transversales de la cuerda con cuentas, con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mfrac><mi>T</mi><mrow><mi>m</mi><mi>a</mi></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.38)</mtext></mrow><annotation encoding="application/x-tex">
+B = \frac{T}{ma}\,, \qquad \text{(5.38)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+es la tensión de la cuerda,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+es la masa de la cuenta y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la separación entre cuentas. La relación de dispersión para la cuerda
+con cuentas puede escribirse entonces como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>4</mn><mi>T</mi></mrow><mrow><mi>m</mi><mi>a</mi></mrow></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.39)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \frac{4T}{ma}\sin^2\frac{ka}{2}\,. \qquad \text{(5.39)}
+</annotation></semantics></math></p>
+<p>Esta relación de dispersión, (5.39), tiene la propiedad interesante
+de que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega\to0</annotation></semantics></math>
+cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\to0</annotation></semantics></math>.
+Esto se discute desde el punto de vista de la simetría en el apéndice C,
+donde se discute la conexión de esta relación de dispersión con lo que
+se llaman «bosones de Goldstone». Aquí deberíamos discutir las
+propiedades especiales del modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>,
+con frecuencia angular exactamente nula,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega=0</annotation></semantics></math>.
+Este caso es distinto de todos los demás valores de frecuencia angular,
+porque no obtenemos una dependencia temporal distinta al conjugar la
+exponencial compleja irreducible,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega t}</annotation></semantics></math>.
+Pero necesitamos dos soluciones para describir las posibles condiciones
+iniciales del sistema, porque podemos especificar tanto un
+desplazamiento como una velocidad para cada cuenta. La resolución de
+este dilema es similar a la discutida para el amortiguamiento crítico en
+el capítulo 2 (véase (2.12)). Si nos acercamos a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega=0</annotation></semantics></math>
+desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+no nulo, podemos formar dos soluciones independientes así (puede evaluar
+estos límites fácilmente, usando el desarrollo de Taylor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mi>x</mi></msup><mo>=</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">e^x=1+x+\cdots</annotation></semantics></math>):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>ω</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><mi>ω</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><mrow><mi>−</mi><mn>2</mn><mi>i</mi><mi>ω</mi></mrow></mfrac><mo>=</mo><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.40)</mtext></mrow><annotation encoding="application/x-tex">
+\lim_{\omega\to0}\frac{e^{-i\omega t}+e^{i\omega t}}{2}=1\,,\qquad \lim_{\omega\to0}\frac{e^{-i\omega t}-e^{i\omega t}}{-2i\omega}=t\,. \qquad \text{(5.40)}
+</annotation></semantics></math></p>
+<p>La primera, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>,
+describe una situación en la que todas las cuentas están en una posición
+fija. La segunda describe una situación en la que todas las cuentas se
+mueven juntas con velocidad constante en la dirección transversal.</p>
+<p>Se pueden decir cosas precisamente análogas sobre la dependencia en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+del modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>.
+De nuevo, acercándonos a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>
+desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+no nulo, podemos formar dos modos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>k</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><mi>k</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup></mrow><mrow><mn>2</mn><mi>i</mi><mi>k</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.41)</mtext></mrow><annotation encoding="application/x-tex">
+\lim_{k\to0}\frac{e^{ikx}+e^{-ikx}}{2}=1\,,\qquad \lim_{k\to0}\frac{e^{ikx}-e^{-ikx}}{2ik}=x\,. \qquad \text{(5.41)}
+</annotation></semantics></math></p>
+<p>El segundo modo aquí describe una situación en la que cada cuenta
+sucesiva está más desplazada que la anterior. La fuerza transversal
+sobre cada cuenta, debida a la cuerda de la izquierda, se cancela con la
+fuerza de la cuerda de la derecha.</p>
+<h3 id="extremos-fijos">5.3.2 Extremos fijos</h3>
+<p><em>(Referencia al programa interactivo 5-2 del disco de programas
+del curso original.)</em></p>
+<p><em>(Figura 5.6: cuerda con cuentas de cuatro cuentas numeradas 1 a
+4, con ambos extremos fijos a paredes.)</em></p>
+<p>Supongamos ahora que consideramos una cuerda con cuentas finita, con
+sus extremos fijos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=L=(N+1)a</annotation></semantics></math>,
+como se muestra en la figura 5.6. El análisis de los modos normales de
+este sistema es exactamente el mismo que el del problema de los péndulos
+acoplados al principio del capítulo. De nuevo, imaginamos que el sistema
+finito es parte de un sistema infinito con invariancia bajo traslación
+espacial, y buscamos combinaciones lineales de modos tales que las
+cuentas en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x=L</annotation></semantics></math>
+estén fijas. De nuevo esto conduce a (5.33). Las únicas diferencias
+son:</p>
+<ol type="1">
+<li>Las frecuencias de los modos son distintas, porque la relación de
+dispersión ahora viene dada por (5.39);</li>
+<li>(5.33) describe los desplazamientos transversales de las
+cuentas.</li>
+</ol>
+<p>Este es un ejemplo muy bonito de los modos normales de onda
+estacionaria, (5.33), porque las formas se ven más fácilmente que para
+las oscilaciones longitudinales. Para cuatro cuentas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N=4</annotation></semantics></math>),
+los cuatro modos normales independientes se ilustran en las figuras
+5.7-5.10, donde hemos hecho invisibles las cuerdas de acoplamiento por
+claridad. Las cuentas imaginarias fijas que hacen el papel de las
+paredes se muestran (discontinuas) en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x=L</annotation></semantics></math>.
+Superpuesta a las posiciones de las cuentas está la función continua
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin kx</annotation></semantics></math>,
+para cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+representada con una línea punteada. Note que esta función no describe
+las posiciones de las cuerdas de acoplamiento, que están estiradas en
+línea recta entre cuentas vecinas.</p>
+<p><em>(Figuras 5.7-5.10: los cuatro modos normales de la cuerda con
+cuentas de 4 cuentas y extremos fijos, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n=1,2,3,4</annotation></semantics></math>;
+cada figura muestra la curva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mi>π</mi><mi>x</mi><mi>/</mi><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sin(n\pi x/L)</annotation></semantics></math>
+pasando por las cuentas, con un número creciente de nodos y
+“ondulaciones” a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+aumenta.)</em></p>
+<p>Son imágenes como las figuras 5.7-5.10 las que justifican la palabra
+«onda» para estas soluciones de onda estacionaria: son, francamente,
+onduladas, y exhiben la dependencia espacial senoidal que es la
+característica esencial de los fenómenos ondulatorios.</p>
+<p>La oscilación transversal de una cuerda con cuentas con ambos
+extremos fijos se ilustra en el programa 5-2, donde se muestra una
+oscilación general junto con los modos normales de los que está formada.
+Note las distintas frecuencias de los distintos modos normales, con la
+frecuencia aumentando a medida que los modos se vuelven más ondulados. A
+menudo usaremos la cuerda con cuentas como ejemplo ilustrativo, porque
+los modos son muy fáciles de visualizar.</p>
+<h2 id="extremos-libres">5.4 Extremos libres</h2>
+<p>Trabajemos un ejemplo de oscilación forzada con un tipo distinto de
+condición de contorno. Considere las oscilaciones transversales de una
+cuerda con cuentas. Para concretar, tomaremos cuatro cuentas, de modo
+que este es un sistema de cuatro osciladores acoplados. Sin embargo, en
+lugar de acoplar las cuerdas de los extremos a paredes fijas, las
+uniremos a anillos sin masa que pueden deslizar libremente en la
+dirección transversal sobre varillas sin fricción. Se dice entonces que
+la cuerda tiene sus extremos libres (al menos para el movimiento
+transversal). Entonces el sistema se ve como el diagrama de la figura
+5.11, donde los osciladores se mueven hacia arriba y hacia abajo en el
+plano del papel. Encontremos sus modos normales.</p>
+<p><em>(Figura 5.11: cuerda con cuentas de cuatro cuentas, con ambos
+extremos unidos a anillos sin masa que deslizan libremente sobre
+varillas verticales sin fricción, en lugar de a paredes fijas.)</em></p>
+<h3 id="modos-normales-para-extremos-libres">5.4.1 Modos normales para
+extremos libres</h3>
+<p><em>(Referencia al programa interactivo 5-3 del disco de programas
+del curso original.)</em></p>
+<p>Como antes, imaginamos que esto es parte de un sistema infinito de
+cuentas con invariancia bajo traslación espacial. Esto se muestra en la
+figura 5.12. Aquí, los anillos sin masa que deslizan sobre varillas sin
+fricción se han reemplazado por las cuentas imaginarias (discontinuas) 0
+y 5. La relación de dispersión es exactamente la misma que para
+cualquier otra cuerda con cuentas infinita, (5.39). La pregunta entonces
+es: ¿qué tipo de condición de contorno en el sistema infinito
+corresponde a la condición de contorno física de que las cuentas de los
+extremos son libres por un lado? La respuesta es que la primera cuenta
+imaginaria de cada lado debe moverse hacia arriba y hacia abajo junto
+con la última cuenta real, de modo que la cuerda de acoplamiento de la
+cuenta 0 sea horizontal y no ejerza fuerza restauradora transversal
+sobre la cuenta 1, y la cuerda de acoplamiento de la cuenta 5 sea
+horizontal y no ejerza fuerza restauradora transversal sobre la cuenta
+4:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>=</mo><msub><mi>A</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.42)</mtext></mrow><annotation encoding="application/x-tex">
+A_0=A_1\,, \qquad \text{(5.42)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>4</mn></msub><mo>=</mo><msub><mi>A</mi><mn>5</mn></msub><mspace width="0.167em"></mspace><mo>;</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.43)</mtext></mrow><annotation encoding="application/x-tex">
+A_4=A_5\,; \qquad \text{(5.43)}
+</annotation></semantics></math></p>
+<p><em>(Figura 5.12: satisfaciendo las condiciones de contorno en el
+sistema finito, con las cuentas imaginarias 0 y 5 unidas rígidamente a
+las cuentas reales 1 y 4, respectivamente.)</em></p>
+<p>Trabajaremos en la notación en la que las cuentas se etiquetan por su
+posición de equilibrio. Los modos normales del sistema infinito son
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>.
+Pero todavía no hemos tenido que decidir dónde pondremos el origen.
+¿Cómo formamos una combinación lineal de los modos exponenciales
+complejos,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>,
+y elegimos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+de modo que sea consistente con esta condición de contorno? Empecemos
+con (5.42). Podemos escribir la combinación lineal, sea cual sea, en la
+forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.44)</mtext></mrow><annotation encoding="application/x-tex">
+\cos(kx-\theta)\,. \qquad \text{(5.44)}
+</annotation></semantics></math></p>
+<p>Cualquier combinación lineal real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>
+puede escribirse así, salvo una constante multiplicativa global (véase
+(1.96)). Ahora bien, si</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><msub><mi>x</mi><mn>0</mn></msub><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.45)</mtext></mrow><annotation encoding="application/x-tex">
+\cos(kx_0-\theta) = \cos(kx_1-\theta)\,, \qquad \text{(5.45)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>
+es la posición del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+bloque, entonces o bien</p>
+<ol type="1">
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(kx-\theta)</annotation></semantics></math>
+tiene un máximo o un mínimo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(x_0+x_1)/2</annotation></semantics></math>,
+o</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mi>k</mi><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">kx_1-kx_0</annotation></semantics></math>
+es un múltiplo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>.</li>
+</ol>
+<p>Consideremos el caso 1 (veremos que el caso 2 no da modos
+adicionales). Elegiremos nuestras coordenadas de modo que el punto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(x_0+x_1)/2</annotation></semantics></math>,
+a medio camino entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>,
+sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.
+No nos importa la normalización global, así que, si la función tiene un
+mínimo ahí, la multiplicaremos por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>,
+para convertirlo en un máximo. Así, en el caso 1, la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(kx-\theta)</annotation></semantics></math>
+tiene un máximo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+lo que implica que podemos tomar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta=0</annotation></semantics></math>.
+Así, la función es simplemente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos kx</annotation></semantics></math>.
+El sistema con este etiquetado se muestra en la figura 5.13. El
+desplazamiento de la
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésima
+cuenta es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.46)</mtext></mrow><annotation encoding="application/x-tex">
+A_j = \cos[ka(j-1/2)]\,. \qquad \text{(5.46)}
+</annotation></semantics></math></p>
+<p><em>(Figura 5.13: el mismo sistema de osciladores, etiquetado de
+forma más conveniente, con el origen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+situado a medio camino entre las cuentas imaginarias 0 y la cuenta 1, de
+modo que las cuentas reales quedan en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn><mo>,</mo><mn>3</mn><mi>a</mi><mi>/</mi><mn>2</mn><mo>,</mo><mn>5</mn><mi>a</mi><mi>/</mi><mn>2</mn><mo>,</mo><mn>7</mn><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x=a/2, 3a/2, 5a/2, 7a/2</annotation></semantics></math>.)</em></p>
+<p>Ahora debería quedar claro cómo imponer la condición de contorno,
+(5.43), en el otro extremo. Queremos tener un máximo o un mínimo a medio
+camino entre la cuenta 4 y la cuenta 5, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x=4a</annotation></semantics></math>.
+Obtenemos un máximo o un mínimo cada vez que el argumento del coseno es
+un múltiplo entero de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>.
+El argumento del coseno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x=4a</annotation></semantics></math>
+es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">4ka</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es el número de onda angular. Así, la condición de contorno se satisfará
+si el modo tiene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>k</mi><mi>a</mi><mo>=</mo><mi>n</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">4ka=n\pi</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+entero. Entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mo>⟹</mo><mi>k</mi><mi>a</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mn>4</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.47)</mtext></mrow><annotation encoding="application/x-tex">
+\cos[ka(4-1/2)] = \cos[ka(5-1/2)] \implies ka=\frac{n\pi}{4}\,. \qquad \text{(5.47)}
+</annotation></semantics></math></p>
+<p>Así, los modos son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">con </mtext><mspace width="0.333em"></mspace></mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mrow><mn>4</mn><mi>a</mi></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="0.222em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mn>3</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.48)</mtext></mrow><annotation encoding="application/x-tex">
+A_j = \cos[ka(j-1/2)] \quad\text{con } k=\frac{n\pi}{4a}\,,\ \text{para } n=0\text{ a }3\,. \qquad \text{(5.48)}
+</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n&gt;3</annotation></semantics></math>,
+los modos simplemente se repiten, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mi>π</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k\ge\pi/a</annotation></semantics></math>.</p>
+<p>En (5.48),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n=0</annotation></semantics></math>
+es el modo trivial en el que todas las cuentas se mueven juntas hacia
+arriba y hacia abajo. Esto es posible porque no hay ninguna fuerza
+restauradora cuando todas las cuentas se mueven juntas. Como se discutió
+arriba (véase (5.40)), las cuentas pueden moverse todas con velocidad
+constante, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega=0</annotation></semantics></math>
+para este modo. Note que el caso 2 anterior da el mismo modo, y nada
+más, porque si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mi>k</mi><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>2</mn><mi>n</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">kx_1-kx_0=2n\pi</annotation></semantics></math>,
+entonces (5.44) tiene el mismo valor para todas las
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>.
+Los modos restantes se muestran en las figuras 5.14-5.16. Este sistema
+se ilustra en el programa 5-3 del disco de programas.</p>
+<p><em>(Figuras 5.14-5.16: los modos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=1,2,3</annotation></semantics></math>
+de la cuerda con cuentas de extremos libres, mostrando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mi>π</mi><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A_j = \cos[(j-1/2)n\pi/4]</annotation></semantics></math>
+para cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+con ondulación creciente.)</em></p>
+<h2 id="oscilaciones-forzadas-y-condiciones-de-contorno">5.5
+Oscilaciones forzadas y condiciones de contorno</h2>
+<p>Las oscilaciones forzadas pueden analizarse con los métodos del
+capítulo 3. Esto siempre funciona, incluso para una fuerza que actúa
+sobre cada parte del sistema de forma independiente. Sin embargo, muy a
+menudo, para un sistema invariante bajo traslación espacial, nos
+interesa un tipo distinto de problema de oscilación forzada: uno en el
+que la fuerza externa actúa solo en un extremo (o en ambos). En este
+caso, podemos resolver el problema de una forma mucho más simple, usando
+condiciones de contorno. Un ejemplo de este tipo se muestra en la figura
+5.17.</p>
+<p><em>(Figura 5.17: sistema de péndulos acoplados igual al de la figura
+5.1, pero con la pared derecha reemplazada por un agente externo que
+mueve el extremo del último muelle.)</em></p>
+<p>Este es el sistema de (5.1), salvo que se ha eliminado una pared y el
+extremo del muelle está obligado, por algún agente externo, a moverse
+hacia adelante y hacia atrás con un desplazamiento</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.49)</mtext></mrow><annotation encoding="application/x-tex">
+z\cos\omega_dt\,. \qquad \text{(5.49)}
+</annotation></semantics></math></p>
+<p>Como de costumbre, en un problema de oscilación forzada, primero
+consideramos el término impulsor, en este caso el desplazamiento fijo
+del bloque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N+1</annotation></semantics></math>,
+(5.49), como la parte real de un término impulsor exponencial
+complejo,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.50)</mtext></mrow><annotation encoding="application/x-tex">
+z\,e^{-i\omega_dt}\,. \qquad \text{(5.50)}
+</annotation></semantics></math></p>
+<p>Luego buscamos una solución estacionaria en la que todo el sistema
+oscila con la frecuencia impulsora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
+con la dependencia temporal irreducible
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega_dt}</annotation></semantics></math>.</p>
+<p>Si hay amortiguamiento debido a una fuerza de fricción, por pequeña
+que sea, esta será la solución estacionaria que sobrevive después de que
+todas las oscilaciones libres se hayan extinguido. Podemos encontrar
+tales soluciones con el mismo tipo de truco que usamos para encontrar
+los modos de oscilación libre del sistema: buscamos modos del sistema
+infinito y los combinamos para satisfacer las condiciones de
+contorno.</p>
+<p>Esta situación es distinta del problema de oscilación libre. En un
+problema típico de oscilación libre, las condiciones de contorno fijan
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;
+luego determinamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+a partir de la relación de dispersión. En este caso, las condiciones de
+contorno determinan
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+en su lugar. Ahora debemos usar la relación de dispersión, (5.35), para
+encontrar el número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+<p>Resolviendo (5.35) obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mn>1</mn><mi>a</mi></mfrac><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>2</mn><mi>B</mi><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>C</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.51)</mtext></mrow><annotation encoding="application/x-tex">
+k = \frac{1}{a}\cos^{-1}\left(\frac{2B-\omega_d^2}{2C}\right)\,. \qquad \text{(5.51)}
+</annotation></semantics></math></p>
+<p>Debemos combinar los modos del sistema infinito,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>,
+para satisfacer las condiciones de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>a</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x=(N+1)a=L</annotation></semantics></math>.
+Como en el sistema (5.1), la condición de que el sistema esté inmóvil en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+conduce a un modo de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.52)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x,t) = y\sin kx\,e^{-i\omega_dt} \qquad \text{(5.52)}
+</annotation></semantics></math></p>
+<p>para cierta amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+Pero ahora la condición en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=L=(N+1)a</annotation></semantics></math>
+determina, no el número de onda (que ya está fijado por la relación de
+dispersión), sino la amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mo>=</mo><mi>z</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.53)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(L,t) = y\sin kL\,e^{-i\omega_dt} = z\,e^{-i\omega_dt}\,. \qquad \text{(5.53)}
+</annotation></semantics></math></p>
+<p>Así,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mi>z</mi><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.54)</mtext></mrow><annotation encoding="application/x-tex">
+y = \frac{z}{\sin kL}\,. \qquad \text{(5.54)}
+</annotation></semantics></math></p>
+<p>Note que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+es una frecuencia de modo normal del sistema (5.1) sin amortiguamiento,
+entonces (5.54) no tiene sentido, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\sin kL</annotation></semantics></math>
+se anula. Así debe ser: corresponde a la amplitud infinita producida por
+una fuerza impulsora en resonancia con una frecuencia normal de un
+sistema sin fricción. En presencia de amortiguamiento, sin embargo, como
+discutiremos en el capítulo 8, el número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es complejo, porque la relación de dispersión es compleja. Veremos más
+adelante que, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es complejo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\sin kL</annotation></semantics></math>
+no puede anularse. Incluso si el amortiguamiento es muy pequeño, por
+supuesto, no obtenemos un infinito real en la amplitud al acercarnos a
+la resonancia: eventualmente, los efectos no lineales toman el control.
+Si es la no linealidad o el amortiguamiento lo más importante cerca de
+una resonancia dada depende de los detalles del sistema físico (note
+también que, cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\sin kL</annotation></semantics></math>
+es complejo, las partes del sistema no oscilan todas en fase, aunque
+todas oscilan a la misma frecuencia).</p>
+<h3 id="oscilaciones-forzadas-con-un-extremo-libre">5.5.1 Oscilaciones
+forzadas con un extremo libre</h3>
+<p><em>(Figura 5.18: masa sobre un muelle, con el otro extremo del
+muelle movido externamente de forma oscilante.)</em></p>
+<p>Como otro ejemplo, discutiremos de nuevo las oscilaciones
+longitudinales forzadas del sistema simple de una masa sobre un muelle,
+mostrado en la figura 5.18. La física aquí es la misma que la del
+sistema de la figura 2.9, salvo que, para empezar, ignoraremos el
+amortiguamiento. El bloque tiene masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+El muelle tiene constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+y longitud de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Para concretar, imagine que este bloque está sobre una mesa casi sin
+fricción, y que usted sostiene el otro extremo del muelle, moviéndolo
+hacia adelante y hacia atrás sobre la mesa, paralelamente a la dirección
+del muelle, con desplazamiento</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.55)</mtext></mrow><annotation encoding="application/x-tex">
+d_0\cos\omega_dt\,. \qquad \text{(5.55)}
+</annotation></semantics></math></p>
+<p>La pregunta es: ¿cómo se mueve el bloque? Ya sabemos resolver este
+problema desde el capítulo 2. Ahora lo haremos de una forma distinta,
+usando la invariancia bajo traslación espacial, las interacciones
+locales y las condiciones de contorno. Puede parecer sorprendente que
+podamos tratar este problema con las técnicas que hemos desarrollado
+para sistemas invariantes bajo traslación espacial, porque solo hay un
+bloque. Sin embargo, eso es lo que vamos a hacer. Ciertamente nada nos
+impide extender este sistema a un sistema infinito, repitiendo la
+combinación bloque-muelle. El sistema infinito tiene entonces la
+relación de dispersión de la cuerda con cuentas (o de los péndulos
+acoplados con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\ell\to\infty</annotation></semantics></math>):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>4</mn><mi>K</mi></mrow><mi>m</mi></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.56)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_d^2 = \frac{4K}{m}\sin^2\frac{ka}{2}\,. \qquad \text{(5.56)}
+</annotation></semantics></math></p>
+<p>La parte relevante del sistema infinito se muestra en la figura 5.19.
+La idea es que podemos imponer condiciones de contorno sobre el sistema
+infinito, figura 5.19, que lo hagan equivalente a la figura 5.18.</p>
+<p><em>(Figura 5.19: fragmento del sistema infinito de masas y muelles,
+mostrando las masas 0, 1 y 2.)</em></p>
+<p>Empezamos imaginando que el desplazamiento es complejo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">d_0e^{-i\omega_dt}</annotation></semantics></math>,
+de modo que al final tomaremos la parte real para recuperar el resultado
+real de (5.55). Así, tomamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.57)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_2(t) = d_0\,e^{-i\omega_dt}\,. \qquad \text{(5.57)}
+</annotation></semantics></math></p>
+<p>Entonces, para garantizar que no haya fuerza sobre el bloque 1 debida
+al muelle imaginario de la izquierda, debemos tomar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.58)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_0(t) = \psi_1(t)\,. \qquad \text{(5.58)}
+</annotation></semantics></math></p>
+<p>Para satisfacer (5.58), podemos argumentar, como en la figura 5.13,
+que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.59)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x,t) = z(t)\cos kx \qquad \text{(5.59)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+se define como en la figura 5.20.</p>
+<p><em>(Figura 5.20: una mejor definición del origen de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+con el origen a medio camino entre las masas 0 y 1.)</em></p>
+<p>Ahora, como la posición de equilibrio del bloque 2 es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3a/2</annotation></semantics></math>,
+sustituimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.60)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_2(t) = z(t)\cos\frac{3ka}{2} \qquad \text{(5.60)}
+</annotation></semantics></math></p>
+<p>en (5.57), para obtener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msub><mi>d</mi><mn>0</mn></msub><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.61)</mtext></mrow><annotation encoding="application/x-tex">
+z(t) = \frac{d_0}{\cos\frac{3ka}{2}}\,e^{-i\omega_dt}\,. \qquad \text{(5.61)}
+</annotation></semantics></math></p>
+<p>Entonces el resultado final es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.62)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(t) = \frac{\cos\frac{ka}{2}}{\cos\frac{3ka}{2}}\,d_0\,e^{-i\omega_dt} \qquad \text{(5.62)}
+</annotation></semantics></math></p>
+<p>o, en forma real,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.63)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(t) = \frac{\cos\frac{ka}{2}}{\cos\frac{3ka}{2}}\,d_0\cos\omega_dt\,. \qquad \text{(5.63)}
+</annotation></semantics></math></p>
+<p>Ahora podemos usar la relación de dispersión. Primero usamos
+trigonometría,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>3</mn><mi>y</mi><mo>=</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>3</mn></msup><mi>y</mi><mo>−</mo><mn>3</mn><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>y</mi><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>y</mi><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mn>4</mn><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.64)</mtext></mrow><annotation encoding="application/x-tex">
+\cos3y = \cos^3y-3\cos y\sin^2y = \cos y\left(1-4\sin^2y\right) \qquad \text{(5.64)}
+</annotation></semantics></math></p>
+<p>para escribir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mn>4</mn><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.65)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(t) = \frac{1}{1-4\sin^2\frac{ka}{2}}\,d_0\cos\omega_dt \qquad \text{(5.65)}
+</annotation></semantics></math></p>
+<p>o, sustituyendo (5.56),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.66)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(t) = \frac{\omega_0^2}{\omega_0^2-\omega_d^2}\,d_0\cos\omega_dt\,, \qquad \text{(5.66)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>
+es la frecuencia de oscilación libre del sistema,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mi>K</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.67)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_0^2 = \frac{K}{m}\,. \qquad \text{(5.67)}
+</annotation></semantics></math></p>
+<p>Esta es exactamente la misma fórmula de resonancia que obtuvimos en
+el capítulo 2.</p>
+<h3 id="generalización">5.5.2 Generalización</h3>
+<p>La verdadera ventaja del procedimiento que usamos para resolver este
+problema es que es fácil de generalizar. Por ejemplo, supongamos que
+consideramos el sistema mostrado en la figura 5.21.</p>
+<p><em>(Figura 5.21: sistema con dos bloques en línea, unidos por
+muelles, con el extremo derecho movido externamente.)</em></p>
+<p>Aquí podemos pasar al mismo sistema infinito y argumentar que la
+solución es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos kx</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+se define como en la figura 5.22. Entonces el mismo argumento conduce al
+resultado para los desplazamientos de los bloques 1 y 2:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>5</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>5</mn><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac></mrow></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.68)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(t) = \frac{\cos\frac{ka}{2}}{\cos\frac{5ka}{2}}\,d_0\cos\omega_dt\,,\qquad \psi_2(t) = \frac{\cos\frac{3ka}{2}}{\cos\frac{5ka}{2}}\,d_0\cos\omega_dt\,. \qquad \text{(5.68)}
+</annotation></semantics></math></p>
+<p><em>(Figura 5.22: el sistema infinito correspondiente, con el origen
+definido a medio camino entre las masas 0 y 1.)</em></p>
+<p>Debería poder generalizar esto a un número arbitrario de bloques.</p>
+<h2 id="circuitos-lc-acoplados">5.6 Circuitos LC acoplados</h2>
+<p>Vimos en el capítulo 1 la analogía entre el circuito LC de la figura
+1.10 y el sistema correspondiente de una masa y muelles de la figura
+1.11. En esta sección discutimos qué ocurre cuando combinamos circuitos
+LC en un sistema invariante bajo traslación espacial.</p>
+<p>Por ejemplo, considere un circuito infinito invariante bajo
+traslación espacial, del que se muestra un fragmento en la figura 5.23.
+Podría suponerse, basándose en la discusión del capítulo 1, que el
+circuito de la figura 5.23 es análogo a la combinación de muelles y
+masas mostrada en la figura 5.24, con la correspondencia entre ambos
+sistemas:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>↔</mo><mi>L</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>K</mi><mo>↔</mo><mn>1</mn><mi>/</mi><mi>C</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mi>j</mi></msub><mo>↔</mo><msub><mi>Q</mi><mi>j</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.69)</mtext></mrow><annotation encoding="application/x-tex">
+m \leftrightarrow L\,,\qquad K \leftrightarrow 1/C\,,\qquad x_j \leftrightarrow Q_j \qquad \text{(5.69)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>
+es el desplazamiento del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+bloque hacia la derecha, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">Q_j</annotation></semantics></math>
+es la carga que ha «pasado» a través del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+inductor desde la situación de equilibrio con los condensadores
+descargados.</p>
+<p><em>(Figura 5.23: circuito infinito de inductores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y condensadores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+conectados alternativamente, con separación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+entre elementos idénticos. Figura 5.24: sistema mecánico análogo —
+cadena infinita de masas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+conectadas por muelles
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.)</em></p>
+<p>De hecho, esto es correcto, y podríamos usar (5.69) para escribir la
+relación de dispersión de la figura 5.23. Sin embargo, con nuestras
+potentes herramientas de linealidad e invariancia bajo traslación
+espacial, podemos resolver el problema desde cero sin demasiado
+esfuerzo. La estrategia será escribir lo que sabemos que debe parecer la
+solución, por la invariancia bajo traslación espacial, y luego trabajar
+hacia atrás para encontrar la relación de dispersión.</p>
+<p>El punto de partida debería resultarle familiar a estas alturas. Como
+el sistema es lineal e invariante bajo traslación espacial, los modos
+del sistema infinito son proporcionales a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>.
+Por tanto, todas las cantidades físicas de un modo —voltajes, cargas,
+corrientes, lo que sea— también deben ser proporcionales a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>.
+En este caso, la variable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+es realmente solo una etiqueta: las propiedades eléctricas del circuito
+no dependen mucho de la disposición de los elementos en el espacio (esto
+no es exactamente cierto, sin embargo: la relatividad impone
+restricciones; véase el capítulo 11). La relación de dispersión
+dependerá solo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ka</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la separación entre las partes idénticas del sistema (véase (5.35)).
+Sin embargo, es más fácil pensar en el sistema si se dispone físicamente
+en una configuración invariante bajo traslación espacial, como en la
+figura 5.23.</p>
+<p><em>(Figura 5.25: etiquetado del sistema infinito de circuitos LC
+acoplados, con los inductores numerados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2,-1,0,1</annotation></semantics></math>
+y los condensadores en las posiciones intermedias.)</em></p>
+<p>En particular, etiquetemos los inductores y condensadores como se
+muestra en la figura 5.25. Entonces la carga desplazada a través del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+inductor, en el modo con número de onda angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>q</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>j</mi><mi>k</mi><mi>a</mi></mrow></msup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.70)</mtext></mrow><annotation encoding="application/x-tex">
+Q_j(t) = q\,e^{ijka}\,e^{-i\omega t} \qquad \text{(5.70)}
+</annotation></semantics></math></p>
+<p>para alguna carga constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+Note que igualmente podríamos haber tomado la dependencia temporal como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\cos\omega t</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\sin\omega t</annotation></semantics></math>,
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\omega t}</annotation></semantics></math>;
+no importa para el argumento siguiente. Lo que importa es que, al
+derivar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Q_j(t)</annotation></semantics></math>
+dos veces respecto al tiempo, obtenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>ω</mi><mn>2</mn></msup><msub><mi>Q</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">-\omega^2Q_j(t)</annotation></semantics></math>.
+La corriente a través del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+inductor es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>j</mi></msub><mo>=</mo><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><msub><mi>Q</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>i</mi><mi>ω</mi><mi>q</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>j</mi><mi>k</mi><mi>a</mi></mrow></msup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.71)</mtext></mrow><annotation encoding="application/x-tex">
+I_j = \frac{d}{dt}Q_j(t) = -i\omega q\,e^{ijka}\,e^{-i\omega t}\,. \qquad \text{(5.71)}
+</annotation></semantics></math></p>
+<p>La carga en el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+condensador, que llamaremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">q_j</annotation></semantics></math>,
+también es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>j</mi><mi>k</mi><mi>a</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{ijka}e^{-i\omega t}</annotation></semantics></math>,
+pero de hecho podemos calcularla directamente. La carga,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">q_j</annotation></semantics></math>,
+es simplemente</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>=</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>−</mo><msub><mi>Q</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.72)</mtext></mrow><annotation encoding="application/x-tex">
+q_j = Q_j - Q_{j+1} \qquad \text{(5.72)}
+</annotation></semantics></math></p>
+<p>porque la carga desplazada a través del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+inductor debe fluir hacia el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+condensador, o pasar a través del inductor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j+1</annotation></semantics></math>,
+de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo>=</mo><msub><mi>q</mi><mi>j</mi></msub><mo>+</mo><msub><mi>Q</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">Q_j=q_j+Q_{j+1}</annotation></semantics></math>.
+Ahora podemos calcular el voltaje,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>j</mi></msub><annotation encoding="application/x-tex">V_j</annotation></semantics></math>,
+de cada condensador,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>C</mi></mfrac><mo stretchy="false" form="prefix">(</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>−</mo><msub><mi>Q</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>q</mi><mi>C</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>j</mi><mi>k</mi><mi>a</mi></mrow></msup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.73)</mtext></mrow><annotation encoding="application/x-tex">
+V_j = \frac{1}{C}(Q_j-Q_{j+1}) = \frac{q}{C}\left(1-e^{ika}\right)e^{ijka}\,e^{-i\omega t}\,, \qquad \text{(5.73)}
+</annotation></semantics></math></p>
+<p>y luego calcular la caída de voltaje a través de los inductores,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>d</mi><msub><mi>I</mi><mi>j</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mi>V</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>V</mi><mi>j</mi></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.74)</mtext></mrow><annotation encoding="application/x-tex">
+L\,\frac{dI_j}{dt} = V_{j-1}-V_j\,, \qquad \text{(5.74)}
+</annotation></semantics></math></p>
+<p>sustituyendo (5.71) y (5.73) en (5.74), y dividiendo ambos lados por
+el factor común
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>q</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>j</mi><mi>k</mi><mi>a</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">-qL\,e^{ijka}e^{-i\omega t}</annotation></semantics></math>,
+obtenemos la relación de dispersión,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mrow><mi>L</mi><mi>C</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>4</mn><mrow><mi>L</mi><mi>C</mi></mrow></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.75)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = -\frac{1}{LC}\left(1-e^{ika}\right)\left(e^{-ika}-1\right) = \frac{4}{LC}\sin^2\frac{ka}{2}\,. \qquad \text{(5.75)}
+</annotation></semantics></math></p>
+<p>Esto corresponde a (5.37) con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>1</mn><mi>/</mi><mi>L</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">B=1/LC</annotation></semantics></math>.
+Esto es justamente lo que esperamos de (5.69). Llamaremos a (5.75) la
+relación de dispersión de los circuitos LC acoplados.</p>
+<h3 id="un-ejemplo-de-circuitos-lc-acoplados">5.6.1 Un ejemplo de
+circuitos LC acoplados</h3>
+<p><em>(Figura 5.26: circuito con tres inductores en serie, cada uno
+conectado a un condensador a tierra, formando un sistema finito. Figura
+5.27: sistema mecánico análogo, tres masas conectadas por cuatro muelles
+entre dos paredes fijas.)</em></p>
+<p>Usemos los resultados de esta sección para estudiar un ejemplo
+finito, con condiciones de contorno. Considere el circuito mostrado en
+la figura 5.26. Este circuito es análogo a la combinación de muelles y
+masas mostrada en la figura 5.27.</p>
+<p>Ya sabemos que esto es cierto para el interior. Solo queda entender
+las condiciones de contorno en los extremos. Si etiquetamos los
+inductores como se muestra en la figura 5.28, podemos imaginar que este
+sistema es parte del sistema infinito mostrado en la figura 5.23, con
+las cargas obligadas a satisfacer</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub><mo>=</mo><msub><mi>Q</mi><mn>4</mn></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.76)</mtext></mrow><annotation encoding="application/x-tex">
+Q_0=Q_4=0\,. \qquad \text{(5.76)}
+</annotation></semantics></math></p>
+<p><em>(Figura 5.28: etiquetado de los inductores del circuito de la
+figura 5.26, numerados 1, 2 y 3.)</em></p>
+<p>Esto debe ser correcto: no puede desplazarse carga a través de los
+inductores 0 y 4, porque en la figura 5.26 estos no existen. Esto es
+justamente lo que esperamos de la analogía con el sistema de (5.27),
+donde el desplazamiento de los bloques 0 y 4 debe anularse, porque
+ocupan el lugar de las paredes fijas.</p>
+<p>Ahora podemos escribir inmediatamente la solución para los modos
+normales, en analogía con (5.21) y (5.22),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo>∝</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>j</mi><mi>n</mi><mi>π</mi></mrow><mn>4</mn></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.77)</mtext></mrow><annotation encoding="application/x-tex">
+Q_j \propto \sin\frac{jn\pi}{4} \qquad \text{(5.77)}
+</annotation></semantics></math></p>
+<p>para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>.</p>
+<h3
+id="un-problema-de-oscilación-forzada-para-circuitos-lc-acoplados">5.6.2
+Un problema de oscilación forzada para circuitos LC acoplados</h3>
+<p><em>(Figura 5.29: circuito con tres inductores, con una fuente de
+voltaje oscilante conectada en un extremo. Figura 5.30: los voltajes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>3</mn></msub><annotation encoding="application/x-tex">V_3</annotation></semantics></math>
+en los distintos nodos del sistema de la figura 5.29.)</em></p>
+<p>Un ejemplo algo más práctico puede ser instructivo. Considere el
+circuito mostrado en la figura 5.29. El símbolo de fuente en la figura
+representa una fuente de voltaje que varía armónicamente. Supondremos
+que el voltaje en este punto del circuito está fijado por la fuente, de
+modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.78)</mtext></mrow><annotation encoding="application/x-tex">
+V\cos\omega t\,. \qquad \text{(5.78)}
+</annotation></semantics></math></p>
+<p>Nos gustaría encontrar los voltajes en los otros nodos del sistema,
+como se muestra en la figura 5.30, con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>3</mn></msub><mo>=</mo><mi>V</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.79)</mtext></mrow><annotation encoding="application/x-tex">
+V_3 = V\cos\omega t\,. \qquad \text{(5.79)}
+</annotation></semantics></math></p>
+<p>Podríamos resolver este problema usando las cargas desplazadas; sin
+embargo, es un poco más fácil usar el hecho de que todas las cantidades
+físicas del sistema infinito de la figura 5.23 son proporcionales a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikx}</annotation></semantics></math>
+en un modo con número de onda angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Como este es un problema de oscilación forzada (y, como de costumbre,
+ignoramos las posibles oscilaciones libres del sistema y buscamos la
+solución estacionaria),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+queda determinado por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+mediante la relación de dispersión del sistema infinito de circuitos LC
+acoplados, (5.75).</p>
+<p>Lo otro que necesitamos es que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.80)</mtext></mrow><annotation encoding="application/x-tex">
+V_0=0\,, \qquad \text{(5.80)}
+</annotation></semantics></math></p>
+<p>porque el circuito está cortocircuitado en ese extremo. Así, debemos
+combinar los dos modos del sistema infinito,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm ikx}</annotation></semantics></math>,
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin kx</annotation></semantics></math>,
+y la solución tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub><mo>∝</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>j</mi><mi>k</mi><mi>a</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.81)</mtext></mrow><annotation encoding="application/x-tex">
+V_j \propto \sin jka\,. \qquad \text{(5.81)}
+</annotation></semantics></math></p>
+<p>Podemos satisfacer la condición de contorno en el otro extremo
+tomando</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub><mo>=</mo><mfrac><mi>V</mi><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>3</mn><mi>k</mi><mi>a</mi></mrow></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>j</mi><mi>k</mi><mi>a</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5.82)</mtext></mrow><annotation encoding="application/x-tex">
+V_j = \frac{V}{\sin3ka}\sin jka\,\cos\omega t\,. \qquad \text{(5.82)}
+</annotation></semantics></math></p>
+<p>Esta es la solución.</p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<p>Ahora debería ser capaz de:</p>
+<ol type="1">
+<li>Reconocer un sistema finito como parte de un sistema infinito
+invariante bajo traslación espacial;</li>
+<li>Encontrar los modos normales del sistema finito como combinaciones
+lineales de modos normales del sistema infinito invariante bajo
+traslación espacial, consistentes con la física de las fronteras,
+imponiendo condiciones de contorno;</li>
+<li>Describir los modos normales de un sistema invariante bajo
+traslación espacial en términos de un número de onda angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;</li>
+<li>Encontrar la relación de dispersión que relaciona la frecuencia
+angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+con el número de onda angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;</li>
+<li>Resolver problemas de oscilación forzada usando condiciones de
+contorno;</li>
+<li>Analizar sistemas invariantes bajo traslación espacial de circuitos
+LC acoplados.</li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>5.1.</strong> Considere las pequeñas oscilaciones
+longitudinales del sistema mostrado a continuación: cuatro péndulos
+acoplados idénticos en línea, entre dos paredes fijas, cada masa de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+cada péndulo de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>,
+cada muelle de constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>,
+con separación de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+entre las masas.</p>
+<ol type="a">
+<li>Encuentre la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+de este sistema en la base en la que los desplazamientos de los bloques
+respecto al equilibrio se miden todos hacia la derecha y se organizan en
+un vector de la forma obvia,</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+X(t) = \begin{pmatrix}x_1(t)\\x_2(t)\\x_3(t)\\x_4(t)\end{pmatrix}\,.
+</annotation></semantics></math></p>
+<ol start="2" type="a">
+<li><p>Clasifique como VERDADERO o FALSO cada una de las siguientes
+afirmaciones sobre los modos normales de este sistema. Si es posible,
+explique sus respuestas cualitativamente, es decir, en palabras en lugar
+de sustituir en una fórmula, y discuta la generalidad de sus
+resultados.</p>
+<ol type="i">
+<li>En el modo normal de frecuencia más baja, todos los bloques se
+mueven en la misma dirección cuando se mueven.</li>
+<li>En el modo normal de segunda frecuencia más baja, el primer y el
+segundo bloque tienen el mismo desplazamiento.</li>
+<li>En el modo normal de frecuencia más alta, los bloques vecinos se
+mueven en direcciones opuestas cuando se mueven.</li>
+</ol></li>
+<li><p>Encuentre las frecuencias angulares de cada uno de los modos
+normales. Pista: puede querer usar la relación de dispersión de los
+péndulos acoplados,</p></li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>B</mi><mo>−</mo><mn>2</mn><mi>C</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">
+\omega^2 = 2B-2C\cos ka
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mfrac><mi>g</mi><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mo>+</mo><mfrac><mi>κ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>C</mi><mo>=</mo><mfrac><mi>κ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+B = \frac{g}{2\ell}+\frac{\kappa}{m}\,,\qquad C=\frac{\kappa}{m}\,.
+</annotation></semantics></math></p>
+<p><strong>5.2.</strong> Considere el sistema de cinco bloques mostrado
+en la figura, todos de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+obligados a moverse solo horizontalmente. Los muelles largos, con seis
+espiras, tienen constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Los muelles más cortos, con tres espiras, tienen constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>K</mi></mrow><annotation encoding="application/x-tex">2K</annotation></semantics></math>.
+Los muelles más cortos aún, con dos espiras, tienen constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>K</mi></mrow><annotation encoding="application/x-tex">3K</annotation></semantics></math>
+(como verá en el capítulo 7, esto es lo esperado si todos los muelles
+están hechos del mismo material).</p>
+<p><em>(Figura: cinco bloques en línea entre dos paredes fijas,
+conectados por una alternancia de muelles largos (constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>),
+medianos (constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>K</mi></mrow><annotation encoding="application/x-tex">2K</annotation></semantics></math>)
+y cortos (constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>K</mi></mrow><annotation encoding="application/x-tex">3K</annotation></semantics></math>),
+en un patrón simétrico.)</em></p>
+<p>Encuentre los modos normales del sistema y las frecuencias
+correspondientes. Asegúrese de justificar cualquier suposición que haga
+sobre los modos normales. Pista: intente encontrar un sistema infinito
+con invariancia bajo traslación espacial que contenga a este de tal
+forma que pueda incorporar la física de las paredes como condición de
+contorno. Otra pista: esto solo funciona de forma simple si los muelles
+de tres espiras tienen exactamente el doble de la constante de los
+muelles largos. Su respuesta debería explicar por qué.</p>
+<p><strong>5.3.</strong> En la cuerda con cuentas mostrada a
+continuación, el intervalo entre cuentas vecinas es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+y la distancia entre las cuentas de los extremos y las paredes es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">a/2</annotation></semantics></math>.
+Todas las cuentas tienen masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+y están obligadas a moverse solo verticalmente, en el plano del
+papel.</p>
+<p><em>(Figura: cinco cuentas numeradas 1 a 5 sobre una cuerda,
+separadas una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+entre sí y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">a/2</annotation></semantics></math>
+de las paredes en ambos extremos.)</em></p>
+<p>Demuestre que la física de la pared izquierda puede incorporarse
+pasando a un sistema infinito y exigiendo la condición de contorno
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>=</mo><mi>−</mi><msub><mi>A</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">A_0=-A_1</annotation></semantics></math>.</p>
+<ol type="a">
+<li><p>Fácil: encuentre la condición de contorno análoga para la pared
+derecha.</p></li>
+<li><p>Encuentre los modos normales y las frecuencias
+correspondientes.</p></li>
+</ol>
+<p><strong>5.4.</strong> Considere el siguiente circuito: seis nodos con
+voltajes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>6</mn></msub><annotation encoding="application/x-tex">V_6</annotation></semantics></math>,
+conectados en cadena por inductores idénticos, con condensadores
+idénticos a tierra en cada nodo intermedio, y el nodo central conectado
+a tierra.</p>
+<p>Todos los condensadores tienen la misma capacitancia,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>≈</mo><mn>0.00667</mn><mspace width="0.222em"></mspace><mi>μ</mi><mtext mathvariant="normal">F</mtext></mrow><annotation encoding="application/x-tex">C\approx0.00667\ \mu\text{F}</annotation></semantics></math>,
+y todos los inductores tienen la misma inductancia,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>≈</mo><mn>150</mn><mspace width="0.222em"></mspace><mi>μ</mi><mtext mathvariant="normal">H</mtext></mrow><annotation encoding="application/x-tex">L\approx150\ \mu\text{H}</annotation></semantics></math>,
+y ninguna resistencia. El hilo central está conectado a tierra. Este
+circuito es un análogo eléctrico de los sistemas invariantes bajo
+traslación espacial de osciladores mecánicos acoplados que hemos
+discutido en este capítulo.</p>
+<p>Cuando aplica una señal oscilante armónicamente desde un generador de
+señales, a través de un cable coaxial, a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>6</mn></msub><annotation encoding="application/x-tex">V_6</annotation></semantics></math>,
+se inducen distintos voltajes oscilantes a lo largo de la línea. Es
+decir, si</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>6</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>V</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+V_6(t) = V\cos\omega t\,,
+</annotation></semantics></math></p>
+<p>entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V_j(t)</annotation></semantics></math>
+tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>A</mi><mi>j</mi></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mo>+</mo><msub><mi>B</mi><mi>j</mi></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+V_j(t) = A_j\cos\omega t + B_j\sin\omega t\,.
+</annotation></semantics></math></p>
+<p>Encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>j</mi></msub><annotation encoding="application/x-tex">B_j</annotation></semantics></math>.</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
