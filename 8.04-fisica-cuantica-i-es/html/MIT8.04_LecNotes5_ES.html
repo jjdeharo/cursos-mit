@@ -28,6 +28,19 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -126,34 +139,24 @@ id="toc-problema-5-ondas-planas-para-partículas-materiales-10-puntos">Problema
 interpretation of the wavefunction.</strong></p>
 <ul>
 <li class="video-item">
-<details>
-<summary><strong>Momentum operator, energy operator, and a differential equation</strong> (20:33) &mdash; <a href="https://www.youtube.com/watch?v=ELBh60GU5yE" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ELBh60GU5yE" title="Momentum operator, energy operator, and a differential equation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="ELBh60GU5yE" data-title="Momentum operator, energy operator, and a differential equation"><span class="video-play-icon">&#9654;</span> <strong>Momentum operator, energy operator, and a differential equation</strong> <span class="video-dur">(20:33)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=ELBh60GU5yE" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Free Schrödinger equation</strong> (09:56) &mdash; <a href="https://www.youtube.com/watch?v=7euh_iwzSGo" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/7euh_iwzSGo" title="Free Schrödinger equation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="7euh_iwzSGo" data-title="Free Schrödinger equation"><span class="video-play-icon">&#9654;</span> <strong>Free Schrödinger equation</strong> <span class="video-dur">(09:56)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=7euh_iwzSGo" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>The general Schrödinger equation. x, p commutator</strong> (17:58) &mdash; <a href="https://www.youtube.com/watch?v=rwzg8iEOc8s" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rwzg8iEOc8s" title="The general Schrödinger equation. x, p commutator" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="rwzg8iEOc8s" data-title="The general Schrödinger equation. x, p commutator"><span class="video-play-icon">&#9654;</span> <strong>The general Schrödinger equation. x, p commutator</strong> <span class="video-dur">(17:58)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=rwzg8iEOc8s" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Commutators, matrices, and 3-dimensional Schrödinger equation</strong> (16:12) &mdash; <a href="https://www.youtube.com/watch?v=m7UT2Hr465o" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/m7UT2Hr465o" title="Commutators, matrices, and 3-dimensional Schrödinger equation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="m7UT2Hr465o" data-title="Commutators, matrices, and 3-dimensional Schrödinger equation"><span class="video-play-icon">&#9654;</span> <strong>Commutators, matrices, and 3-dimensional Schrödinger equation</strong> <span class="video-dur">(16:12)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=m7UT2Hr465o" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Interpretation of the wavefunction</strong> (08:01) &mdash; <a href="https://www.youtube.com/watch?v=R-5hjmV-bdY" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/R-5hjmV-bdY" title="Interpretation of the wavefunction" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="R-5hjmV-bdY" data-title="Interpretation of the wavefunction"><span class="video-play-icon">&#9654;</span> <strong>Interpretation of the wavefunction</strong> <span class="video-dur">(08:01)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=R-5hjmV-bdY" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 </ul>
 <hr />
@@ -1159,6 +1162,72 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
       });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
 })();
 </script>
 </body>

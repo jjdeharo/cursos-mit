@@ -28,6 +28,19 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -132,34 +145,24 @@ id="toc-problema-6-corriente-de-probabilidad-en-una-dimensión-10-puntos">Proble
 shape change time evolutions.</strong></p>
 <ul>
 <li class="video-item">
-<details>
-<summary><strong>Wavepackets and Fourier representation</strong> (12:23) &mdash; <a href="https://www.youtube.com/watch?v=dzI5PddY6eE" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dzI5PddY6eE" title="Wavepackets and Fourier representation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="dzI5PddY6eE" data-title="Wavepackets and Fourier representation"><span class="video-play-icon">&#9654;</span> <strong>Wavepackets and Fourier representation</strong> <span class="video-dur">(12:23)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=dzI5PddY6eE" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Reality condition in Fourier transforms</strong> (09:11) &mdash; <a href="https://www.youtube.com/watch?v=DvFb-D1zJTA" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/DvFb-D1zJTA" title="Reality condition in Fourier transforms" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="DvFb-D1zJTA" data-title="Reality condition in Fourier transforms"><span class="video-play-icon">&#9654;</span> <strong>Reality condition in Fourier transforms</strong> <span class="video-dur">(09:11)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=DvFb-D1zJTA" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Widths and uncertainties</strong> (19:13) &mdash; <a href="https://www.youtube.com/watch?v=vWGP5dogNm8" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vWGP5dogNm8" title="Widths and uncertainties" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="vWGP5dogNm8" data-title="Widths and uncertainties"><span class="video-play-icon">&#9654;</span> <strong>Widths and uncertainties</strong> <span class="video-dur">(19:13)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=vWGP5dogNm8" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Shape changes in a wave</strong> (16:56) &mdash; <a href="https://www.youtube.com/watch?v=50Tla309i7o" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/50Tla309i7o" title="Shape changes in a wave" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="50Tla309i7o" data-title="Shape changes in a wave"><span class="video-play-icon">&#9654;</span> <strong>Shape changes in a wave</strong> <span class="video-dur">(16:56)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=50Tla309i7o" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 <li class="video-item">
-<details>
-<summary><strong>Time evolution of a free particle wavepacket</strong> (09:44) &mdash; <a href="https://www.youtube.com/watch?v=ipXNYnO7yRk" target="_blank" rel="noopener">ver en YouTube&nbsp;↗</a></summary>
-<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ipXNYnO7yRk" title="Time evolution of a free particle wavepacket" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-</details>
+<button type="button" class="video-play" data-vid="ipXNYnO7yRk" data-title="Time evolution of a free particle wavepacket"><span class="video-play-icon">&#9654;</span> <strong>Time evolution of a free particle wavepacket</strong> <span class="video-dur">(09:44)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=ipXNYnO7yRk" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
 </li>
 </ul>
 <hr />
@@ -960,6 +963,72 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
       });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
 })();
 </script>
 </body>
