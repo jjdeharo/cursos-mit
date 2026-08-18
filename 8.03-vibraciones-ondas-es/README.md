@@ -24,6 +24,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 | `MIT8.03_TextCh8_ES.epub` | Ondas viajeras |
 | `MIT8.03_TextCh9_ES.epub` | La frontera en el infinito |
 | `MIT8.03_TextCh10_ES.epub` | Señales y análisis de Fourier |
+| `MIT8.03_TextCh11_ES.epub` | Dos y tres dimensiones |
 
 ### Listas de problemas (Problem Sets 1-10)
 
@@ -42,7 +43,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ### Próximamente
 
-Quedan **3 capítulos del libro de texto** (`Text_Ch11`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+Quedan **2 capítulos del libro de texto** (`Text_Ch12`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
