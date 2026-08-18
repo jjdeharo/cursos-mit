@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 4: Simetrías — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 4: Simetrías — 8.03SC Física III: Vibraciones
+y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-4-simetrías"
+id="toc-capítulo-4-simetrías">Capítulo 4: Simetrías</a>
+<ul>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#simetrías" id="toc-simetrías">4.1 Simetrías</a>
+<ul>
+<li><a href="#pulsaciones" id="toc-pulsaciones">4.1.1
+Pulsaciones</a></li>
+<li><a href="#un-ejemplo-menos-trivial"
+id="toc-un-ejemplo-menos-trivial">4.1.2 Un ejemplo menos
+trivial</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-4-simetrías">Capítulo 4: Simetrías</h1>
+<p>La simetría es un concepto importante en física y matemáticas (¡y en
+arte!). En este capítulo mostramos cómo las matemáticas de la simetría
+pueden usarse para simplificar el análisis de los modos normales de
+sistemas simétricos.</p>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>En este capítulo introducimos el concepto formal de simetría o
+invariancia.</p>
+<ol type="1">
+<li>Trabajaremos algunos ejemplos del uso de argumentos de simetría para
+simplificar el análisis de sistemas oscilantes.</li>
+</ol>
+<h2 id="simetrías">4.1 Simetrías</h2>
+<p>Volvamos al sistema de dos péndulos idénticos acoplados por un
+muelle, discutido en el capítulo 3, en (3.78)-(3.93). Este sistema
+simple todavía tiene más que enseñarnos. Se muestra en la figura 4.1.
+Como en (3.78)-(3.93), ambos bloques tienen masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+ambos péndulos tienen longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+y la constante del muelle es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>.
+De nuevo denotamos los pequeños desplazamientos de los bloques hacia la
+derecha como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>.</p>
+<p><em>(Figura 4.1: los dos péndulos acoplados, con los desplazamientos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
+medidos hacia la derecha.)</em></p>
+<p>Encontramos los modos normales de este sistema en el capítulo
+anterior. Pero, de hecho, podríamos haberlos encontrado aún más
+fácilmente aprovechando la simetría de este sistema. Si reflejamos este
+sistema en un plano situado a medio camino entre los dos bloques,
+obtenemos un sistema completamente equivalente. Decimos que el sistema
+es «invariante» bajo reflexiones en el plano entre los bloques. Sin
+embargo, aunque la física no cambia con la reflexión, nuestra
+descripción del sistema sí se ve afectada: las coordenadas se
+intercambian. El sistema reflejado se muestra en la figura 4.2.
+Comparando ambas figuras, podemos describir la reflexión por su efecto
+sobre los desplazamientos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.1)</mtext></mrow><annotation encoding="application/x-tex">
+x_1 \to -x_2\,,\qquad x_2\to -x_1\,. \qquad \text{(4.1)}
+</annotation></semantics></math></p>
+<p><em>(Figura 4.2: el sistema de péndulos acoplados tras la reflexión
+en el plano entre ambos; las posiciones 1 y 2 quedan intercambiadas, con
+los desplazamientos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+respectivamente, ambos con signo cambiado.)</em></p>
+<p>En particular, si</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.2)</mtext></mrow><annotation encoding="application/x-tex">
+X(t) = \begin{pmatrix}x_1(t)\\x_2(t)\end{pmatrix} \qquad \text{(4.2)}
+</annotation></semantics></math></p>
+<p>es una solución de las ecuaciones de movimiento del sistema, entonces
+el vector reflejado,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.3)</mtext></mrow><annotation encoding="application/x-tex">
+\tilde X(t) \equiv \begin{pmatrix}-x_2(t)\\-x_1(t)\end{pmatrix}\,, \qquad \text{(4.3)}
+</annotation></semantics></math></p>
+<p>también debe ser una solución, porque el sistema reflejado es en
+realidad idéntico al original. Aunque esto debe ser así por la física,
+es útil entender cómo funciona la matemática. Para ver matemáticamente
+que (4.3) es una solución, definimos la matriz de simetría,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>≡</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.4)</mtext></mrow><annotation encoding="application/x-tex">
+S \equiv \begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}\,, \qquad \text{(4.4)}
+</annotation></semantics></math></p>
+<p>de modo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tilde X(t)</annotation></semantics></math>
+se relaciona con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">X(t)</annotation></semantics></math>
+mediante multiplicación matricial:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>S</mi><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.5)</mtext></mrow><annotation encoding="application/x-tex">
+\tilde X(t) = \begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}\begin{pmatrix}x_1(t)\\x_2(t)\end{pmatrix} = SX(t)\,. \qquad \text{(4.5)}
+</annotation></semantics></math></p>
+<p>El enunciado matemático de la simetría es la siguiente condición
+sobre las matrices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+(dos matrices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+que satisfacen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">AB=BA</annotation></semantics></math>
+se dice que «conmutan»):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>S</mi><mo>=</mo><mi>S</mi><mi>M</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.6)</mtext></mrow><annotation encoding="application/x-tex">
+MS = SM\,, \qquad \text{(4.6)}
+</annotation></semantics></math></p>
+<p>y</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>S</mi><mo>=</mo><mi>S</mi><mi>K</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.7)</mtext></mrow><annotation encoding="application/x-tex">
+KS = SK\,. \qquad \text{(4.7)}
+</annotation></semantics></math></p>
+<p>Puede comprobar explícitamente que (4.6) y (4.7) son ciertas. De
+estas ecuaciones se sigue que, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">X(t)</annotation></semantics></math>
+es una solución de la ecuación de movimiento,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>K</mi><mspace width="0.167em"></mspace><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.8)</mtext></mrow><annotation encoding="application/x-tex">
+M\,\frac{d^2}{dt^2}X(t) = -K\,X(t)\,, \qquad \text{(4.8)}
+</annotation></semantics></math></p>
+<p>entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tilde X(t)</annotation></semantics></math>
+también lo es. Para verlo explícitamente, multiplique ambos lados de
+(4.8) por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>M</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>S</mi><mi>K</mi><mspace width="0.167em"></mspace><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.9)</mtext></mrow><annotation encoding="application/x-tex">
+SM\,\frac{d^2}{dt^2}X(t) = -SK\,X(t)\,. \qquad \text{(4.9)}
+</annotation></semantics></math></p>
+<p>Usando (4.6) y (4.7) en (4.9), obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>S</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>K</mi><mi>S</mi><mspace width="0.167em"></mspace><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.10)</mtext></mrow><annotation encoding="application/x-tex">
+MS\,\frac{d^2}{dt^2}X(t) = -KS\,X(t)\,. \qquad \text{(4.10)}
+</annotation></semantics></math></p>
+<p>La matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+es constante, independiente del tiempo, así que podemos pasarla a través
+de las derivadas temporales en (4.10), obteniendo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>S</mi><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>K</mi><mspace width="0.167em"></mspace><mi>S</mi><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.11)</mtext></mrow><annotation encoding="application/x-tex">
+M\,\frac{d^2}{dt^2}SX(t) = -K\,SX(t)\,. \qquad \text{(4.11)}
+</annotation></semantics></math></p>
+<p>Pero ahora, usando (4.5), esta es la ecuación de movimiento para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tilde X(t)</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>K</mi><mspace width="0.167em"></mspace><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.12)</mtext></mrow><annotation encoding="application/x-tex">
+M\,\frac{d^2}{dt^2}\tilde X(t) = -K\,\tilde X(t)\,. \qquad \text{(4.12)}
+</annotation></semantics></math></p>
+<p>Así, como prometimos, (4.6) y (4.7) son los enunciados matemáticos de
+la simetría de reflexión, porque implican, como acabamos de ver
+explícitamente, que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">X(t)</annotation></semantics></math>
+es una solución,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tilde X(t)</annotation></semantics></math>
+también lo es.</p>
+<p>Note que de (4.6) puede demostrar que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>S</mi><mo>=</mo><mi>S</mi><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.13)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}S = SM^{-1} \qquad \text{(4.13)}
+</annotation></semantics></math></p>
+<p>multiplicando ambos lados por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">M^{-1}</annotation></semantics></math>.
+Entonces (4.13) puede combinarse con (4.7) para dar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>S</mi><mo>=</mo><mi>S</mi><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.14)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}KS = SM^{-1}K\,. \qquad \text{(4.14)}
+</annotation></semantics></math></p>
+<p>Usaremos esto más adelante.</p>
+<p>Ahora supongamos que el sistema está en un modo normal, por
+ejemplo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>A</mi><mn>1</mn></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.15)</mtext></mrow><annotation encoding="application/x-tex">
+X(t) = A^1\cos\omega_1t\,. \qquad \text{(4.15)}
+</annotation></semantics></math></p>
+<p>Entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tilde X(t)</annotation></semantics></math>
+es otra solución. Pero tiene la misma dependencia temporal y, por tanto,
+la misma frecuencia angular. Por ello debe ser proporcional al mismo
+vector de modo normal, porque ya sabemos, de nuestro análisis anterior,
+que las dos frecuencias angulares de los modos normales del sistema son
+distintas,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>1</mn></msub><mo>≠</mo><msub><mi>ω</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\omega_1\neq\omega_2</annotation></semantics></math>.
+Cualquier cosa que oscile con frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\omega_1</annotation></semantics></math>
+debe ser proporcional al modo normal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mn>1</mn></msup><annotation encoding="application/x-tex">A^1</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̃</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>∝</mo><msup><mi>A</mi><mn>1</mn></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.16)</mtext></mrow><annotation encoding="application/x-tex">
+\tilde X(t) \propto A^1\cos\omega_1t\,. \qquad \text{(4.16)}
+</annotation></semantics></math></p>
+<p>Así, la simetría implica</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msup><mi>A</mi><mn>1</mn></msup><mo>∝</mo><msup><mi>A</mi><mn>1</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.17)</mtext></mrow><annotation encoding="application/x-tex">
+SA^1 \propto A^1\,. \qquad \text{(4.17)}
+</annotation></semantics></math></p>
+<p>Es decir, esperamos, por la simetría, que los modos normales sean
+también autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Esto debe ser cierto siempre que las frecuencias angulares sean
+distintas. De hecho, podemos comprobar, examinando las soluciones, que
+esto es cierto. La constante de proporcionalidad es justamente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msup><mi>A</mi><mn>1</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>A</mi><mn>1</mn></msup><mo>=</mo><mi>−</mi><msup><mi>A</mi><mn>1</mn></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.18)</mtext></mrow><annotation encoding="application/x-tex">
+SA^1 = \begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}A^1 = -A^1\,, \qquad \text{(4.18)}
+</annotation></semantics></math></p>
+<p>y de forma similar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msup><mi>A</mi><mn>2</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>A</mi><mn>2</mn></msup><mo>=</mo><msup><mi>A</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.19)</mtext></mrow><annotation encoding="application/x-tex">
+SA^2 = \begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}A^2 = A^2\,. \qquad \text{(4.19)}
+</annotation></semantics></math></p>
+<p>Además, podemos invertir el argumento. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es un autovector de la matriz de simetría
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+y si todos los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son distintos, entonces, gracias a la simetría (4.13),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es un modo normal. Para verlo, considere el vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">M^{-1}KA</annotation></semantics></math>
+y hágalo actuar con la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Usando (4.14), vemos que si</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi><mo>=</mo><mi>β</mi><mi>A</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.20)</mtext></mrow><annotation encoding="application/x-tex">
+SA = \beta A \qquad \text{(4.20)}
+</annotation></semantics></math></p>
+<p>entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mspace width="0.167em"></mspace><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi><mo>=</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi><mo>=</mo><mi>β</mi><mspace width="0.167em"></mspace><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.21)</mtext></mrow><annotation encoding="application/x-tex">
+S\,M^{-1}KA = M^{-1}K\,SA = \beta\,M^{-1}KA\,. \qquad \text{(4.21)}
+</annotation></semantics></math></p>
+<p>En palabras, (4.21) significa que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">M^{-1}KA</annotation></semantics></math>
+es un autovector de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+con el mismo autovalor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Pero si los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son todos distintos, entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">M^{-1}KA</annotation></semantics></math>
+debe ser proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+lo que significa que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es un modo normal. Matemáticamente, podríamos decirlo así: si los
+autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>n</mi></msup><annotation encoding="application/x-tex">A^n</annotation></semantics></math>
+con autovalores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\beta_n</annotation></semantics></math>,
+entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msub><mi>β</mi><mi>n</mi></msub><msup><mi>A</mi><mi>n</mi></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="0.222em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="0.222em"></mspace><msub><mi>β</mi><mi>n</mi></msub><mo>≠</mo><msub><mi>β</mi><mi>m</mi></msub><mspace width="0.222em"></mspace><mtext mathvariant="normal">para</mtext><mspace width="0.222em"></mspace><mi>n</mi><mo>≠</mo><mi>m</mi><mo>⟹</mo><msup><mi>A</mi><mi>n</mi></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">son modos normales.</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.22)</mtext></mrow><annotation encoding="application/x-tex">
+SA^n = \beta_nA^n\,,\ \text{y}\ \beta_n\neq\beta_m\ \text{para}\ n\neq m \implies A^n\ \text{son modos normales.} \qquad \text{(4.22)}
+</annotation></semantics></math></p>
+<p>Resulta que, para las simetrías que nos interesan, los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son siempre todos distintos.</p>
+<p>Así, incluso si no hubiéramos conocido la solución, podríamos haber
+usado (4.20) para determinar los modos normales ¡sin molestarnos en
+resolver el problema de autovalores de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>!
+En lugar de resolver el problema de autovalores</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>n</mi></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.23)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}K\,A^n = \omega_n^2\,A^n\,, \qquad \text{(4.23)}
+</annotation></semantics></math></p>
+<p>podemos en cambio resolver el problema de autovalores</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msub><mi>β</mi><mi>n</mi></msub><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>n</mi></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.24)</mtext></mrow><annotation encoding="application/x-tex">
+S\,A^n = \beta_n\,A^n\,. \qquad \text{(4.24)}
+</annotation></semantics></math></p>
+<p>Podría parecer que simplemente hemos cambiado un problema de
+autovalores por otro. Pero, de hecho, (4.24) es más fácil de resolver,
+porque podemos usar la simetría para determinar los autovalores,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\beta_n</annotation></semantics></math>,
+sin necesidad de calcular nunca un determinante. La simetría de
+reflexión tiene la agradable propiedad de que, si la aplica dos veces,
+vuelve a donde empezó. Esto se refleja en la propiedad de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup><mo>=</mo><mi>I</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.25)</mtext></mrow><annotation encoding="application/x-tex">
+S^2 = I\,. \qquad \text{(4.25)}
+</annotation></semantics></math></p>
+<p>En palabras, esto significa que aplicar la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+dos veces le devuelve exactamente el vector con el que empezó.
+Multiplicando ambos lados de la ecuación de autovalores, (4.24), por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><mi>I</mi><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msup><mi>S</mi><mn>2</mn></msup><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><mi>S</mi><msub><mi>β</mi><mi>n</mi></msub><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msub><mi>β</mi><mi>n</mi></msub><mspace width="0.167em"></mspace><mi>S</mi><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><msubsup><mi>β</mi><mi>n</mi><mn>2</mn></msubsup><msup><mi>A</mi><mi>n</mi></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.26)</mtext></mrow><annotation encoding="application/x-tex">
+A^n = IA^n = S^2A^n = S\beta_nA^n = \beta_n\,SA^n = \beta_n^2A^n\,, \qquad \text{(4.26)}
+</annotation></semantics></math></p>
+<p>lo que implica</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>β</mi><mi>n</mi><mn>2</mn></msubsup><mo>=</mo><mn>1</mn><mspace width="1.0em"></mspace><mtext mathvariant="normal">o</mtext><mspace width="1.0em"></mspace><msub><mi>β</mi><mi>n</mi></msub><mo>=</mo><mi>±</mi><mn>1</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.27)</mtext></mrow><annotation encoding="application/x-tex">
+\beta_n^2=1 \quad\text{o}\quad \beta_n=\pm1\,. \qquad \text{(4.27)}
+</annotation></semantics></math></p>
+<p>Esto ahorra trabajo. Una vez conocidos los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+es más fácil encontrar los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Pero, gracias a la simetría, sabemos que los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+serán también los modos normales, los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>.
+Y una vez conocidos los modos normales, es directo encontrar la
+frecuencia angular haciendo actuar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+sobre los autovectores de modo normal.</p>
+<p>Lo que hemos visto aquí, en un ejemplo simple, es cómo usar la
+simetría de un sistema oscilante para determinar los modos normales. En
+el resto de este capítulo generalizaremos esta técnica a una situación
+mucho más interesante. La idea siempre es la misma:</p>
+<p>Podemos encontrar los modos normales resolviendo el problema de
+autovalores de la matriz de simetría,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+en lugar de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>.
+Y podemos usar la simetría para determinar los autovalores.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.28)</mtext></mrow><annotation encoding="application/x-tex">\qquad \text{(4.28)}</annotation></semantics></math></p>
+<h3 id="pulsaciones">4.1.1 Pulsaciones</h3>
+<p><em>(Referencia al programa interactivo 4-1 del disco de programas
+del curso original.)</em></p>
+<p>Los inicios de los fenómenos ondulatorios ya pueden verse en este
+simple ejemplo. Suponga que ponemos a oscilar el sistema desplazando el
+bloque 1 una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+manteniendo el bloque 2 fijo en su posición de equilibrio, y luego
+soltando ambos bloques desde el reposo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>.
+La solución general tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>A</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msup><mi>A</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>b</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>2</mn></msub><mi>t</mi><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>2</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.29)</mtext></mrow><annotation encoding="application/x-tex">
+X(t) = A^1(b_1\cos\omega_1t+c_1\sin\omega_1t) + A^2(b_2\cos\omega_2t+c_2\sin\omega_2t)\,. \qquad \text{(4.29)}
+</annotation></semantics></math></p>
+<p>Las posiciones de los bloques en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+dan la ecuación matricial:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>d</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>A</mi><mn>1</mn></msup><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msup><mi>A</mi><mn>2</mn></msup><msub><mi>b</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.30)</mtext></mrow><annotation encoding="application/x-tex">
+X(0) = \begin{pmatrix}d\\0\end{pmatrix} = A^1b_1+A^2b_2\,, \qquad \text{(4.30)}
+</annotation></semantics></math></p>
+<p>o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>d</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr></mtable><mo>⟹</mo><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.31)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned} d&amp;=b_1+b_2\\ 0&amp;=-b_1+b_2 \end{aligned} \implies b_1=b_2=\frac{d}{2}\,. \qquad \text{(4.31)}
+</annotation></semantics></math></p>
+<p>Como ambos bloques se sueltan desde el reposo, sabemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><msub><mi>c</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c_1=c_2=0</annotation></semantics></math>.
+Podemos verlo de la misma forma examinando las velocidades iniciales de
+los bloques:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>X</mi><mo accent="true">̇</mo></mover><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>ω</mi><mn>1</mn></msub><msup><mi>A</mi><mn>1</mn></msup><msub><mi>c</mi><mn>1</mn></msub><mo>+</mo><msub><mi>ω</mi><mn>2</mn></msub><msup><mi>A</mi><mn>2</mn></msup><msub><mi>c</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.32)</mtext></mrow><annotation encoding="application/x-tex">
+\dot X(0) = \begin{pmatrix}0\\0\end{pmatrix} = \omega_1A^1c_1+\omega_2A^2c_2\,, \qquad \text{(4.32)}
+</annotation></semantics></math></p>
+<p>o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>c</mi><mn>1</mn></msub><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><msub><mi>c</mi><mn>1</mn></msub><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub></mtd></mtr></mtable><mo>⟹</mo><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><msub><mi>c</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.33)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned} 0&amp;=c_1+c_2\\ 0&amp;=-c_1+c_2 \end{aligned} \implies c_1=c_2=0\,. \qquad \text{(4.33)}
+</annotation></semantics></math></p>
+<p>Así,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>2</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>1</mn></msub><mi>t</mi><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>2</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.34)</mtext></mrow><annotation encoding="application/x-tex">
+x_1(t) = \frac{d}{2}(\cos\omega_1t+\cos\omega_2t)\,,\qquad x_2(t) = \frac{d}{2}(\cos\omega_1t-\cos\omega_2t)\,. \qquad \text{(4.34)}
+</annotation></semantics></math></p>
+<p>Lo notable de esta solución es la forma en que la energía se
+transfiere por completo del bloque 1 al bloque 2 y de vuelta. Para
+verlo, podemos reescribir (4.34) como (usando (1.64) y otra identidad
+similar)</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>d</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mover><mi>ω</mi><mo accent="true">‾</mo></mover><mi>t</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>d</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mover><mi>ω</mi><mo accent="true">‾</mo></mover><mi>t</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mi>ω</mi><mi>t</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.35)</mtext></mrow><annotation encoding="application/x-tex">
+x_1(t) = d\cos\bar\omega t\cos\delta\omega t\,,\qquad x_2(t) = d\sin\bar\omega t\sin\delta\omega t \qquad \text{(4.35)}
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>ω</mi><mo accent="true">‾</mo></mover><mo>=</mo><mfrac><mrow><msub><mi>ω</mi><mn>1</mn></msub><mo>+</mo><msub><mi>ω</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>δ</mi><mi>ω</mi><mo>=</mo><mfrac><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo>−</mo><msub><mi>ω</mi><mn>1</mn></msub></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.36)</mtext></mrow><annotation encoding="application/x-tex">
+\bar\omega = \frac{\omega_1+\omega_2}{2}\,,\qquad \delta\omega = \frac{\omega_2-\omega_1}{2}\,. \qquad \text{(4.36)}
+</annotation></semantics></math></p>
+<p>Cada uno de los bloques presenta «pulsaciones» (<em>beats</em>):
+oscilan con la frecuencia angular promedio,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>ω</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar\omega</annotation></semantics></math>,
+pero la amplitud de la oscilación cambia con la frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\delta\omega</annotation></semantics></math>.
+Tras un tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn><mi>δ</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\pi/2\delta\omega</annotation></semantics></math>,
+la energía se ha transferido casi por completo del bloque 1 al bloque 2.
+Este comportamiento se muestra en el programa 4-1 de su disco de
+programas. Note cómo las pulsaciones se producen por la interacción
+entre los dos modos normales. Cuando los dos modos están en fase para
+uno de los bloques, de modo que ese bloque se mueve con amplitud máxima,
+los modos están desfasados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>180</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">180°</annotation></semantics></math>
+para el otro bloque, de modo que este último está casi quieto.</p>
+<p>La transferencia completa de energía, hacia adelante y hacia atrás,
+del bloque 1 al bloque 2 es una característica tanto de nuestra
+condición inicial especial —con el bloque 2 en reposo y en su posición
+de equilibrio— como de la forma especial de los modos normales que se
+sigue de la simetría de reflexión. Como veremos con más detalle más
+adelante, este es el mismo tipo de transferencia de energía que ocurre
+en los fenómenos ondulatorios.</p>
+<h3 id="un-ejemplo-menos-trivial">4.1.2 Un ejemplo menos trivial</h3>
+<p><em>(Referencia al programa interactivo 4-2 del disco de programas
+del curso original.)</em></p>
+<p>Tome una hoja de sierra para metales, fije un extremo y sujete una
+masa al otro. Esto forma un buen oscilador con esencialmente un solo
+grado de libertad (porque la hoja de sierra solo se dobla fácilmente
+hacia adelante y hacia atrás de una manera). Ahora tome seis hojas
+idénticas y fije un extremo de cada una en un mismo punto, de modo que
+las hojas se abran en abanico formando ángulos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">60°</annotation></semantics></math>
+entre sí desde el centro, orientadas de forma que puedan doblarse hacia
+adelante y hacia atrás en el plano formado por las hojas. Si coloca una
+masa en el extremo de cada una, en un patrón hexagonal, tendrá seis
+osciladores desacoplados. Pero si en su lugar coloca imanes idénticos en
+los extremos, los osciladores quedarán acoplados entre sí de una forma
+complicada. Puede ver cómo son las oscilaciones de este sistema en el
+programa 4-2 del disco de programas.</p>
+<p><em>(Figura 4.3: sistema de seis osciladores de hoja de sierra
+acoplados, dispuestos en abanico hexagonal alrededor de un centro común;
+las flechas indican las direcciones en que se miden los desplazamientos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>6</mn></msub><annotation encoding="application/x-tex">x_6</annotation></semantics></math>,
+en sentido antihorario alrededor del hexágono.)</em></p>
+<p>Si los desplazamientos respecto a las posiciones de equilibrio
+simétricas son pequeños, el sistema es aproximadamente lineal. A pesar
+de la aparente complejidad de este sistema, ¡podemos escribir los modos
+normales y las frecuencias angulares correspondientes con casi ningún
+esfuerzo! El truco consiste en aprovechar inteligentemente la simetría
+de este sistema.</p>
+<p>Este sistema se ve exactamente igual si lo rotamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">60°</annotation></semantics></math>
+alrededor de su centro. Por tanto, deberíamos esforzarnos en analizarlo
+de una manera manifiestamente simétrica. Etiquetemos las masas de 1 a 6,
+empezando en cualquier lugar y recorriendo el sistema en sentido
+antihorario. Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>
+el desplazamiento en sentido antihorario del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+bloque respecto a su posición de equilibrio. Como de costumbre,
+dispondremos estas coordenadas en un vector (a partir de aquí,
+supondremos que el lector está suficientemente acostumbrado a los
+números complejos como para que no sea necesario distinguir entre una
+coordenada real y una compleja):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>4</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>5</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>6</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.37)</mtext></mrow><annotation encoding="application/x-tex">
+X = \begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\\x_6\end{pmatrix}\,. \qquad \text{(4.37)}
+</annotation></semantics></math></p>
+<p>La operación de simetría de rotación se implementa mediante la
+sustitución cíclica</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>→</mo><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><msub><mi>x</mi><mn>3</mn></msub><mo>→</mo><msub><mi>x</mi><mn>4</mn></msub><mo>→</mo><msub><mi>x</mi><mn>5</mn></msub><mo>→</mo><msub><mi>x</mi><mn>6</mn></msub><mo>→</mo><msub><mi>x</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.38)</mtext></mrow><annotation encoding="application/x-tex">
+x_1 \to x_2 \to x_3 \to x_4 \to x_5 \to x_6 \to x_1\,. \qquad \text{(4.38)}
+</annotation></semantics></math></p>
+<p>Esto puede representarse en notación matricial como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>S</mi><mi>X</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.39)</mtext></mrow><annotation encoding="application/x-tex">
+X \to SX\,, \qquad \text{(4.39)}
+</annotation></semantics></math></p>
+<p>donde la matriz de simetría,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.40)</mtext></mrow><annotation encoding="application/x-tex">
+S = \begin{pmatrix} 0&amp;1&amp;0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;1&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0&amp;1&amp;0\\ 0&amp;0&amp;0&amp;0&amp;0&amp;1\\ 1&amp;0&amp;0&amp;0&amp;0&amp;0 \end{pmatrix}\,. \qquad \text{(4.40)}
+</annotation></semantics></math></p>
+<p>Note que los unos en la subdiagonal de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+en (4.40), implementan las sustituciones</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>→</mo><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><msub><mi>x</mi><mn>3</mn></msub><mo>→</mo><msub><mi>x</mi><mn>4</mn></msub><mo>→</mo><msub><mi>x</mi><mn>5</mn></msub><mo>→</mo><msub><mi>x</mi><mn>6</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.41)</mtext></mrow><annotation encoding="application/x-tex">
+x_1\to x_2\to x_3\to x_4\to x_5\to x_6\,, \qquad \text{(4.41)}
+</annotation></semantics></math></p>
+<p>mientras que el 1 de la esquina inferior izquierda cierra el círculo
+con la sustitución</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>6</mn></msub><mo>→</mo><msub><mi>x</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.42)</mtext></mrow><annotation encoding="application/x-tex">
+x_6\to x_1\,. \qquad \text{(4.42)}
+</annotation></semantics></math></p>
+<p>La simetría exige que la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+de este sistema tenga la siguiente forma:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>D</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>C</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>B</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>E</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.43)</mtext></mrow><annotation encoding="application/x-tex">
+K = \begin{pmatrix} E&amp;-B&amp;-C&amp;-D&amp;-C&amp;-B\\ -B&amp;E&amp;-B&amp;-C&amp;-D&amp;-C\\ -C&amp;-B&amp;E&amp;-B&amp;-C&amp;-D\\ -D&amp;-C&amp;-B&amp;E&amp;-B&amp;-C\\ -C&amp;-D&amp;-C&amp;-B&amp;E&amp;-B\\ -B&amp;-C&amp;-D&amp;-C&amp;-B&amp;E \end{pmatrix}\,. \qquad \text{(4.43)}
+</annotation></semantics></math></p>
+<p>Note que todos los elementos diagonales son iguales
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>),
+como debe ser por la simetría. El
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+elemento diagonal de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+es menos la fuerza por unidad de desplazamiento sobre la
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésima
+masa debida a su propio desplazamiento. Debido a la simetría, cada una
+de las masas se comporta exactamente igual cuando se desplaza
+manteniendo fijas todas las demás. Así, todos los elementos diagonales
+de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mrow><mi>j</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">K_{jj}</annotation></semantics></math>,
+son iguales. Del mismo modo, la simetría garantiza que el efecto del
+desplazamiento de cada bloque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+sobre su vecino
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j\pm1</annotation></semantics></math>
+(con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mn>1</mn><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j+1\to1</annotation></semantics></math>
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">j=6</annotation></semantics></math>,
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn><mo>→</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">j-1\to6</annotation></semantics></math>
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=1</annotation></semantics></math>
+—véase (4.42)) es exactamente el mismo. Así, los elementos de matriz en
+la subdiagonal
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>)
+son todos iguales, junto con las
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+de las esquinas. Y así sucesivamente. La matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+satisface entonces (4.7),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>K</mi><mo>=</mo><mi>K</mi><mi>S</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.44)</mtext></mrow><annotation encoding="application/x-tex">
+SK = KS \qquad \text{(4.44)}
+</annotation></semantics></math></p>
+<p>que, como vimos en (4.13)-(4.12), es el enunciado matemático de la
+simetría. De hecho, podemos ir hacia atrás y deducir la matriz simétrica
+más general consistente con (4.44), y comprobar que debe tener la forma
+(4.43). Esto lo hará en el problema 4.4.</p>
+<p>Debido a la simetría, sabemos que si un vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es un modo normal, entonces el vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SA</annotation></semantics></math>
+también es un modo normal con la misma frecuencia. Esto es físicamente
+obvio: si el sistema oscila con todas sus partes moviéndose al mismo
+ritmo de cierta manera, también puede oscilar con las partes rotadas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">60°</annotation></semantics></math>,
+pero moviéndose por lo demás de la misma forma, y la frecuencia será la
+misma. Esto sugiere que busquemos modos normales que se comporten de
+forma simple bajo la transformación de simetría
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+En particular, si encontramos los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+y descubrimos que los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son todos distintos, entonces sabemos, por (4.22), que todos los
+autovectores son modos normales. En el ejemplo anterior, encontramos
+modos que se reproducían a sí mismos multiplicados por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\pm1</annotation></semantics></math>
+bajo la simetría. En general, sin embargo, no debemos esperar que los
+autovalores sean reales, porque los modos pueden involucrar
+exponenciales complejas. En este caso, debemos buscar modos
+correspondientes a autovalores complejos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+(aunque incluso esto no es la posibilidad más general —en general,
+podríamos tener que considerar conjuntos de modos que se transforman
+unos en otros bajo la multiplicación matricial; esto no es necesario
+aquí porque las transformaciones de simetría conmutan todas entre
+sí),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi><mo>=</mo><mi>β</mi><mi>A</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.45)</mtext></mrow><annotation encoding="application/x-tex">
+SA = \beta A\,. \qquad \text{(4.45)}
+</annotation></semantics></math></p>
+<p>Como arriba, en (4.25)-(4.27), podemos encontrar los posibles
+autovalores usando la simetría. Note que, como seis rotaciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">60°</annotation></semantics></math>
+nos devuelven al punto de partida, la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+satisface</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>6</mn></msup><mo>=</mo><mi>I</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.46)</mtext></mrow><annotation encoding="application/x-tex">
+S^6 = I\,. \qquad \text{(4.46)}
+</annotation></semantics></math></p>
+<p>De (4.46) se sigue que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>β</mi><mn>6</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta^6=1</annotation></semantics></math>.
+Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+es una raíz sexta de la unidad,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msub><mi>β</mi><mi>k</mi></msub><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>k</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mn>5</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.47)</mtext></mrow><annotation encoding="application/x-tex">
+\beta=\beta_k=e^{2ik\pi/6} \quad\text{para } k=0\text{ a }5\,. \qquad \text{(4.47)}
+</annotation></semantics></math></p>
+<p>Entonces, para cada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+hay un modo normal</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>k</mi></msup><mo>=</mo><msub><mi>β</mi><mi>k</mi></msub><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>k</mi></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.48)</mtext></mrow><annotation encoding="application/x-tex">
+S\,A^k = \beta_k\,A^k\,. \qquad \text{(4.48)}
+</annotation></semantics></math></p>
+<p>Explícitamente,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msup><mi>A</mi><mi>k</mi></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>2</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>3</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>4</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>5</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>6</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>1</mn><mi>k</mi></msubsup></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>β</mi><mi>k</mi></msub><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>1</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>2</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>3</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>4</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>5</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>6</mn><mi>k</mi></msubsup></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.49)</mtext></mrow><annotation encoding="application/x-tex">
+SA^k = \begin{pmatrix}A_2^k\\A_3^k\\A_4^k\\A_5^k\\A_6^k\\A_1^k\end{pmatrix} = \beta_k\cdot\begin{pmatrix}A_1^k\\A_2^k\\A_3^k\\A_4^k\\A_5^k\\A_6^k\end{pmatrix}\,. \qquad \text{(4.49)}
+</annotation></semantics></math></p>
+<p>Si tomamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mn>1</mn><mi>k</mi></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A_1^k=1</annotation></semantics></math>,
+podemos resolver todas las demás componentes,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>j</mi><mi>k</mi></msubsup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>β</mi><mi>k</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.50)</mtext></mrow><annotation encoding="application/x-tex">
+A_j^k = (\beta_k)^{j-1}\,. \qquad \text{(4.50)}
+</annotation></semantics></math></p>
+<p>Así,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>1</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>2</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>3</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>4</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>5</mn><mi>k</mi></msubsup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>A</mi><mn>6</mn><mi>k</mi></msubsup></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>e</mi><mrow><mn>4</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>e</mi><mrow><mn>6</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>e</mi><mrow><mn>8</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>e</mi><mrow><mn>10</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.51)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix}A_1^k\\A_2^k\\A_3^k\\A_4^k\\A_5^k\\A_6^k\end{pmatrix} = \begin{pmatrix}1\\e^{2ik\pi/6}\\e^{4ik\pi/6}\\e^{6ik\pi/6}\\e^{8ik\pi/6}\\e^{10ik\pi/6}\end{pmatrix}\,. \qquad \text{(4.51)}
+</annotation></semantics></math></p>
+<p>Ahora, para determinar las frecuencias angulares correspondientes a
+los modos normales, debemos evaluar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>k</mi></msup><mo>=</mo><msubsup><mi>ω</mi><mi>k</mi><mn>2</mn></msubsup><mspace width="0.167em"></mspace><msup><mi>A</mi><mi>k</mi></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.52)</mtext></mrow><annotation encoding="application/x-tex">
+M^{-1}K\,A^k = \omega_k^2\,A^k\,. \qquad \text{(4.52)}
+</annotation></semantics></math></p>
+<p>Como ya conocemos la forma de los modos normales, esto es directo.
+Por ejemplo, podemos comparar las primeras componentes de estos dos
+vectores:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mi>k</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>4</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>D</mi><msup><mi>e</mi><mrow><mn>6</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>8</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>10</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>m</mi><mo>=</mo><mfrac><mi>E</mi><mi>m</mi></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>B</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>C</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>2</mn><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>k</mi></msup><mfrac><mi>D</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.53)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_k^2 = \left(E-Be^{2ik\pi/6}-Ce^{4ik\pi/6}-De^{6ik\pi/6}-Ce^{8ik\pi/6}-Be^{10ik\pi/6}\right)/m = \frac{E}{m}-\frac{2B}{m}\cos\frac{k\pi}{3}-\frac{2C}{m}\cos\frac{2k\pi}{3}-(-1)^k\frac{D}{m}\,. \qquad \text{(4.53)}
+</annotation></semantics></math></p>
+<p>Note que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><msubsup><mi>ω</mi><mn>5</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\omega_1^2=\omega_5^2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><msubsup><mi>ω</mi><mn>4</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\omega_2^2=\omega_4^2</annotation></semantics></math>.
+Esto tenía que ser así, porque los modos normales correspondientes son
+pares complejos conjugados,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>5</mn></msup><mo>=</mo><msup><mi>A</mi><mrow><mn>1</mn><mo>*</mo></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>A</mi><mn>4</mn></msup><mo>=</mo><msup><mi>A</mi><mrow><mn>2</mn><mo>*</mo></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.54)</mtext></mrow><annotation encoding="application/x-tex">
+A^5 = A^{1*}\,,\qquad A^4=A^{2*}\,. \qquad \text{(4.54)}
+</annotation></semantics></math></p>
+<p>Cualquier modo normal complejo debe formar parte de un par junto con
+su modo normal complejo conjugado, a la misma frecuencia, de modo que
+podamos construir modos normales reales a partir de ellos. Esto debe ser
+así porque los modos normales describen un sistema físico real, cuyos
+desplazamientos son reales. Los modos reales son combinaciones lineales
+(véase (1.19)) de los modos complejos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>k</mi></msup><mo>+</mo><msup><mi>A</mi><mrow><mi>k</mi><mo>*</mo></mrow></msup><mspace width="1.0em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msup><mi>A</mi><mi>k</mi></msup><mo>−</mo><msup><mi>A</mi><mrow><mi>k</mi><mo>*</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>i</mi><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>k</mi><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> o </mtext><mspace width="0.333em"></mspace></mrow><mn>2</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.55)</mtext></mrow><annotation encoding="application/x-tex">
+A^k+A^{k*} \quad\text{y}\quad (A^k-A^{k*})/i \quad\text{para } k=1\text{ o }2\,. \qquad \text{(4.55)}
+</annotation></semantics></math></p>
+<p>Estos modos pueden verse en el programa 4-2 del disco de
+programas.</p>
+<p>Note que las soluciones reales, (4.55), no son autovectores de la
+matriz de simetría
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Esto es posible porque las frecuencias angulares no son todas distintas.
+Sin embargo, los autovalores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+sí son todos distintos, de (4.47). Así, aunque podamos construir modos
+normales que no sean autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+sigue siendo cierto que todos los autovectores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+son modos normales. Esto es lo que usamos en (4.48)-(4.50) para
+determinar los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>n</mi></msup><annotation encoding="application/x-tex">A^n</annotation></semantics></math>.</p>
+<p>Observamos que (4.55) es otro ejemplo de un principio muy importante,
+(3.117), que usaremos muchas veces en lo que sigue:</p>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mo>′</mo></msup><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+son modos normales de un sistema con la misma frecuencia angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+entonces cualquier combinación lineal,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>A</mi><mo>+</mo><mi>c</mi><msup><mi>A</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">bA+cA&#39;</annotation></semantics></math>,
+también es un modo normal con la misma frecuencia angular.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.56)</mtext></mrow><annotation encoding="application/x-tex">\qquad \text{(4.56)}</annotation></semantics></math></p>
+<p>Los modos normales con la misma frecuencia pueden combinarse
+linealmente para dar nuevos modos normales (véase el problema 4.3). Por
+otro lado, una combinación lineal de dos modos normales con frecuencias
+distintas no da nada muy simple.</p>
+<p>Las técnicas usadas aquí podrían haberse usado para cualquier número
+de masas en una disposición simétrica similar. Con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+masas y simetría bajo rotación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">2\pi/N</annotation></semantics></math>
+radianes, las
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>-ésimas
+raíces de la unidad reemplazarían a las raíces sextas de la unidad de
+nuestro ejemplo. Los argumentos de simetría también pueden usarse para
+determinar los modos normales en situaciones más interesantes, por
+ejemplo cuando las masas están en los vértices de un cubo. Pero ese caso
+es más complicado que el que hemos analizado, porque el orden de las
+transformaciones de simetría importa —las transformaciones no conmutan
+entre sí—. Puede que quiera volver a este tema después de haber
+estudiado algo de teoría de grupos.</p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<p>Ahora debería ser capaz de:</p>
+<ol type="1">
+<li>Aplicar argumentos de simetría para encontrar los modos normales de
+sistemas de osciladores acoplados, hallando los autovalores y
+autovectores de la matriz de simetría.</li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>4.1.</strong> Demuestre explícitamente que (4.7) se cumple
+para la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+(4.43), del sistema de la figura 4.3, calculando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">SK</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">KS</annotation></semantics></math>.</p>
+<p><strong>4.2.</strong> Considere un sistema de seis masas idénticas
+que pueden deslizar sin fricción sobre un anillo circular de radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+cada una conectada a sus dos vecinas más cercanas mediante muelles
+idénticos, mostrado en equilibrio en la figura.</p>
+<p><em>(Figura: seis masas idénticas dispuestas simétricamente sobre un
+anillo circular, conectadas entre sí por muelles idénticos a lo largo
+del anillo, con los desplazamientos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>j</mi></msub><annotation encoding="application/x-tex">y_j</annotation></semantics></math>
+medidos tangencialmente al anillo.)</em></p>
+<ol type="a">
+<li><p>Analice los posibles movimientos de este sistema en la región en
+la que es lineal (note que esto no es exactamente lo mismo que pequeñas
+oscilaciones). Para ello, defina variables de desplazamiento adecuadas
+(de modo que pueda usar un argumento de simetría), encuentre la forma de
+la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+y luego siga el análisis de (4.37)-(4.55). Si lo ha hecho correctamente,
+debería encontrar que uno de los modos tiene frecuencia cero. Explique
+el significado físico de este modo. Pista: no intente encontrar la forma
+de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+directamente a partir de las constantes de los muelles y la geometría
+—esto es un lío—; en su lugar, deduzca cómo debe ser a partir de
+argumentos de simetría.</p></li>
+<li><p>Si en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+las masas están distribuidas uniformemente alrededor del círculo, pero
+cada dos masas se mueve con velocidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+(en sentido antihorario) mientras las demás están en reposo, encuentre y
+describa en palabras el movimiento posterior del sistema.</p></li>
+</ol>
+<p><strong>4.3.</strong></p>
+<ol type="a">
+<li><p>Demuestre (4.56).</p></li>
+<li><p>Demuestre que si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mo>′</mo></msup><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+son modos normales correspondientes a frecuencias angulares distintas,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\omega&#39;</annotation></semantics></math>
+respectivamente, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>≠</mo><msup><mi>ω</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\omega^2\neq\omega&#39;^2</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>A</mi><mo>+</mo><mi>c</mi><msup><mi>A</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">bA+cA&#39;</annotation></semantics></math>
+no es un modo normal a menos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+sean cero. Pista: necesitará usar el hecho de que tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mo>′</mo></msup><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+son vectores no nulos.</p></li>
+</ol>
+<p><strong>4.4.</strong> Demuestre que (4.43) es la matriz simétrica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>×</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">6\times6</annotation></semantics></math>
+más general que satisface (4.44).</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
