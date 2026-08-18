@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 7: Oscilaciones longitudinales y sonido — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 7: Oscilaciones longitudinales y sonido —
+8.03SC Física III: Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-7-oscilaciones-longitudinales-y-sonido"
+id="toc-capítulo-7-oscilaciones-longitudinales-y-sonido">Capítulo 7:
+Oscilaciones longitudinales y sonido</a>
+<ul>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#modos-longitudinales-en-un-muelle-masivo"
+id="toc-modos-longitudinales-en-un-muelle-masivo">7.1 Modos
+longitudinales en un muelle masivo</a>
+<ul>
+<li><a href="#extremos-fijos" id="toc-extremos-fijos">7.1.1 Extremos
+fijos</a></li>
+<li><a href="#extremos-libres" id="toc-extremos-libres">7.1.2 Extremos
+libres</a></li>
+</ul></li>
+<li><a href="#una-masa-sobre-un-muelle-ligero"
+id="toc-una-masa-sobre-un-muelle-ligero">7.2 Una masa sobre un muelle
+ligero</a></li>
+<li><a href="#la-velocidad-del-sonido"
+id="toc-la-velocidad-del-sonido">7.3 La velocidad del sonido</a>
+<ul>
+<li><a href="#la-aproximación-de-helmholtz"
+id="toc-la-aproximación-de-helmholtz">7.3.1 La aproximación de
+Helmholtz</a></li>
+<li><a href="#correcciones-a-helmholtz"
+id="toc-correcciones-a-helmholtz">7.3.2 Correcciones a
+Helmholtz</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-7-oscilaciones-longitudinales-y-sonido">Capítulo 7:
+Oscilaciones longitudinales y sonido</h1>
+<p>Las oscilaciones transversales de un sistema continuo son fáciles de
+visualizar, porque se puede ver directamente la función que describe el
+desplazamiento. Las matemáticas de las oscilaciones longitudinales de un
+sistema continuo, lineal e invariante bajo traslación espacial son las
+mismas. Deben serlo, porque quedan completamente determinadas por la
+invariancia bajo traslación espacial. Pero la física es distinta.</p>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>En este capítulo introducimos dos sistemas físicos con oscilaciones
+longitudinales: muelles masivos y tubos de órgano.</p>
+<ol type="i">
+<li><p>Describimos el muelle masivo como el límite continuo de un
+sistema de masas conectadas por muelles sin masa, y estudiamos sus modos
+normales para diversas condiciones de contorno.</p></li>
+<li><p>Discutimos con cierto detalle el sistema de una masa en el
+extremo de un muelle masivo. Cuando el muelle es «ligero», este es un
+ejemplo importante de física con dos «escalas» distintas.</p></li>
+<li><p>Discutimos la física de las ondas sonoras en un tubo, por
+analogía con las oscilaciones del muelle masivo. También introducimos la
+aproximación de «Helmholtz» para el modo más bajo de una
+botella.</p></li>
+</ol>
+<h2 id="modos-longitudinales-en-un-muelle-masivo">7.1 Modos
+longitudinales en un muelle masivo</h2>
+<p>Hasta ahora, en nuestras extensas discusiones sobre ondas en sistemas
+de muelles y bloques, hemos supuesto que los únicos grados de libertad
+son los asociados al movimiento de los bloques. Esta es una suposición
+razonable a bajas frecuencias, cuando los bloques son muy pesados
+comparados con los muelles, porque los bloques se mueven tan lentamente
+que los muelles tienen tiempo de reajustarse y son siempre casi
+uniformes (lo formalizaremos más abajo). En este caso, la relación de
+dispersión de las oscilaciones longitudinales de los bloques es
+justamente la relación de dispersión de los péndulos acoplados, (5.35),
+en el límite en que ignoramos la gravedad y conservamos solo el
+acoplamiento entre las masas producido por la constante del muelle,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+En otras palabras, tomamos el límite de (5.35) cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g/\ell\to0</annotation></semantics></math>.
+El resultado puede escribirse como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>4</mn><msub><mi>K</mi><mi>a</mi></msub></mrow><mi>m</mi></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mrow><mi>k</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.1)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \frac{4K_a}{m}\sin^2\frac{ka}{2} \qquad \text{(7.1)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>
+es la constante de los muelles,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+es la masa de los bloques, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la separación de equilibrio. Hemos puesto un subíndice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>
+porque querremos variar la constante del muelle a medida que variamos la
+separación entre los bloques en la discusión que sigue.</p>
+<p>Ahora bien, ¿qué ocurre cuando los bloques desaparecen, pero el
+muelle es masivo? Podemos averiguarlo considerando el límite de (7.1)
+cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>.
+En este límite, los bloques masivos y el muelle sin masa se funden entre
+sí, de modo que el resultado se parece a un muelle uniforme y masivo.
+Para tomar el límite, sin embargo, debemos entender qué variables
+describen el muelle masivo y tienen un límite finito cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>.
+Una de esas variables es la densidad de masa lineal,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mi>m</mi><mi>a</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.2)</mtext></mrow><annotation encoding="application/x-tex">
+\rho_L = \lim_{a\to0}\frac{m}{a}\,. \qquad \text{(7.2)}
+</annotation></semantics></math></p>
+<p>Debemos hacer que las masas de los bloques tiendan a cero cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>,
+para mantener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>
+finita.</p>
+<p>Para entender qué le ocurre a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>
+cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>,
+considere qué pasa cuando corta un muelle por la mitad. Cuando un muelle
+se estira, cada mitad contribuye la mitad del desplazamiento. Pero la
+tensión es uniforme a lo largo de todo el muelle estirado. Así, la
+constante de media muelle es el doble de la del muelle completo, porque
+la mitad del desplazamiento da la misma fuerza. Esta relación se ilustra
+en la figura 7.1. El muelle central no está estirado. El muelle de
+arriba está estirado una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+hacia la derecha. Abajo se muestra el mismo muelle estirado, todavía
+estirado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+pero ahora simétricamente. Comparando arriba y abajo, puede ver que la
+fuerza de retorno de estirar el muelle una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+es la misma que la de estirar media muelle una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x/2</annotation></semantics></math>.</p>
+<p><em>(Figura 7.1: arriba, un muelle completo estirado una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+hacia la derecha; abajo, el mismo muelle dividido en dos mitades, cada
+una estirada simétricamente una cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x/2</annotation></semantics></math>,
+mostrando que la fuerza de retorno es la misma.)</em></p>
+<p>El diagrama de la figura 7.1 es un ejemplo del siguiente resultado.
+En general, la constante de muelle,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>,
+no depende solo de qué está hecho el muelle, sino de cuán largo es. Pero
+la cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>a</mi></mrow><annotation encoding="application/x-tex">K_aa</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la longitud del muelle, es en realidad independiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+para un muelle hecho de material uniforme. Así, deberíamos tomar el
+límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>
+manteniendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>a</mi></mrow><annotation encoding="application/x-tex">K_aa</annotation></semantics></math>
+fijo.</p>
+<p>Esto implica que la relación de dispersión del muelle masivo es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>a</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.3)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \frac{K_aa}{\rho_L}\,k^2\,, \qquad \text{(7.3)}
+</annotation></semantics></math></p>
+<p>donde hemos usado el desarrollo en serie de Taylor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x</annotation></semantics></math>,
+(1.58), y conservado solo el primer término. Según la discusión
+anterior, podemos reescribir esto como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mi>K</mi><mi>ℓ</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.4)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \frac{K\ell}{\rho_L}\,k^2 \qquad \text{(7.4)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+es la longitud del muelle y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+es la constante del muelle completo.</p>
+<p>Note que, en las oscilaciones longitudinales de un material continuo
+en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+la posición de equilibrio,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+en realidad no describe la posición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+del material. Como el desplazamiento es longitudinal, la posición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+real del punto del muelle con posición de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.5)</mtext></mrow><annotation encoding="application/x-tex">
+x+\psi(x,t)\,, \qquad \text{(7.5)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+es el desplazamiento. Necesitará esto para el problema 7.1.</p>
+<h3 id="extremos-fijos">7.1.1 Extremos fijos</h3>
+<p><em>(Referencia al programa interactivo 7-1 del disco de programas
+del curso original.)</em></p>
+<p>Suponga que tenemos un muelle masivo de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>,
+con sus extremos fijos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>.
+Entonces el desplazamiento,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>,
+debe anularse en los extremos,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.6)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0,t)=0\,,\qquad \psi(\ell,t)=0\,. \qquad \text{(7.6)}
+</annotation></semantics></math></p>
+<p>Los modos del sistema son los mismos que para cualquier otro sistema
+invariante bajo traslación espacial. Las combinaciones lineales de los
+modos exponenciales complejos del sistema infinito que satisfacen (7.6)
+son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.7)</mtext></mrow><annotation encoding="application/x-tex">
+A_n(x) = \sin\frac{n\pi x}{\ell}\,, \qquad \text{(7.7)}
+</annotation></semantics></math></p>
+<p>con número de onda angular</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mi>ℓ</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.8)</mtext></mrow><annotation encoding="application/x-tex">
+k_n = \frac{n\pi}{\ell} \qquad \text{(7.8)}
+</annotation></semantics></math></p>
+<p>y frecuencia (a partir de la relación de dispersión, (7.4))</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mi>K</mi><mi>ℓ</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mi>K</mi><mi>ℓ</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="0.167em"></mspace><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.9)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_n = \sqrt{\frac{K\ell}{\rho_L}}\,k_n = \sqrt{\frac{K\ell}{\rho_L}}\,\frac{n\pi}{\ell}\,. \qquad \text{(7.9)}
+</annotation></semantics></math></p>
+<p>Sin embargo, como las oscilaciones son longitudinales, los modos se
+ven muy distintos de los modos transversales de la cuerda que estudiamos
+en el capítulo anterior. La posición del punto de la cuerda cuya
+posición de equilibrio es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+en el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésimo
+modo normal, tiene la forma general (de (7.5))</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>ϵ</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>ℓ</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mo>+</mo><mi>φ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.10)</mtext></mrow><annotation encoding="application/x-tex">
+x + \epsilon\sin\frac{n\pi x}{\ell}\cos(\omega_nt+\varphi) \qquad \text{(7.10)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϵ</mi><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+son la amplitud y la fase de la oscilación.</p>
+<p>Los nueve modos más bajos de (7.10) se animan en el programa 7-1.
+Compárelos con los modos animados en el programa 6-1. Las matemáticas
+son las mismas, pero la física es muy distinta, debido a (7.5). Observe
+con atención estas dos animaciones hasta que pueda visualizar la
+relación entre ambas: entonces habrá entendido (7.5).</p>
+<h3 id="extremos-libres">7.1.2 Extremos libres</h3>
+<p><em>(Referencia al programa interactivo 7-2 del disco de programas
+del curso original.)</em></p>
+<p>Consideremos ahora la situación en la que el extremo del muelle en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+está fijo, pero el extremo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+es libre. Las condiciones de contorno en este caso son análogas a las de
+los modos normales de la cuerda con un extremo fijo. El desplazamiento
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+debe anularse porque ese extremo está fijo. Además, la derivada del
+desplazamiento en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+debe anularse. Puede verlo considerando el muelle continuo como el
+límite de masas discretas acopladas por muelles. Como vimos en (5.43),
+la última masa real debe tener el mismo desplazamiento que la primera
+masa «imaginaria»,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.11)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(\ell,t) = \psi(\ell+a,t)\,. \qquad \text{(7.11)}
+</annotation></semantics></math></p>
+<p>Por tanto, para el sistema finito con un extremo libre en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>,
+tenemos la relación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>a</mi></mfrac><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para todo </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.12)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\psi(\ell,t)-\psi(\ell+a,t)}{a} = 0 \quad\text{para todo } a\,. \qquad \text{(7.12)}
+</annotation></semantics></math></p>
+<p>En el límite en que la distancia entre masas tiende a cero, esto se
+convierte en la condición de que la derivada del desplazamiento,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>,
+respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+se anule en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.13)</mtext></mrow><annotation encoding="application/x-tex">
+\left.\frac{\partial}{\partial x}\psi(x,t)\right|_{x=\ell} = 0\,. \qquad \text{(7.13)}
+</annotation></semantics></math></p>
+<p>Así, las condiciones de contorno para el desplazamiento son las
+mismas que en (6.11), para la oscilación transversal de una cuerda
+continua con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+fijo y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+libre,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.14)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0,t)=0\,,\qquad \left.\frac{\partial}{\partial x}\psi(x,t)\right|_{x=\ell}=0\,. \qquad \text{(7.14)}
+</annotation></semantics></math></p>
+<p>Esto, a su vez, implica que los modos normales son los mismos que
+para la cuerda oscilando transversalmente, (6.15),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>π</mi><mi>x</mi></mrow><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mi>∞</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.15)</mtext></mrow><annotation encoding="application/x-tex">
+A_n(x) = \sin\left(\frac{(2n+1)\pi x}{2\ell}\right) \quad\text{para } n=0\text{ a }\infty\,. \qquad \text{(7.15)}
+</annotation></semantics></math></p>
+<p>Sin embargo, de nuevo debido a (7.5), estos modos se ven muy
+distintos de los de la cuerda. Los primeros nueve se animan en el
+programa 7-2 (compárese con el programa 6-2).</p>
+<h2 id="una-masa-sobre-un-muelle-ligero">7.2 Una masa sobre un muelle
+ligero</h2>
+<p>Volvamos al sistema que estudiamos al principio mismo del libro, el
+oscilador armónico construido colocando una masa en el extremo de un
+muelle ligero. Ahora estamos en posición de entender con precisión qué
+significa «ligero» para este sistema, porque ahora podemos permitir que
+el muelle tenga una densidad de masa lineal no nula,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>,
+y encontrar los modos normales de este sistema. Después podremos ver qué
+ocurre cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho_L\to0</annotation></semantics></math>.</p>
+<p>Para concretar, considere un muelle con longitud de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+y constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+fijo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y obligado a oscilar solo en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+(es decir, longitudinalmente). Ahora una una masa,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+al extremo libre (con posición de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>).
+El muelle, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">0&lt;x&lt;\ell</annotation></semantics></math>,
+puede considerarse parte de un sistema invariante bajo traslación
+espacial. Para encontrar los modos normales de este sistema, buscamos
+una combinación lineal de los modos del muelle infinito (para un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+dado) que reproduzca la física en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>.
+El extremo fijo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+es fácil: fija la forma de los modos para que sean proporcionales a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.16)</mtext></mrow><annotation encoding="application/x-tex">
+\sin k_nx \qquad \text{(7.16)}
+</annotation></semantics></math></p>
+<p>con frecuencia</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mi>K</mi><mi>ℓ</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.17)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_n = \sqrt{\frac{K\ell}{\rho_L}}\,k_n\,. \qquad \text{(7.17)}
+</annotation></semantics></math></p>
+<p>Como siempre,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>n</mi></msub><annotation encoding="application/x-tex">k_n</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\omega_n</annotation></semantics></math>
+están relacionados por la relación de dispersión, (7.4). Ahora, para
+determinar los posibles valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>n</mi></msub><annotation encoding="application/x-tex">k_n</annotation></semantics></math>,
+exigimos que se satisfaga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>
+para la masa. Suponga, por ejemplo, que la amplitud de la oscilación es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+(una longitud). Entonces el desplazamiento del punto del muelle con
+posición de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.18)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x,t) = A\sin k_nx\cos\omega_nt\,, \qquad \text{(7.18)}
+</annotation></semantics></math></p>
+<p>y el desplazamiento de la masa queda determinado por el
+desplazamiento del extremo del muelle,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.19)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) \equiv \psi(\ell,t) = A\sin k_n\ell\cos\omega_nt\,. \qquad \text{(7.19)}
+</annotation></semantics></math></p>
+<p>La aceleración es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.20)</mtext></mrow><annotation encoding="application/x-tex">
+a(t) = \frac{\partial^2}{\partial t^2}\psi(\ell,t) = -\omega_n^2A\sin k_n\ell\cos\omega_nt \qquad \text{(7.20)}
+</annotation></semantics></math></p>
+<p><em>(Figura 7.2: el estiramiento del último tramo de muelle es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>−</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(\ell,t)-\psi(\ell-a,t)</annotation></semantics></math>,
+mostrando el muelle en equilibrio y estirado, con la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+en el extremo derecho.)</em></p>
+<p>Para encontrar la fuerza sobre la masa, considere el muelle masivo
+como el límite continuo, cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>,
+de masas conectadas por muelles sin masa de longitud de equilibrio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+como al principio del capítulo. Entonces la fuerza sobre la masa del
+extremo está determinada por el estiramiento del último muelle de la
+serie. Esto, a su vez, es la diferencia entre el desplazamiento del
+sistema en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x=\ell</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=\ell-a</annotation></semantics></math>,
+como se ilustra en la figura 7.2. Así, la fuerza es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>−</mi><msub><mi>K</mi><mi>a</mi></msub><mrow><mo stretchy="true" form="prefix">[</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>−</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.21)</mtext></mrow><annotation encoding="application/x-tex">
+F = -K_a\left[\psi(\ell,t)-\psi(\ell-a,t)\right]\,. \qquad \text{(7.21)}
+</annotation></semantics></math></p>
+<p>Para tomar el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>,
+reescribimos esto como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>−</mi><msub><mi>K</mi><mi>a</mi></msub><mi>a</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>−</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>a</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.22)</mtext></mrow><annotation encoding="application/x-tex">
+F = -K_aa\,\frac{\psi(\ell,t)-\psi(\ell-a,t)}{a}\,. \qquad \text{(7.22)}
+</annotation></semantics></math></p>
+<p>Ahora, en el límite continuo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>a</mi></mrow><annotation encoding="application/x-tex">K_aa</annotation></semantics></math>
+es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">K\ell</annotation></semantics></math>,
+y el último factor tiende a una derivada,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>∂</mi><mi>x</mi><msub><mo stretchy="false" form="prefix">|</mo><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\partial\psi(x,t)/\partial x|_{x=\ell}</annotation></semantics></math>.
+El resultado final para la fuerza es, por tanto (note que esto también
+da una deducción alternativa de la condición de contorno para un extremo
+libre, (7.14)):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>−</mi><mi>K</mi><mi>ℓ</mi><mspace width="0.167em"></mspace><msub><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mi>−</mi><mi>K</mi><mi>ℓ</mi><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.23)</mtext></mrow><annotation encoding="application/x-tex">
+F = -K\ell\,\left.\frac{\partial}{\partial x}\psi(x,t)\right|_{x=\ell} = -K\ell\,k_nA\cos k_n\ell\cos\omega_nt\,. \qquad \text{(7.23)}
+</annotation></semantics></math></p>
+<p>Note que las unidades cuadran:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">K\ell</annotation></semantics></math>
+es una fuerza, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>ψ</mi><mi>/</mi><mi>∂</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\partial\psi/\partial x</annotation></semantics></math>
+es adimensional.</p>
+<p>Sustituyendo (7.20) y (7.23) en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>,
+y cancelando un factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">-A\cos\omega_nt</annotation></semantics></math>
+en ambos lados, obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mo>=</mo><mi>m</mi><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.24)</mtext></mrow><annotation encoding="application/x-tex">
+K\ell\,k_n\cos k_n\ell = m\omega_n^2\sin k_n\ell\,. \qquad \text{(7.24)}
+</annotation></semantics></math></p>
+<p>Usando la relación de dispersión para eliminar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">\omega_n^2</annotation></semantics></math>,
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mo>=</mo><mfrac><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>ℓ</mi></mrow><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.25)</mtext></mrow><annotation encoding="application/x-tex">
+k_n\ell\tan k_n\ell = \frac{\rho_L\ell}{m}\,. \qquad \text{(7.25)}
+</annotation></semantics></math></p>
+<p>Hemos multiplicado ambos lados de (7.25) por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+para trabajar con la variable adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">k_n\ell</annotation></semantics></math>
+(que es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>
+veces el número de longitudes de onda que caben en el muelle) y el
+número adimensional</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>≡</mo><mfrac><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>ℓ</mi></mrow><mi>m</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.26)</mtext></mrow><annotation encoding="application/x-tex">
+\epsilon \equiv \frac{\rho_L\ell}{m} \qquad \text{(7.26)}
+</annotation></semantics></math></p>
+<p>(que es el cociente entre la masa del muelle,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\rho_L\ell</annotation></semantics></math>,
+y la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>).
+El muelle es ligero si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϵ</mi><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math>
+es mucho menor que uno.</p>
+<p>El punto importante es que (7.25) tiene una única solución para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">k_n\ell</annotation></semantics></math>
+que tiende a cero cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon\to0</annotation></semantics></math>.
+Como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>ℓ</mi><mo>≈</mo><mi>k</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\tan k\ell\approx k\ell</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">k\ell</annotation></semantics></math>
+pequeño, es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>0</mn></msub><mi>ℓ</mi><mo>≈</mo><msqrt><mi>ϵ</mi></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.27)</mtext></mrow><annotation encoding="application/x-tex">
+k_0\ell \approx \sqrt\epsilon\,. \qquad \text{(7.27)}
+</annotation></semantics></math></p>
+<p>Para todas las demás soluciones, la pequeñez del lado izquierdo de
+(7.25) debe provenir de que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\tan k_n\ell</annotation></semantics></math>
+sea muy pequeño,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mo>≈</mo><mi>n</mi><mi>π</mi><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mi>∞</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.28)</mtext></mrow><annotation encoding="application/x-tex">
+k_n\ell \approx n\pi \quad\text{para } n=1\text{ a }\infty\,. \qquad \text{(7.28)}
+</annotation></semantics></math></p>
+<p>Pero (7.28) implica</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>ℓ</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>n</mi></msub><mi>ℓ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>n</mi></msub><mi>t</mi><mo>≈</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mi>∞</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.29)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) \equiv \psi(\ell,t) = A\sin k_n\ell\cos\omega_nt \approx 0 \quad\text{para } n=1\text{ a }\infty\,. \qquad \text{(7.29)}
+</annotation></semantics></math></p>
+<p>En otras palabras, en todas las soluciones excepto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>0</mn></msub><annotation encoding="application/x-tex">k_0</annotation></semantics></math>,
+la masa apenas se mueve, y es el muelle el que hace casi toda la
+oscilación, pareciéndose mucho a un sistema con dos extremos fijos.
+Además, las frecuencias de todos los modos, salvo el modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>0</mn></msub><annotation encoding="application/x-tex">k_0</annotation></semantics></math>,
+son grandes,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub><mo>≈</mo><mi>n</mi><mi>π</mi><msqrt><mfrac><mi>K</mi><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mi>ℓ</mi></mrow></mfrac></msqrt><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> a </mtext><mspace width="0.333em"></mspace></mrow><mi>∞</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.30)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_n \approx n\pi\sqrt{\frac{K}{\rho_L\ell}} \quad\text{para } n=1\text{ a }\infty\,, \qquad \text{(7.30)}
+</annotation></semantics></math></p>
+<p>mientras que la frecuencia del modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>0</mn></msub><annotation encoding="application/x-tex">k_0</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>≈</mo><msqrt><mfrac><mi>K</mi><mi>m</mi></mfrac></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.31)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_0 \approx \sqrt{\frac{K}{m}}\,. \qquad \text{(7.31)}
+</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϵ</mi><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math>
+pequeño (masa grande), el modo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>0</mn></msub><annotation encoding="application/x-tex">k_0</annotation></semantics></math>
+está asociado principalmente a la oscilación de la masa, y tiene
+aproximadamente la frecuencia que encontramos para el caso del muelle
+sin masa. Los demás modos están en un rango de frecuencias completamente
+distinto: están asociados a las oscilaciones del muelle. Este es un
+ejemplo importante de cómo un único sistema puede comportarse de formas
+muy distintas en diferentes regímenes de frecuencia.</p>
+<h2 id="la-velocidad-del-sonido">7.3 La velocidad del sonido</h2>
+<p><em>(Figura 7.3: tubo de órgano vertical, de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">z=\ell</annotation></semantics></math>.)</em></p>
+<p>La física de las ondas sonoras es obviamente un problema
+tridimensional. Sin embargo, podemos aprender mucho sobre el sonido
+considerando el movimiento del aire en una sola dimensión. Considere,
+por ejemplo, ondas estacionarias en el aire de un tubo largo y estrecho,
+como un tubo de órgano, mostrado esquemáticamente en la figura 7.3. Aquí
+ignoraremos el movimiento del aire perpendicular a la longitud del tubo,
+y consideraremos solo el movimiento unidimensional a lo largo del tubo.
+Como veremos más adelante, cuando podamos tratar problemas
+tridimensionales, esto es razonable a bajas frecuencias, para las que no
+pueden excitarse los modos transversales de oscilación. Si consideramos
+solo el movimiento unidimensional, podemos trazar una analogía entre las
+oscilaciones del aire en el tubo y las ondas longitudinales en un muelle
+masivo.</p>
+<p>Está claro cuál es el análogo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\rho_L</annotation></semantics></math>:
+la densidad de masa lineal del aire en el tubo es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>L</mi></msub><mo>=</mo><mi>ρ</mi><mi>A</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.32)</mtext></mrow><annotation encoding="application/x-tex">
+\rho_L = \rho A \qquad \text{(7.32)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es el área de la sección transversal del tubo. La pregunta entonces es:
+¿cuál es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">K\ell</annotation></semantics></math>
+para un tubo de aire?</p>
+<p>Considere colocar un pistón en la parte superior del tubo, como se
+muestra en la figura 7.4. Con el pistón en la parte superior, no hay
+fuerza sobre él, porque la presión del aire en el tubo es igual a la
+presión del aire de la habitación exterior. Sin embargo, si el pistón se
+empuja hacia adentro una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">dz</annotation></semantics></math>,
+como se muestra en la figura 7.5, el volumen del aire en el tubo
+disminuye en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>d</mi><mi>V</mi><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.33)</mtext></mrow><annotation encoding="application/x-tex">
+-dV = A\,dz\,. \qquad \text{(7.33)}
+</annotation></semantics></math></p>
+<p><em>(Figuras 7.4 y 7.5: el tubo de órgano con un pistón en la parte
+superior; el aire del tubo actúa como un muelle; al empujar el pistón
+hacia adentro una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">dz</annotation></semantics></math>,
+cambia el volumen del aire encerrado.)</em></p>
+<p>Si el pistón se moviera lo bastante despacio como para que la
+temperatura del gas se mantuviera constante, entonces la presión sería
+simplemente inversamente proporcional al volumen. Sin embargo, en una
+onda sonora, el movimiento del aire es tan rápido que casi no hay tiempo
+para que fluya calor dentro o fuera del sistema. Tal cambio de volumen
+se llama «adiabático». Cuando el volumen disminuye adiabáticamente, la
+temperatura sube (porque la fuerza sobre el pistón realiza trabajo) y la
+presión aumenta más rápido que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">1/V</annotation></semantics></math>,
+como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∝</mo><msup><mi>V</mi><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.34)</mtext></mrow><annotation encoding="application/x-tex">
+p \propto V^{-\gamma} \qquad \text{(7.34)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+es una constante positiva que depende de las propiedades termodinámicas
+del gas. Más precisamente,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+es el cociente entre el calor específico a presión constante y el calor
+específico a volumen constante (véase, por ejemplo, Halliday y
+Resnick):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>C</mi><mi>P</mi></msub><mi>/</mi><msub><mi>C</mi><mi>V</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.35)</mtext></mrow><annotation encoding="application/x-tex">
+\gamma = C_P/C_V \qquad \text{(7.35)}
+</annotation></semantics></math></p>
+<p>En el aire, en condiciones normales de temperatura y presión,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mtext mathvariant="normal">aire</mtext></msub><mo>≈</mo><mn>1.40</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.36)</mtext></mrow><annotation encoding="application/x-tex">
+\gamma_{\text{aire}} \approx 1.40\,. \qquad \text{(7.36)}
+</annotation></semantics></math></p>
+<p>Ahora podemos escribir, a partir de (7.34),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>p</mi></mrow><mi>p</mi></mfrac><mo>=</mo><mi>−</mi><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mi>V</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.37)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{dp}{p} = -\gamma\,\frac{dV}{V} \qquad \text{(7.37)}
+</annotation></semantics></math></p>
+<p>o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo>=</mo><mi>−</mi><mi>γ</mi><mi>p</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mi>V</mi></mfrac><mo>≈</mo><mfrac><mrow><mi>γ</mi><mi>A</mi><mspace width="0.167em"></mspace><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>V</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mo>=</mo><mfrac><mrow><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.38)</mtext></mrow><annotation encoding="application/x-tex">
+dp = -\gamma p\,\frac{dV}{V} \approx \frac{\gamma A\,p_0}{V}\,dz = \frac{\gamma p_0}{\ell}\,dz \qquad \text{(7.38)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mn>0</mn></msub><annotation encoding="application/x-tex">p_0</annotation></semantics></math>
+es la presión de equilibrio (ambiente). Entonces la fuerza sobre el
+pistón es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>F</mi><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>p</mi><mo>=</mo><mfrac><mrow><mi>γ</mi><msup><mi>A</mi><mn>2</mn></msup><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>V</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mo>=</mo><mfrac><mrow><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.39)</mtext></mrow><annotation encoding="application/x-tex">
+dF = A\,dp = \frac{\gamma A^2p_0}{V}\,dz = \frac{\gamma A p_0}{\ell}\,dz \qquad \text{(7.39)}
+</annotation></semantics></math></p>
+<p>de modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>F</mi></mrow><mrow><mi>d</mi><mi>z</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>ℓ</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.40)</mtext></mrow><annotation encoding="application/x-tex">
+K = \frac{dF}{dz} = \frac{\gamma A p_0}{\ell} \qquad \text{(7.40)}
+</annotation></semantics></math></p>
+<p>y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">K\ell</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi><mo>=</mo><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.41)</mtext></mrow><annotation encoding="application/x-tex">
+K\ell = \gamma A p_0\,. \qquad \text{(7.41)}
+</annotation></semantics></math></p>
+<p>Así, esperamos que la relación de dispersión sea</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>v</mi><mtext mathvariant="normal">sonido</mtext><mn>2</mn></msubsup><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mi>K</mi><mi>ℓ</mi></mrow><msub><mi>ρ</mi><mi>L</mi></msub></mfrac><mspace width="0.167em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>ρ</mi></mfrac><mspace width="0.167em"></mspace><msup><mi>k</mi><mn>2</mn></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.42)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = v_{\text{sonido}}^2k^2 = \frac{K\ell}{\rho_L}\,k^2 = \frac{\gamma p_0}{\rho}\,k^2 \qquad \text{(7.42)}
+</annotation></semantics></math></p>
+<p>donde hemos definido la «velocidad del sonido»,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mtext mathvariant="normal">sonido</mtext></msub><annotation encoding="application/x-tex">v_{\text{sonido}}</annotation></semantics></math>,
+como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>v</mi><mtext mathvariant="normal">sonido</mtext><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><mi>ρ</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.43)</mtext></mrow><annotation encoding="application/x-tex">
+v_{\text{sonido}}^2 = \frac{\gamma p_0}{\rho}\,. \qquad \text{(7.43)}
+</annotation></semantics></math></p>
+<p>Para el aire en condiciones normales de temperatura y presión,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mtext mathvariant="normal">sonido</mtext></msub><mo>≈</mo><mn>332</mn><mspace width="0.222em"></mspace><mfrac><mtext mathvariant="normal">m</mtext><mtext mathvariant="normal">s</mtext></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.44)</mtext></mrow><annotation encoding="application/x-tex">
+v_{\text{sonido}} \approx 332\ \frac{\text{m}}{\text{s}}\,. \qquad \text{(7.44)}
+</annotation></semantics></math></p>
+<p>Como veremos en el próximo capítulo, esta es en realidad la velocidad
+a la que viajan las ondas sonoras. Por ahora, es simplemente un
+parámetro en nuestro cálculo de los modos normales.</p>
+<p>En el tubo mostrado en la figura 7.3, el desplazamiento del aire, que
+llamaremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(z,t)</annotation></semantics></math>,
+debe anularse en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>,
+porque el fondo del tubo está cerrado y no hay adónde ir para el
+gas.</p>
+<p>La derivada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+debe anularse en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">z=\ell</annotation></semantics></math>,
+porque el exceso de presión es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>∂</mi><mi>ψ</mi><mi>/</mi><mi>∂</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">-\partial\psi/\partial z</annotation></semantics></math>.
+La presión es proporcional a la fuerza en nuestra analogía con las ondas
+longitudinales en el muelle masivo. Usando (7.41) y (7.23), esperamos
+que la fuerza longitudinal sea</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><mrow><mi>∂</mi><mi>ψ</mi></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.45)</mtext></mrow><annotation encoding="application/x-tex">
+\pm\gamma A p_0\,\frac{\partial\psi}{\partial z} \qquad \text{(7.45)}
+</annotation></semantics></math></p>
+<p>o que el exceso de presión sea</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo>=</mo><mi>−</mi><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><mrow><mi>∂</mi><mi>ψ</mi></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.46)</mtext></mrow><annotation encoding="application/x-tex">
+p - p_0 = -\gamma p_0\,\frac{\partial\psi}{\partial z}\,. \qquad \text{(7.46)}
+</annotation></semantics></math></p>
+<p>Queremos el signo negativo porque, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>ψ</mi><mi>/</mi><mi>∂</mi><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial\psi/\partial z&gt;0</annotation></semantics></math>,
+el aire se está expandiendo y tiene menor presión.</p>
+<p>Así, para una onda estacionaria en el tubo de la figura 7.3,
+esperamos las condiciones de contorno</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>z</mi><mo>=</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.47)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(0,t)=0\,,\qquad \left.\frac{\partial}{\partial z}\psi(z,t)\right|_{z=\ell}=0\,, \qquad \text{(7.47)}
+</annotation></semantics></math></p>
+<p>para las cuales la solución es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>z</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.48)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(z,t) = \sin kz\cos\omega t \qquad \text{(7.48)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mi>π</mi></mrow><mi>ℓ</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>ω</mi><mo>=</mo><mi>v</mi><mi>k</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.49)</mtext></mrow><annotation encoding="application/x-tex">
+k = \frac{(n+1/2)\pi}{\ell}\,,\qquad \omega=vk\,, \qquad \text{(7.49)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msub><mi>v</mi><mtext mathvariant="normal">sonido</mtext></msub></mrow><annotation encoding="application/x-tex">v=v_{\text{sonido}}</annotation></semantics></math>,
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+entero no negativo. En particular, el modo de frecuencia más baja del
+tubo corresponde a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n=0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mfrac><mrow><mi>v</mi><mi>π</mi></mrow><mrow><mn>2</mn><mi>ℓ</mi></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>ν</mi><mo>=</mo><mfrac><mi>ω</mi><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><mo>=</mo><mfrac><mi>v</mi><mrow><mn>4</mn><mi>ℓ</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.50)</mtext></mrow><annotation encoding="application/x-tex">
+\omega = \frac{v\pi}{2\ell}\,,\qquad \nu = \frac{\omega}{2\pi} = \frac{v}{4\ell}\,. \qquad \text{(7.50)}
+</annotation></semantics></math></p>
+<h3 id="la-aproximación-de-helmholtz">7.3.1 La aproximación de
+Helmholtz</h3>
+<p>Consideremos un problema ligeramente distinto. ¿Cuál es el modo de
+frecuencia más baja de una botella de refresco de un litro, mostrada en
+la figura 7.6? Un conjunto típico de parámetros es:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>A</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≈</mo><mn>2.85</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">cm</mtext><mn>2</mn></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">: área del cuello</mtext></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>ℓ</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≈</mo><mn>5.7</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">cm</mtext><mspace width="0.222em"></mspace><mtext mathvariant="normal">: longitud del cuello</mtext></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>L</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≈</mo><mn>25</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">cm</mtext><mspace width="0.222em"></mspace><mtext mathvariant="normal">: longitud de la botella</mtext></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≈</mo><mn>1000</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">cm</mtext><mn>3</mn></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">: volumen del cuerpo</mtext></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.51)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+A &amp;\approx 2.85\ \text{cm}^2\ \text{: área del cuello}\\
+\ell &amp;\approx 5.7\ \text{cm}\ \text{: longitud del cuello}\\
+L &amp;\approx 25\ \text{cm}\ \text{: longitud de la botella}\\
+V_0 &amp;\approx 1000\ \text{cm}^3\ \text{: volumen del cuerpo}
+\end{aligned} \qquad \text{(7.51)}
+</annotation></semantics></math></p>
+<p><em>(Figura 7.6: botella de refresco de un litro, mostrando el cuello
+de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+y el cuerpo de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y volumen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>.)</em></p>
+<p>Sustituyendo la longitud,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+de la botella en (7.50), da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>≈</mo><mn>332</mn></mrow><annotation encoding="application/x-tex">\nu\approx332</annotation></semantics></math>
+hercios. En la afinación estándar americana (véase la tabla 7.1), esto
+es un Mi por encima del Do central.</p>
+<p>Esto es obviamente incorrecto. Si alguna vez ha soplado en su botella
+de refresco, sabe que la frecuencia del modo más bajo es mucho menor que
+esa. El problema, por supuesto, es que la botella de refresco no tiene
+ni remotamente la forma de un tubo. Determinar los modos es un
+complicado problema tridimensional. Resulta, sin embargo, que podemos
+encontrar el modo más bajo con una aproximación bastante decente, de
+forma bastante fácil.</p>
+<p>La idea es que, en el modo más bajo, el aire del cuello de la botella
+se mueve rápidamente, pero en el cuerpo de la botella, el aire se
+dispersa rápidamente, de modo que apenas se mueve. La idea de la
+aproximación de Helmholtz es tratar el aire del cuello como un único
+bloque, de masa</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mi>A</mi><mi>ℓ</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.52)</mtext></mrow><annotation encoding="application/x-tex">
+\rho A\ell\,, \qquad \text{(7.52)}
+</annotation></semantics></math></p>
+<p>y tratar el cuerpo como un muelle que contribuye fuerza restauradora,
+pero no inercia (porque el aire apenas se mueve). Entonces todo lo que
+tenemos que hacer es calcular la
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+del «muelle». Esto es fácil, usando (7.38). En este caso,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>V</mi><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.53)</mtext></mrow><annotation encoding="application/x-tex">
+dV = A\,dz\,, \qquad \text{(7.53)}
+</annotation></semantics></math></p>
+<p>así que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo>=</mo><mi>−</mi><mi>γ</mi><mi>p</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>A</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi></mrow><mi>V</mi></mfrac><mo>≈</mo><mi>−</mi><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><mrow><mi>A</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.54)</mtext></mrow><annotation encoding="application/x-tex">
+dp = -\gamma p\,\frac{A\,dz}{V} \approx -\gamma p_0\,\frac{A\,dz}{V_0} \qquad \text{(7.54)}
+</annotation></semantics></math></p>
+<p>y</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>≈</mo><mi>−</mi><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><mrow><msup><mi>A</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.55)</mtext></mrow><annotation encoding="application/x-tex">
+F \approx -\gamma p_0\,\frac{A^2\,dz}{V_0} \qquad \text{(7.55)}
+</annotation></semantics></math></p>
+<p>o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">«</mtext><mi>K</mi><mtext mathvariant="normal">»</mtext><mo>=</mo><mi>γ</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><msup><mi>A</mi><mn>2</mn></msup><msub><mi>V</mi><mn>0</mn></msub></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.56)</mtext></mrow><annotation encoding="application/x-tex">
+\text{«}K\text{»} = \gamma p_0\,\frac{A^2}{V_0}\,. \qquad \text{(7.56)}
+</annotation></semantics></math></p>
+<p>Entonces, usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mi>K</mi><mi>/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">\omega^2=K/m</annotation></semantics></math>,
+esperamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msqrt><mfrac><mrow><mi>γ</mi><msup><mi>A</mi><mn>2</mn></msup><msub><mi>p</mi><mn>0</mn></msub><mi>/</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><mrow><mi>ρ</mi><mi>A</mi><mi>ℓ</mi></mrow></mfrac></msqrt><mo>=</mo><mi>v</mi><msqrt><mfrac><mi>A</mi><mrow><mi>ℓ</mi><msub><mi>V</mi><mn>0</mn></msub></mrow></mfrac></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.57)</mtext></mrow><annotation encoding="application/x-tex">
+\omega = \sqrt{\frac{\gamma A^2p_0/V_0}{\rho A\ell}} = v\sqrt{\frac{A}{\ell V_0}}\,. \qquad \text{(7.57)}
+</annotation></semantics></math></p>
+<p>Para la botella de refresco, (7.51), esto da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>≈</mo><mn>118</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">hercios</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.58)</mtext></mrow><annotation encoding="application/x-tex">
+\nu \approx 118\ \text{hercios} \qquad \text{(7.58)}
+</annotation></semantics></math></p>
+<p>o aproximadamente un Si♭ por debajo del Do grave. Esto es bastante
+correcto (véase el problema 7.5).</p>
+<h3 id="correcciones-a-helmholtz">7.3.2 Correcciones a Helmholtz</h3>
+<p>Hay muchas correcciones posibles a (7.57) que podrían considerarse.
+Una es incluir el llamado «efecto de extremo». El punto es que la
+velocidad del aire en el modo más bajo no cae a cero inmediatamente al
+pasar los extremos del cuello. Así, la masa real es algo mayor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mi>A</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\rho A\ell</annotation></semantics></math>.
+Según la experiencia acumulada, se obtiene un mejor resultado
+reemplazando</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>→</mo><mi>ℓ</mi><mo>+</mo><mn>0.6</mn><mspace width="0.167em"></mspace><mi>r</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.59)</mtext></mrow><annotation encoding="application/x-tex">
+\ell \to \ell + 0.6\,r \qquad \text{(7.59)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+es el radio del cuello.</p>
+<p>Aquí discutiremos otra corrección que puede tratarse sistemáticamente
+usando los métodos de la invariancia bajo traslación espacial y las
+interacciones locales. Si la botella tiene un cuello largo,
+probablemente no sea buena idea tratar el aire del cuello como una masa
+sólida. Además, hay una alternativa simple: una analogía mejor para el
+cuello es un muelle masivo con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>ℓ</mi><mo>=</mo><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">K\ell=\gamma Ap_0</annotation></semantics></math>.
+Como el cuello es un sistema esencialmente unidimensional e invariante
+bajo traslación espacial, esperamos un desplazamiento de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>ω</mi><mi>z</mi></mrow><mi>v</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.60)</mtext></mrow><annotation encoding="application/x-tex">
+y\cos\frac{\omega z}{v} \qquad \text{(7.60)}
+</annotation></semantics></math></p>
+<p>en el cuello, donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+es el extremo abierto e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+es el desplazamiento del aire en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>.
+Así, donde el cuello se une al cuerpo, el desplazamiento es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>ω</mi><mi>ℓ</mi></mrow><mi>v</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.61)</mtext></mrow><annotation encoding="application/x-tex">
+y\cos\frac{\omega\ell}{v}\,. \qquad \text{(7.61)}
+</annotation></semantics></math></p>
+<p>La fuerza en este punto, debida a la compresión del aire en el
+cuello, es (de (7.45))</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mtext mathvariant="normal">cuello</mtext></msub><mo>=</mo><mi>−</mi><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mfrac><mrow><mi>∂</mi><mi>ψ</mi></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>γ</mi><mi>A</mi><msub><mi>p</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mi>ω</mi></mrow><mi>v</mi></mfrac><mspace width="0.167em"></mspace><mi>y</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>ω</mi><mi>ℓ</mi></mrow><mi>v</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.62)</mtext></mrow><annotation encoding="application/x-tex">
+F_{\text{cuello}} = -\gamma Ap_0\,\frac{\partial\psi}{\partial z} = \frac{\gamma Ap_0\,\omega}{v}\,y\sin\frac{\omega\ell}{v}\,. \qquad \text{(7.62)}
+</annotation></semantics></math></p>
+<p>Esta debe ser el negativo de la fuerza del aire en el cuerpo, a
+partir de (7.39),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>F</mi><mtext mathvariant="normal">cuerpo</mtext></msub><mo>=</mo><mfrac><mrow><mi>γ</mi><msup><mi>A</mi><mn>2</mn></msup><msub><mi>p</mi><mn>0</mn></msub></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mspace width="0.167em"></mspace><mi>y</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>ω</mi><mi>ℓ</mi></mrow><mi>v</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.63)</mtext></mrow><annotation encoding="application/x-tex">
+-F_{\text{cuerpo}} = \frac{\gamma A^2p_0}{V_0}\,y\cos\frac{\omega\ell}{v}\,, \qquad \text{(7.63)}
+</annotation></semantics></math></p>
+<p>o</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>ω</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><mrow><mi>A</mi><mi>v</mi></mrow></mfrac><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>ω</mi><mi>ℓ</mi></mrow><mi>v</mi></mfrac><mo>=</mo><mn>1</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7.64)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\omega V_0}{Av}\tan\frac{\omega\ell}{v} = 1\,. \qquad \text{(7.64)}
+</annotation></semantics></math></p>
+<p>Explorará las consecuencias de esto en el problema 7.5.</p>
+<p>Este análisis no distingue entre el área de la parte superior y la
+inferior del cuello. Quizá el área en la parte inferior sea más
+apropiada: lo que importa es el área en el punto donde la onda del
+cuello se empalma con el cuerpo, que determina la fuerza por unidad de
+área en ese punto.</p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<p>Ahora debería ser capaz de:</p>
+<ol type="i">
+<li><p>Encontrar el movimiento de un punto de un muelle continuo que
+oscila longitudinalmente en uno de sus modos normales, para diversas
+condiciones de contorno;</p></li>
+<li><p>Resolver los modos normales de un sistema formado por una masa
+unida a un muelle masivo;</p></li>
+<li><p>Deducir la relación de dispersión de las ondas sonoras y
+encontrar los modos normales de las oscilaciones del aire en un
+tubo;</p></li>
+<li><p>Usar la aproximación de Helmholtz para estimar la frecuencia del
+modo más bajo de una botella.</p></li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>7.1.</strong> Deduzca (7.45) directamente, considerando el
+volumen del elemento de aire en el tubo entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>+</mo><mi>d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">z+dz</annotation></semantics></math>,
+y usando (7.38).</p>
+<p><strong>7.2.</strong> Use una analogía con (7.16)-(7.31) para
+encontrar (¡aproximadamente!) los modos normales y las frecuencias
+correspondientes del sistema mostrado en la figura 6.1, pero con un
+anillo masivo, de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+deslizando sobre la varilla sin fricción.</p>
+<p><strong>7.3.</strong> Un muelle continuo masivo, de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+cuelga verticalmente. El sistema se muestra en reposo, en su
+configuración de equilibrio, en la figura 7.7. La constante del muelle
+es grande, satisfaciendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>L</mi><mo>≫</mo><mi>m</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">KL\gg mg</annotation></semantics></math>,
+de modo que la gravedad no desempeña ningún papel importante aquí, salvo
+mantener el muelle vertical. Suponga ahora que el soporte del que cuelga
+el muelle se hace subir y bajar, de modo que la parte superior del
+muelle se mueve verticalmente con desplazamiento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\epsilon\cos\omega t</annotation></semantics></math>,
+como se muestra en la figura 7.8. Encuentre la posición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+del extremo inferior del muelle en función del tiempo. Ignore el
+amortiguamiento.</p>
+<p><em>(Figura 7.7: muelle masivo colgando verticalmente en equilibrio,
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">z=L</annotation></semantics></math>.
+Figura 7.8: el mismo muelle, con el soporte superior moviéndose como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>L</mi><mo>+</mo><mi>ϵ</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">z(t)=L+\epsilon\cos\omega t</annotation></semantics></math>
+y se pregunta por la posición del extremo inferior.)</em></p>
+<p><strong>7.4.</strong> Un sistema análogo al del problema 7.3 es un
+tubo de aire con un pistón en la parte superior y el fondo abierto, como
+se muestra en la figura 7.9. Si el área de la sección transversal del
+tubo es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+¿cuál es, en este sistema, el análogo de la constante de muelle,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+del problema 7.3? Asegúrese de que su respuesta tenga unidades de fuerza
+por unidad de distancia.</p>
+<p><em>(Figura 7.9: tubo de aire vertical, de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+(abierto) a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">z=L</annotation></semantics></math>
+(pistón en la parte superior).)</em></p>
+<p><strong>7.5.</strong> EXPERIMENTO PERSONAL — Demuestre que, cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mi>ℓ</mi><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\omega\ell/v</annotation></semantics></math>
+es pequeño, (7.64) se reduce a la aproximación de Helmholtz, (7.57),
+mientras que para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>≈</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V_0\approx0</annotation></semantics></math>,
+cuando la botella es todo cuello, se reduce al resultado de los modos de
+un tubo uniforme con un extremo abierto y otro cerrado, (7.50).</p>
+<p>¡Haga el experimento! Busque una selección de al menos cuatro
+botellas, al menos una de las cuales tenga un cuello muy largo. Mida la
+frecuencia del modo más bajo de cada una, y describa cómo lo hizo. Para
+cada botella, tabule lo siguiente (en unidades cgs):</p>
+<ol type="i">
+<li>Una descripción (por ejemplo, botella de refresco, 1000 ml)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>t</mi></msub><annotation encoding="application/x-tex">A_t</annotation></semantics></math>
+(el área de la parte superior del cuello)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>b</mi></msub><annotation encoding="application/x-tex">A_b</annotation></semantics></math>
+(el área de la parte inferior del cuello)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(el radio del cuello)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+(la longitud del cuello)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mtext mathvariant="normal">cuerpo</mtext></msub><annotation encoding="application/x-tex">V_{\text{cuerpo}}</annotation></semantics></math>
+(el volumen del cuerpo)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+(la frecuencia del modo más bajo)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+(la frecuencia angular del modo más bajo)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><msub><mi>V</mi><mn>0</mn></msub><mi>ℓ</mi><mi>/</mi><mi>A</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\omega^2V_0\ell/Av^2</annotation></semantics></math>
+(=1 en la aproximación de Helmholtz)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><msub><mi>V</mi><mn>0</mn></msub><mi>/</mi><mi>A</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>ℓ</mi><mi>/</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\omega V_0/Av)\tan(\omega\ell/v)</annotation></semantics></math>
+(=1 en la aproximación (7.64))</li>
+</ol>
+<p>Vea si puede apreciar el efecto de extremo, (7.59), o distinguir el
+área de la parte superior del cuello de la inferior —es decir, vea cuál
+funciona mejor en (7.57)—. Comente, de la forma más cuantitativa
+posible, los errores de su experimento y los méritos relativos de las
+expresiones aproximadas que ha puesto a prueba.</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
