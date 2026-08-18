@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 2: Oscilación forzada y resonancia — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 2: Oscilación forzada y resonancia — 8.03SC
+Física III: Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-2-oscilación-forzada-y-resonancia"
+id="toc-capítulo-2-oscilación-forzada-y-resonancia">Capítulo 2:
+Oscilación forzada y resonancia</a>
+<ul>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#osciladores-amortiguados"
+id="toc-osciladores-amortiguados">2.1 Osciladores amortiguados</a>
+<ul>
+<li><a href="#osciladores-sobreamortiguados"
+id="toc-osciladores-sobreamortiguados">2.1.1 Osciladores
+sobreamortiguados</a></li>
+<li><a href="#osciladores-subamortiguados"
+id="toc-osciladores-subamortiguados">2.1.2 Osciladores
+subamortiguados</a></li>
+<li><a href="#osciladores-con-amortiguamiento-crítico"
+id="toc-osciladores-con-amortiguamiento-crítico">2.1.3 Osciladores con
+amortiguamiento crítico</a></li>
+</ul></li>
+<li><a href="#oscilaciones-forzadas" id="toc-oscilaciones-forzadas">2.2
+Oscilaciones forzadas</a></li>
+<li><a href="#resonancia" id="toc-resonancia">2.3 Resonancia</a>
+<ul>
+<li><a href="#trabajo" id="toc-trabajo">2.3.1 Trabajo</a></li>
+<li><a href="#anchura-de-la-resonancia-y-vida-media"
+id="toc-anchura-de-la-resonancia-y-vida-media">2.3.2 Anchura de la
+resonancia y vida media</a></li>
+<li><a href="#retraso-de-fase" id="toc-retraso-de-fase">2.3.3 Retraso de
+fase</a></li>
+</ul></li>
+<li><a href="#un-ejemplo" id="toc-un-ejemplo">2.4 Un ejemplo</a>
+<ul>
+<li><a href="#sintiéndolo-en-los-huesos"
+id="toc-sintiéndolo-en-los-huesos">2.4.1 Sintiéndolo en los
+huesos</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-2-oscilación-forzada-y-resonancia">Capítulo 2:
+Oscilación forzada y resonancia</h1>
+<p>El problema de la oscilación forzada será crucial para nuestra
+comprensión de los fenómenos ondulatorios. Las exponenciales complejas
+son aún más útiles para discutir el amortiguamiento y las oscilaciones
+forzadas. Nos ayudarán a discutir las oscilaciones forzadas sin
+perdernos en el álgebra.</p>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>En este capítulo aplicamos las herramientas de las exponenciales
+complejas y la invariancia bajo traslación temporal para tratar la
+oscilación amortiguada y el importante fenómeno físico de la resonancia
+en osciladores individuales.</p>
+<ol type="1">
+<li>Planteamos y resolvemos (usando exponenciales complejas) la ecuación
+de movimiento de un oscilador armónico amortiguado en los regímenes
+sobreamortiguado, subamortiguado y con amortiguamiento crítico.</li>
+<li>Planteamos la ecuación de movimiento del oscilador armónico
+amortiguado y forzado.</li>
+<li>Estudiamos la solución, que presenta una resonancia cuando la
+frecuencia impulsora coincide con la frecuencia de oscilación libre del
+oscilador no amortiguado correspondiente.</li>
+<li>Estudiamos en detalle un sistema concreto: una masa sobre un muelle
+en un fluido viscoso. Damos una explicación física de la relación de
+fase entre el término impulsor y el amortiguamiento.</li>
+</ol>
+<h2 id="osciladores-amortiguados">2.1 Osciladores amortiguados</h2>
+<p>Consideremos primero la oscilación libre de un oscilador amortiguado.
+Podría ser, por ejemplo, un sistema de un bloque unido a un muelle, como
+el de la figura 1.1, pero con todo el sistema sumergido en un fluido
+viscoso. Entonces, además de la fuerza restauradora del muelle, el
+bloque experimenta una fuerza de fricción. Para velocidades pequeñas, la
+fuerza de fricción puede tomarse de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>m</mi><mi>γ</mi><mi>v</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.1)</mtext></mrow><annotation encoding="application/x-tex">
+-m\gamma v\,, \qquad \text{(2.1)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+es una constante. Note que, como hemos extraído el factor de la masa del
+bloque en (2.1),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">1/\gamma</annotation></semantics></math>
+tiene dimensiones de tiempo. Podemos escribir la ecuación de movimiento
+del sistema como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.2)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2}{dt^2}x(t) + \gamma\,\frac{d}{dt}x(t) + \omega_0^2\,x(t) = 0\,, \qquad \text{(2.2)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><mi>K</mi><mi>/</mi><mi>m</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\omega_0=\sqrt{K/m}</annotation></semantics></math>.
+Esta ecuación es lineal e invariante bajo traslación temporal, como la
+ecuación de movimiento no amortiguada. De hecho, es justamente la forma
+que analizamos en el capítulo anterior, en (1.16). Como antes,
+permitimos la posibilidad de soluciones complejas de la misma
+ecuación,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.3)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2}{dt^2}z(t) + \gamma\,\frac{d}{dt}z(t) + \omega_0^2\,z(t) = 0\,. \qquad \text{(2.3)}
+</annotation></semantics></math></p>
+<p>Como se satisface (1.71), sabemos, por los argumentos del capítulo 1,
+que podemos encontrar soluciones irreducibles de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>α</mi><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.4)</mtext></mrow><annotation encoding="application/x-tex">
+z(t) = e^{\alpha t}\,, \qquad \text{(2.4)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+(letra griega alfa) es una constante. Sustituyendo (2.4) en (2.2),
+encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>α</mi><mn>2</mn></msup><mo>+</mo><mi>γ</mi><mi>α</mi><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>α</mi><mi>t</mi></mrow></msup><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.5)</mtext></mrow><annotation encoding="application/x-tex">
+(\alpha^2+\gamma\alpha+\omega_0^2)\,e^{\alpha t} = 0\,. \qquad \text{(2.5)}
+</annotation></semantics></math></p>
+<p>Como la exponencial nunca se anula, la cantidad entre paréntesis debe
+ser cero, así</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>−</mi><mfrac><mi>γ</mi><mn>2</mn></mfrac><mo>±</mo><msqrt><mrow><mfrac><msup><mi>γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.6)</mtext></mrow><annotation encoding="application/x-tex">
+\alpha = -\frac{\gamma}{2} \pm \sqrt{\frac{\gamma^2}{4}-\omega_0^2}\,. \qquad \text{(2.6)}
+</annotation></semantics></math></p>
+<p>De (2.6) vemos que hay tres regímenes, según la comparación entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>,
+que conducen a físicas distintas.</p>
+<h3 id="osciladores-sobreamortiguados">2.1.1 Osciladores
+sobreamortiguados</h3>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mi>/</mi><mn>2</mn><mo>&gt;</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma/2 &gt; \omega_0</annotation></semantics></math>,
+ambas soluciones para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+son reales y negativas. La solución de (2.2) es una suma de
+exponenciales decrecientes. Cualquier desplazamiento inicial del sistema
+se extingue sin oscilación. Este es un oscilador sobreamortiguado.</p>
+<p>La solución general en el caso sobreamortiguado tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>A</mi><mo>+</mo></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>+</mo></msub><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>A</mi><mo>−</mo></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>−</mo></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.7)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) = z(t) = A_+\,e^{-\gamma_+ t} + A_-\,e^{-\gamma_- t}\,, \qquad \text{(2.7)}
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mo>±</mo></msub><mo>=</mo><mfrac><mi>γ</mi><mn>2</mn></mfrac><mo>±</mo><msqrt><mrow><mfrac><msup><mi>γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
+\gamma_\pm = \frac{\gamma}{2} \pm \sqrt{\frac{\gamma^2}{4}-\omega_0^2}\,. \qquad \text{(2.8)}
+</annotation></semantics></math></p>
+<p><em>(Figura 2.1: soluciones de la ecuación de movimiento para un
+oscilador sobreamortiguado, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">s</mtext><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\gamma=1\ \text{s}^{-1}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><mn>0.4</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">s</mtext><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\omega_0=0.4\ \text{s}^{-1}</annotation></semantics></math>;
+la línea punteada es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>+</mo></msub><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma_+t}</annotation></semantics></math>,
+la discontinua es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>−</mo></msub><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma_-t}</annotation></semantics></math>,
+y la línea continua es la combinación lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>+</mo></msub><mi>t</mi></mrow></msup><mo>−</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>γ</mi><mo>−</mo></msub><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-\gamma_+t}-\tfrac12 e^{-\gamma_-t}</annotation></semantics></math>,
+entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">s</mtext></mrow><annotation encoding="application/x-tex">t=10\ \text{s}</annotation></semantics></math>.)</em></p>
+<p>En la situación sobreamortiguada, en realidad no hay oscilación. Si
+la masa se mueve inicialmente muy rápido hacia la posición de
+equilibrio, puede sobrepasarla, como se muestra en la figura 2.1. Sin
+embargo, luego regresa exponencialmente hacia la posición de equilibrio,
+sin volver a cruzar nunca el valor de equilibrio del desplazamiento por
+segunda vez. Así, en el movimiento libre de un oscilador
+sobreamortiguado, la posición de equilibrio se cruza cero o una vez.</p>
+<h3 id="osciladores-subamortiguados">2.1.2 Osciladores
+subamortiguados</h3>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mi>/</mi><mn>2</mn><mo>&lt;</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma/2 &lt; \omega_0</annotation></semantics></math>,
+la expresión dentro de la raíz cuadrada es negativa, y las soluciones
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+son un par complejo conjugado, con parte real negativa. Así, las
+soluciones son productos de una exponencial decreciente,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma t/2}</annotation></semantics></math>,
+por exponenciales complejas (o senos y cosenos),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>±</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{\pm i\omega t}</annotation></semantics></math>,
+donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msup><mi>γ</mi><mn>2</mn></msup><mi>/</mi><mn>4</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.9)</mtext></mrow><annotation encoding="application/x-tex">
+\omega^2 = \omega_0^2 - \gamma^2/4\,. \qquad \text{(2.9)}
+</annotation></semantics></math></p>
+<p>Este es un oscilador subamortiguado.</p>
+<p>La mayoría de los sistemas que consideramos osciladores están
+subamortiguados. Por ejemplo, un niño sentado quieto en un columpio de
+parque es un péndulo subamortiguado que puede oscilar muchas veces antes
+de que las fuerzas de fricción lo detengan.</p>
+<p>La exponencial decreciente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}e^{-i(\omega t-\theta)}</annotation></semantics></math>
+describe una espiral hacia el origen en el plano complejo. Su parte
+real,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}\cos(\omega t-\theta)</annotation></semantics></math>,
+describe una función que oscila con amplitud decreciente. En forma real,
+la solución general para el caso subamortiguado tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.10)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) = A\,e^{-\gamma t/2}\cos(\omega t-\theta)\,, \qquad \text{(2.10)}
+</annotation></semantics></math></p>
+<p>o bien</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mi mathvariant="normal">cos</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>d</mi><mi mathvariant="normal">sin</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.11)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) = e^{-\gamma t/2}\left(c\cos(\omega t)+d\sin(\omega t)\right)\,, \qquad \text{(2.11)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+están relacionados con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+por (1.97) y (1.98). Esto se muestra en la figura 2.2 (compárese con la
+figura 1.9). La figura superior muestra el plano complejo con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}e^{-i(\omega t-\theta)}</annotation></semantics></math>
+representado para valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+igualmente espaciados. La figura inferior es la parte real,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(\omega t-\theta)</annotation></semantics></math>,
+para los mismos valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+representada frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+En el caso subamortiguado, ¡la posición de equilibrio se cruza un número
+infinito de veces, aunque con amplitud decreciente exponencialmente!</p>
+<p><em>(Figura 2.2: exponencial compleja amortiguada — en el plano
+complejo, una espiral que converge al origen,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}e^{-i(\omega t-\theta)}</annotation></semantics></math>;
+debajo, su parte real,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(\omega t-\theta)</annotation></semantics></math>,
+mostrada como una senoide de amplitud decreciente frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.)</em></p>
+<h3 id="osciladores-con-amortiguamiento-crítico">2.1.3 Osciladores con
+amortiguamiento crítico</h3>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mi>/</mi><mn>2</mn><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma/2=\omega_0</annotation></semantics></math>,
+entonces (2.4) da una única solución,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma t/2}</annotation></semantics></math>.
+Sabemos que debe haber dos soluciones de la ecuación diferencial de
+segundo orden (2.2). Una forma de encontrar la otra solución es abordar
+esta situación como un límite del caso subamortiguado. Si escribimos las
+soluciones del caso subamortiguado en forma real, son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}\cos\omega t</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}\sin\omega t</annotation></semantics></math>.
+Tomando el límite de la primera cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega\to0</annotation></semantics></math>
+da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma t/2}</annotation></semantics></math>,
+la solución que ya conocemos. Tomando el límite de la segunda da 0. Sin
+embargo, si primero dividimos la segunda solución por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+sigue siendo una solución, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+no depende de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+Ahora podemos obtener un límite no nulo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>ω</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mn>1</mn><mi>ω</mi></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ω</mi><mi>t</mi><mo>=</mo><mi>t</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.12)</mtext></mrow><annotation encoding="application/x-tex">
+\lim_{\omega\to0}\frac{1}{\omega}e^{-\gamma t/2}\sin\omega t = t\,e^{-\gamma t/2}\,. \qquad \text{(2.12)}
+</annotation></semantics></math></p>
+<p>Así,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">t\,e^{-\gamma t/2}</annotation></semantics></math>
+es también una solución. También puede comprobarlo explícitamente
+sustituyéndola de nuevo en (2.2). Este caso se llama amortiguamiento
+crítico porque es la frontera entre el sobreamortiguamiento y el
+subamortiguamiento.</p>
+<p>Un sistema familiar cercano al amortiguamiento crítico es la
+combinación de muelles y amortiguadores de un automóvil. Aquí el
+amortiguamiento debe ser lo bastante grande como para evitar que el
+coche rebote. Pero si el amortiguamiento de los amortiguadores es
+demasiado alto, el coche no podrá responder rápidamente a los baches y
+la marcha será incómoda.</p>
+<p>La solución general en el caso de amortiguamiento crítico es, por
+tanto,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mo>+</mo><mi>d</mi><mspace width="0.167em"></mspace><mi>t</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.13)</mtext></mrow><annotation encoding="application/x-tex">
+c\,e^{-\gamma t/2} + d\,t\,e^{-\gamma t/2}\,. \qquad \text{(2.13)}
+</annotation></semantics></math></p>
+<p>Esto se ilustra en la figura 2.3. La línea punteada es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-\gamma t}</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">s</mtext><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\gamma=1\ \text{s}^{-1}</annotation></semantics></math>.
+La línea discontinua es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t\,e^{-\gamma t}</annotation></semantics></math>.
+La línea continua es una combinación lineal,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(1-t)\,e^{-\gamma t}</annotation></semantics></math>.</p>
+<p><em>(Figura 2.3: soluciones de la ecuación de movimiento para un
+oscilador con amortiguamiento crítico, entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">s</mtext></mrow><annotation encoding="application/x-tex">t=10\ \text{s}</annotation></semantics></math>,
+análoga a la figura 2.1 pero para el caso crítico.)</em></p>
+<p>Como en la situación sobreamortiguada, no hay oscilación real en el
+amortiguamiento crítico. Sin embargo, de nuevo, la masa puede sobrepasar
+el equilibrio y luego regresar suavemente hacia la posición de
+equilibrio, sin cruzar nunca el valor de equilibrio del desplazamiento
+por segunda vez. Al igual que en el sobreamortiguamiento, la posición de
+equilibrio se cruza una vez o ninguna.</p>
+<h2 id="oscilaciones-forzadas">2.2 Oscilaciones forzadas</h2>
+<p>El oscilador amortiguado con una fuerza impulsora armónica tiene la
+ecuación de movimiento</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>m</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.14)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2}{dt^2}x(t) + \gamma\,\frac{d}{dt}x(t) + \omega_0^2\,x(t) = F(t)/m\,, \qquad \text{(2.14)}
+</annotation></semantics></math></p>
+<p>donde la fuerza es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.15)</mtext></mrow><annotation encoding="application/x-tex">
+F(t) = F_0\cos\omega_d t\,. \qquad \text{(2.15)}
+</annotation></semantics></math></p>
+<p>A
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>/</mi><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\omega_d/2\pi</annotation></semantics></math>
+se le llama la frecuencia impulsora. Note que no es necesariamente la
+misma que la frecuencia natural,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\omega_0/2\pi</annotation></semantics></math>,
+ni la frecuencia de oscilación del sistema libre, (2.9). Es simplemente
+la frecuencia de la fuerza externa. Puede ajustarse de forma
+completamente independiente de los demás parámetros del sistema. Sería
+correcto, aunque incómodo, referirse a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+como la frecuencia angular impulsora; simplemente la llamaremos
+frecuencia impulsora, ignorando su carácter angular.</p>
+<p>Las frecuencias angulares,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>,
+aparecen en la ecuación de movimiento, (2.15), de formas completamente
+distintas. Debe tener presente esta distinción para entender la
+oscilación forzada. La frecuencia angular natural del sistema,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>,
+es cierta combinación de las masas y las constantes de muelle (o las
+cantidades físicas relevantes que determinan las oscilaciones libres).
+La frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+entra solo a través de la dependencia temporal de la fuerza impulsora.
+Este es el aspecto nuevo de la oscilación forzada. Para explotar
+plenamente este aspecto nuevo, buscaremos una solución de la ecuación de
+movimiento que oscile con la misma frecuencia angular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
+que la fuerza impulsora.</p>
+<p>Podemos relacionar (2.14) con una ecuación de movimiento con una
+fuerza impulsora compleja</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ℱ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>m</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.16)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2}{dt^2}z(t) + \gamma\,\frac{d}{dt}z(t) + \omega_0^2\,z(t) = \mathcal{F}(t)/m\,, \qquad \text{(2.16)}
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℱ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.17)</mtext></mrow><annotation encoding="application/x-tex">
+\mathcal{F}(t) = F_0\,e^{-i\omega_d t}\,. \qquad \text{(2.17)}
+</annotation></semantics></math></p>
+<p>Esto funciona porque la ecuación de movimiento, (2.14), no involucra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+explícitamente y porque</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>ℱ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.18)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Re}\,\mathcal{F}(t) = F(t)\,. \qquad \text{(2.18)}
+</annotation></semantics></math></p>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">z(t)</annotation></semantics></math>
+es una solución de (2.16), entonces puede demostrar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t)=\text{Re}\,z(t)</annotation></semantics></math>
+es una solución de (2.14), tomando la parte real de ambos lados de
+(2.16).</p>
+<p>La ventaja de la fuerza exponencial compleja en (2.16) es que es
+irreducible: se comporta de forma simple bajo traslaciones temporales.
+En particular, podemos encontrar una solución estacionaria proporcional
+a la fuerza impulsora,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega_d t}</annotation></semantics></math>,
+mientras que para la fuerza impulsora real, las formas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\cos\omega_d t</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\sin\omega_d t</annotation></semantics></math>
+se mezclan. Es decir, buscamos una solución estacionaria de la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.19)</mtext></mrow><annotation encoding="application/x-tex">
+z(t) = A\,e^{-i\omega_d t}\,. \qquad \text{(2.19)}
+</annotation></semantics></math></p>
+<p>La solución estacionaria, (2.19), es una solución particular, no la
+solución más general de (2.16). Como se discutió en el capítulo 1, la
+solución más general de (2.16) se obtiene sumando a la solución
+particular la solución más general para el movimiento libre del mismo
+oscilador (soluciones de (2.3)). En general, tendremos que incluir estas
+contribuciones más generales para satisfacer las condiciones iniciales.
+Sin embargo, como hemos visto arriba, todas estas soluciones se
+extinguen exponencialmente con el tiempo. Se llaman soluciones
+«transitorias». Solo la solución estacionaria sobrevive durante mucho
+tiempo en presencia de amortiguamiento. A diferencia de las soluciones
+de la ecuación de movimiento libre, la solución estacionaria no tiene
+nada que ver con los valores iniciales del desplazamiento y la
+velocidad. Está determinada enteramente por la fuerza impulsora, (2.17).
+Explorará las soluciones transitorias en el problema 2.4.</p>
+<p>Sustituyendo (2.19) y (2.17) en (2.16), y cancelando un factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega_d t}</annotation></semantics></math>
+en cada lado de la ecuación resultante, obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>A</mi><mo>=</mo><mfrac><msub><mi>F</mi><mn>0</mn></msub><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.20)</mtext></mrow><annotation encoding="application/x-tex">
+(-\omega_d^2 - i\gamma\omega_d + \omega_0^2)\,A = \frac{F_0}{m}\,, \qquad \text{(2.20)}
+</annotation></semantics></math></p>
+<p>o bien</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi></mrow><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.21)</mtext></mrow><annotation encoding="application/x-tex">
+A = \frac{F_0/m}{\omega_0^2 - i\gamma\omega_d - \omega_d^2}\,. \qquad \text{(2.21)}
+</annotation></semantics></math></p>
+<p>Note que obtuvimos la solución usando solo álgebra. Esta es la
+ventaja de partir de la solución irreducible, (2.19).</p>
+<p>La amplitud, (2.21), del desplazamiento es proporcional a la amplitud
+de la fuerza impulsora. Esto es justamente lo que esperamos de la
+linealidad (véase el problema 2.2). Pero el coeficiente de
+proporcionalidad es complejo. Para ver explícitamente su forma,
+multiplicamos el numerador y el denominador del lado derecho de (2.21)
+por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mi>i</mi><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\omega_0^2+i\gamma\omega_d-\omega_d^2</annotation></semantics></math>,
+para llevar los números complejos al numerador:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mi>i</mi><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi></mrow><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>γ</mi><mn>2</mn></msup><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.22)</mtext></mrow><annotation encoding="application/x-tex">
+A = \frac{\left(\omega_0^2+i\gamma\omega_d-\omega_d^2\right)F_0/m}{\left(\omega_0^2-\omega_d^2\right)^2+\gamma^2\omega_d^2}\,. \qquad \text{(2.22)}
+</annotation></semantics></math></p>
+<p>El número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+puede escribirse como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒜</mi><mo>+</mo><mi>i</mi><mi>ℬ</mi></mrow><annotation encoding="application/x-tex">\mathcal{A}+i\mathcal{B}</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+reales:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒜</mi><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi></mrow><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>γ</mi><mn>2</mn></msup><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac><mspace width="0.167em"></mspace><mo>;</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.23)</mtext></mrow><annotation encoding="application/x-tex">
+\mathcal{A} = \frac{\left(\omega_0^2-\omega_d^2\right)F_0/m}{\left(\omega_0^2-\omega_d^2\right)^2+\gamma^2\omega_d^2}\,; \qquad \text{(2.23)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℬ</mi><mo>=</mo><mfrac><mrow><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mspace width="0.167em"></mspace><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi></mrow><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>γ</mi><mn>2</mn></msup><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.24)</mtext></mrow><annotation encoding="application/x-tex">
+\mathcal{B} = \frac{\gamma\omega_d\,F_0/m}{\left(\omega_0^2-\omega_d^2\right)^2+\gamma^2\omega_d^2}\,. \qquad \text{(2.24)}
+</annotation></semantics></math></p>
+<p>Entonces la solución de la ecuación de movimiento para la fuerza
+impulsora real, (2.14), es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mtext mathvariant="normal">Re</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝒜</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>+</mo><mi>ℬ</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.25)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) = \text{Re}\,z(t) = \text{Re}\left(A\,e^{-i\omega_d t}\right) = \mathcal{A}\cos\omega_d t + \mathcal{B}\sin\omega_d t\,. \qquad \text{(2.25)}
+</annotation></semantics></math></p>
+<p>Así, la solución para la fuerza real es una suma de dos términos. El
+término proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+está en fase con la fuerza impulsora (o desfasado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>180</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">180°</annotation></semantics></math>),
+mientras que el término proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+está desfasado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">90°</annotation></semantics></math>.
+La ventaja de pasar a la fuerza impulsora compleja es que nos permite
+obtener ambos a la vez. Los coeficientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+se muestran en la gráfica de la figura 2.4 para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/2</annotation></semantics></math>.</p>
+<p><em>(Figura 2.4: amplitudes elástica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+(línea continua) y absortiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+(línea punteada), en unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">F_0/m\omega_0^2</annotation></semantics></math>,
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+entre 0 y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">2\omega_0</annotation></semantics></math>;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+pasa de positiva a negativa cruzando cero cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>,
+mientras
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+alcanza su máximo cerca de la resonancia.)</em></p>
+<p>La parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒜</mi><mo>=</mo><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">\mathcal{A}=\text{Re}\,A</annotation></semantics></math>,
+se llama la amplitud elástica, y la parte imaginaria de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℬ</mi><mo>=</mo><mtext mathvariant="normal">Im</mtext><mspace width="0.167em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">\mathcal{B}=\text{Im}\,A</annotation></semantics></math>,
+se llama la amplitud absortiva. La razón de estos nombres se hará
+evidente más abajo, cuando consideremos el trabajo realizado por la
+fuerza impulsora.</p>
+<h2 id="resonancia">2.3 Resonancia</h2>
+<p>El término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">\left(\omega_0^2-\omega_d^2\right)^2</annotation></semantics></math>
+del denominador de (2.22) se anula para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.
+Si el amortiguamiento es pequeño, este comportamiento del denominador
+produce un enorme aumento en la respuesta del sistema a la fuerza
+impulsora en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.
+El fenómeno se llama resonancia. La frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>
+es la frecuencia angular de resonancia. Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>,
+se dice que el sistema está «en resonancia».</p>
+<p>El fenómeno de la resonancia es a la vez familiar y espectacularmente
+importante. Es familiar en situaciones tan sencillas como aumentar la
+amplitud de un columpio infantil aplicando una pequeña fuerza en el
+mismo instante de cada ciclo. Aun siendo tan simple, es crucial en
+muchos dispositivos y en muchos experimentos delicados de física. Los
+fenómenos de resonancia se usan por doquier para generar una respuesta
+grande y medible a partir de una perturbación muy pequeña.</p>
+<p>Muy a menudo ignoraremos el amortiguamiento en las oscilaciones
+forzadas. Cerca de una resonancia, esto no es buena idea, porque la
+amplitud, (2.22), tiende a infinito cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\gamma\to0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.
+Los infinitos no son físicos. Este infinito nunca ocurre en la práctica:
+antes de que la amplitud «explote», sucede una de dos cosas. O bien el
+amortiguamiento deja de ser despreciable, de modo que la respuesta se
+parece a (2.22) con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+no nulo, o bien la amplitud se hace tan grande que las no linealidades
+del sistema dejan de ser despreciables, de modo que la ecuación de
+movimiento deja de parecerse a (2.16).</p>
+<h3 id="trabajo">2.3.1 Trabajo</h3>
+<p>Es instructivo considerar el trabajo realizado por la fuerza externa
+en (2.16). Para ello debemos usar la fuerza real, (2.14), y el
+desplazamiento real, (2.25), en lugar de sus extensiones complejas,
+porque, a diferencia de casi todo lo demás de lo que hablamos, el
+trabajo es una función no lineal de la fuerza. La potencia entregada por
+la fuerza es el producto de la fuerza impulsora y la velocidad,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msub><mi>F</mi><mn>0</mn></msub><msub><mi>ω</mi><mi>d</mi></msub><mspace width="0.167em"></mspace><mi>𝒜</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>+</mo><msub><mi>F</mi><mn>0</mn></msub><msub><mi>ω</mi><mi>d</mi></msub><mspace width="0.167em"></mspace><mi>ℬ</mi><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.26)</mtext></mrow><annotation encoding="application/x-tex">
+P(t) = F(t)\,\frac{\partial}{\partial t}x(t) = -F_0\omega_d\,\mathcal{A}\cos\omega_d t\sin\omega_d t + F_0\omega_d\,\mathcal{B}\cos^2\omega_d t\,. \qquad \text{(2.26)}
+</annotation></semantics></math></p>
+<p>El primer término de (2.26) es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\sin2\omega_d t</annotation></semantics></math>.
+Así, a veces es positivo y a veces negativo. Se promedia a cero sobre
+cualquier semiperiodo completo de oscilación, un tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\pi/\omega_d</annotation></semantics></math>,
+porque</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><msub><mi>t</mi><mn>0</mn></msub><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>+</mo><mi>π</mi><mi>/</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow></msubsup><mi>d</mi><mi>t</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><msubsup><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">|</mo><msub><mi>t</mi><mn>0</mn></msub><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>+</mo><mi>π</mi><mi>/</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow></msubsup><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.27)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{t_0}^{t_0+\pi/\omega_d} dt\,\sin2\omega_d t = -\frac{1}{2}\cos2\omega_d t\Big|_{t_0}^{t_0+\pi/\omega_d} = 0\,. \qquad \text{(2.27)}
+</annotation></semantics></math></p>
+<p>Por eso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+se llama la amplitud elástica. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
+domina, entonces la energía introducida en el sistema en un momento dado
+se devuelve más tarde, como en una colisión elástica en mecánica.</p>
+<p>El segundo término de (2.26), en cambio, siempre es positivo. Se
+promedia a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mtext mathvariant="normal">prom</mtext></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>F</mi><mn>0</mn></msub><msub><mi>ω</mi><mi>d</mi></msub><mspace width="0.167em"></mspace><mi>ℬ</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.28)</mtext></mrow><annotation encoding="application/x-tex">
+P_{\text{prom}} = \frac{1}{2}F_0\omega_d\,\mathcal{B}\,. \qquad \text{(2.28)}
+</annotation></semantics></math></p>
+<p>Por eso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+se llama la amplitud absortiva: mide la rapidez con la que el sistema
+absorbe energía. La potencia absorbida,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mtext mathvariant="normal">prom</mtext></msub><annotation encoding="application/x-tex">P_{\text{prom}}</annotation></semantics></math>,
+alcanza su máximo en resonancia, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><msub><mi>ω</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\omega_0=\omega_d</annotation></semantics></math>.
+Este es un criterio diagnóstico usado a menudo para encontrar
+resonancias en situaciones experimentales. Note que la dependencia de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+se parece cualitativamente a la de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mtext mathvariant="normal">prom</mtext></msub><annotation encoding="application/x-tex">P_{\text{prom}}</annotation></semantics></math>,
+mostrada en la figura 2.5 para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/2</annotation></semantics></math>.
+Sin embargo, difieren en un factor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>.
+En particular, el máximo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
+ocurre ligeramente por debajo de la resonancia.</p>
+<p><em>(Figura 2.5: potencia media disipada por la fuerza de fricción en
+función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/2</annotation></semantics></math>;
+una curva con pico en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>
+de altura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>F</mi><mn>0</mn><mn>2</mn></msubsup><mi>/</mi><mn>2</mn><mi>m</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">F_0^2/2m\gamma</annotation></semantics></math>.)</em></p>
+<h3 id="anchura-de-la-resonancia-y-vida-media">2.3.2 Anchura de la
+resonancia y vida media</h3>
+<p>Tanto la altura como la anchura de la curva de resonancia de la
+figura 2.5 están determinadas por el término friccional,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>,
+en la ecuación de movimiento. La potencia media máxima es inversamente
+proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msubsup><mi>F</mi><mn>0</mn><mn>2</mn></msubsup><mrow><mn>2</mn><mi>m</mi><mi>γ</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.29)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{F_0^2}{2m\gamma}\,. \qquad \text{(2.29)}
+</annotation></semantics></math></p>
+<p>La anchura (para una altura fija) está determinada por el cociente
+entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>.
+De hecho, puede comprobar que los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+para los cuales la pérdida media de potencia es la mitad de su valor
+máximo son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msub><mo>=</mo><msqrt><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mfrac><msup><mi>γ</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></msqrt><mo>±</mo><mfrac><mi>γ</mi><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.30)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_{1/2} = \sqrt{\omega_0^2+\frac{\gamma^2}{4}} \pm \frac{\gamma}{2}\,. \qquad \text{(2.30)}
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+es la «anchura total a media altura» de la curva de potencia. En las
+figuras 2.6 y 2.7 mostramos la potencia media en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/4</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma=\omega_0</annotation></semantics></math>.
+La dependencia lineal de la anchura con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+se aprecia claramente. Las líneas punteadas muestran la posición de
+media altura.</p>
+<p><em>(Figuras 2.6 y 2.7: la misma curva de potencia media disipada
+frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+que en la figura 2.5, pero para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/4</annotation></semantics></math>
+(pico estrecho) y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma=\omega_0</annotation></semantics></math>
+(pico ancho), respectivamente, mostrando cómo la anchura de la
+resonancia crece linealmente con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>.)</em></p>
+<p>Esta relación es aún más interesante en vista de la relación entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+y la dependencia temporal de la oscilación libre. La vida media del
+estado en oscilación libre es del orden de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">1/\gamma</annotation></semantics></math>.
+En otras palabras, la anchura del pico de resonancia en la oscilación
+forzada es inversamente proporcional a la vida media del modo normal
+correspondiente de oscilación libre. Esta relación inversa es importante
+en muchos campos de la física. Un ejemplo extremo es la física de
+partículas, donde partículas de vida muy corta pueden describirse como
+resonancias. Las ondas cuánticas asociadas a estas partículas tienen
+frecuencias angulares proporcionales a sus energías,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>ℏ</mi><mi>ω</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.31)</mtext></mrow><annotation encoding="application/x-tex">
+E = \hbar\omega \qquad \text{(2.31)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℏ</mi><annotation encoding="application/x-tex">\hbar</annotation></semantics></math>
+es la constante de Planck dividida entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℏ</mi><mo>≈</mo><mn>6.626</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>34</mn></mrow></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">J</mtext><mspace width="0.167em"></mspace><mtext mathvariant="normal">s</mtext><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.32)</mtext></mrow><annotation encoding="application/x-tex">
+\hbar \approx 6.626\times10^{-34}\ \text{J}\,\text{s}\,. \qquad \text{(2.32)}
+</annotation></semantics></math></p>
+<p>Las vidas medias de estas partículas, algunas tan cortas como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>24</mn></mrow></msup><annotation encoding="application/x-tex">10^{-24}</annotation></semantics></math>
+segundos, son demasiado breves para medirse directamente. Sin embargo,
+la vida corta se manifiesta en la gran anchura de la distribución de
+energías de estos estados. Así es como en realidad se infieren las vidas
+medias.</p>
+<h3 id="retraso-de-fase">2.3.3 Retraso de fase</h3>
+<p>También podemos escribir (2.25) como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.33)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) = R\cos(\omega_d t-\theta) \qquad \text{(2.33)}
+</annotation></semantics></math></p>
+<p>para</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msqrt><mrow><msup><mi>𝒜</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ℬ</mi><mn>2</mn></msup></mrow></msqrt><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>θ</mi><mo>=</mo><mrow><mi mathvariant="normal">arg</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>𝒜</mi><mo>+</mo><mi>i</mi><mi>ℬ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.34)</mtext></mrow><annotation encoding="application/x-tex">
+R = \sqrt{\mathcal{A}^2+\mathcal{B}^2}\,,\qquad \theta = \arg(\mathcal{A}+i\mathcal{B})\,. \qquad \text{(2.34)}
+</annotation></semantics></math></p>
+<p>El ángulo de fase,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+mide el retraso de fase entre la fuerza externa y la respuesta del
+sistema. El retraso temporal real es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mi>/</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\theta/\omega_d</annotation></semantics></math>.
+El desplazamiento alcanza su máximo un tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mi>/</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\theta/\omega_d</annotation></semantics></math>
+después de que la fuerza alcance el suyo.</p>
+<p>Note que a medida que la frecuencia aumenta,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+aumenta y el movimiento queda cada vez más rezagado respecto a la fuerza
+externa. El ángulo de fase,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+está determinado por la importancia relativa de la fuerza restauradora y
+la inercia del oscilador. A frecuencias bajas (comparadas con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>),
+la inercia (una palabra imprecisa para el término
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ma</annotation></semantics></math>
+de la ecuación de movimiento) es casi irrelevante, porque las cosas se
+mueven muy lentamente, y el movimiento está casi en fase con la fuerza.
+Muy por encima de la resonancia, la inercia domina. La masa ya no puede
+seguir el ritmo de la fuerza restauradora, y el movimiento está casi
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>180</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">180°</annotation></semantics></math>
+desfasado respecto a la fuerza. Desarrollaremos un ejemplo detallado de
+esto en la siguiente sección.</p>
+<p>El retraso de fase pasa por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
+en la resonancia, como se muestra en la gráfica de la figura 2.8 para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/2</annotation></semantics></math>.
+Un retraso de fase de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
+es otro criterio diagnóstico frecuentemente usado para la
+resonancia.</p>
+<p><em>(Figura 2.8: retraso de fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+frente a la frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+en un oscilador forzado amortiguado;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+crece de forma monótona desde 0 hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>,
+pasando por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
+exactamente en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.)</em></p>
+<h2 id="un-ejemplo">2.4 Un ejemplo</h2>
+<h3 id="sintiéndolo-en-los-huesos">2.4.1 Sintiéndolo en los huesos</h3>
+<p><em>(Referencia al programa interactivo 2-1 del disco de programas
+del curso original.)</em></p>
+<p>Discutiremos más a fondo la física de las oscilaciones forzadas en el
+contexto del sistema simple mostrado en la figura 2.9. El bloque tiene
+masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+El bloque se mueve en un fluido viscoso que proporciona una fuerza de
+fricción. Imaginaremos que el fluido es algo así como un aceite de
+silicona espeso, de modo que la solución estacionaria se alcanza muy
+rápidamente. El bloque está unido a una cuerda que pasa por una polea y
+se conecta a un muelle, como se muestra. El muelle tiene constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Usted sostiene el otro extremo del muelle y lo mueve hacia adelante y
+hacia atrás con desplazamiento</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.35)</mtext></mrow><annotation encoding="application/x-tex">
+d_0\cos\omega_d t\,. \qquad \text{(2.35)}
+</annotation></semantics></math></p>
+<p><em>(Figura 2.9: bloque en un recipiente con fluido viscoso, unido
+mediante una cuerda que pasa por una polea a un muelle cuyo extremo
+libre se mueve como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">d_0\cos\omega_d t</annotation></semantics></math>.)</em></p>
+<p>En este montaje, no hace falta que usted esté dentro del fluido
+viscoso junto al bloque —lo que facilita mucho la respiración.</p>
+<p>La pregunta es: ¿cómo se mueve el bloque? Este sistema tiene
+exactamente la ecuación de movimiento del oscilador amortiguado y
+forzado. Para verlo, note que el cambio en la longitud del muelle
+respecto a su longitud de equilibrio es la diferencia</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.36)</mtext></mrow><annotation encoding="application/x-tex">
+x(t) - d_0\cos\omega_d t\,. \qquad \text{(2.36)}
+</annotation></semantics></math></p>
+<p>Así, la ecuación de movimiento se ve así:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mspace width="0.167em"></mspace><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>m</mi><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>K</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>d</mi><mn>0</mn></msub><mi mathvariant="normal">cos</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.37)</mtext></mrow><annotation encoding="application/x-tex">
+m\,\frac{d^2}{dt^2}x(t) + m\gamma\,\frac{d}{dt}x(t) = -K\left[x(t)-d_0\cos\omega_d t\right]\,. \qquad \text{(2.37)}
+</annotation></semantics></math></p>
+<p>Dividiendo por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+y reordenando términos, puede ver que esto es idéntico a (2.14) con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi><mo>=</mo><mi>K</mi><msub><mi>d</mi><mn>0</mn></msub><mi>/</mi><mi>m</mi><mo>=</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.38)</mtext></mrow><annotation encoding="application/x-tex">
+F_0/m = K d_0/m = \omega_0^2 d_0\,. \qquad \text{(2.38)}
+</annotation></semantics></math></p>
+<p>Mover el otro extremo del muelle sinusoidalmente produce, en efecto,
+una fuerza sinusoidal variable sobre la masa.</p>
+<p>Ahora repasaremos de nuevo la solución, resaltando la física de este
+sistema a medida que avanzamos. ¡Intente imaginarse realmente haciendo
+el experimento! Le ayudará tratar de sentir las fuerzas involucradas en
+sus propios huesos.</p>
+<p>El primer paso es pasar a la fuerza compleja, como en (2.16). El
+resultado se ve así:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><munder><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">inercial</mtext></munder><mo>+</mo><munder><munder><mrow><mi>γ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">friccional</mtext></munder><mo>+</mo><munder><munder><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">muelle</mtext></munder><mo>=</mo><munder><munder><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">impulsor</mtext></munder><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.39)</mtext></mrow><annotation encoding="application/x-tex">
+\underbrace{\frac{d^2}{dt^2}z(t)}_{\text{inercial}} + \underbrace{\gamma\,\frac{d}{dt}z(t)}_{\text{friccional}} + \underbrace{\omega_0^2\,z(t)}_{\text{muelle}} = \underbrace{\omega_0^2\,d_0\,e^{-i\omega_d t}}_{\text{impulsor}}\,. \qquad \text{(2.39)}
+</annotation></semantics></math></p>
+<p>Hemos etiquetado los términos de (2.39) para recordarle sus distintos
+orígenes físicos.</p>
+<p>El siguiente paso es buscar soluciones estacionarias irreducibles de
+la forma de (2.19):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.40)</mtext></mrow><annotation encoding="application/x-tex">
+z(t) = A\,e^{-i\omega_d t}\,. \qquad \text{(2.40)}
+</annotation></semantics></math></p>
+<p>Sustituyendo (2.40) en (2.39), obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><mi>γ</mi><msub><mi>ω</mi><mi>d</mi></msub><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo stretchy="true" form="postfix">]</mo></mrow><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mo>=</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.41)</mtext></mrow><annotation encoding="application/x-tex">
+\left[-\omega_d^2 - i\gamma\omega_d + \omega_0^2\right]A\,e^{-i\omega_d t} = \omega_0^2\,d_0\,e^{-i\omega_d t}\,. \qquad \text{(2.41)}
+</annotation></semantics></math></p>
+<p>Lo que discutiremos en detalle es la fase de la cantidad entre
+corchetes del lado izquierdo de (2.41). Cada uno de los tres términos
+—inercial, friccional y de muelle— tiene una fase distinta. Cada término
+también depende de la frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+de una forma diferente. La fase de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+depende de cuál término domina.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+muy pequeño, en particular para</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>≪</mo><msub><mi>ω</mi><mn>0</mn></msub><mo>,</mo><mspace width="0.222em"></mspace><mi>γ</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.42)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_d \ll \omega_0,\ \gamma\,, \qquad \text{(2.42)}
+</annotation></semantics></math></p>
+<p>el término de muelle domina la suma. Entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+está en fase con la fuerza impulsora. Esto tiene una interpretación
+física simple. Si mueve el extremo del muelle suficientemente despacio,
+tanto la fricción como la inercia son irrelevantes. Cuando el bloque se
+mueve muy lentamente, se requiere una fuerza casi nula. El bloque
+simplemente sigue el desplazamiento del extremo del muelle,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≈</mo><msub><mi>d</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A\approx d_0</annotation></semantics></math>.
+Debería poder sentir esta dependencia en sus huesos: si mueve la mano
+muy despacio, la masa no tiene ninguna dificultad para seguirle el
+ritmo.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+muy grande, es decir, para</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>≫</mo><msub><mi>ω</mi><mn>0</mn></msub><mo>,</mo><mspace width="0.222em"></mspace><mi>γ</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.43)</mtext></mrow><annotation encoding="application/x-tex">
+\omega_d \gg \omega_0,\ \gamma\,, \qquad \text{(2.43)}
+</annotation></semantics></math></p>
+<p>el término inercial domina la suma. El desplazamiento queda entonces
+desfasado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>180</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">180°</annotation></semantics></math>
+respecto a la fuerza impulsora. También se hace cada vez más pequeño a
+medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+aumenta, comportándose como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≈</mo><mi>−</mi><mfrac><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mfrac><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>0</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.44)</mtext></mrow><annotation encoding="application/x-tex">
+A \approx -\frac{\omega_0^2}{\omega_d^2}\,d_0\,. \qquad \text{(2.44)}
+</annotation></semantics></math></p>
+<p>De nuevo, esto tiene sentido físicamente. Cuando la frecuencia
+angular de la fuerza impulsora se hace muy grande, la masa simplemente
+no tiene tiempo de moverse.</p>
+<p>En un régimen intermedio, al menos dos de los tres términos del lado
+izquierdo de (2.41) contribuyen significativamente a la suma. En
+resonancia, el término inercial cancela exactamente al término de
+muelle, dejando solo el término friccional, de modo que el
+desplazamiento queda desfasado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">90°</annotation></semantics></math>
+respecto a la fuerza impulsora. El tamaño de la fuerza de
+amortiguamiento determina cuán aguda es la resonancia. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+es mucho menor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>,
+entonces la cancelación entre los términos inercial y de muelle en
+(2.39) debe ser muy precisa para que el término friccional domine. En
+este caso, la resonancia es muy aguda. Por otro lado, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>≫</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma \gg \omega_0</annotation></semantics></math>,
+la resonancia es muy amplia, y el realce en la resonancia no es muy
+grande, porque el término friccional domina en un amplio rango de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+alrededor del punto de resonancia,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.</p>
+<p>¡Inténtelo! No hay sustituto para hacer realmente este experimento.
+Le dará una verdadera sensación de en qué consiste la resonancia.
+Empiece moviendo la mano a una frecuencia muy baja, de modo que el
+bloque se mantenga en fase con el movimiento de su mano. Luego aumente
+muy gradualmente la frecuencia. Si cambia la frecuencia lo bastante
+despacio, las contribuciones de la oscilación libre transitoria serán
+pequeñas, y usted permanecerá cerca de la solución estacionaria. A
+medida que la frecuencia aumenta, verá primero que, debido a la
+fricción, el bloque empieza a retrasarse respecto a su mano. Al
+atravesar la resonancia, este retraso aumentará y pasará por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">90°</annotation></semantics></math>.
+Finalmente, a frecuencia muy alta, el bloque estará desfasado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>180</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">180°</annotation></semantics></math>
+respecto a su mano y su desplazamiento (la amplitud de su movimiento)
+será muy pequeño.</p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<p>Ahora debería ser capaz de:</p>
+<ol type="1">
+<li>Resolver el movimiento libre del oscilador armónico amortiguado
+buscando las soluciones exponenciales complejas irreducibles;</li>
+<li>Encontrar la solución estacionaria del oscilador armónico
+amortiguado con un término impulsor armónico, estudiando el problema
+correspondiente con una fuerza exponencial compleja y encontrando la
+solución exponencial compleja irreducible;</li>
+<li>Calcular la potencia perdida por fuerzas de fricción y el retraso de
+fase en el oscilador armónico forzado;</li>
+<li>¡Sentirlo en los huesos!</li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>2.1.</strong> Demuestre que un oscilador sobreamortiguado
+puede cruzar su posición de equilibrio como máximo una vez.</p>
+<p><strong>2.2.</strong> Demuestre, usando solamente la linealidad, sin
+usar la solución explícita, que la solución estacionaria de (2.16) debe
+ser proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mn>0</mn></msub><annotation encoding="application/x-tex">F_0</annotation></semantics></math>.</p>
+<p><strong>2.3.</strong> Para el sistema con ecuación de movimiento
+(2.14), suponga que la fuerza impulsora tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">
+f_0\cos\omega_0 t\cos\delta t
+</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>≪</mo><msub><mi>ω</mi><mn>0</mn></msub><mspace width="1.0em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="1.0em"></mspace><mi>γ</mi><mo>=</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\delta \ll \omega_0 \quad\text{y}\quad \gamma=0\,.
+</annotation></semantics></math></p>
+<p>Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta\to0</annotation></semantics></math>,
+esto entra en resonancia. ¿Cuál es el desplazamiento para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+no nulo, a orden principal en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\delta/\omega_0</annotation></semantics></math>?
+Escriba el resultado en la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi><mo>+</mo><mi>β</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">
+\alpha(t)\cos\omega_0 t + \beta(t)\sin\omega_0 t
+</annotation></semantics></math></p>
+<p>y encuentre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha(t)</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\beta(t)</annotation></semantics></math>.
+Discuta la física de este resultado. Pista: primero demuestre que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mi>t</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mtext mathvariant="normal">Re</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>0</mn></msub><mo>+</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>0</mn></msub><mo>−</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\cos\omega_0 t\cos\delta t = \frac{1}{2}\text{Re}\left(e^{-i(\omega_0+\delta)t}+e^{-i(\omega_0-\delta)t}\right)\,.
+</annotation></semantics></math></p>
+<p><strong>2.4.</strong> Para el sistema mostrado en la figura 2.9,
+suponga que el desplazamiento del extremo del alambre se anula para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&lt;0</annotation></semantics></math>,
+y tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>t</mi><mo>≥</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d_0\sin\omega_d t \quad\text{para } t\ge0\,.
+</annotation></semantics></math></p>
+<ol type="a">
+<li><p>Encuentre el desplazamiento del bloque para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&gt;0</annotation></semantics></math>.
+Escriba la solución como la parte real de una solución compleja, usando
+una fuerza compleja y soluciones exponenciales. No intente simplificar
+los números complejos. Pista: use (2.23), (2.24) y (2.6). Si se
+confunde, pase al apartado b.</p></li>
+<li><p>Encuentre la solución cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\gamma\to0</annotation></semantics></math>
+y simplifique el resultado. Incluso si se confundió con los números
+complejos en el apartado a, debería poder encontrar la solución en este
+límite. ¡Cuando no hay amortiguamiento, las soluciones «transitorias» no
+se extinguen con el tiempo!</p></li>
+</ol>
+<p><strong>2.5.</strong> Para el circuito LC mostrado en la figura 1.10,
+suponga que el inductor tiene resistencia no nula,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+Escriba la ecuación de movimiento de este sistema y encuentre la
+relación entre el término friccional,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">m\gamma</annotation></semantics></math>,
+del oscilador armónico amortiguado y la resistencia,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+que completa la correspondencia de (1.105). Suponga que el condensador
+tiene capacitancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>≈</mo><mn>0.00667</mn><mspace width="0.222em"></mspace><mi>μ</mi><mtext mathvariant="normal">F</mtext></mrow><annotation encoding="application/x-tex">C\approx0.00667\ \mu\text{F}</annotation></semantics></math>,
+el inductor tiene inductancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>≈</mo><mn>150</mn><mspace width="0.222em"></mspace><mi>μ</mi><mtext mathvariant="normal">H</mtext></mrow><annotation encoding="application/x-tex">L\approx150\ \mu\text{H}</annotation></semantics></math>
+y la resistencia es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≈</mo><mn>15</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">R\approx15\ \Omega</annotation></semantics></math>.
+Resuelva la ecuación de movimiento y evalúe las constantes que aparecen
+en su solución en unidades de segundos.</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:</em> <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

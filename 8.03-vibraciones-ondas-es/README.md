@@ -15,6 +15,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 | Archivo | Tema |
 |---|---|
 | `MIT8.03_TextCh1_ES.epub` | Oscilación armónica |
+| `MIT8.03_TextCh2_ES.epub` | Oscilación forzada y resonancia |
 
 ### Listas de problemas (Problem Sets 1-10)
 
@@ -33,7 +34,7 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 
 ### Próximamente
 
-Quedan **12 capítulos del libro de texto** (`Text_Ch2`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+Quedan **11 capítulos del libro de texto** (`Text_Ch3`-`Text_Ch13`) por traducir. También está pendiente incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
