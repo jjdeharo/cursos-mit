@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Capítulo 13: Interferencia y difracción — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tema</span>
+    <div class="a11y-btns" data-group="theme">
+      <button type="button" data-value="light">Claro</button>
+      <button type="button" data-value="dark">Oscuro</button>
+    </div>
+  </div>
+</div>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Capítulo 13: Interferencia y difracción — 8.03SC
+Física III: Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-13-interferencia-y-difracción"
+id="toc-capítulo-13-interferencia-y-difracción">Capítulo 13:
+Interferencia y difracción</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#resumen-previo" id="toc-resumen-previo">Resumen
+previo</a></li>
+<li><a href="#interferencia" id="toc-interferencia">13.1
+Interferencia</a>
+<ul>
+<li><a href="#la-doble-rendija" id="toc-la-doble-rendija">13.1.1 La
+doble rendija</a></li>
+<li><a href="#óptica-de-fourier" id="toc-óptica-de-fourier">13.1.2
+Óptica de Fourier</a></li>
+</ul></li>
+<li><a href="#haces" id="toc-haces">13.2 Haces</a>
+<ul>
+<li><a href="#formando-un-haz" id="toc-formando-un-haz">13.2.1 Formando
+un haz</a></li>
+<li><a href="#advertencias" id="toc-advertencias">13.2.2
+Advertencias</a></li>
+<li><a href="#el-contorno-en-el-infinito"
+id="toc-el-contorno-en-el-infinito">13.2.3 El contorno en el
+infinito</a></li>
+<li><a href="#el-contorno-en-z0" id="toc-el-contorno-en-z0">13.2.4 El
+contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math></a></li>
+</ul></li>
+<li><a href="#z-pequeño-y-z-grande" id="toc-z-pequeño-y-z-grande">13.3
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande</a>
+<ul>
+<li><a href="#z-pequeño" id="toc-z-pequeño">13.3.1
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño</a></li>
+<li><a href="#z-grande" id="toc-z-grande">13.3.2
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande</a></li>
+<li><a href="#tamaño-de-la-mancha" id="toc-tamaño-de-la-mancha">13.3.4
+Tamaño de la mancha</a></li>
+<li><a href="#ángulos" id="toc-ángulos">13.3.5 Ángulos</a></li>
+</ul></li>
+<li><a href="#ejemplos" id="toc-ejemplos">13.4 Ejemplos</a>
+<ul>
+<li><a href="#la-rendija-sencilla" id="toc-la-rendija-sencilla">13.4.1
+La rendija sencilla</a></li>
+<li><a href="#difracción-de-campo-cercano"
+id="toc-difracción-de-campo-cercano">13.4.2 Difracción de campo
+cercano</a></li>
+<li><a href="#el-rectángulo" id="toc-el-rectángulo">13.4.3 El
+rectángulo</a></li>
+<li><a href="#funciones-delta" id="toc-funciones-delta">13.4.4 Funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math></a></li>
+<li><a href="#algunas-propiedades-de-las-funciones-delta"
+id="toc-algunas-propiedades-de-las-funciones-delta">13.4.5 Algunas
+propiedades de las funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math></a></li>
+<li><a href="#una-dimensión-a-partir-de-dos"
+id="toc-una-dimensión-a-partir-de-dos">13.4.6 Una dimensión a partir de
+dos</a></li>
+<li><a href="#muchas-rendijas-estrechas"
+id="toc-muchas-rendijas-estrechas">13.4.7 Muchas rendijas
+estrechas</a></li>
+</ul></li>
+<li><a href="#convolución" id="toc-convolución">13.5 Convolución</a>
+<ul>
+<li><a href="#patrones-repetidos" id="toc-patrones-repetidos">13.5.1
+Patrones repetidos</a></li>
+</ul></li>
+<li><a href="#fxy-periódica" id="toc-fxy-periódica">13.6
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+periódica</a>
+<ul>
+<li><a href="#girando-la-red" id="toc-girando-la-red">13.6.1 Girando la
+red</a></li>
+<li><a href="#poder-de-resolución" id="toc-poder-de-resolución">13.6.2
+Poder de resolución</a></li>
+<li><a href="#redes-blazed-con-perfil-optimizado"
+id="toc-redes-blazed-con-perfil-optimizado">13.6.3 Redes “blazed” (con
+perfil optimizado)</a></li>
+</ul></li>
+<li><a href="#difracción-de-rayos-x-sección-opcional"
+id="toc-difracción-de-rayos-x-sección-opcional">13.7* Difracción de
+rayos X (sección opcional)</a></li>
+<li><a href="#holografía" id="toc-holografía">13.8 Holografía</a></li>
+<li><a href="#franjas-y-placas-zonales"
+id="toc-franjas-y-placas-zonales">13.9 Franjas y placas zonales</a>
+<ul>
+<li><a href="#la-imagen-holográfica-de-un-punto"
+id="toc-la-imagen-holográfica-de-un-punto">13.9.1 La imagen holográfica
+de un punto</a></li>
+<li><a href="#placas-zonales" id="toc-placas-zonales">13.9.2 Placas
+zonales</a></li>
+</ul></li>
+<li><a href="#repaso-del-capítulo" id="toc-repaso-del-capítulo">Repaso
+del capítulo</a></li>
+<li><a href="#problemas" id="toc-problemas">Problemas</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-13-interferencia-y-difracción">Capítulo 13:
+Interferencia y difracción</h1>
+<p>Un «haz» de luz nos resulta muy familiar. Un puntero láser, por
+ejemplo, produce un patrón de luz casi idéntico a una sección
+transversal de una onda plana. Pero no del todo: el haz del láser se
+ensancha a medida que viaja. Podría pensarse que esto se debe
+simplemente a imperfecciones del láser, pero, de hecho, por muy perfecto
+que sea el láser, no se puede evitar cierto ensanchamiento. El problema
+se llama <strong>difracción</strong>.</p>
+<p>La interferencia es una parte crucial de la física de la difracción.
+Ya la hemos visto en situaciones unidimensionales, como los
+interferómetros y la reflexión en láminas delgadas. Aquí empezamos a ver
+qué cosas asombrosas produce en más de una dimensión.</p>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="VkbtIDSHfSc" data-title="Clase 20: Interferencia, pompa de jabón">
+<span class="video-play-icon">▶</span> <strong>Clase 20: Interferencia,
+pompa de jabón</strong>
+</button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=VkbtIDSHfSc" target="_blank" rel="noopener">YouTube ↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="mqhO9GT8hD4" data-title="Clase 21: Radar en fase, interferencia de un solo electrón">
+<span class="video-play-icon">▶</span> <strong>Clase 21: Radar en fase,
+interferencia de un solo electrón</strong>
+</button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=mqhO9GT8hD4" target="_blank" rel="noopener">YouTube ↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="FY6iXM9X5Fo" data-title="Clase 22: Difracción, resolución">
+<span class="video-play-icon">▶</span> <strong>Clase 22: Difracción,
+resolución</strong>
+</button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=FY6iXM9X5Fo" target="_blank" rel="noopener">YouTube ↗</a>
+</li>
+</ul>
+<h2 id="resumen-previo">Resumen previo</h2>
+<p>En este capítulo mostramos cómo los fenómenos de interferencia y
+difracción surgen de la física del problema de oscilación forzada y de
+las matemáticas de la transformada de Fourier.</p>
+<ol type="i">
+<li><p>Empezamos discutiendo la interferencia de una doble rendija, el
+ejemplo clásico de interferencia. Damos una discusión heurística de la
+física y la generalizamos para obtener el resultado fundamental de la
+óptica de Fourier.</p></li>
+<li><p>Continuamos el análisis cuantitativo de interferencia y
+difracción planteando de nuevo el problema general como un problema de
+oscilación forzada. Mostramos la conexión con la formación de un haz.
+Encontramos la condición de contorno relevante en el infinito y
+expresamos la solución como una integral.</p></li>
+<li><p>Mostramos cómo la integral se simplifica en dos regiones
+extremas: muy cerca de la fuente del haz, donde realmente parece un haz,
+y muy lejos, donde domina la difracción y la intensidad de la onda está
+relacionada con una transformada de Fourier del patrón de onda en la
+fuente —el mismo resultado que encontramos en la discusión heurística de
+la interferencia.</p></li>
+<li><p>Aplicamos estas técnicas a ejemplos con haces formados por una o
+varias rendijas y regiones rectangulares.</p></li>
+<li><p>Demostramos un resultado útil, el teorema de convolución, para
+combinar transformadas de Fourier.</p></li>
+<li><p>Mostramos cómo los patrones periódicos producen patrones de
+difracción nítidos, y discutimos en detalle el ejemplo de la red de
+difracción.</p></li>
+<li><p>Aplicamos las mismas ideas al ejemplo tridimensional de la
+difracción de rayos X en cristales.</p></li>
+<li><p>Describimos un holograma como un patrón de difracción bastante
+complicado.</p></li>
+<li><p>Discutimos las franjas de interferencia y las placas
+zonales.</p></li>
+</ol>
+<h2 id="interferencia">13.1 Interferencia</h2>
+<h3 id="la-doble-rendija">13.1.1 La doble rendija</h3>
+<p>La disposición clásica del experimento de la doble rendija consiste
+en una pantalla opaca con dos rendijas estrechas en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+(vistas en sección transversal en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>;
+las rendijas salen del papel en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>),
+separadas una pequeña distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+La pantalla opaca se ilumina con una fuente de luz «puntual» —por
+ejemplo, una bombilla con un filtro de color que selecciona un rango
+estrecho de frecuencias, lejos en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">-z</annotation></semantics></math>,
+o un haz de láser ensanchado con una lente—. Lo importante es que la
+iluminación sobre la pantalla opaca tenga una frecuencia en un rango
+estrecho y que la fase de la luz que llega a las dos rendijas esté
+correlacionada, lo cual se cumple si la iluminación para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&lt;0</annotation></semantics></math>
+es casi una onda plana.</p>
+<p><em>(Figura 13.1: el experimento de la doble rendija, con la fuente
+luminosa, la pantalla opaca con las rendijas separadas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+y la pantalla de observación a distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>≫</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">Z\gg s</annotation></semantics></math>.)</em></p>
+<p>En la segunda pantalla, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">z=Z</annotation></semantics></math>
+(que podría ser una placa fotográfica, una pantalla translúcida o
+incluso la retina del observador), aparece una serie de líneas paralelas
+de brillo en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+(paralela a las rendijas). Si se tapa una de las rendijas, las líneas
+desaparecen: lo que ocurre es <strong>interferencia</strong> entre los
+dos posibles caminos rectilíneos por los que la luz puede llegar a la
+pantalla.</p>
+<p>El campo eléctrico en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">z=Z</annotation></semantics></math>
+es la suma de los campos que provienen de las dos rendijas. En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+en la disposición simétrica, los dos caminos posibles tienen la misma
+longitud, así que las dos componentes del campo tienen la misma fase:
+interfieren constructivamente y hay una línea brillante en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.
+Al cambiar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+la longitud relativa de los dos caminos cambia, dando lugar a posiciones
+alternas de interferencia constructiva y destructiva.</p>
+<p><em>(Figura 13.2: geometría de caminos ópticos desde las dos rendijas
+hasta un punto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x=X</annotation></semantics></math>
+en la pantalla lejana.)</em></p>
+<p>Considerando un punto de la pantalla en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x=X</annotation></semantics></math>,
+la diferencia total de camino óptico entre las dos rendijas es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>ℓ</mi><mo>=</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>+</mo><mi>s</mi><mi>/</mi><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt><mo>−</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>−</mo><mi>s</mi><mi>/</mi><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.2)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta\ell = \sqrt{(X+s/2)^2+Z^2}-\sqrt{(X-s/2)^2+Z^2}\,, \qquad \text{(13.2)}
+</annotation></semantics></math></p>
+<p>que para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>≫</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">Z\gg s</annotation></semantics></math>
+se expande en serie de Taylor como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>ℓ</mi><mo>≈</mo><mfrac><mrow><mi>s</mi><mi>X</mi></mrow><msqrt><mrow><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.3)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta\ell \approx \frac{sX}{\sqrt{X^2+Z^2}}\,. \qquad \text{(13.3)}
+</annotation></semantics></math></p>
+<p>Así, si el número de onda angular de la luz es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+la diferencia de fase entre los dos caminos es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>s</mi><mi>X</mi><mi>/</mi><msqrt><mrow><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">ksX/\sqrt{X^2+Z^2}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.4)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.4)}</annotation></semantics></math>,
+y hay un máximo de intensidad cada vez que esta fase es un múltiplo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>:
+en términos de la longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\lambda=2\pi/k</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>X</mi><msqrt><mrow><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt></mfrac><mo>⋅</mo><mfrac><mi>s</mi><mi>λ</mi></mfrac><mo>=</mo><mi>n</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.6)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{X}{\sqrt{X^2+Z^2}}\cdot\frac{s}{\lambda} = n\,. \qquad \text{(13.6)}
+</annotation></semantics></math></p>
+<h3 id="óptica-de-fourier">13.1.2 Óptica de Fourier</h3>
+<p>Supongamos ahora que, en lugar de un patrón sencillo de dos rendijas,
+hay un patrón más complicado en la pantalla opaca, descrito por una
+función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.7)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.7)}</annotation></semantics></math>
+(ignoramos la polarización). Pensemos en la onda producida para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>
+como la suma de los efectos de diminutos agujeros en todos los valores
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math>
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+es no nula. Para cada trocito de la función, calculamos el camino óptico
+hasta un punto de la pantalla en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">z=Z</annotation></semantics></math>,
+y sumamos todas las contribuciones. Suponiendo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+solo es no nula cerca del origen, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>≪</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">x,y\ll Z</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.8)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.8)}</annotation></semantics></math>,
+la longitud del camino desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y,0)</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>Z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(X,Y,Z)</annotation></semantics></math>
+se expande como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>ℓ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>⋯</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><mo>=</mo><msqrt><mrow><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><msup><mi>Y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Δ</mi><mi>ℓ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mi>x</mi><mi>X</mi><mo>+</mo><mi>y</mi><mi>Y</mi></mrow><mi>R</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.10)-(13.12)</mtext></mrow><annotation encoding="application/x-tex">
+R+\Delta\ell(x,y)+\cdots\,,\qquad R=\sqrt{X^2+Y^2+Z^2}\,,\qquad \Delta\ell(x,y) = -\frac{xX+yY}{R}\,. \qquad \text{(13.10)-(13.12)}
+</annotation></semantics></math></p>
+<p>Sumando (integrando) sobre todos los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math>,
+con el factor de fase y la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>,
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>y</mi><mspace width="0.167em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>R</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>y</mi><mspace width="0.167em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mi>X</mi><mo>+</mo><mi>y</mi><mi>Y</mi><mo stretchy="false" form="postfix">)</mo><mi>k</mi><mi>/</mi><mi>R</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.14)</mtext></mrow><annotation encoding="application/x-tex">
+\int dx\,dy\,f(x,y)\,e^{ik(R+\Delta\ell)} = e^{ikR}\int dx\,dy\,f(x,y)\,e^{-i(xX+yY)k/R}\,, \qquad \text{(13.14)}
+</annotation></semantics></math></p>
+<p>que es una <strong>transformada de Fourier bidimensional</strong> de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>.
+La ecuación (13.14) es el resultado fundamental de la óptica de Fourier
+y contiene gran parte de la física de la difracción. En la siguiente
+sección la deduciremos de otra manera, tratando la onda para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>
+como resultado de una oscilación forzada producida por la onda en el
+plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+—una descripción física alternativa de la difracción—, aunque conviene
+mantener presente la imagen sencilla de sumar todos los caminos posibles
+a medida que profundizamos en estos fenómenos.</p>
+<h2 id="haces">13.2 Haces</h2>
+<h3 id="formando-un-haz">13.2.1 Formando un haz</h3>
+<p>Consideremos un sistema con una barrera opaca en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>,
+iluminada por una onda plana en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">+z</annotation></semantics></math>:
+la barrera absorbe la onda por completo. Ahora hagamos un agujero en la
+barrera: podría pensarse que esto produce un haz de luz que viaja en la
+dirección de la onda plana inicial, pero no es tan sencillo. Este es
+exactamente el mismo problema (13.7)-(13.14), con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f(x,y)e^{-i\omega t}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x,y)=1</annotation></semantics></math>
+dentro de la abertura y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+fuera
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.15), (13.16)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.15), (13.16)}</annotation></semantics></math>.
+Es útil pensar en el problema más general, porque (13.16) es
+discontinua, lo que da lugar a fenómenos de difracción más complicados
+que con una función suave.</p>
+<p>Podemos pensar en este problema como un problema de oscilación
+forzada. Es mucho más fácil analizar la física si ignoramos la
+polarización y consideramos ondas escalares (como las oscilaciones
+transversales de una membrana flexible o las ondas de presión en un
+gas); las propiedades básicas del fenómeno están determinadas por la
+invariancia traslacional, con independencia de qué es lo que oscila.</p>
+<h3 id="advertencias">13.2.2 Advertencias</h3>
+<p>Existen otros enfoques del problema de la difracción además del que
+discutimos aquí: nuestro planteamiento difiere ligeramente del enfoque
+estándar de difracción de Huygens-Fresnel-Kirchhoff, porque estudiamos
+un problema distinto —en Huygens-Fresnel-Kirchhoff se considera la
+difracción de una onda plana por un objeto finito, mientras que nuestra
+pantalla opaca es infinita en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>—.
+En el caso de Huygens-Fresnel, la condición de contorno adecuada es que
+no hay ondas esféricas entrantes desde el infinito hacia el objeto que
+difracta; solo se producen ondas esféricas salientes. No discutiremos
+ese planteamiento alternativo en detalle, porque nos adentra más de lo
+necesario en las funciones de Bessel. La ventaja de nuestra formulación
+es que se puede construir enteramente con las soluciones de onda plana
+que ya conocemos. Para la difracción en la región hacia adelante, a gran
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y no muy lejos del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+la difracción es la misma en ambos casos.</p>
+<h3 id="el-contorno-en-el-infinito">13.2.3 El contorno en el
+infinito</h3>
+<p>Para determinar la forma de las ondas en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>,
+necesitamos condiciones de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">z=\infty</annotation></semantics></math>.
+En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">z=\infty</annotation></semantics></math>,
+debemos imponer que no haya ondas viajando en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">-z</annotation></semantics></math>
+(de vuelta hacia la barrera) y que las soluciones se comporten bien en
+el infinito. Los modos normales tienen la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>⋅</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\vec k\cdot\vec r-i\omega t}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.17)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.17)}</annotation></semantics></math>
+con la relación de dispersión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><msup><mi>v</mi><mn>2</mn></msup><msup><mover><mi>k</mi><mo accent="true">→</mo></mover><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\omega^2=v^2\vec k^2</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.18)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.18)}</annotation></semantics></math>,
+de modo que la solución general se escribe</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>x</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>⋅</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>&gt;</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>k</mi><mi>z</mi></msub><mo>=</mo><msqrt><mrow><msup><mi>ω</mi><mn>2</mn></msup><mi>/</mi><msup><mi>v</mi><mn>2</mn></msup><mo>−</mo><msubsup><mi>k</mi><mi>x</mi><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>k</mi><mi>y</mi><mn>2</mn></msubsup></mrow></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.19), (13.20)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(\vec r,t) = \int dk_x\,dk_y\,C(k_x,k_y)\,e^{i\vec k\cdot\vec r-i\omega t}\quad(z&gt;0)\,,\qquad k_z = \sqrt{\omega^2/v^2-k_x^2-k_y^2}\,. \qquad \text{(13.19), (13.20)}
+</annotation></semantics></math></p>
+<p>(13.20) no determina el signo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>z</mi></msub><annotation encoding="application/x-tex">k_z</annotation></semantics></math>,
+pero la condición de contorno en el infinito sí: si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>z</mi></msub><annotation encoding="application/x-tex">k_z</annotation></semantics></math>
+es real, debe ser positivo (onda hacia la derecha); si es complejo, su
+parte imaginaria debe ser positiva (para que la onda no diverja cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">z\to\infty</annotation></semantics></math>):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">si Im</mtext><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>z</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> entonces Re</mtext></mrow><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>z</mi></msub><mo>&gt;</mo><mn>0</mn><mo>;</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si no, Im</mtext></mrow><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>z</mi></msub><mo>&gt;</mo><mn>0</mn><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.21)</mtext></mrow><annotation encoding="application/x-tex">
+\text{si Im}\,k_z=0,\text{ entonces Re}\,k_z&gt;0;\text{ si no, Im}\,k_z&gt;0\,. \qquad \text{(13.21)}
+</annotation></semantics></math></p>
+<p>Esta es la misma condición de contorno que discutimos al estudiar el
+efecto túnel de ondas evanescentes en el capítulo anterior.</p>
+<h3 id="el-contorno-en-z0">13.2.4 El contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math></h3>
+<p>Para determinar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k_x,k_y)</annotation></semantics></math>,
+imponemos la condición de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>:
+sustituyendo (13.19) e igualando a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f(x,y)e^{-i\omega t}</annotation></semantics></math>,
+obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>x</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>x</mi><mo>+</mo><msub><mi>k</mi><mi>y</mi></msub><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.23)</mtext></mrow><annotation encoding="application/x-tex">
+f(x,y) = \int dk_x\,dk_y\,C(k_x,k_y)\,e^{i(k_xx+k_yy)}\,, \qquad \text{(13.23)}
+</annotation></semantics></math></p>
+<p>que es justamente una transformada de Fourier bidimensional,
+invertible como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup></mrow></mfrac><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>y</mi><mspace width="0.167em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>x</mi><mo>+</mo><msub><mi>k</mi><mi>y</mi></msub><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.24)</mtext></mrow><annotation encoding="application/x-tex">
+C(k_x,k_y) = \frac{1}{4\pi^2}\int dx\,dy\,f(x,y)\,e^{-i(k_xx+k_yy)}\,. \qquad \text{(13.24)}
+</annotation></semantics></math></p>
+<p>Sustituyendo (13.24) en (13.19) junto con (13.20)-(13.21) da la onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(\vec r,t)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>,
+resultado válido para cualquier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+razonable.</p>
+<h2 id="z-pequeño-y-z-grande">13.3
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande</h2>
+<p>La integral (13.19) es demasiado complicada para resolverse
+analíticamente en general, pero se simplifica de manera distinta para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño y para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande.</p>
+<h3 id="z-pequeño">13.3.1
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño</h3>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+suficientemente pequeño, esperamos —por razones físicas— que
+efectivamente hayamos formado un haz que proyecta una imagen de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>.
+Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k_x,k_y)</annotation></semantics></math>
+se anula para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≡</mo><msqrt><mrow><msubsup><mi>k</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>k</mi><mi>y</mi><mn>2</mn></msubsup></mrow></msqrt><mo>≫</mo><mn>1</mn><mi>/</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">k\equiv\sqrt{k_x^2+k_y^2}\gg1/L</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.25)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.25)}</annotation></semantics></math>
+(donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+es el tamaño del detalle más pequeño relevante de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>),
+expandiendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>z</mi></msub><mi>z</mi></mrow><annotation encoding="application/x-tex">k_zz</annotation></semantics></math>
+en serie de Taylor,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>z</mi></msub><mi>z</mi><mo>≈</mo><mfrac><mrow><mi>z</mi><mi>ω</mi></mrow><mi>v</mi></mfrac><mo>−</mo><mfrac><mrow><mi>z</mi><mi>v</mi><mo stretchy="false" form="prefix">(</mo><msubsup><mi>k</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>k</mi><mi>y</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>2</mn><mi>ω</mi></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.26)</mtext></mrow><annotation encoding="application/x-tex">
+k_zz \approx \frac{z\omega}{v}-\frac{zv(k_x^2+k_y^2)}{2\omega}\,, \qquad \text{(13.26)}
+</annotation></semantics></math></p>
+<p>y si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≪</mo><mi>ω</mi><msup><mi>L</mi><mn>2</mn></msup><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">z\ll\omega L^2/v</annotation></semantics></math>,
+el segundo término es despreciable, de modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>−</mo><mi>v</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>v</mi></mrow></msup><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.28)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(\vec r,t) \approx f(x,y)\,e^{i\omega(z-vt)/v}\,, \qquad \text{(13.28)}
+</annotation></semantics></math></p>
+<p>exactamente lo esperado: un haz con la forma de la función original,
+propagándose en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+con velocidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+Este resultado se rompe cuando</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≈</mo><mfrac><mrow><mi>ω</mi><msup><mi>L</mi><mn>2</mn></msup></mrow><mi>v</mi></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><msup><mi>L</mi><mn>2</mn></msup></mrow><mi>λ</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.30)</mtext></mrow><annotation encoding="application/x-tex">
+z \approx \frac{\omega L^2}{v} = \frac{2\pi L^2}{\lambda}\,, \qquad \text{(13.30)}
+</annotation></semantics></math></p>
+<p>que marca la transición hacia efectos de difracción importantes. (Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=0</annotation></semantics></math>,
+como en el caso de una rendija única de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>
+con bordes afilados, la difracción empieza de inmediato, aunque el haz
+mantiene su forma aproximada hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≈</mo><msup><mi>a</mi><mn>2</mn></msup><mi>/</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">z\approx a^2/\lambda</annotation></semantics></math>.)</p>
+<h3 id="z-grande">13.3.2
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande</h3>
+<p>Muy lejos, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>R</mi><mo accent="true">→</mo></mover><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>Z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\vec R=(X,Y,Z)</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>≫</mo><mi>ω</mi><msup><mi>L</mi><mn>2</mn></msup><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">Z\gg\omega L^2/v</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.31)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.31)}</annotation></semantics></math>,
+ya no se distinguen los detalles de la forma de la abertura, solo su
+posición: la onda detectada casi parece una onda plana. Esto se llama
+difracción de <strong>Fraunhofer</strong> o de <strong>campo
+lejano</strong> (por oposición a la difracción de
+<strong>Fresnel</strong> o de <strong>campo cercano</strong> cuando esta
+condición no se cumple). Para que la luz llegue a un punto lejano, el
+vector de propagación debe apuntar desde la abertura hacia ese punto,
+así que la única contribución relevante a la integral (13.19) es aquella
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>k</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec k</annotation></semantics></math>
+proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>R</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec R</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo>,</mo><msub><mi>k</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo>,</mo><msqrt><mrow><msup><mi>ω</mi><mn>2</mn></msup><mi>/</mi><msup><mi>v</mi><mn>2</mn></msup><mo>−</mo><msup><mi>k</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mo>∝</mo><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>Z</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.32)</mtext></mrow><annotation encoding="application/x-tex">
+(k_x,k_y,k_z) = \left(k_x,k_y,\sqrt{\omega^2/v^2-k^2}\right) \propto (X,Y,Z)\,, \qquad \text{(13.32)}
+</annotation></semantics></math></p>
+<p>lo que implica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mi>k</mi><mi>X</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">k_x=kX/R</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>y</mi></msub><mo>=</mo><mi>k</mi><mi>Y</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">k_y=kY/R</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.35), (13.36)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.35), (13.36)}</annotation></semantics></math>.
+La intensidad para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+grande es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>≈</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><msup><mi>R</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.34)</mtext></mrow><annotation encoding="application/x-tex">
+I \approx \frac{|C(k_x,k_y)|^2}{R^2}\,, \qquad \text{(13.34)}
+</annotation></semantics></math></p>
+<p>(el factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1/R^2</annotation></semantics></math>
+garantiza la conservación de energía, como en una onda esférica).
+Sustituyendo (13.36) en (13.24) recuperamos exactamente la integral
+(13.14) obtenida por el argumento físico de interferencia de caminos:
+nuestra descripción como problema de oscilación forzada reproduce, ahora
+como una deducción rigurosa, el mismo resultado. En términos de ángulos,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mi>x</mi></msub><mo>=</mo><mi>X</mi><mi>/</mi><mi>R</mi><mo>=</mo><msub><mi>k</mi><mi>x</mi></msub><mi>v</mi><mi>/</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\sin\theta_x=X/R=k_xv/\omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mi>y</mi></msub><mo>=</mo><mi>Y</mi><mi>/</mi><mi>R</mi><mo>=</mo><msub><mi>k</mi><mi>y</mi></msub><mi>v</mi><mi>/</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\sin\theta_y=Y/R=k_yv/\omega</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.37)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.37)}</annotation></semantics></math>.</p>
+<p><em>(Figura 13.3: el problema básico de la difracción, mostrando las
+regiones de difracción de Fresnel (campo cercano), la zona de «haz» y de
+difracción de Fraunhofer (campo lejano), con la transición
+aproximadamente en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>≈</mo><mi>ω</mi><msup><mi>L</mi><mn>2</mn></msup><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">Z\approx\omega L^2/v</annotation></semantics></math>.)</em></p>
+<p><strong>13.3.3* Fase estacionaria</strong> (sección opcional):
+matemáticamente, (13.32) surge, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+grande, porque la fase del exponencial en (13.19) varía muy rápidamente
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">k_x,k_y</annotation></semantics></math>
+excepto en los valores especiales donde las derivadas de la fase se
+anulan (el método de la «fase estacionaria»). Una evaluación cuidadosa
+de la integral produce un factor adicional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">\cos\theta/r</annotation></semantics></math>
+(donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+es el ángulo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>r</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec r</annotation></semantics></math>
+respecto al eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>)
+en la amplitud —el análogo del factor de oblicuidad de la teoría de
+Fresnel-Kirchhoff—, que en general puede ignorarse sin cometer mucho
+error.</p>
+<h3 id="tamaño-de-la-mancha">13.3.4 Tamaño de la mancha</h3>
+<p>Para minimizar el tamaño de la mancha luminosa (el «spot») producida
+por un haz a una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+dada, hay una competencia entre dos efectos: aumentar la abertura
+agranda directamente la mancha a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño, pero disminuirla aumenta la dispersión angular por difracción
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>≈</mo><mi>λ</mi><mi>/</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\theta\approx\lambda/\ell</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.41)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.41)}</annotation></semantics></math>),
+agrandando la mancha a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande. El tamaño óptimo de abertura es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>≈</mo><msqrt><mrow><mi>λ</mi><mi>z</mi></mrow></msqrt><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.43)</mtext></mrow><annotation encoding="application/x-tex">
+\ell \approx \sqrt{\lambda z}\,, \qquad \text{(13.43)}
+</annotation></semantics></math></p>
+<p>y para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≫</mo><msup><mi>ℓ</mi><mn>2</mn></msup><mi>/</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">z\gg\ell^2/\lambda</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.44)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.44)}</annotation></semantics></math>
+domina claramente la difracción de campo lejano.</p>
+<h3 id="ángulos">13.3.5 Ángulos</h3>
+<p>Si la onda plana incide sobre la barrera con un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+respecto a la perpendicular, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>z</mi></msub><mo>=</mo><mi>k</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">k_z=k\cos\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mi>k</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">k_x=k\sin\theta</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.45)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.45)}</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>θ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>x</mi><mi>k</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f_\theta(x,y)=f(x,y)e^{ixk\sin\theta}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.46)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.46)}</annotation></semantics></math>,
+y su transformada de Fourier es simplemente la de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+desplazada:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>θ</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>−</mo><mi>k</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C_\theta(k_x,k_y)=C(k_x-k\sin\theta,k_y)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.48)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.48)}</annotation></semantics></math>.
+El patrón de difracción se desplaza en la misma dirección que el haz
+incidente inclinado, tal como cabría esperar.</p>
+<h2 id="ejemplos">13.4 Ejemplos</h2>
+<h3 id="la-rendija-sencilla">13.4.1 La rendija sencilla</h3>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x)=1</annotation></semantics></math>
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">-a\le x\le a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+en otro caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.49)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.49)}</annotation></semantics></math>
+(independiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>),
+la transformada de Fourier es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>a</mi></mrow><mi>a</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>k</mi><mi>x</mi></msub><mi>x</mi></mrow></msup><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.50)</mtext></mrow><annotation encoding="application/x-tex">
+C(k_x) = \frac{1}{2\pi}\int_{-a}^{a}dx\,e^{-ik_xx} = \frac{\sin(k_xa)}{\pi k_x}\,, \qquad \text{(13.50)}
+</annotation></semantics></math></p>
+<p>y la intensidad a gran
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msubsup><mi>k</mi><mi>x</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\sin^2(k_xa)/k_x^2</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.51)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.51)}</annotation></semantics></math>,
+es decir, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>≈</mo><mi>ω</mi><mi>x</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">k_x\approx\omega x/(vr)</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>∝</mo><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>a</mi><mi>x</mi><mi>/</mi><mi>r</mi><mi>λ</mi><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.54)</mtext></mrow><annotation encoding="application/x-tex">
+I(x,y) \propto \frac{\sin^2(2\pi ax/r\lambda)}{x^2}\,. \qquad \text{(13.54)}
+</annotation></semantics></math></p>
+<p><em>(Figura 13.5: el patrón de difracción de una rendija, con un
+máximo central el doble de ancho que los secundarios, y ceros periódicos
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>n</mi><mi>r</mi><mi>λ</mi><mi>/</mi><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">x=nr\lambda/2a</annotation></semantics></math>.)</em>
+Cuanto menor es la anchura de la rendija, mayor el tamaño del patrón de
+difracción —otra ilustración de la relación inversa característica de
+las transformadas de Fourier vista en el Capítulo 10.</p>
+<h3 id="difracción-de-campo-cercano">13.4.2 Difracción de campo
+cercano</h3>
+<p>Para valores intermedios de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(difracción de Fresnel), el problema debe resolverse numéricamente. Para
+una rendija estrecha, con bordes afilados, la intensidad desarrolla
+rápidamente unas oscilaciones («wiggles») pronunciadas debidas a los
+bordes; a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+crece, estas oscilaciones se fusionan y cambian dramáticamente la forma
+del haz, hasta aproximarse al patrón de campo lejano (13.54) para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+suficientemente grande.</p>
+<p><em>(Figuras 13.6-13.8: evolución de la intensidad de la onda a
+través de una rendija, para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+pequeño, intermedio y grande.)</em></p>
+<h3 id="el-rectángulo">13.4.3 El rectángulo</h3>
+<p>Para una abertura rectangular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x,y)=1</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>a</mi><mi>x</mi></msub><mo>≤</mo><mi>x</mi><mo>≤</mo><msub><mi>a</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">-a_x\le x\le a_x</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>a</mi><mi>y</mi></msub><mo>≤</mo><mi>y</mi><mo>≤</mo><msub><mi>a</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">-a_y\le y\le a_y</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.58)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.58)}</annotation></semantics></math>,
+la transformada de Fourier es simplemente el producto de las
+transformadas unidimensionales,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><msub><mi>a</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><msub><mi>a</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>y</mi></msub></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.59)</mtext></mrow><annotation encoding="application/x-tex">
+C(k_x,k_y) = \frac{\sin(k_xa_x)}{\pi k_x}\cdot\frac{\sin(k_ya_y)}{\pi k_y}\,, \qquad \text{(13.59)}
+</annotation></semantics></math></p>
+<p>y la intensidad,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>∝</mo><mstyle displaystyle="true"><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msub><mi>a</mi><mi>x</mi></msub><mi>x</mi><mi>/</mi><mi>r</mi><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msub><mi>a</mi><mi>y</mi></msub><mi>y</mi><mi>/</mi><mi>r</mi><mi>λ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">I(x,y)\propto \dfrac{\sin^2(2\pi a_xx/r\lambda)\sin^2(2\pi a_yy/r\lambda)}{x^2y^2}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.60)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.60)}</annotation></semantics></math>.</p>
+<h3 id="funciones-delta">13.4.4 Funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math></h3>
+<p>Si estrechamos la rendija
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\to0</annotation></semantics></math>)
+mientras aumentamos la intensidad incidente para mantener fija la
+intensidad del máximo de difracción,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">f_a(x)=1/2a</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x|\le a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+en otro caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.61)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.61)}</annotation></semantics></math>,
+el límite no existe como función ordinaria: es cero en todas partes
+salvo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+pero diverge allí de tal manera que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>&#8289;</mo></mrow><mrow><mi>a</mi><mo>→</mo><mn>0</mn></mrow></msub><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msub><mi>f</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{a\to0}\int dx\,f_a(x)=1</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.62)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.62)}</annotation></semantics></math>.
+Este objeto límite es la <strong>función delta de Dirac</strong>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\delta(x)</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\int dx\,\delta(x)=1</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.63)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.63)}</annotation></semantics></math>
+y la propiedad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x)\delta(x)=f(0)\delta(x)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.64)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.64)}</annotation></semantics></math>.
+Su transformada de Fourier es una constante,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">C(k)=1/2\pi</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.65)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.65)}</annotation></semantics></math>:
+la difracción de una rendija infinitesimalmente estrecha es uniforme en
+todos los ángulos. En física no se pueden fabricar funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+reales, pero cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es mucho menor que la longitud de onda, se comporta como tal para todos
+los efectos prácticos.</p>
+<h3 id="algunas-propiedades-de-las-funciones-delta">13.4.5 Algunas
+propiedades de las funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math></h3>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x)=\delta(x-a)</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">C(k)=\frac{1}{2\pi}e^{-ika}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.67)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.67)}</annotation></semantics></math>;
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ℓ</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f(x)=e^{-i\ell x}</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mi>ℓ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k)=\delta(k-\ell)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.68)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.68)}</annotation></semantics></math>.
+Una función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+también puede alcanzarse como límite de otras formas; por ejemplo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>&#8289;</mo></mrow><mrow><mi>a</mi><mo>→</mo><mi>∞</mi></mrow></msub><mstyle displaystyle="true"><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>x</mi></msub><mi>a</mi></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></mfrac></mstyle><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\lim_{a\to\infty}\dfrac{\sin k_xa}{\pi k_x}=\delta(k_x)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.69)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.69)}</annotation></semantics></math>.</p>
+<h3 id="una-dimensión-a-partir-de-dos">13.4.6 Una dimensión a partir de
+dos</h3>
+<p>Usando funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+podemos precisar el sentido en que, si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+no depende de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+el problema es unidimensional: en el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>y</mi></msub><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">a_y\to\infty</annotation></semantics></math>
+de (13.58), (13.59) se convierte en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true"><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><msub><mi>a</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></mfrac></mstyle><mspace width="0.167em"></mspace><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\dfrac{\sin(k_xa_x)}{\pi k_x}\,\delta(k_y)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.70)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.70)}</annotation></semantics></math>
+— no hay difracción en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+pues
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>y</mi></msub><annotation encoding="application/x-tex">k_y</annotation></semantics></math>
+queda fijo en cero.</p>
+<h3 id="muchas-rendijas-estrechas">13.4.7 Muchas rendijas estrechas</h3>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+rendijas estrechas en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>b</mi><mo>,</mo><mn>2</mn><mi>b</mi><mo>,</mo><mi>…</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">x=0,b,2b,\ldots,(n-1)b</annotation></semantics></math>,
+descritas por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>j</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sum_{j=0}^{n-1}\delta(x-jb)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.71)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.71)}</annotation></semantics></math>,
+la transformada de Fourier es una suma geométrica,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>j</mi><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.73)</mtext></mrow><annotation encoding="application/x-tex">
+\sum_{j=0}^{n-1}e^{-ijbk_x} = e^{-i(n-1)bk_x/2}\,\frac{\sin(nbk_x/2)}{\sin(bk_x/2)}\,, \qquad \text{(13.73)}
+</annotation></semantics></math></p>
+<p>de modo que la intensidad de difracción es proporcional a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.74)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{\sin^2(nbk_x/2)}{\sin^2(bk_x/2)}\,. \qquad \text{(13.74)}
+</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>
+recuperamos el problema de la doble rendija con el que empezó el
+capítulo: hay interferencia constructiva cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mn>2</mn><mi>m</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">bk_x=2m\pi</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+mayor, seguimos teniendo máximos en los mismos ángulos, pero se vuelven
+mucho más nítidos, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n-2</annotation></semantics></math>
+máximos secundarios entre cada par de máximos principales, porque con
+más rendijas hay más posibilidades de interferencia destructiva en los
+demás ángulos.</p>
+<p><em>(Figuras 13.12-13.14: geometría de interferencia constructiva y
+patrones de intensidad para 3 y 6 rendijas estrechas, mostrando los
+máximos secundarios.)</em></p>
+<h2 id="convolución">13.5 Convolución</h2>
+<p>Dado un par de funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f_1(x),f_2(x)</annotation></semantics></math>,
+se define la <strong>convolución</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>y</mi><mspace width="0.167em"></mspace><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.76)</mtext></mrow><annotation encoding="application/x-tex">
+f_1\circ f_2(x) = \int_{-\infty}^{\infty}dy\,f_1(x-y)\,f_2(y)\,, \qquad \text{(13.76)}
+</annotation></semantics></math></p>
+<p>que es simétrica,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>2</mn></msub><mo>=</mo><msub><mi>f</mi><mn>2</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">f_1\circ f_2=f_2\circ f_1</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.77)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.77)}</annotation></semantics></math>.
+El <strong>teorema de convolución</strong> establece que la transformada
+de Fourier de la convolución es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>
+veces el producto de las transformadas de Fourier de las dos
+funciones,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn><mi>π</mi><mspace width="0.167em"></mspace><msub><mi>C</mi><msub><mi>f</mi><mn>1</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi>C</mi><msub><mi>f</mi><mn>2</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.79)</mtext></mrow><annotation encoding="application/x-tex">
+C_{f_1\circ f_2}(k) = 2\pi\,C_{f_1}(k)\,C_{f_2}(k)\,, \qquad \text{(13.79)}
+</annotation></semantics></math></p>
+<p>resultado que se generaliza directamente a dos dimensiones,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><msub><mi>C</mi><msub><mi>f</mi><mn>1</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi>C</mi><msub><mi>f</mi><mn>2</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.81)</mtext></mrow><annotation encoding="application/x-tex">
+C_{f_1\circ f_2}(k_x,k_y) = 4\pi^2\,C_{f_1}(k_x,k_y)\,C_{f_2}(k_x,k_y)\,. \qquad \text{(13.81)}
+</annotation></semantics></math></p>
+<h3 id="patrones-repetidos">13.5.1 Patrones repetidos</h3>
+<p>Como ejemplo instructivo, un patrón de dos rendijas anchas separadas
+una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">b&gt;2a</annotation></semantics></math>
+(cada una de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>)
+puede escribirse como la convolución de una sola rendija ancha,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mn>1</mn></msub><annotation encoding="application/x-tex">f_1</annotation></semantics></math>,
+con dos funciones delta separadas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f_2(x,y)=\delta(x)\delta(y)+\delta(x-b)\delta(y)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.85)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.85)}</annotation></semantics></math>.
+Aplicando el teorema de convolución,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>∘</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub></mrow><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>b</mi><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>π</mi><msub><mi>k</mi><mi>x</mi></msub></mrow></mfrac><mspace width="0.167em"></mspace><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.88)</mtext></mrow><annotation encoding="application/x-tex">
+C_{f_1\circ f_2}(k_x,k_y) = \cos\!\left(\frac{bk_x}{2}\right)e^{-ibk_x/2}\,\frac{\sin(k_xa)}{\pi k_x}\,\delta(k_y)\,, \qquad \text{(13.88)}
+</annotation></semantics></math></p>
+<p>describe un patrón que oscila rápidamente a la escala
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">1/b</annotation></semantics></math>,
+modulado por la envolvente de difracción de rendija única, de escala
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">1/a</annotation></semantics></math>:
+el patrón clásico de la doble rendija ancha, combinando franjas finas de
+interferencia con la envolvente de difracción.</p>
+<h2 id="fxy-periódica">13.6
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+periódica</h2>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+es periódica en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+con periodo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x+a,y)=f(x,y)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.89)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.89)}</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k_x,k_y)</annotation></semantics></math>
+solo puede ser no nula para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k_x=2\pi n/a</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.90)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.90)}</annotation></semantics></math>
+(la demostración es análoga a la del caso de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+rendijas del apartado anterior, en el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">n\to\infty</annotation></semantics></math>).
+Así, cualquier patrón regular infinito produce una secuencia discreta de
+valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+<p>Una <strong>red de difracción</strong> de transmisión, con líneas
+paralelas a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+y separación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+produce entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k_x,k_y)</annotation></semantics></math>
+no nula solo para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>y</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_y=0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mn>2</mn><mi>n</mi><mi>π</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k_x=2n\pi/a</annotation></semantics></math>,
+dando lugar a una superposición de ondas planas que se abanican en
+ángulos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>n</mi><mi>v</mi></mrow><mrow><mi>a</mi><mi>ω</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mi>λ</mi></mrow><mi>a</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.94)</mtext></mrow><annotation encoding="application/x-tex">
+\sin\theta_n = \frac{2\pi n v}{a\omega} = \frac{n\lambda}{a}\,. \qquad \text{(13.94)}
+</annotation></semantics></math></p>
+<p>Cuanto mayor la longitud de onda, mayor el ángulo de difracción: por
+eso la red de difracción separa los colores del arco iris a lo largo de
+una línea para cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+(excepto el máximo central
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n=0</annotation></semantics></math>,
+donde toda la luz pasa sin desviarse, independientemente del color).</p>
+<p><em>(Figuras 13.17-13.18: una red de difracción de transmisión
+separando un haz monocromático en múltiples órdenes, y separando tres
+colores —azul, verde y rojo— en el orden
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>.)</em></p>
+<h3 id="girando-la-red">13.6.1 Girando la red</h3>
+<p>Si la luz incide con un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">\theta_{in}</annotation></semantics></math>
+respecto a la perpendicular en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+el patrón entero se desplaza en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>+</mo><mi>n</mi><mi>λ</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\sin\theta=\sin\theta_{in}+n\lambda/a</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.99)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.99)}</annotation></semantics></math>.
+Si la inclinación es en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+los ángulos de difracción se vuelven no triviales tanto en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+como en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mi>y</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mi>/</mi><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>n</mi><mn>2</mn></msup><msup><mi>λ</mi><mn>2</mn></msup><mi>/</mi><msup><mi>a</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sin\theta_y=\sin\theta_{in}/\sqrt{1-n^2\lambda^2/a^2}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mi>x</mi></msub><mo>=</mo><mi>n</mi><mi>λ</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sin\theta_x=n\lambda/(a\cos\theta_{in})</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.102), (13.103)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.102), (13.103)}</annotation></semantics></math>:
+el patrón proyectado sobre una pantalla aparece
+<strong>curvado</strong>.</p>
+<h3 id="poder-de-resolución">13.6.2 Poder de resolución</h3>
+<p>En una red finita de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+ranuras, los picos de difracción no son funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+perfectas, sino que tienen la forma aproximada dada por (13.74). El
+<strong>criterio de Rayleigh</strong> dice que dos frecuencias muy
+próximas se pueden distinguir si el máximo de una coincide con el primer
+mínimo de la otra. Cuantas más ranuras tenga la red, más nítidos son los
+picos y más fácil distinguir frecuencias próximas. Cualquier criterio
+fijo de poder de resolución debe entenderse como una convención
+práctica, no como un hecho absoluto de la naturaleza: siempre es posible
+mejorar la resolución acumulando datos precisos y modelando los detalles
+de la forma de la línea.</p>
+<h3 id="redes-blazed-con-perfil-optimizado">13.6.3 Redes “blazed” (con
+perfil optimizado)</h3>
+<p>Como espectroscopio, la red de difracción de transmisión tiene la
+desventaja de que la mayor parte de la luz pasa sin desviarse por el
+máximo central
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n=0</annotation></semantics></math>,
+que no aporta información sobre la frecuencia. En las redes de
+reflexión, es posible tallar las ranuras con un perfil («blaze») tal que
+la reflexión especular de cada ranura dirija la mayor parte de la luz
+precisamente hacia el máximo de difracción no trivial deseado, en vez de
+hacia la reflexión especular perpendicular. Se elige el ángulo del
+perfil como la mitad del ángulo del primer máximo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>v</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\theta_1=2\pi v/(a\omega)</annotation></semantics></math>.</p>
+<h2 id="difracción-de-rayos-x-sección-opcional">13.7* Difracción de
+rayos X (sección opcional)</h2>
+<p><em>(Esta sección, marcada con asterisco en el original, es material
+de ampliación.)</em> Un hermoso ejemplo tridimensional de difracción de
+una función periódica es la difracción de rayos X en cristales. Un
+cristal es un arreglo regular de átomos cuyas posiciones se describen
+mediante una función periódica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>+</mo><mover><mi>a</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\vec r)=f(\vec r+\vec a)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.106)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.106)}</annotation></semantics></math>
+para cualquier vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec a</annotation></semantics></math>
+de la <strong>red cristalina</strong>. La transformada de Fourier
+tridimensional de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\vec r)</annotation></semantics></math>
+solo es no nula para vectores de onda de la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>n</mi><mi>j</mi></msub><msub><mover><mi>ℓ</mi><mo accent="true">→</mo></mover><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">2\pi\sum_j n_j\vec\ell_j</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.107)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.107)}</annotation></semantics></math>,
+donde los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>ℓ</mi><mo accent="true">→</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\vec\ell_j</annotation></semantics></math>
+son los vectores base de la <strong>red dual</strong> (o <strong>red
+recíproca</strong>), definida por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">→</mo></mover><mo>⋅</mo><msub><mover><mi>ℓ</mi><mo accent="true">→</mo></mover><mi>j</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">\vec a\cdot\vec\ell_j=</annotation></semantics></math>
+entero para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec a</annotation></semantics></math>
+de la red
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.108)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.108)}</annotation></semantics></math>
+—exactamente la generalización tridimensional de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">k_x=2\pi n/a</annotation></semantics></math>.</p>
+<p>Cualquier vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>d</mi><mo accent="true">→</mo></mover><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>n</mi><mi>j</mi></msub><msub><mover><mi>ℓ</mi><mo accent="true">→</mo></mover><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\vec d=\sum_jn_j\vec\ell_j</annotation></semantics></math>
+de la red dual define una familia de planos paralelos de la red
+cristalina original, perpendiculares a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>d</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec d</annotation></semantics></math>
+y separados una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">|</mo><mover><mi>d</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">1/|\vec d|</annotation></semantics></math>
+—los llamados <strong>planos de Bragg</strong>—; cuanto más largo es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>d</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec d</annotation></semantics></math>,
+más próximos entre sí (pero también menos densos) son esos planos. La
+onda incidente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>⋅</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\vec k\cdot\vec r-i\omega t}</annotation></semantics></math>
+solo se difracta constructivamente (produciendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>k</mi><mo accent="true">→</mo></mover><mi>α</mi></msub><mo>=</mo><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>+</mo><mn>2</mn><mi>π</mi><mover><mi>d</mi><mo accent="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\vec k_\alpha=\vec k+2\pi\vec d</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mover><mi>k</mi><mo accent="true">→</mo></mover><mi>α</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mover><mi>k</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|\vec k_\alpha|=|\vec k|</annotation></semantics></math>
+por conservación de la relación de dispersión) cuando la diferencia de
+fase entre planos sucesivos es un múltiplo entero de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>:
+esta es la condición de <strong>dispersión de Bragg</strong>. Midiendo
+los ángulos en los que aparecen picos de difracción de rayos X, se
+obtiene información directa sobre la red dual y, por tanto, sobre la
+estructura cristalina misma.</p>
+<h2 id="holografía">13.8 Holografía</h2>
+<p>Nada nos impide analizar el patrón de difracción de una función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+mucho más complicada que las vistas hasta ahora. Un
+<strong>holograma</strong> es precisamente un patrón de difracción de
+ese tipo. En una de las versiones más simples, un objeto se ilumina con
+un láser (esencialmente una onda plana); la luz reflejada, junto con una
+parte del haz láser extraída mediante un divisor de haz, inciden sobre
+una placa fotográfica con ángulos ligeramente distintos:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>z</mi></mrow></msup><mo>+</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>x</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>⋅</mo><mover><mi>r</mi><mo accent="true">→</mo></mover></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mover><mi>k</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mi>ω</mi><mi>/</mi><mi>v</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.127), (13.128)</mtext></mrow><annotation encoding="application/x-tex">
+e^{-i\omega t}\left(e^{ikz}+\int dk_x\,dk_y\,C(k_x,k_y)\,e^{i\vec k\cdot\vec r}\right)\,,\qquad k=|\vec k|=\omega/v\,. \qquad \text{(13.127), (13.128)}
+</annotation></semantics></math></p>
+<p><em>(Figura 13.31: montaje para fabricar un holograma, con el láser,
+el divisor de haz, el objeto, la onda de referencia y la placa
+fotográfica.)</em></p>
+<p>Si el objeto (con transformada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>)
+es débil comparado con el haz de referencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>z</mi></mrow></msup><annotation encoding="application/x-tex">e^{ikz}</annotation></semantics></math>,
+la placa registra la intensidad, proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>x</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mi>x</mi><mo>+</mo><msub><mi>k</mi><mi>y</mi></msub><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>C</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1+2\,\mathrm{Re}\!\left[\int dk_x\,dk_y\,C(k_x,k_y)\,e^{i(k_xx+k_yy)}\right]+O(C^2)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.129)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.129)}</annotation></semantics></math>.
+Al revelar la placa y hacer pasar de nuevo un láser de la misma
+frecuencia a través de ella («positivo de la placa»), tenemos otra vez
+un problema de oscilación forzada, cuya solución para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>z</mi></mrow></msup><mo>+</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>x</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mover><mi>k</mi><mo accent="true">→</mo></mover><mo>⋅</mo><mover><mi>r</mi><mo accent="true">→</mo></mover></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mtext mathvariant="normal">c.c.</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.130)</mtext></mrow><annotation encoding="application/x-tex">
+e^{-i\omega t}\left(e^{ikz}+\int dk_x\,dk_y\,C(k_x,k_y)\,e^{i\vec k\cdot\vec r}\right) + \text{c.c.} \qquad \text{(13.130)}
+</annotation></semantics></math></p>
+<p>donde «c.c.» (complejo conjugado) representa una onda que viaja en
+una dirección distinta (porque la conjugación cambia el signo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mo>,</mo><msub><mi>k</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">k_x,k_y</annotation></semantics></math>).
+El ojo del observador, colocado en el camino de la onda «señal»
+reconstruida (pero fuera del camino del láser de referencia), ve una
+<strong>reconstrucción real</strong> de la onda reflejada original —no
+una fotografía, sino la onda misma—, lo cual explica la sorprendente
+propiedad de tridimensionalidad de un holograma.</p>
+<p><em>(Figuras 13.32-13.33: visualización del objeto original y de la
+imagen holográfica reconstruida —virtual y real— vista por el
+observador.)</em></p>
+<h2 id="franjas-y-placas-zonales">13.9 Franjas y placas zonales</h2>
+<h3 id="la-imagen-holográfica-de-un-punto">13.9.1 La imagen holográfica
+de un punto</h3>
+<p>La imagen holográfica más simple es la de un único punto: si una onda
+plana encuentra un objeto muy pequeño en su camino, este produce una
+onda esférica; si ambas ondas —plana y esférica— son absorbidas por una
+placa fotográfica, se produce un patrón de interferencia en forma de
+círculos concéntricos, o <strong>franjas</strong>. Con la onda plana
+propagándose en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+la placa fotográfica en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">z=z_0</annotation></semantics></math>
+y el origen en la posición de la fuente puntual, la superposición de
+onda plana y esférica es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>z</mi></mrow></msup><mo>+</mo><mstyle displaystyle="true"><mfrac><mi>B</mi><mi>r</mi></mfrac></mstyle><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>r</mi></mrow></msup></mrow><annotation encoding="application/x-tex">Ae^{ikz}+\dfrac{B}{r}e^{ikr}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.132)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.132)}</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">r=\sqrt{x^2+y^2+z^2}</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>≫</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">z_0\gg R</annotation></semantics></math>
+(con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">R=\sqrt{x^2+y^2}</annotation></semantics></math>
+la distancia al eje óptico en el plano de la placa), la intensidad
+resulta, tras expandir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msup><mi>R</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">r_0=\sqrt{z_0^2+R^2}</annotation></semantics></math>
+en serie de Taylor,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>+</mo><mfrac><msup><mi>B</mi><mn>2</mn></msup><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mi>A</mi><mi>B</mi></mrow><msub><mi>z</mi><mn>0</mn></msub></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>k</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.137)</mtext></mrow><annotation encoding="application/x-tex">
+A^2+\frac{B^2}{z_0^2}+\frac{2AB}{z_0}\cos\!\left(\frac{kR^2}{2z_0}\right)\,, \qquad \text{(13.137)}
+</annotation></semantics></math></p>
+<p>que describe <strong>zonas</strong> circulares de intensidad, con
+máximos y mínimos en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mi>n</mi><mi>λ</mi><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R^2=n\lambda z_0</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.139)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.139)}</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+par: máximo;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+impar: mínimo). Estos anillos concéntricos son las
+<strong>franjas</strong> de la figura.</p>
+<h3 id="placas-zonales">13.9.2 Placas zonales</h3>
+<p>El holograma de un punto se puede usar para enfocar parte de una onda
+plana. La onda esférica convergente que se reconstruye al iluminar la
+placa revelada es mucho más intensa que el resto de la perturbación
+cerca del punto focal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">z=2z_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=y=0</annotation></semantics></math>,
+porque su amplitud,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msub><mi>r</mi><mn>0</mn></msub></mfrac><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><msub><mi>r</mi><mn>0</mn></msub></mrow></msup></mrow><annotation encoding="application/x-tex">\frac1{r_0}e^{ikr_0}</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>−</mo><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">r_0=\sqrt{(z-2z_0)^2+x^2+y^2}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13.141), (13.142)</mtext></mrow><annotation encoding="application/x-tex">\qquad\text{(13.141), (13.142)}</annotation></semantics></math>,
+aumenta al acercarse al foco.</p>
+<p>El mismo efecto se puede lograr con una versión simplificada («de
+caricatura») de la placa fotográfica: tomando una placa transparente y
+ennegreciendo las zonas donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+es negativo en (13.138) (donde la intensidad es menor que la mitad del
+máximo). El resultado es una <strong>placa zonal</strong>: un objeto
+útil y fácil de fabricar, que puede adaptarse a cualquier longitud de
+onda deseada, y que enfoca una onda plana sin necesidad de una lente
+convencional.</p>
+<p><em>(Figura 13.37: una placa zonal, con anillos concéntricos claros y
+oscuros de anchura decreciente hacia el borde.)</em></p>
+<h2 id="repaso-del-capítulo">Repaso del capítulo</h2>
+<ol type="i">
+<li><p>Un problema de difracción se puede plantear como un problema de
+oscilación forzada, con la onda difractada expresada como una integral
+de Fourier sobre el vector de onda transversal.</p></li>
+<li><p>En la región de campo lejano (Fraunhofer), la integral de Fourier
+se interpreta directamente como el patrón de difracción, recuperando el
+resultado de la interferencia de caminos de la óptica de
+Fourier.</p></li>
+<li><p>Se pueden analizar los patrones de difracción de haces formados
+por una o varias rendijas y regiones rectangulares, usando funciones
+delta para los casos límite de rendijas infinitesimalmente
+estrechas.</p></li>
+<li><p>El teorema de convolución simplifica el cálculo de transformadas
+de Fourier de patrones compuestos, como rendijas anchas
+repetidas.</p></li>
+<li><p>La dispersión de una red de difracción y la difracción de rayos X
+en cristales se entienden a partir de la periodicidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math>
+(o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\vec r)</annotation></semantics></math>)
+y su red dual; el poder de resolución de una red depende del número de
+ranuras.</p></li>
+<li><p>Un holograma es un patrón de difracción particularmente rico, que
+registra la interferencia entre una onda de referencia y la onda
+reflejada por un objeto, y reconstruye una imagen tridimensional genuina
+al iluminarlo de nuevo.</p></li>
+<li><p>Las franjas de interferencia entre una onda plana y una esférica
+dan lugar a las placas zonales, capaces de enfocar una onda plana sin
+necesidad de una lente convencional.</p></li>
+</ol>
+<h2 id="problemas">Problemas</h2>
+<p><strong>13.1.</strong> Considera las oscilaciones transversales de
+una membrana flexible semiinfinita con tensión superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>S</mi></msub><annotation encoding="application/x-tex">T_S</annotation></semantics></math>
+y densidad superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\rho_S</annotation></semantics></math>,
+estirada en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>−</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">y=-\infty</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>
+y desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>.
+La membrana está fija a lo largo de las semirrectas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=z=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">a\le y\le\infty</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=z=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>∞</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>−</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">-\infty\le y\le-a</annotation></semantics></math>.
+Entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>−</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">y=-a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">y=a</annotation></semantics></math>,
+se fuerza la oscilación con frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+de modo que el extremo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+se mueve con desplazamiento transversal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\psi(0,y,t)=f(y)e^{-i\omega t}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>y</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(y)=b(1-y/a)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0\le y\le a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>y</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(y)=b(1+y/a)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-a\le y\le0</annotation></semantics></math>,
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(y)=0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>≥</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|y|\ge a</annotation></semantics></math>.
+El desplazamiento transversal es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><msub><mi>k</mi><mi>y</mi></msub><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><msub><mi>k</mi><mi>y</mi></msub><mo>+</mo><mi>x</mi><mi>k</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\psi(x,y,t)=\int dk_y\,C(k_y)\,e^{i(yk_y+xk(k_y)-\omega t)}</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>b</mi><mrow><mi>π</mi><msubsup><mi>k</mi><mi>y</mi><mn>2</mn></msubsup><mi>a</mi></mrow></mfrac></mstyle><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mi>y</mi></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(k_y)=\dfrac{b}{\pi k_y^2a}(1-\cos k_ya)</annotation></semantics></math>.
+Encuentra la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">k(k_y)</annotation></semantics></math>.
+Si la intensidad de la onda en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x=L</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+grande es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>,
+encuentra la intensidad para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x=L</annotation></semantics></math>
+y cualquier valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+(Pista: supón que estás en la región de campo lejano y ten en cuenta
+todos los factores relevantes de la razón de intensidad respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>.)</p>
+<p><strong>13.2.</strong> Considera una barrera opaca en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>,
+con una única rendija a lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>,
+pero con regiones a ambos lados de la rendija, cada una de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>,
+parcialmente transparentes, diseñadas para reducir la intensidad en un
+factor de 2. Al iluminar esta barrera con una onda plana en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+la amplitud del campo oscilante en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x,y)=1</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|y|&lt;a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">1/\sqrt2</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mn>3</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">a&lt;|y|&lt;3a</annotation></semantics></math>,
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>a</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">3a&lt;|y|</annotation></semantics></math>.
+Cerca de la rendija, esto simplemente produce un haz menos intenso en
+los bordes por un factor de 2; lejos, sin embargo, el patrón de
+difracción es muy distinto del de una rendija sencilla. A una distancia
+grande fija
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msqrt><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">R=\sqrt{y^2+z^2}</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><msub><mi>k</mi><mi>y</mi></msub><mi>a</mi><mo>=</mo><mi>ω</mi><mi>y</mi><mi>a</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\xi=k_ya=\omega ya/(cR)</annotation></semantics></math>,
+encuentra el menor valor positivo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+para el que la intensidad se anula, y la razón entre la intensidad en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\xi=\pi/2</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi=0</annotation></semantics></math>.
+Ahora supón que, en lugar de sombrear con transparencia parcial, se
+coloca un polarizador perfecto alineado con el eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+en las regiones laterales, mientras que la luz incidente está polarizada
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>45</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">45°</annotation></semantics></math>
+del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+y la rendija central está completamente abierta. La intensidad
+resultante, en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>,
+es proporcional a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>10</mn></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">[</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>3</mn><mi>ξ</mi><mi>/</mi><mi>ξ</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ξ</mi><mi>/</mi><mi>ξ</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\frac1{10}\big[(\sin3\xi/\xi)^2+(\sin\xi/\xi)^2\big]</annotation></semantics></math>,
+un patrón completamente distinto del anterior. Explica la
+diferencia.</p>
+<p><strong>13.3.</strong> Considera una barrera opaca en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>,
+con agujeros idénticos centrados en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>n</mi><mi>x</mi></msub><mi>a</mi><mo>,</mo><msub><mi>n</mi><mi>y</mi></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)=(n_xa,n_ya)</annotation></semantics></math>
+para todos los enteros
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>x</mi></msub><mo>,</mo><msub><mi>n</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">n_x,n_y</annotation></semantics></math>.
+La barrera se ilumina desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&lt;0</annotation></semantics></math>
+con una onda plana en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+de longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>a</mi><msqrt><mn>3</mn></msqrt><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\lambda=a\sqrt3/2</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&gt;0</annotation></semantics></math>,
+la onda tiene la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><msub><mi>m</mi><mi>x</mi></msub><mo>,</mo><msub><mi>m</mi><mi>y</mi></msub></mrow></msub><msub><mi>C</mi><mrow><msub><mi>m</mi><mi>x</mi></msub><mo>,</mo><msub><mi>m</mi><mi>y</mi></msub></mrow></msub><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>m</mi><mi>x</mi></msub><mi>ρ</mi><mi>x</mi><mo>+</mo><msub><mi>m</mi><mi>y</mi></msub><mi>ρ</mi><mi>y</mi><mo>+</mo><msub><mi>k</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>m</mi><mi>x</mi></msub><mo>,</mo><msub><mi>m</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>z</mi><mo>−</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_{m_x,m_y}C_{m_x,m_y}e^{i(m_x\rho x+m_y\rho y+k_z(m_x,m_y)z-\omega t)}</annotation></semantics></math>.
+Encuentra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande, solo un número finito de términos de la suma son importantes:
+¿cuántos, y cómo lo sabes? Ahora supón que, en lugar de incidir en la
+dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+una onda plana con la misma longitud de onda se mueve para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z&lt;0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>45</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">45°</annotation></semantics></math>
+del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+tanto en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+como en el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>x</mi></msub><mi>/</mi><msub><mi>k</mi><mi>z</mi></msub><mo>=</mo><msub><mi>k</mi><mi>y</mi></msub><mi>/</mi><msub><mi>k</mi><mi>z</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>45</mn><mi>°</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k_x/k_z=k_y/k_z=\tan45°=1</annotation></semantics></math>).
+Encuentra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mi>x</mi></msub><mo>,</mo><msub><mi>ξ</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">\xi_x,\xi_y</annotation></semantics></math>
+en la nueva forma de la suma, y determina qué valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>x</mi></msub><mo>,</mo><msub><mi>m</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">m_x,m_y</annotation></semantics></math>
+son importantes para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+grande.</p>
+<p><strong>13.4.</strong> Describe el patrón de difracción que resulta
+cuando una red de difracción de transmisión con separación de líneas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+se ilumina con una onda plana de luz monocromática de longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+que viaja en una dirección perpendicular a las líneas de la red y a un
+ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+de la perpendicular a la superficie de la red.</p>
+<p><strong>13.5.</strong> Una pantalla opaca con cuatro rendijas
+estrechas en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>±</mi><mn>0.6</mn></mrow><annotation encoding="application/x-tex">x=\pm0.6</annotation></semantics></math>
+mm y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>±</mi><mn>0.4</mn></mrow><annotation encoding="application/x-tex">x=\pm0.4</annotation></semantics></math>
+mm bloquea un haz de luz coherente de longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">4\times10^{-5}</annotation></semantics></math>
+cm. Describe el patrón de difracción que aparece en una pantalla a 5
+metros de distancia.</p>
+<p><strong>13.6.</strong> Una membrana flexible semiinfinita se estira
+en el plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\ge0</annotation></semantics></math>,
+con tensión superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>s</mi></msub><annotation encoding="application/x-tex">T_s</annotation></semantics></math>
+y densidad superficial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\rho_s</annotation></semantics></math>.
+La membrana está fija en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>
+a lo largo de las dos semirrectas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo>≥</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">z=0,x=0,y\ge a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo>≤</mo><mi>−</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">z=0,x=0,y\le-a</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">-a\le y\le a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+se fuerza a la membrana a oscilar con amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>B</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mi>y</mi><mi>/</mi><mn>2</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">z=Be^{i\omega t}\cos(\pi y/2a)</annotation></semantics></math>.
+Dibuja un diagrama del semiplano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\ge0</annotation></semantics></math>,
+indicando dónde el promedio del módulo al cuadrado del desplazamiento
+transversal es grande (no mucho menor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mn>2</mn></msup><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">B^2a/r</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+la distancia al origen), suponiendo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es unas 5 veces la longitud de onda. Encuentra la intensidad de la
+perturbación en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mi>/</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\theta=\tan^{-1}(y/x)</annotation></semantics></math>
+sobre un semicírculo grande
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2+y^2=R^2</annotation></semantics></math>,
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>≫</mo><msup><mi>a</mi><mn>4</mn></msup><msup><mi>ω</mi><mn>2</mn></msup><msub><mi>ρ</mi><mi>s</mi></msub><mi>/</mi><msub><mi>T</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">R^2\gg a^4\omega^2\rho_s/T_s</annotation></semantics></math>.
+(Pista: es similar a la difracción de rendija única, pero requiere una
+integral de Fourier de un coseno.)</p>
+<p><strong>13.7.</strong> Supón que una red de difracción con separación
+de líneas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+está grabada en la parte superior de un vidrio grueso de índice de
+refracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Si luz de frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+incide sobre la superficie superior, formando un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+con la perpendicular a la cara y perpendicular a las líneas de la red,
+encuentra los ángulos de las componentes de la onda dentro del
+vidrio.</p>
+<p><strong>13.8.</strong> Cuatro patrones de difracción, cada uno
+producido por unos 500 fotones individuales que inciden sobre una placa
+fotográfica lejana con una densidad de probabilidad proporcional a la
+intensidad de la onda difractada, corresponden —en orden aleatorio— a:
+(i) una rendija única de 1 mm de ancho; (ii) una rendija única de 0.6 mm
+de ancho; (iii) dos rendijas, cada una de 0.6 mm, con centros separados
+1.5 mm; (iv) seis rendijas, cada una de 0.6 mm, con centros adyacentes
+separados 1.5 mm. ¿Cuál es cuál, y cómo lo sabes?</p>
+<hr />
+<p><em>Fuente: MIT OpenCourseWare, 8.03SC Physics III: Vibrations and
+Waves, Fall 2016. Traducción al español con fines educativos. Material
+original bajo licencia <a
+href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+Commons BY-NC-SA</a>.</em></p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860",
+    theme: "light"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    root.setAttribute("data-theme", settings.theme);
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  settings.theme = load("theme", "light");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+</body>
+</html>
