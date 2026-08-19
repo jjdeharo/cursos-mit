@@ -1,0 +1,5 @@
+# Sesiones locales de Claude Code
+.claude/
+
+# Copias que crea el cliente de sincronización al escribir en paralelo
+*conflicted copy*

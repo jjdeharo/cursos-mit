@@ -82,6 +82,9 @@
     </div>
   </div>
 </div>
+<nav class="migas">
+<a href="../../">Cursos de MIT</a> <span aria-hidden="true">›</span> <a href="../">8.03SC Vibraciones y Ondas</a>
+</nav>
 <header id="title-block-header">
 <h1 class="title">Capítulo 2: Oscilación forzada y resonancia — 8.03SC
 Física III: Vibraciones y Ondas</h1>
@@ -246,7 +249,9 @@ x(t) = z(t) = A_+\,e^{-\gamma_+ t} + A_-\,e^{-\gamma_- t}\,, \qquad \text{(2.7)}
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mo>±</mo></msub><mo>=</mo><mfrac><mi>γ</mi><mn>2</mn></mfrac><mo>±</mo><msqrt><mrow><mfrac><msup><mi>γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.8)</mtext></mrow><annotation encoding="application/x-tex">
 \gamma_\pm = \frac{\gamma}{2} \pm \sqrt{\frac{\gamma^2}{4}-\omega_0^2}\,. \qquad \text{(2.8)}
 </annotation></semantics></math></p>
-<p><em>(Figura 2.1: soluciones de la ecuación de movimiento para un
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.1.png" alt="Figura 2.1" loading="lazy" />
+<figcaption>Figura 2.1: soluciones de la ecuación de movimiento para un
 oscilador sobreamortiguado, con
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><msup><mtext mathvariant="normal">s</mtext><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\gamma=1\ \text{s}^{-1}</annotation></semantics></math>
 y
@@ -260,7 +265,8 @@ y la línea continua es la combinación lineal
 entre
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
 y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">s</mtext></mrow><annotation encoding="application/x-tex">t=10\ \text{s}</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">s</mtext></mrow><annotation encoding="application/x-tex">t=10\ \text{s}</annotation></semantics></math>.</figcaption>
+</figure>
 <p>En la situación sobreamortiguada, en realidad no hay oscilación. Si
 la masa se mueve inicialmente muy rápido hacia la posición de
 equilibrio, puede sobrepasarla, como se muestra en la figura 2.1. Sin
@@ -324,13 +330,16 @@ representada frente a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
 En el caso subamortiguado, ¡la posición de equilibrio se cruza un número
 infinito de veces, aunque con amplitud decreciente exponencialmente!</p>
-<p><em>(Figura 2.2: exponencial compleja amortiguada — en el plano
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.2.png" alt="Figura 2.2" loading="lazy" />
+<figcaption>Figura 2.2: exponencial compleja amortiguada — en el plano
 complejo, una espiral que converge al origen,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-\gamma t/2}e^{-i(\omega t-\theta)}</annotation></semantics></math>;
 debajo, su parte real,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo>−</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(\omega t-\theta)</annotation></semantics></math>,
 mostrada como una senoide de amplitud decreciente frente a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.</figcaption>
+</figure>
 <h3 id="osciladores-con-amortiguamiento-crítico">2.1.3 Osciladores con
 amortiguamiento crítico</h3>
 <p>Si
@@ -384,12 +393,15 @@ La línea discontinua es
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t\,e^{-\gamma t}</annotation></semantics></math>.
 La línea continua es una combinación lineal,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(1-t)\,e^{-\gamma t}</annotation></semantics></math>.</p>
-<p><em>(Figura 2.3: soluciones de la ecuación de movimiento para un
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.3.png" alt="Figura 2.3" loading="lazy" />
+<figcaption>Figura 2.3: soluciones de la ecuación de movimiento para un
 oscilador con amortiguamiento crítico, entre
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">s</mtext></mrow><annotation encoding="application/x-tex">t=10\ \text{s}</annotation></semantics></math>,
-análoga a la figura 2.1 pero para el caso crítico.)</em></p>
+análoga a la figura 2.1 pero para el caso crítico.</figcaption>
+</figure>
 <p>Como en la situación sobreamortiguada, no hay oscilación real en el
 amortiguamiento crítico. Sin embargo, de nuevo, la masa puede sobrepasar
 el equilibrio y luego regresar suavemente hacia la posición de
@@ -543,7 +555,9 @@ y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
 se muestran en la gráfica de la figura 2.4 para
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\gamma=\omega_0/2</annotation></semantics></math>.</p>
-<p><em>(Figura 2.4: amplitudes elástica
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.4.png" alt="Figura 2.4" loading="lazy" />
+<figcaption>Figura 2.4: amplitudes elástica
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>
 (línea continua) y absortiva
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
@@ -558,7 +572,8 @@ pasa de positiva a negativa cruzando cero cerca de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>,
 mientras
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
-alcanza su máximo cerca de la resonancia.)</em></p>
+alcanza su máximo cerca de la resonancia.</figcaption>
+</figure>
 <p>La parte real de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒜</mi><mo>=</mo><mtext mathvariant="normal">Re</mtext><mspace width="0.167em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">\mathcal{A}=\text{Re}\,A</annotation></semantics></math>,
@@ -654,7 +669,9 @@ Sin embargo, difieren en un factor de
 En particular, el máximo de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℬ</mi><annotation encoding="application/x-tex">\mathcal{B}</annotation></semantics></math>
 ocurre ligeramente por debajo de la resonancia.</p>
-<p><em>(Figura 2.5: potencia media disipada por la fuerza de fricción en
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.5.png" alt="Figura 2.5" loading="lazy" />
+<figcaption>Figura 2.5: potencia media disipada por la fuerza de fricción en
 función de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
 para
@@ -662,7 +679,8 @@ para
 una curva con pico en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>
 de altura
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>F</mi><mn>0</mn><mn>2</mn></msubsup><mi>/</mi><mn>2</mn><mi>m</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">F_0^2/2m\gamma</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>F</mi><mn>0</mn><mn>2</mn></msubsup><mi>/</mi><mn>2</mn><mi>m</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">F_0^2/2m\gamma</annotation></semantics></math>.</figcaption>
+</figure>
 <h3 id="anchura-de-la-resonancia-y-vida-media">2.3.2 Anchura de la
 resonancia y vida media</h3>
 <p>Tanto la altura como la anchura de la curva de resonancia de la
@@ -698,7 +716,10 @@ La dependencia lineal de la anchura con
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
 se aprecia claramente. Las líneas punteadas muestran la posición de
 media altura.</p>
-<p><em>(Figuras 2.6 y 2.7: la misma curva de potencia media disipada
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.6.png" alt="Figura 2.6" loading="lazy" />
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.7.png" alt="Figura 2.7" loading="lazy" />
+<figcaption>Figura 2.6 y 2.7: la misma curva de potencia media disipada
 frente a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
 que en la figura 2.5, pero para
@@ -707,7 +728,8 @@ que en la figura 2.5, pero para
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma=\omega_0</annotation></semantics></math>
 (pico ancho), respectivamente, mostrando cómo la anchura de la
 resonancia crece linealmente con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>.</figcaption>
+</figure>
 <p>Esta relación es aún más interesante en vista de la relación entre
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
 y la dependencia temporal de la oscilación libre. La vida media del
@@ -778,7 +800,9 @@ Un retraso de fase de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
 es otro criterio diagnóstico frecuentemente usado para la
 resonancia.</p>
-<p><em>(Figura 2.8: retraso de fase
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.8.png" alt="Figura 2.8" loading="lazy" />
+<figcaption>Figura 2.8: retraso de fase
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
 frente a la frecuencia
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
@@ -789,7 +813,8 @@ crece de forma monótona desde 0 hasta
 pasando por
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
 exactamente en
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\omega_d=\omega_0</annotation></semantics></math>.</figcaption>
+</figure>
 <h2 id="un-ejemplo">2.4 Un ejemplo</h2>
 <h3 id="sintiéndolo-en-los-huesos">2.4.1 Sintiéndolo en los huesos</h3>
 <p><em>(Referencia al programa interactivo 2-1 del disco de programas
@@ -809,10 +834,13 @@ hacia atrás con desplazamiento</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.35)</mtext></mrow><annotation encoding="application/x-tex">
 d_0\cos\omega_d t\,. \qquad \text{(2.35)}
 </annotation></semantics></math></p>
-<p><em>(Figura 2.9: bloque en un recipiente con fluido viscoso, unido
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh2_ES/fig2.9.png" alt="Figura 2.9" loading="lazy" />
+<figcaption>Figura 2.9: bloque en un recipiente con fluido viscoso, unido
 mediante una cuerda que pasa por una polea a un muelle cuyo extremo
 libre se mueve como
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">d_0\cos\omega_d t</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">d_0\cos\omega_d t</annotation></semantics></math>.</figcaption>
+</figure>
 <p>En este montaje, no hace falta que usted esté dentro del fluido
 viscoso junto al bloque —lo que facilita mucho la respiración.</p>
 <p>La pregunta es: ¿cómo se mueve el bloque? Este sistema tiene
@@ -1025,6 +1053,11 @@ en su solución en unidades de segundos.</p>
 <p><em>Para obtener información sobre cómo citar estos materiales o
 sobre nuestras condiciones de uso, visite:</em> <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<nav class="migas migas-pie">
+<a href="../">← Volver a 8.03SC Vibraciones y Ondas</a>
+<a href="../../">Inicio del sitio</a>
+</nav>
+
 <script>
 (function () {
   var root = document.documentElement;

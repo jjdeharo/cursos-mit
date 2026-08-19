@@ -210,3 +210,46 @@ li.video-item {
   .theme-toggle { top: auto; bottom: 13px; right: 61px; }
   .a11y-panel { top: auto; bottom: 58px; right: 13px; }
 }
+
+/* --- navegación de vuelta al curso y a la portada --- */
+.migas {
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  /* Deja sitio a los botones flotantes de la esquina superior derecha. */
+  padding-right: 100px;
+}
+.migas a { text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+.migas span { margin: 0 0.35rem; }
+.migas-pie {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  padding: 1rem 0 0;
+  padding-right: 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* --- impresión y exportación a PDF --- */
+@media print {
+  /* Controles de pantalla que no tienen sentido sobre el papel. */
+  .a11y-toggle, .theme-toggle, .a11y-panel, .fp, .migas { display: none !important; }
+  /* El PDF se imprime siempre en claro, aunque se exporte con el tema oscuro. */
+  html, html[data-theme="dark"] {
+    --bg: #ffffff;
+    --text: #000000;
+    --muted: #444444;
+    --accent: #0b3d91;
+    --border: #cccccc;
+    --code-bg: #f0f0f0;
+  }
+  body { max-width: none; padding: 0; background: #fff; color: #000; }
+  figure.figura img { filter: none !important; }
+  figure.figura, h1, h2, h3 { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}

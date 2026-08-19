@@ -82,6 +82,9 @@
     </div>
   </div>
 </div>
+<nav class="migas">
+<a href="../../">Cursos de MIT</a> <span aria-hidden="true">›</span> <a href="../">8.03SC Vibraciones y Ondas</a>
+</nav>
 <header id="title-block-header">
 <h1 class="title">Capítulo 4: Simetrías — 8.03SC Física III: Vibraciones
 y Ondas</h1>
@@ -156,11 +159,14 @@ derecha como
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>.</p>
-<p><em>(Figura 4.1: los dos péndulos acoplados, con los desplazamientos
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh4_ES/fig4.1.png" alt="Figura 4.1" loading="lazy" />
+<figcaption>Figura 4.1: los dos péndulos acoplados, con los desplazamientos
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
-medidos hacia la derecha.)</em></p>
+medidos hacia la derecha.</figcaption>
+</figure>
 <p>Encontramos los modos normales de este sistema en el capítulo
 anterior. Pero, de hecho, podríamos haberlos encontrado aún más
 fácilmente aprovechando la simetría de este sistema. Si reflejamos este
@@ -175,13 +181,16 @@ sobre los desplazamientos,</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.1)</mtext></mrow><annotation encoding="application/x-tex">
 x_1 \to -x_2\,,\qquad x_2\to -x_1\,. \qquad \text{(4.1)}
 </annotation></semantics></math></p>
-<p><em>(Figura 4.2: el sistema de péndulos acoplados tras la reflexión
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh4_ES/fig4.2.png" alt="Figura 4.2" loading="lazy" />
+<figcaption>Figura 4.2: el sistema de péndulos acoplados tras la reflexión
 en el plano entre ambos; las posiciones 1 y 2 quedan intercambiadas, con
 los desplazamientos
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
-respectivamente, ambos con signo cambiado.)</em></p>
+respectivamente, ambos con signo cambiado.</figcaption>
+</figure>
 <p>En particular, si</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.2)</mtext></mrow><annotation encoding="application/x-tex">
 X(t) = \begin{pmatrix}x_1(t)\\x_2(t)\end{pmatrix} \qquad \text{(4.2)}
@@ -509,13 +518,16 @@ osciladores desacoplados. Pero si en su lugar coloca imanes idénticos en
 los extremos, los osciladores quedarán acoplados entre sí de una forma
 complicada. Puede ver cómo son las oscilaciones de este sistema en el
 programa 4-2 del disco de programas.</p>
-<p><em>(Figura 4.3: sistema de seis osciladores de hoja de sierra
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh4_ES/fig4.3.png" alt="Figura 4.3" loading="lazy" />
+<figcaption>Figura 4.3: sistema de seis osciladores de hoja de sierra
 acoplados, dispuestos en abanico hexagonal alrededor de un centro común;
 las flechas indican las direcciones en que se miden los desplazamientos
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
 a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>6</mn></msub><annotation encoding="application/x-tex">x_6</annotation></semantics></math>,
-en sentido antihorario alrededor del hexágono.)</em></p>
+en sentido antihorario alrededor del hexágono.</figcaption>
+</figure>
 <p>Si los desplazamientos respecto a las posiciones de equilibrio
 simétricas son pequeños, el sistema es aproximadamente lineal. A pesar
 de la aparente complejidad de este sistema, ¡podemos escribir los modos
@@ -842,6 +854,11 @@ más general que satisface (4.44).</p>
 <p><em>Para obtener información sobre cómo citar estos materiales o
 sobre nuestras condiciones de uso, visite:</em> <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<nav class="migas migas-pie">
+<a href="../">← Volver a 8.03SC Vibraciones y Ondas</a>
+<a href="../../">Inicio del sitio</a>
+</nav>
+
 <script>
 (function () {
   var root = document.documentElement;

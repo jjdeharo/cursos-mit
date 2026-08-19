@@ -82,6 +82,9 @@
     </div>
   </div>
 </div>
+<nav class="migas">
+<a href="../../">Cursos de MIT</a> <span aria-hidden="true">›</span> <a href="../">8.03SC Vibraciones y Ondas</a>
+</nav>
 <header id="title-block-header">
 <h1 class="title">Capítulo 10: Señales y análisis de Fourier — 8.03SC
 Física III: Vibraciones y Ondas</h1>
@@ -209,10 +212,13 @@ con una señal transversal arbitraria
 y con la condición de contorno en el infinito de que no hay ondas
 viajeras entrantes. Este sistema simple se muestra en la figura
 10.1.</p>
-<p><em>(Figura 10.1: cuerda semiinfinita impulsada transversalmente en
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.1.png" alt="Figura 10.1" loading="lazy" />
+<figcaption>Figura 10.1: cuerda semiinfinita impulsada transversalmente en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
 extendiéndose hacia
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">x\to\infty</annotation></semantics></math>.)</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">x\to\infty</annotation></semantics></math>.</figcaption>
+</figure>
 <p>Hay una forma elegante de resolver este problema, que funciona solo
 para un sistema con la relación de dispersión simple,</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><msup><mi>v</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(10.1)</mtext></mrow><annotation encoding="application/x-tex">
@@ -274,12 +280,15 @@ f(t) = \begin{cases} 1-|t| &amp; \text{para } |t|\le1\\ 0 &amp; \text{para } |t|
 </annotation></semantics></math></p>
 <p>la forma de la cuerda en una secuencia de instantes se muestra en la
 figura 10.2 y se anima en el programa 10-1.</p>
-<p><em>(Figura 10.2: un pulso triangular propagándose por la cuerda
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.2.png" alt="Figura 10.2" loading="lazy" />
+<figcaption>Figura 10.2: un pulso triangular propagándose por la cuerda
 estirada, mostrado en una secuencia de instantes desde
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>−</mi><mi>ℓ</mi><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">t=-\ell/v</annotation></semantics></math>
 hasta
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>7</mn><mi>ℓ</mi><mi>/</mi><mn>2</mn><mi>v</mi></mrow><annotation encoding="application/x-tex">t=7\ell/2v</annotation></semantics></math>,
-desplazándose sin cambiar de forma.)</em></p>
+desplazándose sin cambiar de forma.</figcaption>
+</figure>
 <h3 id="integrales-de-fourier">10.1.2 Integrales de Fourier</h3>
 <p>Pensemos en este problema de una forma más física. En el proceso,
 entenderemos la física de la solución general, (10.3). Esto puede
@@ -463,12 +472,15 @@ armónica de frecuencia
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\omega_0</annotation></semantics></math>,
 con una amplitud que varía lentamente, proporcional al primer factor. La
 dependencia espacial de (10.21) se muestra en la figura 10.3.</p>
-<p><em>(Figura 10.3: la función (10.21) en
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.3.png" alt="Figura 10.3" loading="lazy" />
+<figcaption>Figura 10.3: la función (10.21) en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>0</mn></msub><mi>/</mi><msub><mi>k</mi><mi>s</mi></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k_0/k_s=10</annotation></semantics></math>,
 mostrando una onda portadora rápida modulada por una envolvente
-lenta.)</em></p>
+lenta.</figcaption>
+</figure>
 <p>Debe pensar en el primer factor de (10.21) como la señal. El segundo
 factor se llama la «onda portadora». Entonces (10.21) describe una señal
 que se mueve con velocidad</p>
@@ -846,7 +858,10 @@ entonces
 está extendida en el tiempo. Este comportamiento complementario es
 general: para resolver tiempos cortos, se necesita un espectro amplio de
 frecuencias.</p>
-<p><em>(Figuras 10.4 y 10.5:
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.4.png" alt="Figura 10.4" loading="lazy" />
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.5.png" alt="Figura 10.5" loading="lazy" />
+<figcaption>Figura 10.4 y 10.5:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>γ</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup></mrow><annotation encoding="application/x-tex">f(t)=e^{-\gamma|t|}</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega)</annotation></semantics></math>
@@ -858,7 +873,8 @@ mostrando cómo un pico más estrecho en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
 corresponde a un pico más ancho en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
-y viceversa.)</em></p>
+y viceversa.</figcaption>
+</figure>
 <h3 id="generalidades">10.3.2 Generalidades</h3>
 <p>Podemos enunciar este hecho de forma muy general usando una
 definición matemática precisa de la dispersión de la señal en el tiempo
@@ -1351,7 +1367,9 @@ de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>
 a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>.</p>
-<p><em>(Figuras 10.7-10.16: secuencia de instantáneas de
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.7.png" alt="Figura 10.7" loading="lazy" />
+<figcaption>Figura 10.7:-10.16: secuencia de instantáneas de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x,t)</annotation></semantics></math>
 para
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t=-2,-1,0,1,2,3</annotation></semantics></math>
@@ -1360,7 +1378,8 @@ y luego
 mostrando el pulso gaussiano-exponencial aproximándose a la masa en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
 deformándose al interactuar con ella, y separándose finalmente en un
-pulso reflejado y uno transmitido de formas distintas.)</em></p>
+pulso reflejado y uno transmitido de formas distintas.</figcaption>
+</figure>
 <p>A
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>−</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">t=-2</annotation></semantics></math>,
 ve el pulso acercándose a la masa, para
@@ -1392,6 +1411,10 @@ y
 así que lo examinaremos con una escala temporal más fina en las figuras
 10.13-10.16. Para apreciarlo de verdad, debería verlo en movimiento:
 está animado en el programa 10-4.</p>
+<figure class="figura">
+<img src="figuras/MIT8.03_TextCh10_ES/fig10.13.png" alt="Figura 10.13" loading="lazy" />
+<figcaption>Figura 10.13</figcaption>
+</figure>
 <h2 id="es-c-la-velocidad-de-la-luz">10.5 ¿Es
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
 la velocidad de la luz?</h2>
@@ -1691,6 +1714,11 @@ debe estar ocurriendo.</p></li>
 <p><em>Para obtener información sobre cómo citar estos materiales o
 sobre nuestras condiciones de uso, visite:</em> <a
 href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
+<nav class="migas migas-pie">
+<a href="../">← Volver a 8.03SC Vibraciones y Ondas</a>
+<a href="../../">Inicio del sitio</a>
+</nav>
+
 <script>
 (function () {
   var root = document.documentElement;
