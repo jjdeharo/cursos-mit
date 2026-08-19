@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Examen final de práctica 2 (con soluciones) — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+    <script>
+      (function () {
+        var t = localStorage.getItem("mit-tema");
+        if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+        document.documentElement.setAttribute("data-theme", t || "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Examen final de práctica 2 (con soluciones) — 8.03SC
+Física III: Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#examen-final-de-práctica-2"
+id="toc-examen-final-de-práctica-2">Examen final de práctica 2</a>
+<ul>
+<li><a href="#hoja-de-fórmulas" id="toc-hoja-de-fórmulas">Hoja de
+fórmulas</a>
+<ul>
+<li><a href="#muelles-y-masas" id="toc-muelles-y-masas">Muelles y
+masas</a></li>
+<li><a href="#soluciones-generales"
+id="toc-soluciones-generales">Soluciones generales</a></li>
+<li><a href="#osciladores-acoplados"
+id="toc-osciladores-acoplados">Osciladores acoplados</a></li>
+<li><a href="#integrales-útiles-con-senos-y-cosenos"
+id="toc-integrales-útiles-con-senos-y-cosenos">Integrales útiles con
+senos y cosenos</a></li>
+<li><a href="#ecuaciones-de-maxwell-en-el-vacío"
+id="toc-ecuaciones-de-maxwell-en-el-vacío">Ecuaciones de Maxwell en el
+vacío</a></li>
+<li><a
+href="#ecuación-de-ondas-para-los-campos-electromagnéticos-en-el-vacío"
+id="toc-ecuación-de-ondas-para-los-campos-electromagnéticos-en-el-vacío">Ecuación
+de ondas para los campos electromagnéticos en el vacío</a></li>
+<li><a href="#densidad-lineal-de-energía-en-una-cuerda"
+id="toc-densidad-lineal-de-energía-en-una-cuerda">Densidad lineal de
+energía en una cuerda</a></li>
+<li><a href="#transmisión-reflexión-velocidad-de-fase-e-impedancia"
+id="toc-transmisión-reflexión-velocidad-de-fase-e-impedancia">Transmisión,
+reflexión, velocidad de fase e impedancia</a></li>
+<li><a href="#transformada-de-fourier-y-función-delta"
+id="toc-transformada-de-fourier-y-función-delta">Transformada de Fourier
+y función delta</a></li>
+<li><a href="#campo-eléctrico-y-magnético-de-una-carga-acelerada"
+id="toc-campo-eléctrico-y-magnético-de-una-carga-acelerada">Campo
+eléctrico y magnético de una carga acelerada</a></li>
+<li><a href="#interferencia-y-difracción"
+id="toc-interferencia-y-difracción">Interferencia y difracción</a></li>
+<li><a href="#ecuación-de-schrödinger"
+id="toc-ecuación-de-schrödinger">Ecuación de Schrödinger</a></li>
+</ul></li>
+<li><a href="#problema-1-15-puntos"
+id="toc-problema-1-15-puntos">Problema 1 (15 puntos)</a></li>
+<li><a href="#problema-2-15-puntos"
+id="toc-problema-2-15-puntos">Problema 2 (15 puntos)</a></li>
+<li><a href="#problema-3-20-puntos"
+id="toc-problema-3-20-puntos">Problema 3 (20 puntos)</a></li>
+<li><a href="#problema-4-15-puntos"
+id="toc-problema-4-15-puntos">Problema 4 (15 puntos)</a></li>
+<li><a href="#problema-5-15-puntos"
+id="toc-problema-5-15-puntos">Problema 5 (15 puntos)</a></li>
+<li><a href="#problema-6-20-puntos"
+id="toc-problema-6-20-puntos">Problema 6 (20 puntos)</a></li>
+</ul></li>
+<li><a href="#soluciones" id="toc-soluciones">Soluciones</a>
+<ul>
+<li><a href="#solución-del-problema-1"
+id="toc-solución-del-problema-1">Solución del problema 1</a></li>
+<li><a href="#solución-del-problema-2"
+id="toc-solución-del-problema-2">Solución del problema 2</a></li>
+<li><a href="#solución-del-problema-3"
+id="toc-solución-del-problema-3">Solución del problema 3</a></li>
+<li><a href="#solución-del-problema-4"
+id="toc-solución-del-problema-4">Solución del problema 4</a></li>
+<li><a href="#solución-del-problema-5"
+id="toc-solución-del-problema-5">Solución del problema 5</a></li>
+<li><a href="#solución-del-problema-6"
+id="toc-solución-del-problema-6">Solución del problema 6</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="examen-final-de-práctica-2">Examen final de práctica 2</h1>
+<p><strong>Instituto Tecnológico de Massachusetts</strong></p>
+<p><strong>Física 8.03</strong></p>
+<p><strong>EXAMEN FINAL DE PRÁCTICA 2</strong></p>
+<hr />
+<h2 id="hoja-de-fórmulas">Hoja de fórmulas</h2>
+<h3 id="muelles-y-masas">Muelles y masas</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>b</mi><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>k</mi><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">m\frac{d^2}{dt^2}x(t) + b\frac{d}{dt}x(t) + kx(t) = F(t)</annotation></semantics></math></p>
+<p>Ecuación diferencial más general con fuerza impulsora armónica:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi mathvariant="normal">Γ</mi><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msub><mi>F</mi><mn>0</mn></msub><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\frac{d^2}{dt^2}x(t) + \Gamma\frac{d}{dt}x(t) + \omega_0^2 x(t) = \frac{F_0}{m}\cos(\omega_d t)</annotation></semantics></math></p>
+<p>Soluciones estacionarias:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>−</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x_s(t) = A\cos(\omega_d t - \delta)</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mstyle displaystyle="true"><mfrac><msub><mi>F</mi><mn>0</mn></msub><mi>m</mi></mfrac></mstyle><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow></msqrt></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">y</mtext><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Γ</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">A = \frac{\dfrac{F_0}{m}}{\sqrt{(\omega_0^2 - \omega_d^2)^2 + \omega_d^2\Gamma^2}} \qquad\text{y}\qquad \tan\delta = \frac{\Gamma\omega_d}{\omega_0^2 - \omega_d^2}</annotation></semantics></math></p>
+<h3 id="soluciones-generales">Soluciones generales</h3>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Gamma = 0</annotation></semantics></math>
+(sistema no amortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi><mo>+</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = R\cos(\omega_0 t + \theta) + x_s(t)</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>&lt;</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma &lt; 2\omega_0</annotation></semantics></math>
+(sistema subamortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mi>t</mi></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msqrt><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></msqrt><mspace width="0.167em"></mspace><mi>t</mi><mo>+</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = Re^{-\frac{\Gamma}{2}t}\cos\left(\sqrt{\omega_0^2 - \frac{\Gamma^2}{4}}\,t + \theta\right) + x_s(t)</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma = 2\omega_0</annotation></semantics></math>
+(sistema críticamente amortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = (R_1 + R_2 t)e^{-\frac{\Gamma}{2}t} + x_s(t)</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>&gt;</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma &gt; 2\omega_0</annotation></semantics></math>
+(sistema sobreamortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>R</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mo>+</mo><msqrt><mrow><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub><msup><mi>e</mi><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mo>−</mo><msqrt><mrow><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = R_1 e^{\left(-\frac{\Gamma}{2} + \sqrt{\frac{\Gamma^2}{4} - \omega_0^2}\right)t} + R_2 e^{\left(-\frac{\Gamma}{2} - \sqrt{\frac{\Gamma^2}{4} - \omega_0^2}\right)t} + x_s(t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>1</mn></msub><annotation encoding="application/x-tex">R_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>2</mn></msub><annotation encoding="application/x-tex">R_2</annotation></semantics></math>
+son coeficientes desconocidos.</p>
+<h3 id="osciladores-acoplados">Osciladores acoplados</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>j</mi></msub><mo>=</mo><mi>−</mi><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>K</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mspace width="0.167em"></mspace><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">F_j = -\sum_{k=1}^{n} K_{jk}\,x_k</annotation></semantics></math></p>
+<p>Ejemplos para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>12</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>21</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>22</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mi>M</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>m</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>m</mi><mn>2</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{X}(t) = \begin{pmatrix} x_1(t) \\ x_2(t) \end{pmatrix}
+\qquad
+K = \begin{pmatrix} K_{11} &amp; K_{12} \\ K_{21} &amp; K_{22} \end{pmatrix}
+\qquad
+M = \begin{pmatrix} m_1 &amp; 0 \\ 0 &amp; m_2 \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mi>𝒵</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{d^2}{dt^2}\mathcal{X}(t) = -M^{-1}K\,\mathcal{X}(t) \qquad \mathcal{Z}(t) = Ae^{-i\omega t} \qquad (M^{-1}K - \omega^2 I)A = 0</annotation></semantics></math></p>
+<p>Para obtener las frecuencias de los modos normales, resuelva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">det</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det(M^{-1}K - \omega^2 I) = 0</annotation></semantics></math>.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">det</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>12</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>21</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>22</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>M</mi><mn>11</mn></msub><msub><mi>M</mi><mn>22</mn></msub><mo>−</mo><msub><mi>M</mi><mn>12</mn></msub><msub><mi>M</mi><mn>21</mn></msub></mrow><annotation encoding="application/x-tex">\det\begin{pmatrix} M_{11} &amp; M_{12} \\ M_{21} &amp; M_{22} \end{pmatrix} = M_{11}M_{22} - M_{12}M_{21}</annotation></semantics></math></p>
+<p>Si el sistema está impulsado por una fuerza:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">F(t) = F_0 e^{-i\omega_d t} \qquad W(t) = C(\omega_d)e^{-i\omega_d t} \qquad C(\omega_d) = \begin{pmatrix} c_1(\omega_d) \\ c_2(\omega_d) \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">(M^{-1}K - \omega_d^2 I)\,C(\omega_d) = F_0</annotation></semantics></math></p>
+<p>Matriz de simetría de reflexión:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S = \begin{pmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{pmatrix}</annotation></semantics></math></p>
+<h3 id="integrales-útiles-con-senos-y-cosenos">Integrales útiles con
+senos y cosenos</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mi>L</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>m</mi><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mi>m</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">en caso contrario</mtext></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\frac{2}{L}\int_0^L \sin\left(\frac{n\pi x}{L}\right)\sin\left(\frac{m\pi x}{L}\right)dx = \begin{cases} 1, &amp; \text{si } n = m \\ 0, &amp; \text{en caso contrario} \end{cases}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mi>L</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>m</mi><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mo>=</mo><mi>m</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">en caso contrario</mtext></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\frac{2}{L}\int_0^L \cos\left(\frac{n\pi x}{L}\right)\cos\left(\frac{m\pi x}{L}\right)dx = \begin{cases} 1, &amp; \text{si } n = m \\ 0, &amp; \text{en caso contrario} \end{cases}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>x</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>x</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>C</mi><mspace width="2.0em"></mspace><mo>∫</mo><mi>x</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>x</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\int x\sin(x)\,dx = \sin(x) - x\cos(x) + C \qquad \int x\cos(x)\,dx = \cos(x) + x\sin(x) + C</annotation></semantics></math></p>
+<h3 id="ecuaciones-de-maxwell-en-el-vacío">Ecuaciones de Maxwell en el
+vacío</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>y</mi></msub></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>x</mi></msub></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>z</mi></msub></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mspace width="0.222em"></mspace><mo>;</mo><mspace width="1.0em"></mspace><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>z</mi></msub></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>y</mi></msub></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>x</mi></msub></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mspace width="0.222em"></mspace><mo>;</mo><mspace width="1.0em"></mspace><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>x</mi></msub></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>z</mi></msub></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>y</mi></msub></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y} = -\frac{\partial B_z}{\partial t}\ ;\quad
+\frac{\partial E_z}{\partial y} - \frac{\partial E_y}{\partial z} = -\frac{\partial B_x}{\partial t}\ ;\quad
+\frac{\partial E_x}{\partial z} - \frac{\partial E_z}{\partial x} = -\frac{\partial B_y}{\partial t}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>x</mi></msub></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>y</mi></msub></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>∂</mi><msub><mi>E</mi><mi>z</mi></msub></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mo>=</mo><mn>0</mn><mspace width="0.222em"></mspace><mo>;</mo><mspace width="2.0em"></mspace><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>x</mi></msub></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>y</mi></msub></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>∂</mi><msub><mi>B</mi><mi>z</mi></msub></mrow><mrow><mi>∂</mi><mi>z</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} = 0\ ;\qquad
+\frac{\partial B_x}{\partial x} + \frac{\partial B_y}{\partial y} + \frac{\partial B_z}{\partial z} = 0</annotation></semantics></math></p>
+<p>Fuerza de Lorentz:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>F</mi><mo accent="true">→</mo></mover><mo>=</mo><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mover><mi>E</mi><mo accent="true">→</mo></mover><mo>+</mo><mover><mi>v</mi><mo accent="true">→</mo></mover><mo>×</mo><mover><mi>B</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\vec{F} = q(\vec{E} + \vec{v}\times\vec{B})</annotation></semantics></math></p>
+<h3
+id="ecuación-de-ondas-para-los-campos-electromagnéticos-en-el-vacío">Ecuación
+de ondas para los campos electromagnéticos en el vacío</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>E</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>E</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>E</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><msup><mi>c</mi><mn>2</mn></msup></mfrac><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>E</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">donde </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mo>=</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">\frac{\partial^2 E_i}{\partial x^2} + \frac{\partial^2 E_i}{\partial y^2} + \frac{\partial^2 E_i}{\partial z^2} = \frac{1}{c^2}\frac{\partial^2 E_i}{\partial t^2} \quad \text{donde } i = x, y, z</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><msup><mi>c</mi><mn>2</mn></msup></mfrac><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><mi>∂</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">donde </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mo>=</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">\frac{\partial^2 B_i}{\partial x^2} + \frac{\partial^2 B_i}{\partial y^2} + \frac{\partial^2 B_i}{\partial z^2} = \frac{1}{c^2}\frac{\partial^2 B_i}{\partial t^2} \quad \text{donde } i = x, y, z</annotation></semantics></math></p>
+<p>Para ondas planas electromagnéticas en el vacío:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>B</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mi>c</mi></mfrac><mspace width="0.167em"></mspace><mover><mi>k</mi><mo accent="true">̂</mo></mover><mo>×</mo><mover><mi>E</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mover><mi>E</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>c</mi><mspace width="0.167em"></mspace><mover><mi>B</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>×</mo><mover><mi>k</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\vec{B}(\vec{r}, t) = \frac{1}{c}\,\hat{k} \times \vec{E}(\vec{r}, t) \qquad\qquad \vec{E}(\vec{r}, t) = c\,\vec{B}(\vec{r}, t) \times \hat{k}</annotation></semantics></math></p>
+<h3 id="densidad-lineal-de-energía-en-una-cuerda">Densidad lineal de
+energía en una cuerda</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>K</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>ρ</mi><mi>L</mi></msub><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><mi>y</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mfrac><mrow><mi>d</mi><mi>U</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>T</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><mi>y</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dK}{dx} = \frac{1}{2}\rho_L\left(\frac{\partial y}{\partial t}\right)^2 \qquad\qquad \frac{dU}{dx} = \frac{1}{2}T\left(\frac{\partial y}{\partial x}\right)^2</annotation></semantics></math></p>
+<h3
+id="transmisión-reflexión-velocidad-de-fase-e-impedancia">Transmisión,
+reflexión, velocidad de fase e impedancia</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>−</mo><msub><mi>z</mi><mn>2</mn></msub></mrow><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>+</mo><msub><mi>z</mi><mn>1</mn></msub></mrow></mfrac><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>z</mi><mn>1</mn></msub></mrow><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>+</mo><msub><mi>z</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">R = \frac{z_1 - z_2}{z_2 + z_1} \qquad\qquad T = \frac{2z_1}{z_2 + z_1}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msqrt><mfrac><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mfrac></msqrt><mspace width="2.0em"></mspace><mi>Z</mi><mo>=</mo><msqrt><mrow><mi>T</mi><msub><mi>ρ</mi><mi>L</mi></msub></mrow></msqrt><mspace width="1.0em"></mspace><mtext mathvariant="normal">(cuerda)</mtext></mrow><annotation encoding="application/x-tex">v = \sqrt{\frac{T}{\rho_L}} \qquad Z = \sqrt{T\rho_L} \quad \text{(cuerda)}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msqrt><mfrac><mn>1</mn><mrow><mi>L</mi><mi>C</mi></mrow></mfrac></msqrt><mspace width="2.0em"></mspace><mi>Z</mi><mo>=</mo><msqrt><mfrac><mi>L</mi><mi>C</mi></mfrac></msqrt><mspace width="1.0em"></mspace><mtext mathvariant="normal">(línea de transmisión)</mtext></mrow><annotation encoding="application/x-tex">v = \sqrt{\frac{1}{LC}} \qquad Z = \sqrt{\frac{L}{C}} \quad \text{(línea de transmisión)}</annotation></semantics></math></p>
+<p>Ley de Snell:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>θ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">n_1\sin\theta_1 = n_2\sin\theta_2</annotation></semantics></math></p>
+<h3 id="transformada-de-fourier-y-función-delta">Transformada de Fourier
+y función delta</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>ω</mi><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mspace width="2.0em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f(t) = \int_{-\infty}^{\infty} d\omega\, C(\omega)e^{-i\omega t} \qquad C(\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty} dt\, f(t)e^{i\omega t}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo>−</mo><msup><mi>ω</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mo>−</mo><msup><mi>ω</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mspace width="2.0em"></mspace><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\frac{1}{2\pi}\int_{-\infty}^{\infty} e^{i(\omega - \omega&#39;)t}\,dt = \delta(\omega - \omega&#39;) \qquad \int_{-\infty}^{\infty} \delta(x)\,dx = 1 \qquad \int_{-\infty}^{\infty} \delta(x - a)f(x)\,dx = f(a)</annotation></semantics></math></p>
+<h3 id="campo-eléctrico-y-magnético-de-una-carga-acelerada">Campo
+eléctrico y magnético de una carga acelerada</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mi>q</mi><mspace width="0.167em"></mspace><msub><mover><mi>a</mi><mo accent="true">→</mo></mover><mo>⟂</mo></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>r</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>4</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><mi>r</mi><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mover><mi>B</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mover><mi>k</mi><mo accent="true">̂</mo></mover><mo>×</mo><mover><mi>E</mi><mo accent="true">→</mo></mover></mrow><mi>c</mi></mfrac></mrow><annotation encoding="application/x-tex">\vec{E}(\vec{r}, t) = -\frac{q\,\vec{a}_\perp(t - |r|/c)}{4\pi\varepsilon_0 rc^2} \qquad\qquad \vec{B}(\vec{r}, t) = \frac{\hat{k}\times\vec{E}}{c}</annotation></semantics></math></p>
+<p>Potencia total emitida por la carga acelerada:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mi>r</mi><mi>/</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>6</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><msup><mi>c</mi><mn>3</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(t) = \frac{q^2 a^2(t - r/c)}{6\pi\varepsilon_0 c^3}</annotation></semantics></math></p>
+<h3 id="interferencia-y-difracción">Interferencia y difracción</h3>
+<p>Interferencia de dos fuentes de amplitudes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>2</mn></msub><annotation encoding="application/x-tex">A_2</annotation></semantics></math>
+con una diferencia de fase relativa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>I</mi><mo stretchy="false" form="postfix">⟩</mo><mo>∝</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>A</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>A</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><mn>2</mn><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mi mathvariant="normal">cos</mi><mi>δ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\langle I\rangle \propto \left(A_1^2 + A_2^2 + 2A_1 A_2\cos\delta\right)</annotation></semantics></math></p>
+<p>Interferencia de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+campos de igual amplitud con fases
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>δ</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>δ</mi><mi>m</mi></msub><mo>=</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta_{m+1} - \delta_m = \delta</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>I</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msub><mi>I</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">⟩</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>δ</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>δ</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\langle I\rangle = \langle I_0\rangle\left(\frac{\sin(N\delta/2)}{\sin(\delta/2)}\right)^2</annotation></semantics></math></p>
+<p>Difracción por una rendija, donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+es la diferencia de fase entre los rayos procedentes de los bordes y del
+centro de la rendija:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>I</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msub><mi>I</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">⟩</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>β</mi></mrow><mi>β</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\langle I\rangle = \langle I_0\rangle\left(\frac{\sin\beta}{\beta}\right)^2</annotation></semantics></math></p>
+<p>Criterio de Rayleigh para la resolución: el pico de difracción de una
+imagen cae sobre el primer mínimo del patrón de difracción de la segunda
+imagen.</p>
+<p>Razones de transmisión y reflexión del campo eléctrico, en magnitud y
+signo, para radiación que incide normalmente sobre una interfaz entre
+dieléctricos sin pérdidas de índices de refracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>n</mi><mn>1</mn></msub><annotation encoding="application/x-tex">n_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>n</mi><mn>2</mn></msub><annotation encoding="application/x-tex">n_2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mi>E</mi><mi>t</mi></msub><msub><mi>E</mi><mi>i</mi></msub></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>n</mi><mn>1</mn></msub></mrow><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub></mrow></mfrac><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mfrac><msub><mi>E</mi><mi>r</mi></msub><msub><mi>E</mi><mi>i</mi></msub></mfrac><mo>=</mo><mfrac><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><msub><mi>n</mi><mn>2</mn></msub></mrow><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{E_t}{E_i} = \frac{2n_1}{n_1 + n_2} \qquad\qquad \frac{E_r}{E_i} = \frac{n_1 - n_2}{n_1 + n_2}</annotation></semantics></math></p>
+<h3 id="ecuación-de-schrödinger">Ecuación de Schrödinger</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">i\hbar\frac{\partial}{\partial t}\psi(x, t) = \left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x, t)\right]\psi(x, t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+es la energía potencial,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+es la masa de la partícula y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+es la función de onda.</p>
+<hr />
+<h2 id="problema-1-15-puntos">Problema 1 (15 puntos)</h2>
+<p>Responda a cada pregunta corta por separado.</p>
+<p><strong>1.1.</strong> La energía potencial de una partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+obligada a moverse a lo largo del eje
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+viene dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">U(x) = A\left(1 - \cos(\alpha x)\right)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+son constantes, ambas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">&gt; 0</annotation></semantics></math>.
+Si la partícula se desplaza del equilibrio, ¿cuál será su periodo de
+oscilación de pequeña amplitud?</p>
+<p><strong>1.2.</strong> Considere el siguiente registro de la posición
+de un oscilador forzado en función del tiempo (figura 1). Puede suponer
+que la fuerza impulsora es una onda sinusoidal y que su amplitud no
+cambia con el tiempo. ¿Cuál o cuáles de las siguientes descripciones son
+verdaderas? (Seleccione todas las que correspondan.)</p>
+<ol type="a">
+<li><p>La frecuencia impulsora es mayor que la frecuencia de resonancia
+natural del sistema.</p></li>
+<li><p>La frecuencia impulsora es menor que la frecuencia de resonancia
+natural del sistema.</p></li>
+<li><p>No hay amortiguamiento.</p></li>
+<li><p>El sistema está sobreamortiguado.</p></li>
+<li><p>El sistema está críticamente amortiguado.</p></li>
+<li><p>El sistema está subamortiguado.</p></li>
+</ol>
+<p><strong>1.3.</strong> La electrónica utilizada en el Gran
+Colisionador de Hadrones emplea pulsos cuadrados de 1 nanosegundo. ¿Cuál
+es el rango aproximado de frecuencias (ancho de banda) necesario para
+enviar pulsos tan cortos?</p>
+<p><strong>1.4.</strong> En la figura 2 se muestra un experimento con
+electrones. La fuente se calentó hasta que empezó a emitir electrones.
+¿Cuál o cuáles de las siguientes descripciones son verdaderas?
+(Seleccione todas las que correspondan.)</p>
+<ol type="a">
+<li><p>Cuando la temperatura de la fuente es alta, de modo que la tasa
+de emisión de electrones es alta, el detector registrará un patrón de
+interferencia.</p></li>
+<li><p>Cuando la temperatura de la fuente es alta, de modo que la tasa
+de emisión de electrones es alta, el detector no registrará ningún
+patrón de interferencia.</p></li>
+<li><p>Cuando la temperatura de la fuente es baja, de modo que la fuente
+emite un electrón cada vez, no habrá patrón de interferencia.</p></li>
+<li><p>Cuando la temperatura de la fuente es baja, de modo que la fuente
+emite un electrón cada vez, habrá patrón de interferencia.</p></li>
+</ol>
+<p><strong>1.5.</strong> Una membrana elástica está tensada sobre un
+marco rectangular, como se muestra en la figura 3. La velocidad de fase
+de propagación de las ondas en esta membrana es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+¿Cuál es la frecuencia angular del modo normal más bajo que puede
+excitarse en la membrana?</p>
+<p><em>(Figura 1: registro de un oscilador forzado. Figura 2:
+experimento con electrones. Figura 3: membrana elástica, tensada sobre
+un marco cuadrado de lado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.)</em></p>
+<hr />
+<h2 id="problema-2-15-puntos">Problema 2 (15 puntos)</h2>
+<p>Dos pequeñas cuentas con masa, de masas iguales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m_1 = m_2 = m</annotation></semantics></math>,
+están sobre una cuerda tensa sin masa de longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>L</mi></mrow><annotation encoding="application/x-tex">5L</annotation></semantics></math>
+(véase la figura 4). La tensión de la cuerda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+es grande, de modo que se pueden despreciar los efectos de la gravedad.
+Los tramos de cuerda miden
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>L</mi></mrow><annotation encoding="application/x-tex">2L</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>L</mi></mrow><annotation encoding="application/x-tex">2L</annotation></semantics></math>.</p>
+<p><strong>a.</strong> Escriba las ecuaciones del movimiento de las dos
+cuentas para oscilaciones de pequeña amplitud a lo largo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+y escriba la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+correspondiente a este sistema.</p>
+<p><strong>b.</strong> Halle las formas y las frecuencias angulares de
+los modos normales del sistema. Puede simplificar la tarea usando
+argumentos de simetría. Explique su razonamiento.</p>
+<p><strong>c.</strong> Inicialmente, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>,
+ambas masas están en reposo, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+en la posición de equilibrio y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>
+desplazada del equilibrio una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Escriba una expresión para el desplazamiento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_1(t)</annotation></semantics></math>
+de la masa que inicialmente está en la posición de equilibrio.</p>
+<p><em>(Figura 4: dos cuentas sobre una cuerda, con tramos de longitudes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>L</mi></mrow><annotation encoding="application/x-tex">2L</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>L</mi></mrow><annotation encoding="application/x-tex">2L</annotation></semantics></math>.)</em></p>
+<hr />
+<h2 id="problema-3-20-puntos">Problema 3 (20 puntos)</h2>
+<p>La figura 5 representa un tubo lleno de gas que está abierto a un
+depósito de gas en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+y cerrado en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>.
+La velocidad del sonido en el gas es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+Se establece en el gas una ligera perturbación de presión que después se
+suelta desde el reposo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>.
+La perturbación está centrada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">L/2</annotation></semantics></math>,
+abarca una anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">L/3</annotation></semantics></math>
+y tiene una presión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+ligeramente mayor que la presión ambiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>.</p>
+<p><strong>a.</strong> ¿Cuáles son las condiciones de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>?</p>
+<p><strong>b.</strong> Exprese la perturbación de presión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(x, t)</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t &gt; 0</annotation></semantics></math>
+como una suma de modos normales. Dé expresiones explícitas para las
+variaciones espacial y temporal de cada modo normal, su número de onda y
+su frecuencia angular. Deje las amplitudes asociadas como parámetros por
+determinar.</p>
+<p><strong>c.</strong> Calcule la amplitud del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésimo
+modo normal.</p>
+<p><strong>d.</strong> Dibuje un esbozo (similar a la gráfica anterior)
+de la presión en el tubo en el instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn><mi>L</mi><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">t = 2L/v</annotation></semantics></math>.
+[Pista: puede hacerse razonando con cuidado, en lugar de calcular
+explícitamente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(x, t)</annotation></semantics></math>.]</p>
+<p><em>(Figura 5: onda de presión en un tubo. Sobre el tramo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+se levanta un pulso de presión de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">L/3</annotation></semantics></math>
+centrado en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">L/2</annotation></semantics></math>,
+que alcanza el valor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+por encima de la presión ambiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>.)</em></p>
+<hr />
+<h2 id="problema-4-15-puntos">Problema 4 (15 puntos)</h2>
+<p>Una carga puntual
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">+q</annotation></semantics></math>
+se ha estado moviendo con velocidad constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+a lo largo de una línea recta hasta el instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t = t_0</annotation></semantics></math>.
+En el CORTO intervalo de tiempo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t = t_0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">t = t_0 + \Delta t</annotation></semantics></math>,
+una fuerza perpendicular a la trayectoria cambia la dirección sin
+cambiar el módulo de la velocidad. Después del instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">t = t_0 + \Delta t</annotation></semantics></math>,
+la carga vuelve a moverse con velocidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+a lo largo de una línea recta que forma un pequeño ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\Delta\alpha</annotation></semantics></math>
+con la trayectoria inicial, como se muestra en la figura 6. La radiación
+emitida por la carga se observa desde los puntos muy lejanos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>.
+Los dos puntos de observación están situados en el plano de la
+trayectoria.</p>
+<p><strong>a.</strong> ¿Cuál es la aceleración media de la carga puntual
+en términos de las magnitudes dadas?</p>
+<p><strong>b.</strong> ¿Cuál es la dirección del campo eléctrico causado
+por la aceleración en el punto lejano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>?</p>
+<p><strong>c.</strong> ¿En qué dirección es más intensa la radiación de
+la carga acelerada?</p>
+<p><strong>d.</strong> ¿Dónde es menos intensa?</p>
+<p><strong>e.</strong> El punto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>
+está al doble de distancia del codo de la trayectoria que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>.
+¿En qué fracción disminuye la amplitud de la perturbación
+electromagnética al pasar el pulso de radiación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>?</p>
+<p><strong>f.</strong> ¿Cuál es la energía total radiada por la
+carga?</p>
+<p>Haga esbozos cuidadosos al responder a los apartados b), c) y d).</p>
+<p><em>(Figura 6: carga radiante. La trayectoria se quiebra un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\Delta\alpha</annotation></semantics></math>;
+los puntos de observación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>
+están en el plano de la trayectoria, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>
+al doble de distancia que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>.)</em></p>
+<hr />
+<h2 id="problema-5-15-puntos">Problema 5 (15 puntos)</h2>
+<p>Considere un sistema de tres polarizadores lineales ideales
+dispuestos a lo largo de un banco óptico, como se muestra en la figura
+7. Los dos polarizadores exteriores tienen sus ejes fáciles
+perpendiculares entre sí. El polarizador A transmite solo luz polarizada
+horizontalmente, mientras que el polarizador C transmite solo luz
+polarizada verticalmente. El polarizador B tiene su eje fácil formando
+un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+con el eje horizontal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Suponga que la luz que incide sobre el polarizador A por la izquierda no
+está polarizada y que su intensidad es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>.</p>
+<p><strong>a.</strong> Halle la intensidad y la polarización de la luz
+transmitida a través del polarizador A,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>A</mi></msub><annotation encoding="application/x-tex">I_A</annotation></semantics></math>.</p>
+<p><strong>b.</strong> Halle la intensidad y la polarización de la luz
+transmitida a través del polarizador B,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>B</mi></msub><annotation encoding="application/x-tex">I_B</annotation></semantics></math>,
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+y represéntela gráficamente en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.</p>
+<p><strong>c.</strong> Halle la intensidad de la luz transmitida a
+través del polarizador C,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>C</mi></msub><annotation encoding="application/x-tex">I_C</annotation></semantics></math>,
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+y represéntela gráficamente en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.</p>
+<p><em>(Figura 7: tres polarizadores lineales A, B y C, con los ejes
+fáciles horizontal, a un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+y vertical, respectivamente.)</em></p>
+<hr />
+<h2 id="problema-6-20-puntos">Problema 6 (20 puntos)</h2>
+<p>Una fuente monocromática de ondas planas de longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+ilumina una red de cuatro rendijas. La figura 8 muestra una sección
+transversal de la red; la longitud de las rendijas es perpendicular al
+papel. La pantalla está muy lejos de las rendijas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>≪</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">d \ll z</annotation></semantics></math>).</p>
+<p><strong>a.</strong> Escriba una expresión, en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>,
+de la intensidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+que se observará en la pantalla. Suponga en principio que las rendijas
+son muy estrechas en comparación con su separación
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>≪</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">D \ll d</annotation></semantics></math>).
+Suponga que la intensidad de la luz debida a una sola rendija es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>0</mn></msub><annotation encoding="application/x-tex">I_0</annotation></semantics></math>.</p>
+<p><strong>b.</strong> Haga un esbozo de la intensidad en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi></mrow><annotation encoding="application/x-tex">\sin\psi</annotation></semantics></math>
+para la red de cuatro rendijas. Asegúrese de especificar las posiciones
+de los máximos principales y de los mínimos de interferencia.</p>
+<p><strong>c.</strong> Considere ahora la misma red con las dos rendijas
+INTERIORES bloqueadas. Escriba una expresión de la intensidad observada
+en la pantalla y haga el esbozo de la nueva intensidad frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi></mrow><annotation encoding="application/x-tex">\sin\psi</annotation></semantics></math>.</p>
+<p><strong>d.</strong> Compárelo con el esbozo obtenido para las cuatro
+rendijas. ¿Cuáles son las nuevas posiciones de los máximos y los
+mínimos? ¿Qué máximos principales están en la misma posición en las dos
+configuraciones? ¿Cómo ha cambiado la magnitud de los máximos
+principales? Suponga que las intensidades individuales de las rendijas
+abiertas son las mismas en ambos casos.</p>
+<p><strong>e.</strong> Considere ahora la misma red de cuatro rendijas
+con todas las rendijas descubiertas, pero esta vez las anchuras
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+de las rendijas individuales no pueden despreciarse. La razón entre la
+distancia entre los centros de las rendijas y la anchura de la rendija
+es ahora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>/</mi><mi>D</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">d/D = 5</annotation></semantics></math>.
+El efecto de la difracción por una sola rendija hará que algunos de los
+máximos principales obtenidos en el apartado a) desaparezcan
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I = 0</annotation></semantics></math>).
+¿Cuál es el orden de interferencia más bajo para el que los efectos de
+difracción anulan de este modo el máximo principal?</p>
+<p><em>(Figura 8: red de cuatro rendijas, de separación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+entre centros y anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>,
+con la pantalla a una distancia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.)</em></p>
+<hr />
+<h1 id="soluciones">Soluciones</h1>
+<h2 id="solución-del-problema-1">Solución del problema 1</h2>
+<p><strong>1.1</strong> (3 puntos) La energía potencial</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">U(x) = A\left(1 - \cos(\alpha x)\right){}\tag{1}</annotation></semantics></math></p>
+<p>El mínimo está en los puntos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>n</mi><mi>π</mi></mrow><mi>α</mi></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">x = \frac{2n\pi}{\alpha}\ ,\qquad n \in \mathbb{Z}{}\tag{2}</annotation></semantics></math></p>
+<p><em>[Nota de la traducción: el PDF original escribe
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mi>n</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">x = 2n\pi</annotation></semantics></math>,
+omitiendo el factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">1/\alpha</annotation></semantics></math>;
+los mínimos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+están donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\cos(\alpha x) = 1</annotation></semantics></math>,
+es decir, en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>x</mi><mo>=</mo><mn>2</mn><mi>n</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">\alpha x = 2n\pi</annotation></semantics></math>.]</em></p>
+<p>Por ejemplo, consideramos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>U</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mn>0</mn></msub><mo>=</mo><mi>A</mi><msup><mi>α</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">|</mo><mn>0</mn></msub><mo>=</mo><mi>A</mi><msup><mi>α</mi><mn>2</mn></msup><mrow></mrow></mrow><annotation encoding="application/x-tex">\left.\frac{d^2U}{dx^2}\right|_0 = A\alpha^2\cos(\alpha x)\big|_0 = A\alpha^2{}\tag{3}</annotation></semantics></math></p>
+<p>Esto es equivalente al parámetro
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+del movimiento armónico simple de un muelle:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>k</mi><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">U = \frac{1}{2}kx^2</annotation></semantics></math>.
+Por tanto obtenemos el periodo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>ω</mi></mfrac><mo>=</mo><mn>2</mn><mi>π</mi><msqrt><mfrac><mi>m</mi><mi>k</mi></mfrac></msqrt><mo>=</mo><mn>2</mn><mi>π</mi><msqrt><mfrac><mi>m</mi><mrow><mi>A</mi><msup><mi>α</mi><mn>2</mn></msup></mrow></mfrac></msqrt><mrow></mrow></mrow><annotation encoding="application/x-tex">T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{m}{k}} = 2\pi\sqrt{\frac{m}{A\alpha^2}}{}\tag{4}</annotation></semantics></math></p>
+<p><strong>1.2</strong> (3 puntos) El comportamiento transitorio de un
+sistema de oscilación forzada se describe como la suma del movimiento
+estacionario y del movimiento libre que decae por el
+amortiguamiento.</p>
+<p>El periodo del movimiento estacionario es mucho más largo que el
+periodo del movimiento libre. Además, la forma global del movimiento
+transitorio corresponde a un movimiento subamortiguado que decae. Por
+tanto, la respuesta es <strong>b, f</strong>.</p>
+<p><strong>1.3</strong> (3 puntos) La relación entre el ancho de banda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Delta f</annotation></semantics></math>
+y la resolución temporal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>f</mi><mo>∼</mo><mn>1</mn><mrow></mrow></mrow><annotation encoding="application/x-tex">\Delta t\,\Delta f \sim 1{}\tag{5}</annotation></semantics></math></p>
+<p>Por tanto, el ancho de banda es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi><mo>∼</mo><msup><mn>10</mn><mn>9</mn></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">Hz</mtext><mrow></mrow></mrow><annotation encoding="application/x-tex">\Delta f \sim 10^9\ \text{Hz}{}\tag{6}</annotation></semantics></math></p>
+<p><strong>1.4</strong> (3 puntos) Por débil que sea la fuente de
+electrones, siempre aparece un patrón de interferencia en la pantalla al
+cabo de mucho tiempo. La respuesta es <strong>a, d</strong>.</p>
+<p><strong>1.5</strong> (3 puntos) La ecuación de ondas en 2D es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>∂</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><msup><mi>v</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>∂</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">\frac{\partial^2\psi}{\partial t^2} = v^2\left(\frac{\partial^2\psi}{\partial x^2} + \frac{\partial^2\psi}{\partial y^2}\right){}\tag{7}</annotation></semantics></math></p>
+<p>El modo más bajo que respeta la condición de contorno dada es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>π</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>π</mi><mi>y</mi></mrow><mi>L</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">\psi_{1,1}(x, y, t) \sim \sin\left(\frac{\pi x}{L}\right)\sin\left(\frac{\pi y}{L}\right)\cos(\omega t){}\tag{8}</annotation></semantics></math></p>
+<p>Sustituyéndolo en la ecuación de ondas, obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msqrt><mn>2</mn></msqrt><mspace width="0.167em"></mspace><mfrac><mrow><mi>v</mi><mi>π</mi></mrow><mi>L</mi></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">\omega = \sqrt{2}\,\frac{v\pi}{L}{}\tag{9}</annotation></semantics></math></p>
+<h2 id="solución-del-problema-2">Solución del problema 2</h2>
+<p><strong>a)</strong> (5 puntos) La ecuación del movimiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msub><mover><mi>y</mi><mo accent="true">̈</mo></mover><mn>1</mn></msub><mo>=</mo><mi>−</mi><mfrac><mi>T</mi><mrow><mn>2</mn><mi>L</mi></mrow></mfrac><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><mfrac><mi>T</mi><mi>L</mi></mfrac><mo stretchy="false" form="prefix">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mn>3</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>L</mi></mrow></mfrac><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mfrac><mi>T</mi><mi>L</mi></mfrac><msub><mi>y</mi><mn>2</mn></msub><mrow></mrow></mrow><annotation encoding="application/x-tex">m\ddot{y}_1 = -\frac{T}{2L}y_1 - \frac{T}{L}(y_1 - y_2) = -\frac{3T}{2L}y_1 + \frac{T}{L}y_2{}\tag{10}</annotation></semantics></math></p>
+<p>Análogamente, la ecuación del movimiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>2</mn></msub><annotation encoding="application/x-tex">m_2</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msub><mover><mi>y</mi><mo accent="true">̈</mo></mover><mn>2</mn></msub><mo>=</mo><mi>−</mi><mfrac><mi>T</mi><mrow><mn>2</mn><mi>L</mi></mrow></mfrac><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><mfrac><mi>T</mi><mi>L</mi></mfrac><mo stretchy="false" form="prefix">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mn>3</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>L</mi></mrow></mfrac><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mfrac><mi>T</mi><mi>L</mi></mfrac><msub><mi>y</mi><mn>1</mn></msub><mrow></mrow></mrow><annotation encoding="application/x-tex">m\ddot{y}_2 = -\frac{T}{2L}y_2 - \frac{T}{L}(y_2 - y_1) = -\frac{3T}{2L}y_2 + \frac{T}{L}y_1{}\tag{11}</annotation></semantics></math></p>
+<p>Por tanto, los elementos de la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mn>11</mn></msub><mo>=</mo><msub><mi>K</mi><mn>22</mn></msub><mo>=</mo><mfrac><mrow><mn>3</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>L</mi></mrow></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>K</mi><mn>12</mn></msub><mo>=</mo><msub><mi>K</mi><mn>21</mn></msub><mo>=</mo><mi>−</mi><mfrac><mi>T</mi><mi>L</mi></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">K_{11} = K_{22} = \frac{3T}{2L}\ ,\qquad K_{12} = K_{21} = -\frac{T}{L}{}\tag{12}</annotation></semantics></math></p>
+<p>Y la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>3</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>m</mi><mi>L</mi></mrow></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mfrac><mi>T</mi><mrow><mi>m</mi><mi>L</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mfrac><mi>T</mi><mrow><mi>m</mi><mi>L</mi></mrow></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>3</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>m</mi><mi>L</mi></mrow></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">M^{-1}K = \begin{pmatrix} \frac{3T}{2mL} &amp; -\frac{T}{mL} \\ -\frac{T}{mL} &amp; \frac{3T}{2mL} \end{pmatrix}{}\tag{13}</annotation></semantics></math></p>
+<p><strong>b)</strong> (5 puntos) El sistema es simétrico bajo la
+reflexión horizontal respecto del punto central, es decir, bajo el
+intercambio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>↔</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_1 \leftrightarrow y_2</annotation></semantics></math>.
+Las únicas soluciones que tienen esta simetría son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_1(t) = y_2(t)</annotation></semantics></math>
+e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_1(t) = -y_2(t)</annotation></semantics></math>.
+Dan lugar a los autovectores</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mo>+</mo></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>V</mi><mo>−</mo></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">V_+ = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\ ,\qquad V_- = \begin{pmatrix} 1 \\ -1 \end{pmatrix}{}\tag{14}</annotation></semantics></math></p>
+<p>Sustituyendo esos autovectores en la ecuación matricial</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi>V</mi><mo>=</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>V</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">M^{-1}K\,V = \omega^2 V{}\tag{15}</annotation></semantics></math></p>
+<p>obtenemos las frecuencias angulares correspondientes a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>±</mo></msub><annotation encoding="application/x-tex">V_\pm</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mo>+</mo></msub><mo>=</mo><msqrt><mfrac><mi>T</mi><mrow><mn>2</mn><mi>m</mi><mi>L</mi></mrow></mfrac></msqrt><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ω</mi><mo>−</mo></msub><mo>=</mo><msqrt><mfrac><mrow><mn>5</mn><mi>T</mi></mrow><mrow><mn>2</mn><mi>m</mi><mi>L</mi></mrow></mfrac></msqrt><mrow></mrow></mrow><annotation encoding="application/x-tex">\omega_+ = \sqrt{\frac{T}{2mL}}\ ,\qquad \omega_- = \sqrt{\frac{5T}{2mL}}{}\tag{16}</annotation></semantics></math></p>
+<p><strong>c)</strong> (5 puntos) El movimiento más general en términos
+de esos modos normales es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mn>2</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>A</mi><mo>+</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mo>+</mo></msub><mi>t</mi><mo>+</mo><msub><mi>φ</mi><mo>+</mo></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>A</mi><mo>−</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mo>−</mo></msub><mi>t</mi><mo>+</mo><msub><mi>φ</mi><mo>−</mo></msub><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">\begin{pmatrix} y_1 \\ y_2 \end{pmatrix} = A_+\begin{pmatrix} 1 \\ 1 \end{pmatrix}\cos(\omega_+ t + \varphi_+) + A_-\begin{pmatrix} 1 \\ -1 \end{pmatrix}\cos(\omega_- t + \varphi_-){}\tag{17}</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mo>+</mo></msub><annotation encoding="application/x-tex">A_+</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mo>−</mo></msub><annotation encoding="application/x-tex">A_-</annotation></semantics></math>
+son dos coeficientes fijados por las condiciones iniciales. A partir de
+la información sobre las posiciones y velocidades iniciales, tenemos las
+ecuaciones</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>A</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>A</mi><mo>+</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>φ</mi><mo>+</mo></msub><mo>+</mo><msub><mi>A</mi><mo>−</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><msub><mi>φ</mi><mo>−</mo></msub><mrow></mrow></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 0 \\ A \end{pmatrix} = A_+\begin{pmatrix} 1 \\ 1 \end{pmatrix}\cos\varphi_+ + A_-\begin{pmatrix} 1 \\ -1 \end{pmatrix}\cos\varphi_-{}\tag{18}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><msub><mi>A</mi><mo>+</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>φ</mi><mo>+</mo></msub><mo>−</mo><msub><mi>A</mi><mo>−</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>φ</mi><mo>−</mo></msub><mrow></mrow></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 0 \\ 0 \end{pmatrix} = -A_+\begin{pmatrix} 1 \\ 1 \end{pmatrix}\sin\varphi_+ - A_-\begin{pmatrix} 1 \\ -1 \end{pmatrix}\sin\varphi_-{}\tag{19}</annotation></semantics></math></p>
+<p>De la segunda ecuación obtenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>φ</mi><mo>+</mo></msub><mo>=</mo><msub><mi>φ</mi><mo>−</mo></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varphi_+ = \varphi_- = 0</annotation></semantics></math>,
+y de la primera podemos despejar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mo>+</mo></msub><mo>=</mo><mfrac><mi>A</mi><mn>2</mn></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>A</mi><mo>−</mo></msub><mo>=</mo><mi>−</mi><mfrac><mi>A</mi><mn>2</mn></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">A_+ = \frac{A}{2}\ ,\qquad A_- = -\frac{A}{2}{}\tag{20}</annotation></semantics></math></p>
+<p>El movimiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>A</mi><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">cos</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mo>+</mo></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi mathvariant="normal">cos</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mo>−</mo></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">y_1(t) = \frac{A}{2}\left(\cos(\omega_+ t) - \cos(\omega_- t)\right){}\tag{21}</annotation></semantics></math></p>
+<h2 id="solución-del-problema-3">Solución del problema 3</h2>
+<p><strong>a)</strong> (5 puntos) En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>,
+la presión es la misma que la presión atmosférica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>,
+por lo que la perturbación de presión es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">P(0, t) = 0</annotation></semantics></math>.
+En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>,
+el desplazamiento de las moléculas de aire es nulo, y entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>P</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mrow></mrow></mrow><annotation encoding="application/x-tex">\frac{\partial P}{\partial x}(L, t) = 0{}\tag{22}</annotation></semantics></math></p>
+<p><strong>b)</strong> (5 puntos) De la condición de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+sabemos que los modos normales tienen la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">P(x, t) \sim \sin(kx){}\tag{23}</annotation></semantics></math></p>
+<p>Y de la condición de contorno en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mrow></mrow></mrow><annotation encoding="application/x-tex">k\cos(kL) = 0{}\tag{24}</annotation></semantics></math></p>
+<p>deducimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>π</mi><mi>L</mi></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">k = \left(n + \frac{1}{2}\right)\frac{\pi}{L}\ ,\qquad n = 0, 1, 2, \ldots{}\tag{25}</annotation></semantics></math></p>
+<p>El desarrollo de Fourier de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(x, t)</annotation></semantics></math>
+es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><msub><mi>A</mi><mi>n</mi></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>π</mi><mi>L</mi></mfrac><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><mi>v</mi><mi>π</mi></mrow><mi>L</mi></mfrac><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow></mrow></mrow><annotation encoding="application/x-tex">P(x, t) = \sum_{n=0}^{\infty} A_n\sin\left(\left(n + \frac{1}{2}\right)\frac{\pi}{L}x\right)\cos\left(\left(n + \frac{1}{2}\right)\frac{v\pi}{L}t\right){}\tag{26}</annotation></semantics></math></p>
+<p>(Las fases de cada término son todas nulas porque la «velocidad»
+inicial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>P</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{\partial P}{\partial t} = 0</annotation></semantics></math>.)</p>
+<p><strong>c)</strong> (5 puntos) Los coeficientes de Fourier pueden
+obtenerse evaluando la integral</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>2</mn><mi>L</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>π</mi><mi>L</mi></mfrac><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">A_n = \frac{2}{L}\int_0^L f(x)\sin\left(\left(n + \frac{1}{2}\right)\frac{\pi}{L}x\right)dx{}\tag{27}</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math>
+es la forma inicial dada en el problema.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>A</mi><mi>n</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>−</mo><msub><mi>P</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><mi>L</mi></mfrac><msubsup><mo>∫</mo><mrow><mi>L</mi><mi>/</mi><mn>3</mn></mrow><mrow><mn>2</mn><mi>L</mi><mi>/</mi><mn>3</mn></mrow></msubsup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>π</mi><mi>L</mi></mfrac><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>−</mo><msub><mi>P</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>π</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mi mathvariant="normal">cos</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>3</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi mathvariant="normal">cos</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>π</mi><mn>3</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr></mtable><mrow></mrow></mrow><annotation encoding="application/x-tex">\begin{aligned}
+A_n &amp;= \frac{2(P_1 - P_0)}{L}\int_{L/3}^{2L/3}\sin\left(\left(n + \frac{1}{2}\right)\frac{\pi}{L}x\right)dx \\[4pt]
+&amp;= -\frac{2(P_1 - P_0)}{\left(n + \frac{1}{2}\right)\pi}\left[\cos\left(\left(n + \frac{1}{2}\right)\frac{2\pi}{3}\right) - \cos\left(\left(n + \frac{1}{2}\right)\frac{\pi}{3}\right)\right]
+\end{aligned}{}\tag{28}</annotation></semantics></math></p>
+<p><strong>d)</strong> (5 puntos) En el instante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mn>2</mn><mi>L</mi></mrow><mi>v</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">t = \dfrac{2L}{v}</annotation></semantics></math>,
+los argumentos valen</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><mi>v</mi><mi>π</mi></mrow><mi>L</mi></mfrac><mi>t</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi><mo>+</mo><mi>π</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">\left(n + \frac{1}{2}\right)\frac{v\pi}{L}t = 2\pi n + \pi{}\tag{29}</annotation></semantics></math></p>
+<p>Por tanto, todos los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><mi>v</mi><mi>π</mi></mrow><mi>L</mi></mfrac><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\cos\left(\left(n + \frac{1}{2}\right)\frac{v\pi}{L}t\right)</annotation></semantics></math>
+del desarrollo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(x, t)</annotation></semantics></math>
+valen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.
+La configuración (perturbación de presión) es entonces la del pulso
+inicial invertido, es decir, un pulso que baja hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo>−</mo><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_0 - P_1</annotation></semantics></math>.</p>
+<h2 id="solución-del-problema-4">Solución del problema 4</h2>
+<p><strong>a)</strong> (3 puntos) La aceleración media es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>a</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mfrac><mrow><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>2</mn></msub><mo>−</mo><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>1</mn></msub></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">\langle\vec{a}\rangle = \frac{\vec{v}_2 - \vec{v}_1}{\Delta t}{}\tag{30}</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>1</mn></msub><mo>=</mo><mi>w</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\vec{v}_1 = w\hat{x}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>2</mn></msub><mo>=</mo><mi>w</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mi>α</mi><mo>⋅</mo><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>−</mo><mi>w</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mi>α</mi><mo>⋅</mo><mover><mi>y</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\vec{v}_2 = w\cos\Delta\alpha\cdot\hat{x} - w\sin\Delta\alpha\cdot\hat{y}</annotation></semantics></math>
+son las velocidades inicial y final. Puesto que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>α</mi><mo>≪</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\Delta\alpha \ll 1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mi>α</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\cos\Delta\alpha - 1</annotation></semantics></math>
+es un infinitésimo de segundo orden, que puede despreciarse frente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\sin\Delta\alpha</annotation></semantics></math>.
+Entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>2</mn></msub><mo>−</mo><msub><mover><mi>v</mi><mo accent="true">→</mo></mover><mn>1</mn></msub><mo>=</mo><mi>−</mi><mi>w</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>α</mi><mo>⋅</mo><mover><mi>y</mi><mo accent="true">̂</mo></mover><mrow></mrow></mrow><annotation encoding="application/x-tex">\vec{v}_2 - \vec{v}_1 = -w\,\Delta\alpha\cdot\hat{y}{}\tag{31}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mover><mi>a</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mi>w</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>α</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>⋅</mo><mover><mi>y</mi><mo accent="true">̂</mo></mover><mrow></mrow></mrow><annotation encoding="application/x-tex">\langle\vec{a}\rangle = -\frac{w\,\Delta\alpha}{\Delta t}\cdot\hat{y}{}\tag{32}</annotation></semantics></math></p>
+<p><strong>b)</strong> (3 puntos) El campo eléctrico generado por esta
+aceleración es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">(</mo><mover><mi>r</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mi>q</mi><mspace width="0.167em"></mspace><msub><mover><mi>a</mi><mo accent="true">→</mo></mover><mo>⟂</mo></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>r</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>4</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><mi>r</mi><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">\vec{E}(\vec{r}, t) = -\frac{q\,\vec{a}_\perp(t - |r|/c)}{4\pi\varepsilon_0 rc^2}{}\tag{33}</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>a</mi><mo accent="true">→</mo></mover><mo>⟂</mo></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>r</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\vec{a}_\perp(t - |r|/c)</annotation></semantics></math>
+es la aceleración proyectada sobre la dirección transversal a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>r</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec{r}</annotation></semantics></math>.
+La dirección del campo eléctrico es, por tanto, la opuesta a esa
+proyección transversal de la aceleración.</p>
+<p><strong>c) d)</strong> (2 puntos cada uno) La dirección perpendicular
+a la dirección de la aceleración es la de radiación más intensa. La
+dirección paralela u opuesta a la dirección de la aceleración es la de
+radiación mínima (nula).</p>
+<p><strong>e)</strong> (2 puntos) De (33) sabemos que el campo eléctrico
+escala como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">→</mo></mover><mo>∼</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>r</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\vec{E} \sim \dfrac{1}{r}</annotation></semantics></math>.
+Por tanto, la amplitud en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_2</annotation></semantics></math>
+será
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{1}{2}</annotation></semantics></math>
+de la amplitud en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>.</p>
+<p><strong>f)</strong> (3 puntos) La potencia total de radiación es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>r</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>6</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><msup><mi>c</mi><mn>3</mn></msup></mrow></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">P(t) = \frac{q^2 a^2(t - |r|/c)}{6\pi\varepsilon_0 c^3}{}\tag{34}</annotation></semantics></math></p>
+<p>Por tanto, la energía total radiada por la carga es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>P</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>⋅</mo><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><msup><mi>w</mi><mn>2</mn></msup><mi mathvariant="normal">Δ</mi><msup><mi>α</mi><mn>2</mn></msup></mrow><mrow><mn>6</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><msup><mi>c</mi><mn>3</mn></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>t</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><msup><mi>w</mi><mn>2</mn></msup><mi mathvariant="normal">Δ</mi><msup><mi>α</mi><mn>2</mn></msup></mrow><mrow><mn>6</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><msup><mi>c</mi><mn>3</mn></msup><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">E = P\,\Delta t = \Delta t\cdot\frac{q^2 w^2\Delta\alpha^2}{6\pi\varepsilon_0 c^3(\Delta t)^2} = \frac{q^2 w^2\Delta\alpha^2}{6\pi\varepsilon_0 c^3\,\Delta t}{}\tag{35}</annotation></semantics></math></p>
+<h2 id="solución-del-problema-5">Solución del problema 5</h2>
+<p><strong>a)</strong> (5 puntos) Para luz no polarizada, la intensidad
+después de atravesar un polarizador lineal es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>A</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>I</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">I_A = \frac{1}{2}I_0</annotation></semantics></math>.
+Su polarización después de atravesar A es la de la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math>.</p>
+<p><strong>b)</strong> (5 puntos) Después de que la luz atraviese B, el
+vector de polarización se proyecta sobre la dirección fácil de B, de
+modo que la intensidad final es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>B</mi></msub><mo>=</mo><msub><mi>I</mi><mi>A</mi></msub><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>I</mi><mn>0</mn></msub><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">I_B = I_A\cos^2\theta = \frac{1}{2}I_0\cos^2\theta{}\tag{36}</annotation></semantics></math></p>
+<p><strong>c)</strong> (5 puntos) Después de que la luz atraviese C, el
+vector de polarización se proyecta desde la dirección fácil de B a la
+dirección fácil de C (dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>y</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math>),
+de modo que la intensidad final es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>C</mi></msub><mo>=</mo><msub><mi>I</mi><mi>B</mi></msub><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>I</mi><mn>0</mn></msub><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><msub><mi>I</mi><mn>0</mn></msub><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">I_C = I_B\sin^2\theta = \frac{1}{2}I_0\cos^2\theta\sin^2\theta = \frac{1}{8}I_0\sin^2(2\theta){}\tag{37}</annotation></semantics></math></p>
+<h2 id="solución-del-problema-6">Solución del problema 6</h2>
+<p><strong>a)</strong> (4 puntos) Puesto que las rendijas son muy
+estrechas, la intensidad es simplemente la intensidad de interferencia
+de 4 rendijas:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mi>δ</mi><mn>2</mn></mfrac></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>δ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mfrac><mi>d</mi><mi>λ</mi></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">I = I_0\left(\frac{\sin^2(2\delta)}{\sin^2\frac{\delta}{2}}\right)\ ,\qquad \delta = 2\pi\frac{d}{\lambda}\sin\psi{}\tag{38}</annotation></semantics></math></p>
+<p><strong>b)</strong> (4 puntos) Los máximos principales están en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">\delta = 2\pi n</annotation></semantics></math>,
+o bien
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mo>=</mo><mi>n</mi><mstyle displaystyle="true"><mfrac><mi>λ</mi><mi>d</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\sin\psi = n\dfrac{\lambda}{d}</annotation></semantics></math>.
+Los mínimos están en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>m</mi><mi>π</mi></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\delta = \dfrac{m\pi}{2}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">4 \nmid m</annotation></semantics></math>
+(es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+no es múltiplo de 4).</p>
+<p><strong>c)</strong> (4 puntos) Cuando se cierran las dos rendijas
+centrales, el sistema es simplemente una interferencia de dos rendijas
+con distancia entre rendijas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>d</mi></mrow><annotation encoding="application/x-tex">3d</annotation></semantics></math>.
+Por tanto,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><msup><mi>δ</mi><mo>′</mo></msup></mrow><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><msup><mi>δ</mi><mo>′</mo></msup><mn>2</mn></mfrac></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>δ</mi><mo>′</mo></msup><mo>=</mo><mn>6</mn><mi>π</mi><mfrac><mi>d</mi><mi>λ</mi></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">I = I_0\left(\frac{\sin^2\delta&#39;}{\sin^2\frac{\delta&#39;}{2}}\right)\ ,\qquad \delta&#39; = 6\pi\frac{d}{\lambda}\sin\psi{}\tag{39}</annotation></semantics></math></p>
+<p><strong>d)</strong> (4 puntos) Los nuevos máximos están en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mo>=</mo><mi>n</mi><mfrac><mi>λ</mi><mrow><mn>3</mn><mi>d</mi></mrow></mfrac><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">\sin\psi = n\frac{\lambda}{3d}\quad (n \in \mathbb{Z}){}\tag{40}</annotation></semantics></math></p>
+<p>y los nuevos mínimos están en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mi>λ</mi><mrow><mn>3</mn><mi>d</mi></mrow></mfrac><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">\sin\psi = \left(n + \frac{1}{2}\right)\frac{\lambda}{3d}\quad (n \in \mathbb{Z}){}\tag{41}</annotation></semantics></math></p>
+<p>Los máximos principales</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mo>=</mo><mi>n</mi><mfrac><mi>λ</mi><mi>d</mi></mfrac><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mo stretchy="false" form="postfix">)</mo><mrow></mrow></mrow><annotation encoding="application/x-tex">\sin\psi = n\frac{\lambda}{d}\quad (n \in \mathbb{Z}){}\tag{42}</annotation></semantics></math></p>
+<p>están en las mismas posiciones. La intensidad de los máximos
+principales disminuye de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><msub><mi>I</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">16I_0</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><msub><mi>I</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">4I_0</annotation></semantics></math>.</p>
+<p><strong>e)</strong> (4 puntos) Cuando la anchura de una sola rendija
+no puede despreciarse, la intensidad es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mfrac><mi>δ</mi><mn>2</mn></mfrac></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>β</mi></mrow><msup><mi>β</mi><mn>2</mn></msup></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>β</mi><mo>=</mo><mi>π</mi><mfrac><mi>D</mi><mi>λ</mi></mfrac><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">I = I_0\left(\frac{\sin^2(2\delta)}{\sin^2\frac{\delta}{2}}\right)\frac{\sin^2\beta}{\beta^2}\ ,\qquad \beta = \pi\frac{D}{\lambda}\sin\psi{}\tag{43}</annotation></semantics></math></p>
+<p>Los ceros del factor de difracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>β</mi></mrow><msup><mi>β</mi><mn>2</mn></msup></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{\sin^2\beta}{\beta^2}</annotation></semantics></math>
+están en</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>ψ</mi><mo>=</mo><mi>n</mi><mfrac><mi>λ</mi><mi>D</mi></mfrac><mspace width="0.222em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi>…</mi><mrow></mrow></mrow><annotation encoding="application/x-tex">\sin\psi = n\frac{\lambda}{D}\ ,\qquad n = 1, 2, 3, \ldots{}\tag{44}</annotation></semantics></math></p>
+<p>La condición para que un máximo principal del patrón de interferencia
+se solape con un cero de difracción es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mfrac><mi>λ</mi><mi>D</mi></mfrac><mo>=</mo><mfrac><mrow><mi>m</mi><mi>λ</mi></mrow><mi>d</mi></mfrac><mo>=</mo><mfrac><mrow><mi>m</mi><mi>λ</mi></mrow><mrow><mn>5</mn><mi>D</mi></mrow></mfrac><mrow></mrow></mrow><annotation encoding="application/x-tex">n\frac{\lambda}{D} = \frac{m\lambda}{d} = \frac{m\lambda}{5D}{}\tag{45}</annotation></semantics></math></p>
+<p>De modo que el orden de interferencia más bajo para el que esto
+ocurre es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">m = 5</annotation></semantics></math>.</p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a href="https://ocw.mit.edu"
+class="uri">https://ocw.mit.edu</a></em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms"
+class="uri">https://ocw.mit.edu/terms</a>.</em></p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yen-Jie Lee (traducción al español)" />
+  <title>Examen 1 (otoño de 2016) — 8.03SC Física III: Vibraciones y Ondas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+    <script>
+      (function () {
+        var t = localStorage.getItem("mit-tema");
+        if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+        document.documentElement.setAttribute("data-theme", t || "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+<header id="title-block-header">
+<h1 class="title">Examen 1 (otoño de 2016) — 8.03SC Física III:
+Vibraciones y Ondas</h1>
+<p class="author">Yen-Jie Lee (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#examen-1-otoño-de-2016"
+id="toc-examen-1-otoño-de-2016">Examen 1 (otoño de 2016)</a>
+<ul>
+<li><a href="#instrucciones"
+id="toc-instrucciones">Instrucciones</a></li>
+<li><a href="#hoja-de-fórmulas" id="toc-hoja-de-fórmulas">Hoja de
+fórmulas</a>
+<ul>
+<li><a href="#muelles-y-masas" id="toc-muelles-y-masas">Muelles y
+masas</a></li>
+<li><a href="#soluciones-generales"
+id="toc-soluciones-generales">Soluciones generales</a></li>
+<li><a href="#osciladores-acoplados"
+id="toc-osciladores-acoplados">Osciladores acoplados</a></li>
+<li><a href="#simetría-de-reflexión"
+id="toc-simetría-de-reflexión">Simetría de reflexión</a></li>
+<li><a href="#leyes-de-kirchhoff" id="toc-leyes-de-kirchhoff">Leyes de
+Kirchhoff</a></li>
+</ul></li>
+<li><a href="#problema-1-30-puntos"
+id="toc-problema-1-30-puntos">Problema 1 (30 puntos)</a></li>
+<li><a href="#problema-2-30-puntos"
+id="toc-problema-2-30-puntos">Problema 2 (30 puntos)</a></li>
+<li><a href="#problema-3-40-puntos"
+id="toc-problema-3-40-puntos">Problema 3 (40 puntos)</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="examen-1-otoño-de-2016">Examen 1 (otoño de 2016)</h1>
+<p><strong>Instituto Tecnológico de Massachusetts</strong></p>
+<p><strong>Física 8.03, otoño de 2016</strong></p>
+<p><strong>EXAMEN 1</strong></p>
+<h2 id="instrucciones">Instrucciones</h2>
+<p>Escriba sus soluciones en los cuadernillos blancos. No se corregirá
+nada de lo escrito en la copia del examen. Este examen es a libro
+cerrado. No se permite ningún equipo electrónico. Todos los teléfonos,
+blackberries, blueberries, raspberry Pi, tabletas, ordenadores, etc.
+deben estar apagados.</p>
+<hr />
+<h2 id="hoja-de-fórmulas">Hoja de fórmulas</h2>
+<h3 id="muelles-y-masas">Muelles y masas</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>b</mi><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>k</mi><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">m\frac{d^2}{dt^2}x(t) + b\frac{d}{dt}x(t) + kx(t) = F(t)</annotation></semantics></math></p>
+<p>Ecuación diferencial más general con fuerza impulsora armónica:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi mathvariant="normal">Γ</mi><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msub><mi>F</mi><mn>0</mn></msub><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\frac{d^2}{dt^2}x(t) + \Gamma\frac{d}{dt}x(t) + \omega_0^2 x(t) = \frac{F_0}{m}\cos(\omega_d t)</annotation></semantics></math></p>
+<p>Soluciones estacionarias:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo>−</mo><mi>δ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x_s(t) = A\cos(\omega_d t - \delta)</annotation></semantics></math></p>
+<p>donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mstyle displaystyle="true"><mfrac><msub><mi>F</mi><mn>0</mn></msub><mi>m</mi></mfrac></mstyle><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">A = \frac{\dfrac{F_0}{m}}{\sqrt{(\omega_0^2 - \omega_d^2)^2 + \omega_d^2\Gamma^2}}</annotation></semantics></math></p>
+<p>y</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>δ</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Γ</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\tan\delta = \frac{\Gamma\omega_d}{\omega_0^2 - \omega_d^2}</annotation></semantics></math></p>
+<h3 id="soluciones-generales">Soluciones generales</h3>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Gamma = 0</annotation></semantics></math>
+(sistema no amortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mn>0</mn></msub><mi>t</mi><mo>+</mo><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = R\cos(\omega_0 t + \theta) + x_s(t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+son coeficientes desconocidos.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>&lt;</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma &lt; 2\omega_0</annotation></semantics></math>
+(sistema subamortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mi>t</mi></mrow></msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msqrt><mrow><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></msqrt><mspace width="0.167em"></mspace><mi>t</mi><mo>+</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = Re^{-\frac{\Gamma}{2}t}\cos\left(\sqrt{\omega_0^2 - \frac{\Gamma^2}{4}}\,t + \theta\right) + x_s(t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+son coeficientes desconocidos.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma = 2\omega_0</annotation></semantics></math>
+(sistema críticamente amortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = (R_1 + R_2 t)e^{-\frac{\Gamma}{2}t} + x_s(t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>1</mn></msub><annotation encoding="application/x-tex">R_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>2</mn></msub><annotation encoding="application/x-tex">R_2</annotation></semantics></math>
+son coeficientes desconocidos.</p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>&gt;</mo><mn>2</mn><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\Gamma &gt; 2\omega_0</annotation></semantics></math>
+(sistema sobreamortiguado):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>R</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mo>+</mo><msqrt><mrow><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub><msup><mi>e</mi><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mi mathvariant="normal">Γ</mi><mn>2</mn></mfrac><mo>−</mo><msqrt><mrow><mfrac><msup><mi mathvariant="normal">Γ</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>−</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi></mrow></msup><mo>+</mo><msub><mi>x</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(t) = R_1 e^{\left(-\frac{\Gamma}{2} + \sqrt{\frac{\Gamma^2}{4} - \omega_0^2}\right)t} + R_2 e^{\left(-\frac{\Gamma}{2} - \sqrt{\frac{\Gamma^2}{4} - \omega_0^2}\right)t} + x_s(t)</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>1</mn></msub><annotation encoding="application/x-tex">R_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>2</mn></msub><annotation encoding="application/x-tex">R_2</annotation></semantics></math>
+son coeficientes desconocidos.</p>
+<h3 id="osciladores-acoplados">Osciladores acoplados</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>j</mi></msub><mo>=</mo><mi>−</mi><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>K</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mspace width="0.167em"></mspace><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">F_j = -\sum_{k=1}^{n} K_{jk}\,x_k</annotation></semantics></math></p>
+<p>Ejemplos para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{X}(t) = \begin{pmatrix} x_1(t) \\ x_2(t) \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>12</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>21</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mn>22</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">K = \begin{pmatrix} K_{11} &amp; K_{12} \\ K_{21} &amp; K_{22} \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>m</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>m</mi><mn>2</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M = \begin{pmatrix} m_1 &amp; 0 \\ 0 &amp; m_2 \end{pmatrix}</annotation></semantics></math></p>
+<p>Ecuación matricial del movimiento; las matrices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math>
+y los vectores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒳</mi><annotation encoding="application/x-tex">\mathcal{X}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒵</mi><annotation encoding="application/x-tex">\mathcal{Z}</annotation></semantics></math>
+son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \times 1</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mspace width="0.167em"></mspace><mi>𝒳</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\frac{d^2}{dt^2}\mathcal{X}(t) = -M^{-1}K\,\mathcal{X}(t)</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒵</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\mathcal{Z}(t) = Ae^{-i\omega t}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(M^{-1}K - \omega^2 I)A = 0</annotation></semantics></math></p>
+<p>Para obtener las frecuencias de los modos normales, resuelva:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">det</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det(M^{-1}K - \omega^2 I) = 0</annotation></semantics></math></p>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">det</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>12</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>21</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mn>22</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>M</mi><mn>11</mn></msub><msub><mi>M</mi><mn>22</mn></msub><mo>−</mo><msub><mi>M</mi><mn>12</mn></msub><msub><mi>M</mi><mn>21</mn></msub></mrow><annotation encoding="application/x-tex">\det\begin{pmatrix} M_{11} &amp; M_{12} \\ M_{21} &amp; M_{22} \end{pmatrix} = M_{11}M_{22} - M_{12}M_{21}</annotation></semantics></math></p>
+<p>Si el sistema está impulsado por una fuerza, se pueden hallar las
+amplitudes de respuesta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(\omega_d)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">F(t) = F_0 e^{-i\omega_d t}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">W(t) = C(\omega_d)e^{-i\omega_d t}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">C(\omega_d) = \begin{pmatrix} c_1(\omega_d) \\ c_2(\omega_d) \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msubsup><mi>ω</mi><mi>d</mi><mn>2</mn></msubsup><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">(M^{-1}K - \omega_d^2 I)\,C(\omega_d) = F_0</annotation></semantics></math></p>
+<p>Resolviendo la ecuación anterior se pueden hallar las amplitudes de
+respuesta del primer
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">c_1(\omega_d)</annotation></semantics></math>)
+y del segundo
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">c_2(\omega_d)</annotation></semantics></math>)
+objeto del sistema.</p>
+<h3 id="simetría-de-reflexión">Simetría de reflexión</h3>
+<p>Matriz de simetría de reflexión:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S = \begin{pmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{pmatrix}</annotation></semantics></math></p>
+<p>Autovalores
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>)
+y autovectores
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>)
+de esta matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2</annotation></semantics></math>:</p>
+<ol type="1">
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta = -1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix} 1 \\ 1 \end{pmatrix}</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta = 1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix} 1 \\ -1 \end{pmatrix}</annotation></semantics></math></li>
+</ol>
+<p>Sistema acoplado unidimensional infinito que satisface la simetría de
+traslación espacial: dado un autovalor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
+el autovector correspondiente es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><msup><mi>β</mi><mi>j</mi></msup><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_j = \beta^j A_0</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>0</mn></msub><annotation encoding="application/x-tex">A_0</annotation></semantics></math>)
+es la amplitud normal del objeto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-ésimo
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-ésimo)
+del sistema.</p>
+<p>Considere un sistema unidimensional formado por un número infinito de
+masas acopladas por muelles;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+puede escribirse como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\beta = e^{ika}</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es el número de onda y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la distancia entre las masas.</p>
+<h3 id="leyes-de-kirchhoff">Leyes de Kirchhoff</h3>
+<p>(¡Tenga cuidado con los signos!)</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Nodo:</mtext><mspace width="1.0em"></mspace><munderover><mo>∑</mo><mi>i</mi><mi>n</mi></munderover><msub><mi>I</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mtext mathvariant="normal">Malla:</mtext><mspace width="1.0em"></mspace><munderover><mo>∑</mo><mi>i</mi><mi>n</mi></munderover><mi mathvariant="normal">Δ</mi><msub><mi>V</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\text{Nodo:}\quad \sum_{i}^{n} I_i = 0 \qquad\qquad \text{Malla:}\quad \sum_{i}^{n} \Delta V_i = 0</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Condensadores:</mtext><mspace width="0.222em"></mspace><mi mathvariant="normal">Δ</mi><mi>V</mi><mo>=</mo><mfrac><mi>Q</mi><mi>C</mi></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">Bobinas:</mtext><mspace width="0.222em"></mspace><mi mathvariant="normal">Δ</mi><mi>V</mi><mo>=</mo><mi>−</mi><mi>L</mi><mfrac><mrow><mi>d</mi><mi>I</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">Corriente:</mtext><mspace width="0.222em"></mspace><mi>I</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>Q</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{Condensadores:}\ \Delta V = \frac{Q}{C} \qquad \text{Bobinas:}\ \Delta V = -L\frac{dI}{dt} \qquad \text{Corriente:}\ I = \frac{dQ}{dt}</annotation></semantics></math></p>
+<hr />
+<h2 id="problema-1-30-puntos">Problema 1 (30 puntos)</h2>
+<p>Resuelva las siguientes preguntas cortas.</p>
+<p><strong>A.</strong> Un estudiante de posgrado estaba realizando un
+experimento con un péndulo amortiguado obligado a moverse solo en la
+dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+La posición del péndulo en función del tiempo se muestra en la figura 1.
+Basándose en los datos experimentales, ¿se trata de un oscilador
+subamortiguado, sobreamortiguado o críticamente amortiguado? (5
+puntos)</p>
+<p><strong>B.</strong> Dos vibraciones a lo largo de la misma cuerda se
+describen mediante las ecuaciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>π</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_1(t) = A\cos(3\pi t)</annotation></semantics></math>
+e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>π</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_2(t) = A\cos(4\pi t)</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+está en segundos y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+vale 0.01 cm. Halle el periodo de batido de la superposición de ambas.
+(5 puntos)</p>
+<p><strong>C.</strong> Un péndulo pesado oscilaba bajo el agua con
+frecuencia angular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\omega_1</annotation></semantics></math>
+(subamortiguado). ¿La frecuencia de oscilación aumentará, disminuirá o
+se mantendrá igual si se saca del agua todo el sistema? Explique por
+qué. (5 puntos)</p>
+<p><strong>D.</strong> Considere un oscilador con tres masas dispuestas
+en línea y conectadas por muelles. El oscilador tiene una simetría
+especular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">x_1 \to -x_3</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_3 \to -x_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_2 \to -x_2</annotation></semantics></math>.
+Escriba la matriz de simetría
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+de este sistema. (5 puntos)</p>
+<p><strong>E.</strong> Explique brevemente por qué un oscilador
+subamortiguado forzado presenta a menudo respuestas grandes y
+aparentemente erráticas cuando se pone en marcha el mecanismo impulsor.
+(5 puntos)</p>
+<p><strong>F.</strong> Considere un oscilador mecánico simple de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+unido a un muelle de constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Puede establecerse una analogía estrecha entre este sistema y un
+circuito de una sola malla con una bobina
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+y un condensador
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+conectados en serie. Ambos osciladores siguen ecuaciones matemáticamente
+equivalentes. ¿Cuál es el equivalente eléctrico de la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+del sistema muelle-masa y de la constante del muelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>?
+(5 puntos)</p>
+<p><em>(Figura 1: desplazamiento de un péndulo respecto a la posición de
+equilibrio. La gráfica representa la posición, en cm, frente al tiempo,
+de 0 a 200 segundos. La curva parte de un valor positivo próximo a 5 cm
+y decae hacia cero sin llegar a cruzarlo ni oscilar en torno a
+él.)</em></p>
+<hr />
+<h2 id="problema-2-30-puntos">Problema 2 (30 puntos)</h2>
+<p>Muchas medidas científicas de precisión requieren mesas libres de
+vibraciones. En la figura 2 se muestra un ejemplo. Considere una mesa de
+masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+sostenida por 2 muelles ideales de constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">k = \frac{1}{2}m\omega_0^2</annotation></semantics></math>
+y amortiguada por un amortiguador con fuerza de amortiguamiento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>−</mi><mi>m</mi><mi mathvariant="normal">Γ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">F = -m\Gamma v</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+es la velocidad relativa entre el suelo y la mesa (NO la velocidad de la
+mesa). Suponga que el sistema está subamortiguado. Tanto el muelle como
+el amortiguador están firmemente unidos a la mesa y al suelo. Se produce
+un terremoto y el suelo vibra armónicamente en dirección vertical con
+frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>
+y amplitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>g</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ω</mi><mi>d</mi></msub><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_g(t) = A\cos(\omega_d t)</annotation></semantics></math></p>
+<p><strong>a.</strong> Escriba la ecuación del movimiento de la mesa en
+términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y(t)</annotation></semantics></math>,
+suponiendo que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math>
+representa la posición de equilibrio de la mesa antes del terremoto. (10
+puntos)</p>
+<p><strong>b.</strong> Halle la amplitud de las vibraciones
+estacionarias de la mesa en función de la frecuencia de vibración del
+suelo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>.
+(10 puntos)</p>
+<p><strong>c.</strong> Haga un esbozo de la amplitud estacionaria en
+función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\omega_d</annotation></semantics></math>,
+indicando el valor de la amplitud para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>∼</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega_d \sim 0</annotation></semantics></math>
+y para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\omega_d \to \infty</annotation></semantics></math>.
+(10 puntos)</p>
+<p><em>(Figura 2: mesa libre de vibraciones. La mesa, de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+descansa sobre dos muelles y un amortiguador que la unen al suelo, el
+cual vibra verticalmente.)</em></p>
+<hr />
+<h2 id="problema-3-40-puntos">Problema 3 (40 puntos)</h2>
+<p>Para el sistema de tres masas mostrado en la figura 3, los muelles
+ideales y las varillas del péndulo carecen de masa, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>3</mn></msub><annotation encoding="application/x-tex">x_3</annotation></semantics></math>
+se miden desde la posición de equilibrio estático (es decir, el muelle
+está relajado y el péndulo cuelga verticalmente). Todo el montaje está
+preparado en la Tierra, con la fuerza de la gravedad apuntando hacia
+abajo. Suponemos también que las amplitudes de oscilación de las tres
+masas son muy pequeñas y que no hay amortiguamiento ni fricción en el
+sistema. Puede suponer con seguridad que las masas solo se mueven en
+dirección horizontal.</p>
+<p><strong>a.</strong> Al comienzo del experimento, la tercera masa (la
+de forma de U, de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math>)
+está fijada en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_3 = 0</annotation></semantics></math>.
+Deduzca las ecuaciones acopladas del movimiento para las posiciones de
+las dos masas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>).
+(6 puntos)</p>
+<p><strong>b.</strong> Escriba la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi></mrow><annotation encoding="application/x-tex">M^{-1}K</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2</annotation></semantics></math>.
+(4 puntos)</p>
+<p><strong>c.</strong> Resuelva las dos frecuencias de los modos
+normales. (6 puntos)</p>
+<p><strong>d.</strong> Evalúe las razones de amplitud de cada modo
+normal y describa el movimiento de cada modo normal mediante un esbozo.
+(8 puntos)</p>
+<p><strong>e.</strong> Escriba la expresión general del movimiento de
+las dos masas en términos de las frecuencias de los modos normales y
+cuatro coeficientes desconocidos. (4 puntos)</p>
+<p><strong>f.</strong> A partir de ahora, la tercera masa (de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math>)
+se libera y puede moverse libremente en la dirección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Deduzca las ecuaciones acopladas del movimiento para las posiciones de
+las tres masas
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>3</mn></msub><annotation encoding="application/x-tex">x_3</annotation></semantics></math>),
+sin resolverlas. (8 puntos)</p>
+<p><strong>g.</strong> Describa el movimiento de los tres modos normales
+mediante un esbozo, sin resolver las ecuaciones acopladas del
+movimiento. (4 puntos)</p>
+<p><em>(Figura 3: osciladores formados por un péndulo acoplado y muelles
+ideales. Un péndulo y dos masas adicionales, una de ellas con forma de U
+y masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math>,
+están conectados mediante muelles ideales y se desplazan
+horizontalmente.)</em></p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a href="https://ocw.mit.edu"
+class="uri">https://ocw.mit.edu</a></em></p>
+<p><em>8.03SC Physics III: Vibrations and Waves</em> <em>Otoño de
+2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms"
+class="uri">https://ocw.mit.edu/terms</a>.</em></p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit803-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit803-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -43,9 +43,23 @@ El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas
 | `MIT8.03_ProblemSet9_ES.epub` | Ionosfera, polarización, láminas de onda, radiación de dipolo |
 | `MIT8.03_ProblemSet10_ES.epub` | Interferencia y difracción: rendijas, película delgada |
 
-### Próximamente
+### Exámenes
 
-Los 13 capítulos del libro de texto y las 10 listas de problemas ya están traducidos. Queda pendiente, como posible ampliación futura, incorporar los exámenes (Exam 1, Exam 2 y varios exámenes de práctica con soluciones).
+| Archivo | Tema | Incluye |
+|---|---|---|
+| `MIT8.03_Examen1_ES.epub` | Examen 1 (otoño de 2016) | Hoja de fórmulas |
+| `MIT8.03_Examen2_ES.epub` | Examen 2 (otoño de 2016) | Hoja de fórmulas |
+| `MIT8.03_ExamenPractica1_ES.epub` | Examen de práctica 1 | Soluciones |
+| `MIT8.03_ExamenPractica2_ES.epub` | Examen de práctica 2 | Soluciones |
+| `MIT8.03_ExamenFinalPractica1_ES.epub` | Examen final de práctica 1 | Hoja de fórmulas y soluciones |
+| `MIT8.03_ExamenFinalPractica2_ES.epub` | Examen final de práctica 2 | Hoja de fórmulas y soluciones |
+| `MIT8.03_ExamenFinalPractica3_ES.epub` | Examen final de práctica 3 | Hoja de fórmulas y soluciones |
+
+Los dos exámenes del curso no tienen soluciones publicadas por el MIT. Los cinco de práctica sí, y se incluyen como sección final de cada documento.
+
+### Estado
+
+El curso está completo: los 13 capítulos del libro de texto, las 10 listas de problemas y los 7 documentos de examen.
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 

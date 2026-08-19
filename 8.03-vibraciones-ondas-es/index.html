@@ -35,6 +35,8 @@
     --morado-borde: #ddc9f5;
     --celeste-bg: #e8eeff;
     --celeste-borde: #c3d3f5;
+    --examen-bg: #fff8ec;
+    --examen-texto: #8a5a00;
   }
   html[data-theme="dark"] {
     --azul: #86aaff;
@@ -57,6 +59,8 @@
     --morado-borde: #4a3766;
     --celeste-bg: #1c2433;
     --celeste-borde: #333f5c;
+    --examen-bg: #332711;
+    --examen-texto: #e8b95f;
   }
   * { box-sizing: border-box; }
   body {
@@ -187,6 +191,9 @@
   }
   .extra { color: var(--muted); font-size: 0.85rem; }
 
+  tr.examen td { background: var(--examen-bg); font-weight: 600; }
+  tr.examen td.tema { color: var(--examen-texto); }
+
   tr.visto td.tema { color: var(--muted); text-decoration: line-through; text-decoration-color: #b7c3d6; }
   tr.visto { background: var(--verde-claro); }
 
@@ -227,7 +234,7 @@
 
 <header>
   <h1>8.03SC Física III: Vibraciones y Ondas</h1>
-  <p>Traducción al español (no oficial) de los 13 capítulos del libro de texto y las 10 listas de problemas</p>
+  <p>Traducción al español (no oficial) de los 13 capítulos del libro de texto, las 10 listas de problemas y los exámenes</p>
   <p>Basado en el curso de MIT OpenCourseWare — Prof. Yen-Jie Lee</p>
   <p><a href="https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/">Curso original en inglés (ocw.mit.edu) ↗</a></p>
 </header>
@@ -239,11 +246,11 @@
 </div>
 
 <div class="aviso">
-  📘 Los 13 capítulos del libro de texto y las 10 listas de problemas ya están traducidos; queda pendiente, como posible ampliación futura, incorporar los exámenes. Este curso es el <strong>prerrequisito recomendado</strong> de <a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a>: conviene cursar 8.03SC (oscilaciones, ondas y óptica) antes de 8.04 (mecánica cuántica).
+  📘 El curso está completo: los 13 capítulos del libro de texto, las 10 listas de problemas y los exámenes (los 2 del curso y los 5 de práctica, estos últimos con soluciones). Este curso es el <strong>prerrequisito recomendado</strong> de <a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a>: conviene cursar 8.03SC (oscilaciones, ondas y óptica) antes de 8.04 (mecánica cuántica).
 </div>
 
 <div class="progreso">
-  <span class="progreso-texto" id="progreso-texto">0 / 23 completado</span>
+  <span class="progreso-texto" id="progreso-texto">0 / 30 completado</span>
   <div class="progreso-barra"><div id="progreso-relleno"></div></div>
   <button id="reset-btn" type="button">Poner todo a cero</button>
 </div>
@@ -312,6 +319,30 @@
       <td class="fmt"><a class="epub" href="epubs/MIT8.03_ProblemSet9_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ProblemSet9_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ProblemSet9_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
     <tr data-id="ps10"><td class="chk"><input type="checkbox" data-id="ps10"></td><td>10</td><td class="tema">Interferencia y difracción: rendijas, película delgada, radiadores dipolares</td>
       <td class="fmt"><a class="epub" href="epubs/MIT8.03_ProblemSet10_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ProblemSet10_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ProblemSet10_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="parte">Exámenes</h2>
+<p class="parte-desc">Los dos exámenes del curso (otoño de 2016), cada uno con su hoja de fórmulas, y los cinco exámenes de práctica que publica el MIT. Los de práctica incluyen las soluciones oficiales al final de cada documento; los dos exámenes reales no las tienen publicadas.</p>
+<div class="tabla">
+<table>
+  <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th class="extra">Incluye</th></tr></thead>
+  <tbody>
+    <tr class="examen" data-id="ex1"><td class="chk"><input type="checkbox" data-id="ex1"></td><td colspan="2" class="tema">Examen 1 (otoño de 2016)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_Examen1_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_Examen1_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_Examen1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Hoja de fórmulas</td></tr>
+    <tr class="examen" data-id="ex2"><td class="chk"><input type="checkbox" data-id="ex2"></td><td colspan="2" class="tema">Examen 2 (otoño de 2016)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_Examen2_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_Examen2_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_Examen2_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Hoja de fórmulas</td></tr>
+    <tr data-id="exp1"><td class="chk"><input type="checkbox" data-id="exp1"></td><td>P1</td><td class="tema">Examen de práctica 1 — oscilador amortiguado y forzado, osciladores acoplados</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_ExamenPractica1_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ExamenPractica1_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ExamenPractica1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Soluciones</td></tr>
+    <tr data-id="exp2"><td class="chk"><input type="checkbox" data-id="exp2"></td><td>P2</td><td class="tema">Examen de práctica 2 — plasmas, ondas en cuerdas, Fourier, ondas EM estacionarias</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_ExamenPractica2_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ExamenPractica2_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ExamenPractica2_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Soluciones</td></tr>
+    <tr data-id="exf1"><td class="chk"><input type="checkbox" data-id="exf1"></td><td>F1</td><td class="tema">Examen final de práctica 1 — guías de ondas, fibra óptica, difracción, radiación</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_ExamenFinalPractica1_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ExamenFinalPractica1_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ExamenFinalPractica1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Hoja de fórmulas y soluciones</td></tr>
+    <tr data-id="exf2"><td class="chk"><input type="checkbox" data-id="exf2"></td><td>F2</td><td class="tema">Examen final de práctica 2 — modos normales, tubos sonoros, radiación, polarización, redes</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_ExamenFinalPractica2_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ExamenFinalPractica2_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ExamenFinalPractica2_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Hoja de fórmulas y soluciones</td></tr>
+    <tr data-id="exf3"><td class="chk"><input type="checkbox" data-id="exf3"></td><td>F3</td><td class="tema">Examen final de práctica 3 — polarización, difracción, carga acelerada, redes</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.03_ExamenFinalPractica3_ES.epub">EPUB</a><a class="html" href="html/MIT8.03_ExamenFinalPractica3_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2Fcursos-mit%2F8.03-vibraciones-ondas-es%2Fepubs%2FMIT8.03_ExamenFinalPractica3_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Hoja de fórmulas y soluciones</td></tr>
   </tbody>
 </table>
 </div>
