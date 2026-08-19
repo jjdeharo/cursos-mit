@@ -45,15 +45,13 @@ Cada archivo incluye, al principio, enlaces a los vídeos de YouTube de esa clas
 
 Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en HTML en [`html/`](html/).
 
-### Escuchar los vídeos en español
+### Seguir los vídeos en español
 
-Los vídeos de clase enlazados en cada apunte están en inglés. Para escucharlos en español (u otro idioma) desde Google Chrome:
+Los vídeos de clase enlazados en cada apunte están en inglés. Si el vídeo dispone de audio en español, puedes seleccionarlo en YouTube desde ⚙️ **Configuración → Pista de audio → español**. Algunos vídeos cuentan con doblaje automático generado mediante IA.
 
-1. Reproduce el vídeo y pulsa el icono de **engranaje ⚙** del reproductor de YouTube.
-2. Elige **Pista de audio** y selecciona tu idioma — YouTube dobla automáticamente con IA muchos vídeos educativos.
-3. Si esa opción no está disponible para un vídeo concreto, activa los **subtítulos con traducción en directo** de Chrome: ve a `chrome://settings/accessibility`, activa **"Subtítulos en directo"** y, durante la reproducción, pulsa el icono de traducir dentro del cuadro de subtítulos para elegir tu idioma.
+Si no hay una pista de audio en español, Chrome puede generar subtítulos automáticamente y traducirlos al español. Activa **Subtítulos automáticos** y **Traducción instantánea** en `chrome://settings/accessibility` y selecciona **español** como idioma de traducción.
 
-Cada página HTML incluye este mismo aviso justo encima de sus vídeos.
+Esta misma explicación está en la [página de inicio](https://jjdeharo.github.io/cursos-mit/), junto a los formatos disponibles y la licencia.
 
 ## Sobre esta traducción
 
