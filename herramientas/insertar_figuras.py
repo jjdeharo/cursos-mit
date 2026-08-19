@@ -24,12 +24,29 @@ DESTINO_REL = "figuras"
 # El paréntesis descriptivo puede ocupar el párrafo entero o llevar prosa
 # detrás. La descripción nunca cruza un </p>: sin ese límite, un marcador
 # sin cierre propio se comería el marcado hasta el siguiente del documento.
+# El marcador puede nombrar una figura, dos unidas por «y», o un rango
+# «N-M» (el libro agrupa así las secuencias de instantáneas).
 MARCADOR = re.compile(
     r"<p><em>\(Figuras?\s+([0-9]+(?:\.[0-9]+)?)"      # primer número
-    r"(?:\s*y\s*([0-9]+(?:\.[0-9]+)?))?"              # opcional: "y N"
+    r"(?:\s*(y|[-–])\s*([0-9]+(?:\.[0-9]+)?))?"       # opcional: «y N» o «-N»
     r"\s*:?((?:(?!</p>|<p>).)*?)\)</em>"               # descripción
     r"(</p>|)",                                        # ¿cierra el párrafo?
     re.S)
+
+
+def expandir(n1, enlace, n2, disponibles):
+    """Devuelve la lista de números que nombra un marcador."""
+    if not n2:
+        return [n1]
+    if enlace == "y":
+        return [n1, n2]
+    # Rango «N-M»: los intermedios solo si existen y comparten prefijo.
+    pre1, _, suf1 = n1.rpartition(".")
+    pre2, _, suf2 = n2.rpartition(".")
+    if pre1 != pre2 or not suf1.isdigit() or not suf2.isdigit():
+        return [n1, n2]
+    return [f"{pre1}.{i}" for i in range(int(suf1), int(suf2) + 1)
+            if f"{pre1}.{i}" in disponibles]
 
 
 def figura_html(doc, nums, pie):
@@ -38,7 +55,12 @@ def figura_html(doc, nums, pie):
         imgs.append(
             f'<img src="{DESTINO_REL}/{doc}/fig{n}.png" '
             f'alt="Figura {n}" loading="lazy" />')
-    etiqueta = "Figura " + (" y ".join(nums))
+    if len(nums) > 2:
+        etiqueta = f"Figuras {nums[0]}-{nums[-1]}"
+    elif len(nums) == 2:
+        etiqueta = f"Figuras {nums[0]} y {nums[1]}"
+    else:
+        etiqueta = f"Figura {nums[0]}"
     if pie.strip():
         etiqueta += ":"
     return ('<figure class="figura">\n' + "\n".join(imgs) +
@@ -61,8 +83,8 @@ def procesar(ruta, doc):
     usadas, faltan = set(), []
 
     def sustituir(m):
-        n1, n2, pie = m.group(1), m.group(2), m.group(3)
-        nums = [n for n in (n1, n2) if n]
+        nums = expandir(m.group(1), m.group(2), m.group(3), disponibles)
+        pie = m.group(4)
         presentes = [n for n in nums if n in disponibles]
         if not presentes:
             faltan.extend(nums)
@@ -70,7 +92,7 @@ def procesar(ruta, doc):
         usadas.update(presentes)
         # Si el marcador no cerraba el párrafo, la prosa que le seguía se
         # queda suelta: hay que volver a abrirlo tras la figura.
-        cierra = m.group(4)
+        cierra = m.group(5)
         return figura_html(doc, presentes, pie) + ("" if cierra else "\n<p>")
 
     texto, n_marc = MARCADOR.subn(sustituir, texto)
