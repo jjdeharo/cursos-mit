@@ -1176,7 +1176,14 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
   }
   function closeVideo() {
     fp.hidden = true;
-    fpIframe.src = "about:blank";
+    /* Cambiar el src no basta: Firefox mantiene vivo el reproductor de
+       YouTube y el vídeo se sigue oyendo. Hay que sacar el iframe del
+       documento y poner otro nuevo en su lugar. */
+    var limpio = fpIframe.cloneNode(false);
+    limpio.removeAttribute("src");
+    limpio.removeAttribute("title");
+    fpIframe.parentNode.replaceChild(limpio, fpIframe);
+    fpIframe = limpio;
   }
 
   document.querySelectorAll(".video-play").forEach(function (btn) {
