@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8.04 Física Cuántica I (español)</title>
+<script>
+  (function () {
+    var t = localStorage.getItem("mit-tema");
+    if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+    document.documentElement.setAttribute("data-theme", t || "light");
+  })();
+</script>
+<style>
+  :root {
+    --azul: #0b3d91;
+    --azul-header: #0b3d91;
+    --azul-claro: #eef2fb;
+    --texto: #1a1a1a;
+    --muted: #5a5a5a;
+    --borde: #dde2ee;
+    --fondo: #fdfdfb;
+    --verde: #1e7a3c;
+    --verde-claro: #eaf6ee;
+    --verde-borde: #bfe0cb;
+    --panel: #ffffff;
+    --sombra: rgba(11,61,145,0.08);
+    --aviso-texto: #23345c;
+    --rojo-bg: #fdeaea;
+    --rojo-bg-hover: #fbd7d7;
+    --rojo-texto: #a12626;
+    --rojo-borde: #f3caca;
+    --morado-bg: #f4ecff;
+    --morado-texto: #5a2ea6;
+    --morado-borde: #ddc9f5;
+    --celeste-bg: #e8eeff;
+    --celeste-borde: #c3d3f5;
+    --examen-bg: #fff8ec;
+    --examen-texto: #8a5a00;
+  }
+  html[data-theme="dark"] {
+    --azul: #86aaff;
+    --azul-claro: #1c2433;
+    --texto: #e7e7e5;
+    --muted: #aab0bb;
+    --borde: #333844;
+    --fondo: #14171c;
+    --verde-claro: #16241b;
+    --verde-borde: #2c4534;
+    --panel: #1c2027;
+    --sombra: rgba(0,0,0,0.35);
+    --aviso-texto: #cfd8f0;
+    --rojo-bg: #3a2020;
+    --rojo-bg-hover: #4a2727;
+    --rojo-texto: #ff9b9b;
+    --rojo-borde: #5c2f2f;
+    --morado-bg: #2a2138;
+    --morado-texto: #c9a6ff;
+    --morado-borde: #4a3766;
+    --celeste-bg: #1c2433;
+    --celeste-borde: #333f5c;
+    --examen-bg: #332711;
+    --examen-texto: #e8b95f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+  }
+  header {
+    background: var(--azul-header);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 0.5rem; font-size: 1.9rem; }
+  header p { margin: 0.3rem 0; opacity: 0.92; }
+  header a { color: #cfe0ff; }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .aviso {
+    background: var(--azul-claro);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--aviso-texto);
+  }
+
+  /* --- barra de progreso --- */
+  .progreso {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px var(--sombra);
+  }
+  .progreso-barra {
+    flex: 1 1 200px;
+    height: 10px;
+    background: var(--borde);
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 120px;
+  }
+  .progreso-barra > div {
+    height: 100%;
+    background: var(--verde);
+    width: 0%;
+    transition: width 0.25s ease;
+  }
+  .progreso-texto { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+  .progreso button {
+    background: var(--rojo-bg);
+    color: var(--rojo-texto);
+    border: 1px solid var(--rojo-borde);
+    border-radius: 5px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .progreso button:hover { background: var(--rojo-bg-hover); }
+
+  h2.parte {
+    color: var(--azul);
+    border-bottom: 2px solid var(--borde);
+    padding-bottom: 0.4rem;
+    margin-top: 2.8rem;
+  }
+  .parte-desc { color: var(--muted); font-size: 0.92rem; margin-top: -0.5rem; margin-bottom: 1rem; }
+
+  /* La tabla se desliza dentro de su caja cuando no cabe, en vez de
+     empujar la página entera hacia los lados. */
+  .tabla { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.55rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  td.tema { min-width: 32%; }
+  /* La columna se encoge a lo que ocupan los botones y cede el resto al tema:
+     así los tres caben en una línea en vez de partirse en dos. */
+  td.fmt { width: 1%; white-space: nowrap; }
+  .fmt a {
+    display: inline-block;
+    min-width: 3.6rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
+    transition: filter 0.15s ease;
+  }
+  .fmt a + a { margin-left: 0.35rem; }
+  .fmt a:hover { filter: brightness(0.94); }
+  .fmt a.epub { background: var(--morado-bg); color: var(--morado-texto); border-color: var(--morado-borde); }
+  .fmt a.html { background: var(--verde-claro); color: var(--verde); border-color: var(--verde-borde); }
+  .fmt a.pk { background: var(--celeste-bg); color: var(--azul); border-color: var(--celeste-borde); }
+  /* En el móvil los tres botones caben igual, pero solo si se les quita el
+     ancho mínimo y se deja de reservar un tercio de la fila para el tema. */
+  @media (max-width: 640px) {
+    th, td { padding: 0.5rem 0.35rem; }
+    td.tema { min-width: 0; }
+    .fmt a {
+      min-width: 0;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.72rem;
+    }
+    .fmt a + a { margin-left: 0.2rem; }
+    .extra { font-size: 0.75rem; }
+  }
+  .extra { color: var(--muted); font-size: 0.85rem; }
+
+  tr.examen td { background: var(--examen-bg); font-weight: 600; }
+  tr.examen td.tema { color: var(--examen-texto); }
+
+  tr.visto td.tema { color: var(--muted); text-decoration: line-through; text-decoration-color: #b7c3d6; }
+  tr.visto { background: var(--verde-claro); }
+
+  td.chk { text-align: center; width: 2.4rem; }
+  td.chk input[type="checkbox"] {
+    width: 1.15rem; height: 1.15rem; cursor: pointer; accent-color: var(--verde);
+  }
+
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--azul); }
+
+  .theme-toggle {
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    z-index: 101;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--borde);
+    background: var(--panel);
+    color: var(--azul);
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--sombra);
+  }
+</style>
+</head>
+<body>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+
+<header>
+  <h1>8.04 Física Cuántica I</h1>
+  <p>Traducción al español (no oficial) de los apuntes, listas de problemas y exámenes</p>
+  <p>Basado en el curso de MIT OpenCourseWare — Prof. Barton Zwiebach</p>
+  <p><a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/">Curso original en inglés (ocw.mit.edu) ↗</a></p>
+</header>
+
+<main>
+
+<div class="aviso">
+  Esta es una traducción <strong>no oficial</strong>, generada con asistencia de inteligencia artificial y no revisada por el MIT ni por el Prof. Zwiebach. Cada tema está disponible en tres formas: <strong>EPUB</strong> (descarga, para lectores de libros electrónicos, con fórmulas en MathML nativo), <strong>HTML</strong> (leer en el navegador, con los vídeos de clase incrustados) y <strong>Leer</strong>, que abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a> y guarda por dónde ibas, las notas y los subrayados. Licencia CC BY-NC-SA 4.0 — ver <a href="LICENSE.md">LICENSE.md</a>.
+</div>
+
+<div class="aviso">
+  💡 Los vídeos de clase están en inglés, pero puedes escucharlos en español (u otro idioma) desde Chrome: en el reproductor de YouTube, pulsa el icono de <strong>engranaje ⚙ → Pista de audio</strong> y elige tu idioma (muchos vídeos educativos tienen doblaje automático con IA). Si no está disponible, activa los <strong>subtítulos con traducción en directo</strong> de Chrome en <code>chrome://settings/accessibility</code>. Cada página HTML de las notas incluye este mismo consejo junto a sus vídeos.
+</div>
+
+<div class="progreso">
+  <span class="progreso-texto" id="progreso-texto">0 / 23 completado</span>
+  <div class="progreso-barra"><div id="progreso-relleno"></div></div>
+  <button id="reset-btn" type="button">Poner todo a cero</button>
+</div>
+
+<p class="extra">Marca la casilla de cada tema a medida que lo vayas viendo. El progreso se guarda automáticamente en este navegador (no se sube a ningún servidor).</p>
+
+<h2 class="parte">Parte 1 — Conceptos básicos</h2>
+<p class="parte-desc">Interpretación de la función de onda, ecuación de Schrödinger, operadores hermíticos y productos internos, paquetes de onda, evolución temporal, teorema de Ehrenfest e incertidumbre.</p>
+<div class="tabla">
+<table>
+  <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
+  <tbody>
+    <tr data-id="ln1"><td class="chk"><input type="checkbox" data-id="ln1"></td><td>1</td><td class="tema">Características clave de la mecánica cuántica</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes1_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes1_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln2"><td class="chk"><input type="checkbox" data-id="ln2"></td><td>2</td><td class="tema">Experimentos con fotones</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes2_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes2_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes2_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln3"><td class="chk"><input type="checkbox" data-id="ln3"></td><td>3</td><td class="tema">Naturaleza corpuscular de la luz y ondulatoria de la materia</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes3_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes3_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes3_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 1</td></tr>
+    <tr data-id="ln4"><td class="chk"><input type="checkbox" data-id="ln4"></td><td>4</td><td class="tema">de Broglie y transformaciones de Galileo; velocidad de fase y de grupo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes4_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes4_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes4_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln5"><td class="chk"><input type="checkbox" data-id="ln5"></td><td>5</td><td class="tema">Ecuación de Schrödinger e interpretación de la función de onda</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes5_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes5_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes5_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 2</td></tr>
+    <tr data-id="ln6"><td class="chk"><input type="checkbox" data-id="ln6"></td><td>6</td><td class="tema">Normalización, evolución temporal y corriente de probabilidad</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes6_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes6_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes6_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln7"><td class="chk"><input type="checkbox" data-id="ln7"></td><td>7</td><td class="tema">Paquetes de onda e incertidumbre</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes7_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes7_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes7_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 3</td></tr>
+    <tr data-id="ln8"><td class="chk"><input type="checkbox" data-id="ln8"></td><td>8</td><td class="tema">Espacio de momentos y valores esperados</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes8_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes8_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes8_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln9"><td class="chk"><input type="checkbox" data-id="ln9"></td><td>9</td><td class="tema">Observables, operadores hermíticos e incertidumbre</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes9_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes9_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes9_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 4</td></tr>
+    <tr class="examen" data-id="ex1"><td class="chk"><input type="checkbox" data-id="ex1"></td><td colspan="2" class="tema">Examen 1 (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_Examen1_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_Examen1_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_Examen1_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Con hoja de fórmulas</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="parte">Parte 2 — Física cuántica en potenciales unidimensionales</h2>
+<p class="parte-desc">Soluciones de la ecuación de Schrödinger en 1D: partícula en un círculo, pozo infinito, pozo finito, potencial delta. El oscilador armónico resuelto de dos formas (ecuación diferencial y operadores de creación/aniquilación). Penetración de barreras y efecto Ramsauer–Townsend.</p>
+<div class="tabla">
+<table>
+  <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
+  <tbody>
+    <tr data-id="ln10"><td class="chk"><input type="checkbox" data-id="ln10"></td><td>10</td><td class="tema">Ecuación de Schrödinger independiente del tiempo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes10_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes10_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes10_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln11"><td class="chk"><input type="checkbox" data-id="ln11"></td><td>11</td><td class="tema">Pozo cuadrado infinito y finito</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes11_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes11_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes11_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln12"><td class="chk"><input type="checkbox" data-id="ln12"></td><td>12</td><td class="tema">Estados ligados, aproximación semiclásica y método de disparo</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes12_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes12_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes12_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 5</td></tr>
+    <tr data-id="ln13"><td class="chk"><input type="checkbox" data-id="ln13"></td><td>13</td><td class="tema">Potencial delta, teorema del nodo y oscilador armónico</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes13_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes13_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes13_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr data-id="ln1415"><td class="chk"><input type="checkbox" data-id="ln1415"></td><td>14-15</td><td class="tema">Oscilador armónico (enfoque algebraico)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes14_15_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes14_15_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes14_15_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 6</td></tr>
+    <tr data-id="ln16"><td class="chk"><input type="checkbox" data-id="ln16"></td><td>16</td><td class="tema">Estados de dispersión y potencial escalón</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes16_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes16_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes16_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 7</td></tr>
+    <tr data-id="ln17"><td class="chk"><input type="checkbox" data-id="ln17"></td><td>17</td><td class="tema">Transmisión resonante y efecto Ramsauer–Townsend</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes17_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes17_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes17_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+    <tr class="examen" data-id="ex2"><td class="chk"><input type="checkbox" data-id="ex2"></td><td colspan="2" class="tema">Examen 2 (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_Examen2_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_Examen2_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_Examen2_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Con hoja de fórmulas</td></tr>
+    <tr data-id="ln18"><td class="chk"><input type="checkbox" data-id="ln18"></td><td>18</td><td class="tema">Dispersión en una dimensión</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes18_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes18_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes18_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra"></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="parte">Parte 3 — Dispersión en 1D, momento angular y potenciales centrales</h2>
+<p class="parte-desc">Dispersión en la semirrecta: onda dispersada, desfases, retrasos temporales, teorema de Levinson y resonancias. Operadores de momento angular y su álgebra de conmutadores. Reducción a la ecuación radial. El átomo de hidrógeno en detalle.</p>
+<div class="tabla">
+<table>
+  <thead><tr><th class="chk">✓</th><th>Nº</th><th class="tema">Tema</th><th>Formato</th><th>Incluye</th></tr></thead>
+  <tbody>
+    <tr data-id="ln19"><td class="chk"><input type="checkbox" data-id="ln19"></td><td>19</td><td class="tema">Teorema de Levinson y resonancias</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes19_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes19_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes19_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 8</td></tr>
+    <tr data-id="ln2021"><td class="chk"><input type="checkbox" data-id="ln2021"></td><td>20-21</td><td class="tema">Mecánica cuántica en 3D y potenciales centrales</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes20_21_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes20_21_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes20_21_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 9</td></tr>
+    <tr data-id="ln22"><td class="chk"><input type="checkbox" data-id="ln22"></td><td>22</td><td class="tema">El átomo de hidrógeno</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_LecNotes22_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_LecNotes22_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_LecNotes22_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Problem Set 10</td></tr>
+    <tr class="examen" data-id="exf"><td class="chk"><input type="checkbox" data-id="exf"></td><td colspan="2" class="tema">Examen Final (otoño 2015)</td>
+      <td class="fmt"><a class="epub" href="epubs/MIT8.04_ExamenFinal_ES.epub">EPUB</a><a class="html" href="html/MIT8.04_ExamenFinal_ES.html">HTML</a><a class="pk" target="_blank" rel="noopener" href="https://pagekeeper.github.io/#libro=https%3A%2F%2Fjjdeharo.github.io%2F8.04-fisica-cuantica-i-es%2Fepubs%2FMIT8.04_ExamenFinal_ES.epub" title="Descargar y leer en PageKeeper">Leer</a></td><td class="extra">Formulario completo</td></tr>
+  </tbody>
+</table>
+</div>
+
+</main>
+
+<footer>
+  <p>Traducción generada con asistencia de IA a partir de los materiales de <a href="https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/">MIT OpenCourseWare — 8.04 Quantum Physics I</a> (Prof. Barton Zwiebach). Licencia CC BY-NC-SA 4.0. Ver <a href="LICENSE.md">LICENSE.md</a> y <a href="README.md">README.md</a> para más información.</p>
+</footer>
+
+<script>
+(function () {
+  var KEY = "mit804-progreso";
+  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('input[type="checkbox"][data-id]'));
+  var total = checkboxes.length;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function save(state) {
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+  function updateBar(state) {
+    var done = checkboxes.filter(function (cb) { return !!state[cb.dataset.id]; }).length;
+    document.getElementById('progreso-texto').textContent = done + ' / ' + total + ' completado';
+    var pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progreso-relleno').style.width = pct + '%';
+  }
+  function applyRowStyle(cb, checked) {
+    var row = cb.closest('tr');
+    if (row) row.classList.toggle('visto', checked);
+  }
+
+  var state = load();
+  checkboxes.forEach(function (cb) {
+    var checked = !!state[cb.dataset.id];
+    cb.checked = checked;
+    applyRowStyle(cb, checked);
+  });
+  updateBar(state);
+
+  checkboxes.forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      var s = load();
+      s[cb.dataset.id] = cb.checked;
+      save(s);
+      applyRowStyle(cb, cb.checked);
+      updateBar(s);
+    });
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    if (!confirm('¿Poner todo el progreso a cero?')) return;
+    localStorage.removeItem(KEY);
+    checkboxes.forEach(function (cb) {
+      cb.checked = false;
+      applyRowStyle(cb, false);
+    });
+    updateBar({});
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

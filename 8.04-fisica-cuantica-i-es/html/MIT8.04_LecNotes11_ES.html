@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Lección 11: El pozo cuadrado infinito y el pozo cuadrado finito</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Lección 11: El pozo cuadrado infinito y el pozo
+cuadrado finito</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lección-11" id="toc-lección-11">Lección 11</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#el-pozo-cuadrado-infinito"
+id="toc-el-pozo-cuadrado-infinito">1. El pozo cuadrado infinito</a></li>
+<li><a href="#el-pozo-cuadrado-finito"
+id="toc-el-pozo-cuadrado-finito">2. El pozo cuadrado finito</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="lección-11">Lección 11</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 11: Uncertainty (cont.). Stationary states. Particle
+on a circle.</strong></p>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="e0C1Bkcjrdc" data-title="Energy eigenstates for particle on a circle"><span class="video-play-icon">&#9654;</span> <strong>Energy eigenstates for particle on a circle</strong> <span class="video-dur">(16:12)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=e0C1Bkcjrdc" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="gMHkf-107Sw" data-title="Infinite square well energy eigenstates"><span class="video-play-icon">&#9654;</span> <strong>Infinite square well energy eigenstates</strong> <span class="video-dur">(13:15)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=gMHkf-107Sw" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="jd4es6Bo600" data-title="Finite square well energy eigenstates"><span class="video-play-icon">&#9654;</span> <strong>Finite square well energy eigenstates</strong> <span class="video-dur">(10:39)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=jd4es6Bo600" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+</ul>
+<hr />
+<p>B. Zwiebach</p>
+<p>17 de marzo de 2016</p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>El pozo cuadrado infinito</li>
+<li>El pozo cuadrado finito</li>
+</ol>
+<h2 id="el-pozo-cuadrado-infinito">1. El pozo cuadrado infinito</h2>
+<p>En nuestra última lección examinamos la función de onda cuántica de
+una partícula que se mueve en un círculo. Aquí introducimos otro modelo
+de juguete instructivo, el potencial de pozo cuadrado infinito. Este
+obliga a una partícula a vivir en un intervalo de la recta real,
+intervalo que convencionalmente se elige como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [0, a]</annotation></semantics></math>.
+En los extremos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+del intervalo hay paredes duras que impiden que la partícula vaya a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &lt; 0</annotation></semantics></math>.</p>
+<p>El potencial se define de la siguiente manera y se muestra en la
+figura 1.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>∞</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>≤</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>x</mi><mo>≥</mo><mi>a</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) =
+\begin{cases}
+0, &amp; 0 &lt; x &lt; a, \\
+\infty, &amp; x \leq 0,\ x \geq a
+\end{cases}
+\qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>Es razonable suponer que la función de onda debe anularse en la
+región donde el potencial es infinito.</p>
+<p><em>Figura 1: El potencial de pozo cuadrado infinito.</em></p>
+<p>Clásicamente, cualquier región donde el potencial exceda la energía
+de la partícula está prohibida. No así en mecánica cuántica. Pero
+incluso en mecánica cuántica una partícula no puede estar en una región
+de potencial infinito. Podremos justificar estas afirmaciones estudiando
+el pozo cuadrado finito, más complicado, en el límite en que la altura
+del potencial tiende a infinito. Pero por el momento simplemente
+establecemos el hecho:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y para </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = 0 \quad \text{para } x &lt; 0 \text{ y para } x &gt; a. \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>Dado que la función de onda debe ser continua, debemos tener que se
+anule en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>:</p>
+<ol type="1">
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(x = 0) = 0</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(x = a) = 0</annotation></semantics></math>.</li>
+</ol>
+<p>Estas son nuestras condiciones de frontera. Podría preguntarse acerca
+de la continuidad de la primera derivada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi&#39;(x)</annotation></semantics></math>.
+Esta derivada se anula fuera del intervalo, y la continuidad diría que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+debería anularse en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Pero esto es imposible. ¡Una solución de la ecuación de Schrödinger (una
+ecuación diferencial de segundo orden) para la cual tanto la función de
+onda como su derivada se anulan en un punto es idénticamente cero! Si
+existe una solución, debemos aceptar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+puede tener discontinuidades en una pared infinita. Por lo tanto, no
+imponemos ninguna condición de frontera sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>.
+Las dos condiciones anteriores bastarán para hallar una solución. En esa
+solución,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+es discontinua en los extremos.</p>
+<p>En la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [0, a]</annotation></semantics></math>
+el potencial se anula y la ecuación de Schrödinger toma la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -\frac{2mE}{\hbar^2}\psi, \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>y, como hicimos antes, se puede demostrar que la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+debe ser positiva (¡hágalo!). Esto nos permite definir, como es
+habitual, una cantidad real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+tal que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>E</mi><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 \equiv \frac{2mE}{\hbar^2} \quad \Rightarrow \quad E = \frac{\hbar^2 k^2}{2m}. \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>La ecuación diferencial es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><msup><mi>k</mi><mn>2</mn></msup><mi>ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -k^2\psi, \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>y la solución general puede escribirse como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>c</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = c_1 \cos kx + c_2 \sin kx, \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>con constantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>1</mn></msub><annotation encoding="application/x-tex">c_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>2</mn></msub><annotation encoding="application/x-tex">c_2</annotation></semantics></math>
+por determinar. Para esto usamos nuestras condiciones de frontera.</p>
+<p>La condición
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi(x = 0) = 0</annotation></semantics></math>
+implica que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>1</mn></msub><annotation encoding="application/x-tex">c_1</annotation></semantics></math>
+en la ecuación 1.6 debe ser cero. El coeficiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin kx</annotation></semantics></math>
+no necesita serlo, ya que esta función se anula automáticamente en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.
+Por lo tanto, la solución hasta ahora es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>c</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = c_2 \sin kx. \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Nótese que si exigiéramos la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+tendríamos que pedir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi&#39;(x = 0) = 0</annotation></semantics></math>,
+y eso haría que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>2</mn></msub><annotation encoding="application/x-tex">c_2</annotation></semantics></math>
+fuera igual a cero, con lo cual
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+sería idénticamente cero. Eso no es una solución. No hay partícula si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\psi = 0</annotation></semantics></math>.</p>
+<p>En este punto debemos imponer la anulación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>k</mi><mi>a</mi><mo>=</mo><mi>n</mi><mi>π</mi><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msub><mi>k</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>π</mi></mrow><mi>a</mi></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+c_2 \sin ka = 0 \quad \Rightarrow \quad ka = n\pi \quad \Rightarrow \quad k_n = \frac{n\pi}{a}. \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+debe ser un entero, y la solución sería</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>N</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>a</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_n(x) = N \sin\left(\frac{n\pi x}{a}\right), \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+una constante de normalización. ¿Qué enteros
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+son aceptables aquí? Bueno,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n = 0</annotation></semantics></math>
+no es aceptable, porque haría que la función de onda fuera cero. Además,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-n</annotation></semantics></math>
+dan la misma función de onda, salvo por un signo. Como el signo de una
+función de onda es irrelevante, sería doble conteo incluir tanto valores
+positivos como negativos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Nos restringimos a que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+sea un entero positivo.</p>
+<p>Para resolver el coeficiente, utilizamos la condición de
+normalización; cada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_n(x)</annotation></semantics></math>
+debe estar normalizada.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><msup><mi>N</mi><mn>2</mn></msup><msubsup><mo>∫</mo><mn>0</mn><mi>a</mi></msubsup><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>a</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>N</mi><mn>2</mn></msup><mo>⋅</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>N</mi><mo>=</mo><msqrt><mfrac><mn>2</mn><mi>a</mi></mfrac></msqrt><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+1 = N^2 \int_0^a \sin^2\left(\frac{n\pi x}{a}\right) dx = N^2 \cdot \frac{a}{2} \quad \Rightarrow \quad N = \sqrt{\frac{2}{a}}. \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>Por lo tanto, en definitiva, nuestras soluciones son:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo>=</mo><msqrt><mfrac><mn>2</mn><mi>a</mi></mfrac></msqrt><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>x</mi></mrow><mi>a</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>E</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msubsup><mi>k</mi><mi>n</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_n = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right), \qquad E_n = \frac{\hbar^2 k_n^2}{2m} = \frac{\hbar^2 \pi^2 n^2}{2ma^2}, \qquad n = 1, 2, \dots. \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>Cada valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+da una energía diferente, lo que implica que en el pozo cuadrado
+infinito unidimensional ¡no hay degeneraciones en el espectro de
+energía! El estado fundamental —el estado de menor energía— corresponde
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n = 1</annotation></semantics></math>
+y tiene energía distinta de cero.</p>
+<p><em>Figura 2: Los cuatro autoestados de energía más bajos para el
+potencial de pozo cuadrado infinito. La función de onda solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésima
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\psi_n</annotation></semantics></math>
+tiene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>
+nodos. Las soluciones son alternadamente simétricas y antisimétricas
+respecto al punto medio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x = a/2</annotation></semantics></math>.</em></p>
+<p>La figura 2 muestra las primeras cuatro soluciones del pozo cuadrado
+infinito 1-d, etiquetadas de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n = 1</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n = 4</annotation></semantics></math>.
+Notamos algunas características:</p>
+<ol type="1">
+<li>El estado fundamental
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n = 1</annotation></semantics></math>
+no tiene nodos. Un nodo es un cero de la función de onda que no está en
+los extremos del dominio de la función de onda. Los ceros en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+no cuentan como nodos. Claramente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_1(x)</annotation></semantics></math>
+no se anula en ninguna parte del interior de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, a]</annotation></semantics></math>
+y por lo tanto no tiene nodos. De hecho, es cierto que cualquier estado
+fundamental normalizable de un potencial unidimensional no tiene
+nodos.</li>
+</ol>
+<p><em>Figura 3: El pozo cuadrado infinito desplazado hacia la izquierda
+para hacerlo simétrico respecto al origen.</em></p>
+<ol start="2" type="1">
+<li><p>El primer estado excitado,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math>,
+tiene un nodo. Está en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x = a/2</annotation></semantics></math>,
+el punto medio del intervalo. El segundo estado excitado,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n = 3</annotation></semantics></math>,
+tiene dos nodos. El patrón de hecho continúa. El
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésimo
+estado excitado tendrá
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+nodos.</p></li>
+<li><p>En la figura, la línea vertical punteada marca el punto medio del
+intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x = a/2</annotation></semantics></math>.
+Observamos que el estado fundamental es simétrico bajo reflexión
+respecto a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x = a/2</annotation></semantics></math>.
+El primer estado excitado es antisimétrico; de hecho, su nodo está en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x = a/2</annotation></semantics></math>.
+El segundo estado excitado es nuevamente simétrico. La simetría y la
+antisimetría se alternan indefinidamente.</p></li>
+<li><p>La simetría que acabamos de notar no es accidental. Se cumple, en
+general, para potenciales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+que son funciones pares de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(-x) = V(x)</annotation></semantics></math>.
+Nuestro potencial no satisface esta ecuación, pero esto podría haberse
+cambiado fácilmente y sin consecuencias. Podríamos desplazar el pozo de
+manera que, en lugar de tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) = 0</annotation></semantics></math>
+desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0 \leq x \leq a</annotation></semantics></math>,
+se extienda desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mi>/</mi><mn>2</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>a</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-a/2 \leq x \leq a/2</annotation></semantics></math>
+y entonces sería simétrico respecto al origen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+(véase la figura 3). Más adelante demostraremos que los estados ligados
+de un potencial unidimensional par ¡son pares o impares! Aquí solo
+estamos viendo un ejemplo de tal resultado.</p></li>
+<li><p>Las funciones de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi_n(x)</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">n = 1, 2, \dots</annotation></semantics></math>
+forman un conjunto completo que puede utilizarse para expandir cualquier
+función en el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [0, a]</annotation></semantics></math>
+que se anule en los extremos. Si la función no se anula en los extremos,
+la convergencia de la expansión es delicada, y físicamente tal función
+de onda sería problemática, ya que se puede verificar que el valor
+esperado de la energía es infinito.</p></li>
+</ol>
+<h2 id="el-pozo-cuadrado-finito">2. El pozo cuadrado finito</h2>
+<p>Ahora examinamos el pozo cuadrado finito, definido de la siguiente
+manera y mostrado en la figura 4.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>a</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>V</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>≥</mo><mi>a</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.12)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) =
+\begin{cases}
+-V_0, &amp; \text{para } |x| \leq a, \ V_0 &gt; 0, \\
+0, &amp; \text{para } |x| \geq a.
+\end{cases}
+\qquad \text{(2.12)}
+</annotation></semantics></math></p>
+<p><em>Figura 4: El potencial de pozo cuadrado finito.</em></p>
+<p>Nótese que la energía potencial es cero para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &gt; a</annotation></semantics></math>.
+La energía potencial es negativa e igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">-V_0</annotation></semantics></math>
+dentro del pozo, porque definimos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+como un número positivo. El ancho del pozo es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>.
+Nótese también que hemos colocado el fondo del pozo de manera diferente
+que en el caso del pozo cuadrado infinito. El fondo del pozo cuadrado
+infinito estaba en energía potencial cero. Si quisiéramos obtener el
+pozo cuadrado infinito como límite del pozo cuadrado finito, tendríamos
+que llevar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+a infinito, pero se necesita cuidado al comparar energías. Las del pozo
+cuadrado infinito se miden con respecto a un fondo en energía cero. Las
+del pozo cuadrado finito se miden con respecto a un fondo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">-V_0</annotation></semantics></math>.</p>
+<p>Estaremos interesados en estados ligados, es decir, autoestados de
+energía que sean normalizables. Para esto, la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+de los estados debe ser negativa. Esto se entiende fácilmente. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E &gt; 0</annotation></semantics></math>,
+cualquier solución en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>
+donde el potencial se anula sería una onda plana, extendiéndose hasta el
+infinito. Tal solución no sería normalizable. La energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+se muestra como una línea discontinua en la figura. Tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo>&lt;</mo><mi>E</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.13)</mtext></mrow><annotation encoding="application/x-tex">
+-V_0 &lt; E &lt; 0. \qquad \text{(2.13)}
+</annotation></semantics></math></p>
+<p>Nótese que, como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+es negativa, tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>−</mi><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">E = -|E|</annotation></semantics></math>.
+Para un estado ligado de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\tilde{E}</annotation></semantics></math>
+medida con respecto al fondo del potencial es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">̃</mo></mover><mo>=</mo><mi>E</mi><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.14)</mtext></mrow><annotation encoding="application/x-tex">
+\tilde{E} = E - (-V_0) = V_0 - |E| &gt; 0. \qquad \text{(2.14)}
+</annotation></semantics></math></p>
+<p>Esas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\tilde{E}</annotation></semantics></math>
+son las que se pueden comparar con las energías del pozo cuadrado
+infinito en el límite en que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">V_0 \to \infty</annotation></semantics></math>.</p>
+<p>¿Cuáles son las soluciones de estado ligado de la ecuación de
+Schrödinger con este potencial? Tenemos que examinar cómo se ve la
+ecuación en las diversas regiones donde el potencial es constante y
+luego usar condiciones de frontera para acoplar las soluciones a través
+de los puntos donde el potencial es discontinuo. Tenemos la ecuación;
+examinemos las regiones, donde, por simplicidad, definimos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha(x)</annotation></semantics></math>
+mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>ψ</mi><mo>=</mo><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.15)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\big(E - V(x)\big)\psi = \alpha(x)\psi, \qquad \text{(2.15)}
+</annotation></semantics></math></p>
+<p>donde hemos definido el factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha(x)</annotation></semantics></math>
+que multiplica a la función de onda en el lado derecho de la ecuación de
+Schrödinger. Consideramos entonces las dos regiones:</p>
+<ul>
+<li><p>Región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &gt; a</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha(x)</annotation></semantics></math>
+es una constante positiva. La función de onda en esta región se
+construye con exponenciales reales.</p></li>
+<li><p>Región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &lt; a</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\alpha(x)</annotation></semantics></math>
+es una constante negativa. La función de onda en esta región se
+construye con funciones trigonométricas.</p></li>
+</ul>
+<p>El potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+del pozo cuadrado finito es una función par de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(-x) = V(x)</annotation></semantics></math>.
+Podemos, por lo tanto, usar el teorema citado anteriormente (¡y
+demostrado más adelante!) de que para un potencial par los estados
+ligados son o simétricos o antisimétricos. Comenzamos buscando
+soluciones pares, es decir, soluciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+para las cuales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(-x) = \psi(x)</annotation></semantics></math>.</p>
+<p><strong>Soluciones pares.</strong> Dado que el potencial es continuo
+a trozos, debemos estudiar la ecuación diferencial en dos regiones:</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &lt; a</annotation></semantics></math></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>ψ</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.16)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\big(E - (-V_0)\big)\psi = -\frac{2m}{\hbar^2}\big(V_0 - |E|\big)\psi \qquad \text{(2.16)}
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">V_0 - |E|</annotation></semantics></math>
+es una constante positiva; por lo tanto, definimos un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math>
+real mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.17)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 \equiv \frac{2m}{\hbar^2}\big(V_0 - |E|\big) &gt; 0, \qquad k &gt; 0. \qquad \text{(2.17)}
+</annotation></semantics></math></p>
+<p>Es interesante notar que esta ecuación no es muy diferente de la
+ecuación de partícula libre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mi>m</mi><mi>E</mi><mi>/</mi><msup><mi>ℏ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">k^2 = 2mE/\hbar^2</annotation></semantics></math>.
+En efecto,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">V_0 - |E|</annotation></semantics></math>
+es la energía cinética de la partícula y, por lo tanto,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+tiene la interpretación usual. La ecuación diferencial a resolver ahora
+es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>″</mo></msup><mo>=</mo><mi>−</mi><msup><mi>k</mi><mn>2</mn></msup><mi>ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.18)</mtext></mrow><annotation encoding="application/x-tex">
+\psi&#39;&#39; = -k^2\psi, \qquad \text{(2.18)}
+</annotation></semantics></math></p>
+<p>para la cual la única solución par posible es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.19)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = \cos kx, \qquad |x| &lt; a. \qquad \text{(2.19)}
+</annotation></semantics></math></p>
+<p>No incluimos una constante de normalización porque, en esta etapa, no
+buscamos autoestados normalizados. Obtendremos un autoestado y, aunque
+no estará normalizado, será normalizable, y eso es todo lo esencial. Lo
+que buscamos son las energías posibles. Las funciones de onda
+normalizadas serían útiles para calcular valores esperados.</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &gt; a</annotation></semantics></math></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>″</mo></msup><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.20)</mtext></mrow><annotation encoding="application/x-tex">
+\psi&#39;&#39; = -\frac{2m}{\hbar^2}(E - 0)\psi = \frac{2m|E|}{\hbar^2}\psi \qquad \text{(2.20)}
+</annotation></semantics></math></p>
+<p>Esta vez definimos una constante real positiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+mediante la relación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>κ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>κ</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.21)</mtext></mrow><annotation encoding="application/x-tex">
+\kappa^2 = \frac{2m|E|}{\hbar^2}, \qquad \kappa &gt; 0. \qquad \text{(2.21)}
+</annotation></semantics></math></p>
+<p>La ecuación diferencial a resolver ahora es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>″</mo></msup><mo>=</mo><msup><mi>κ</mi><mn>2</mn></msup><mi>ψ</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.22)</mtext></mrow><annotation encoding="application/x-tex">
+\psi&#39;&#39; = \kappa^2\psi, \qquad \text{(2.22)}
+</annotation></semantics></math></p>
+<p>y las soluciones son exponenciales. De hecho, necesitamos
+exponenciales que decaigan cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>±</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">x \to \pm\infty</annotation></semantics></math>,
+ya que de lo contrario la función de onda no sería normalizable. Esto
+debería ser físicamente intuitivo: en una región clásicamente prohibida,
+la probabilidad de estar lejos del pozo debe ser desvanecientemente
+pequeña. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>
+elegimos la exponencial decreciente</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mi>x</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>&gt;</mo><mi>a</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.23)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = A\, e^{-\kappa x}, \qquad x &gt; a, \qquad \text{(2.23)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es una constante de normalización a determinar por las condiciones de
+frontera. De manera más general, dado que la solución es par,
+tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.24)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) = A\, e^{-\kappa|x|}, \qquad |x| &gt; a. \qquad \text{(2.24)}
+</annotation></semantics></math></p>
+<p>Ahora es útil notar que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>κ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\kappa^2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mn>2</mn></msup><annotation encoding="application/x-tex">k^2</annotation></semantics></math>
+satisfacen una relación simple. Usando sus definiciones anteriores vemos
+que la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|E|</annotation></semantics></math>
+se cancela en su suma, y tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>+</mo><msup><mi>κ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.25)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 + \kappa^2 = \frac{2mV_0}{\hbar^2}. \qquad \text{(2.25)}
+</annotation></semantics></math></p>
+<p>En este punto avanzamos introduciendo constantes adimensionales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+de la siguiente manera:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>≡</mo><mi>k</mi><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>≡</mo><mi>κ</mi><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.26)</mtext></mrow><annotation encoding="application/x-tex">
+\eta \equiv ka &gt; 0, \qquad \xi \equiv \kappa a &gt; 0, \qquad z_0^2 \equiv \frac{2mV_0 a^2}{\hbar^2}. \qquad \text{(2.26)}
+</annotation></semantics></math></p>
+<p>Claramente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+es un sustituto de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+es un sustituto de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Ambos dependen de la energía del estado ligado. El parámetro
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>,
+adimensional, solo depende de los datos asociados al potencial (la
+profundidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+y el ancho
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>)
+y de la masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+de la partícula. Si se da un potencial, se conoce el número
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>.
+Un potencial muy profundo y/o ancho tiene un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+muy grande, mientras que un potencial muy poco profundo y/o estrecho
+tiene un
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+pequeño. Como veremos, el valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+nos indica cuántos estados ligados tiene el pozo cuadrado.</p>
+<p>Multiplicando (2.25) por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mn>2</mn></msup><annotation encoding="application/x-tex">a^2</annotation></semantics></math>
+y usando nuestras definiciones anteriores obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>η</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ξ</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.27)</mtext></mrow><annotation encoding="application/x-tex">
+\eta^2 + \xi^2 = z_0^2. \qquad \text{(2.27)}
+</annotation></semantics></math></p>
+<p>Dejemos claro que resolver para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+es en realidad como resolver para la energía. De la ecuación (2.21),
+podemos ver</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ξ</mi><mn>2</mn></msup><mo>=</mo><msup><mi>κ</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msub><mi>V</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>⋅</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mo>=</mo><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mspace width="0.167em"></mspace><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.28)</mtext></mrow><annotation encoding="application/x-tex">
+\xi^2 = \kappa^2 a^2 = \frac{2m|E|a^2}{\hbar^2} = \frac{2mV_0 a^2}{\hbar^2}\cdot\frac{|E|}{V_0} = z_0^2\,\frac{|E|}{V_0}, \qquad \text{(2.28)}
+</annotation></semantics></math></p>
+<p>y de esto obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><msub><mi>V</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><msup><mi>ξ</mi><mn>2</mn></msup><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.29)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{|E|}{V_0} = \frac{\xi^2}{z_0^2}. \qquad \text{(2.29)}
+</annotation></semantics></math></p>
+<p>Esta es una ecuación agradable: el lado izquierdo da la energía como
+fracción de la profundidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mn>0</mn></msub><annotation encoding="application/x-tex">V_0</annotation></semantics></math>
+del pozo, y el lado derecho involucra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+y la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+del potencial. La cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+también codifica la energía de una manera ligeramente diferente. De
+(2.17) tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>η</mi><mn>2</mn></msup><mo>=</mo><msup><mi>k</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.30)</mtext></mrow><annotation encoding="application/x-tex">
+\eta^2 = k^2 a^2 \equiv \frac{2ma^2}{\hbar^2}\big(V_0 - |E|\big), \qquad \text{(2.30)}
+</annotation></semantics></math></p>
+<p>y usando (2.14) vemos que esto proporciona la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\tilde{E}</annotation></semantics></math>,
+medida con respecto al fondo del potencial:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">̃</mo></mover><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><msup><mi>η</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.31)</mtext></mrow><annotation encoding="application/x-tex">
+\tilde{E} = V_0 - |E| = \eta^2\,\frac{\hbar^2}{2ma^2}. \qquad \text{(2.31)}
+</annotation></semantics></math></p>
+<p>Esta fórmula es conveniente para entender cómo aparecen los niveles
+de energía del pozo cuadrado infinito en el límite en que la profundidad
+del pozo finito tiende a infinito. Nótese que la respuesta anterior para
+las energías está dada por el número adimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+multiplicado por la energía característica de un pozo infinito de ancho
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p>
+<p>Completemos finalmente la construcción. Debemos imponer la
+continuidad de la función de onda y la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Usando las expresiones para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &lt; a</annotation></semantics></math>
+y para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>,
+estas condiciones dan</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> continua en </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>=</mo><mi>a</mi><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">
+\psi \text{ continua en } x = a \ \Rightarrow \ \cos(ka) = A e^{-\kappa a}
+</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> continua en </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>=</mo><mi>a</mi><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><mo>−</mo><mi>k</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mi>κ</mi><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mi>a</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.32)</mtext></mrow><annotation encoding="application/x-tex">
+\psi&#39; \text{ continua en } x = a \ \Rightarrow \ -k\sin(ka) = -\kappa A e^{-\kappa a}, \qquad \text{(2.32)}
+</annotation></semantics></math></p>
+<p>Dividiendo la segunda ecuación por la primera eliminamos la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y encontramos una segunda relación entre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>.
+¡Esto es exactamente lo que se necesita! El resultado es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>=</mo><mi>κ</mi><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>k</mi><mi>a</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>a</mi><mo>=</mo><mi>κ</mi><mi>a</mi><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>η</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>η</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.33)</mtext></mrow><annotation encoding="application/x-tex">
+k\tan ka = \kappa \quad \Rightarrow \quad ka\tan ka = \kappa a \quad \Rightarrow \quad \xi = \eta \tan \eta. \qquad \text{(2.33)}
+</annotation></semantics></math></p>
+<p>Nuestra tarea de hallar los estados ligados se reduce ahora a hallar
+soluciones de las ecuaciones simultáneas</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Soluciones pares: </mtext><mspace width="0.333em"></mspace></mrow><mspace width="1.0em"></mspace><msup><mi>η</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ξ</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>η</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>η</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>,</mo><mi>η</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.34)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Soluciones pares: } \quad \eta^2 + \xi^2 = z_0^2, \qquad \xi = \eta\tan\eta, \qquad \xi, \eta &gt; 0. \qquad \text{(2.34)}
+</annotation></semantics></math></p>
+<p>Estas ecuaciones pueden resolverse numéricamente para hallar todas
+las soluciones que existen para un valor fijo dado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>.
+Cada solución representa un estado ligado. Podemos entender el espacio
+de soluciones graficando estas dos ecuaciones en el primer cuadrante de
+un plano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>η</mi><mo>,</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\eta, \xi)</annotation></semantics></math>,
+como se muestra en la figura 5.</p>
+<p>La primera ecuación en (2.34) es un trozo de una circunferencia de
+radio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>.
+La segunda ecuación,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>η</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi = \eta \tan \eta</annotation></semantics></math>,
+da infinitas curvas a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+crece de cero a infinito. El valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+tiende a infinito a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+se aproxima a cada múltiplo impar de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>.
+Los estados ligados están representados por las intersecciones en la
+gráfica (puntos gruesos).</p>
+<p>En la figura vemos dos intersecciones, lo que significa dos estados
+ligados. La primera intersección ocurre cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\eta = \pi/2</annotation></semantics></math>
+y con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+grande,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∼</mo><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\xi \sim z_0</annotation></semantics></math>.
+Este es el estado fundamental, o el estado ligado más profundamente
+unido. Esto puede verse a partir de (2.29). Alternativamente, puede
+verse a partir de la ecuación (2.31), notando que esta es la solución
+con menor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>.
+La segunda solución ocurre para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+cerca de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3\pi/2</annotation></semantics></math>.
+A medida que el radio de la circunferencia se hace más grande, obtenemos
+más y más intersecciones;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+controla el número de estados ligados pares. Finalmente, nótese que
+siempre existe una solución par, sin importar cuán pequeño sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>,
+porque el arco de la circunferencia siempre intersectará la primera
+curva de la gráfica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>η</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi = \eta \tan \eta</annotation></semantics></math>.
+Por lo tanto, siempre existe al menos un estado ligado, sin importar
+cuán poco profundo sea el pozo finito.</p>
+<p><em>Figura 5: Representación gráfica de las ecuaciones simultáneas
+(2.34). Las intersecciones de la circunferencia con la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\eta \tan \eta</annotation></semantics></math>
+representan las soluciones de estado ligado par en el potencial de pozo
+cuadrado finito. El estado ligado más profundo es el de menor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>.</em></p>
+<p><em>Figura 6: Representación gráfica de (2.36). Las intersecciones de
+la circunferencia con las curvas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>−</mi><mi>η</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi = -\eta \cot \eta</annotation></semantics></math>
+son soluciones de estado ligado impar en el potencial de pozo cuadrado
+finito. En el caso mostrado hay solo un estado ligado.</em></p>
+<p><strong>Soluciones impares.</strong> Para las soluciones impares,
+todas nuestras definiciones
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>)
+permanecen iguales. La función de onda ahora tiene la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>κ</mi><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.35)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) =
+\begin{cases}
+\sin kx, &amp; |x| &lt; a \\
+A e^{-\kappa|x|}, &amp; |x| &gt; a
+\end{cases}
+\qquad \text{(2.35)}
+</annotation></semantics></math></p>
+<p>Acoplando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+ahora da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>−</mi><mi>η</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi = -\eta\cot\eta</annotation></semantics></math>
+(¡hágalo!). Como resultado, las ecuaciones simultáneas relevantes son
+ahora</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Soluciones impares: </mtext><mspace width="0.333em"></mspace></mrow><mspace width="1.0em"></mspace><msup><mi>η</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ξ</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mi>−</mi><mi>η</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>η</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>,</mo><mi>η</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.36)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Soluciones impares: } \quad \eta^2 + \xi^2 = z_0^2, \qquad \xi = -\eta\cot\eta, \qquad \xi,\eta &gt; 0. \qquad \text{(2.36)}
+</annotation></semantics></math></p>
+<p>En la figura 6 la curva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>−</mi><mi>η</mi><mrow><mi mathvariant="normal">cot</mi><mo>&#8289;</mo></mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi = -\eta\cot\eta</annotation></semantics></math>
+no aparece para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>&lt;</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\eta &lt; \pi/2</annotation></semantics></math>
+porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+es entonces negativa. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>&lt;</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">z_0 &lt; \pi/2</annotation></semantics></math>
+no hay soluciones de estado ligado impar, pero aún tenemos el estado
+ligado par.</p>
+<p>Podríamos haber anticipado la cuantización de la energía mediante el
+siguiente argumento. Suponga que intenta calcular autoestados de energía
+que, en lo que respecta a resolver la ecuación de Schrödinger, están
+determinados salvo por una normalización global. Suponga que no sabe que
+la energía está cuantizada y fija alguna energía arbitraria y calcula.
+Tanto en el caso par como en el impar, podemos fijar el coeficiente de
+la función
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin kx</annotation></semantics></math>
+o
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos kx</annotation></semantics></math>
+dentro del pozo igual a uno. El coeficiente de la exponencial
+decreciente fuera del pozo estaba indeterminado; lo llamamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Por lo tanto, tenemos solo una incógnita,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Pero tenemos dos ecuaciones, porque imponemos la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Si tenemos una incógnita y dos ecuaciones, no hay razón para creer que
+existe una solución. De hecho, generalmente no la hay. Pero entonces, si
+pensamos en la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+como una incógnita, esa energía aparece en varios lugares de las
+ecuaciones (en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>)
+y, por lo tanto, teniendo dos incógnitas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+y dos ecuaciones, deberíamos esperar ¡una única solución! Esto es
+precisamente lo que ocurrió.</p>
+<p><em>Figura 7: Esquema de los autoestados de energía de un potencial
+de pozo cuadrado finito. Las energías son
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>E</mi><mn>2</mn></msub><mo>&lt;</mo><msub><mi>E</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">E_1 &lt; E_2 &lt; E_3</annotation></semantics></math>.</em></p>
+<p>En la figura 7 esbozamos los autoestados de energía de un potencial
+de pozo cuadrado con tres estados ligados de energías
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>E</mi><mn>2</mn></msub><mo>&lt;</mo><msub><mi>E</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">E_1 &lt; E_2 &lt; E_3</annotation></semantics></math>.
+Algunas características de las funciones de onda son evidentes: alternan
+entre par, impar y par. Tienen cero, uno y dos nodos, respectivamente.
+La segunda derivada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+es negativa para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &lt; a</annotation></semantics></math>
+y positiva para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &gt; a</annotation></semantics></math>
+(de hecho, es discontinua en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>±</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">x = \pm a</annotation></semantics></math>).
+El decaimiento exponencial en la región
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &gt; a</annotation></semantics></math>
+es más rápido para el estado fundamental y más lento para el estado
+menos ligado.</p>
+<p><em>Sarah Geller transcribió los apuntes de Zwiebach para crear la
+primera versión en LaTeX de este documento.</em></p>
+<hr />
+<p>MIT OpenCourseWare</p>
+<p>https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I</p>
+<p>Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "about:blank";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+</body>
+</html>

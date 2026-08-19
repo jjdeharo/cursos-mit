@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Lección 10: Resolución de la ecuación de Schrödinger independiente del tiempo</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Lección 10: Resolución de la ecuación de Schrödinger
+independiente del tiempo</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#lección-10-resolución-de-la-ecuación-de-schrödinger-independiente-del-tiempo"
+id="toc-lección-10-resolución-de-la-ecuación-de-schrödinger-independiente-del-tiempo">Lección
+10: Resolución de la ecuación de Schrödinger independiente del
+tiempo</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#estados-estacionarios" id="toc-estados-estacionarios">1.
+Estados estacionarios</a></li>
+<li><a href="#resolución-para-los-autoestados-de-energía"
+id="toc-resolución-para-los-autoestados-de-energía">2. Resolución para
+los autoestados de energía</a></li>
+<li><a href="#partícula-libre-en-un-círculo"
+id="toc-partícula-libre-en-un-círculo">3. Partícula libre en un
+círculo</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="lección-10-resolución-de-la-ecuación-de-schrödinger-independiente-del-tiempo">Lección
+10: Resolución de la ecuación de Schrödinger independiente del
+tiempo</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 10: Uncertainty (cont.). Stationary states. Particle
+on a circle.</strong></p>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="1D4VPbhDy_A" data-title="Uncertainty and eigenstates"><span class="video-play-icon">&#9654;</span> <strong>Uncertainty and eigenstates</strong> <span class="video-dur">(15:53)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=1D4VPbhDy_A" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="8KQ-yK2xm60" data-title="Stationary states: key equations"><span class="video-play-icon">&#9654;</span> <strong>Stationary states: key equations</strong> <span class="video-dur">(18:43)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=8KQ-yK2xm60" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="M2i8R6kMXKA" data-title="Expectation values on stationary states"><span class="video-play-icon">&#9654;</span> <strong>Expectation values on stationary states</strong> <span class="video-dur">(09:00)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=M2i8R6kMXKA" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="gMnQ21-pjOA" data-title="Comments on the spectrum and continuity conditions"><span class="video-play-icon">&#9654;</span> <strong>Comments on the spectrum and continuity conditions</strong> <span class="video-dur">(13:09)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=gMnQ21-pjOA" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="2EV1vJAAo8M" data-title="Solving particle on a circle"><span class="video-play-icon">&#9654;</span> <strong>Solving particle on a circle</strong> <span class="video-dur">(11:05)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=2EV1vJAAo8M" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+</ul>
+<hr />
+<p>B. Zwiebach</p>
+<p>14 de marzo de 2016</p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>Estados estacionarios</li>
+<li>Resolución para los autoestados de energía</li>
+<li>Partícula libre en un círculo</li>
+</ol>
+<h2 id="estados-estacionarios">1. Estados estacionarios</h2>
+<p>Consideremos la ecuación de Schrödinger para la función de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x, t)</annotation></semantics></math>
+bajo el supuesto de que la energía potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+es independiente del tiempo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><msup><mi>∂</mi><mn>2</mn></msup><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi(x, t) = \left( -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x) \right) \Psi(x, t) \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>donde hemos mostrado la forma del operador hamiltoniano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+con el potencial independiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>.
+Los estados estacionarios son una clase de soluciones muy útil de esta
+ecuación diferencial. La propiedad distintiva de un estado estacionario
+es que la dependencia espacial y temporal de la función de onda se
+factorizan. Es decir,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x, t) = g(t)\, \psi(x) \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>para ciertas funciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>.
+Para que exista una solución separable de este tipo necesitamos que el
+potencial sea independiente del tiempo, como veremos a continuación. La
+solución
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x, t)</annotation></semantics></math>
+depende del tiempo, pero se denomina estacionaria debido a una propiedad
+de los observables. El valor esperado de los observables sin dependencia
+temporal explícita en estados arbitrarios sí depende del tiempo. En un
+estado estacionario no depende del tiempo, como demostraremos.</p>
+<p>Usemos el ansatz (1.2) para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+en la ecuación de Schrödinger. Obtenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>d</mi><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \left( \frac{dg(t)}{dt} \right) \psi(x) = g(t)\, \hat{H}\psi(x) \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(t)</annotation></semantics></math>
+puede desplazarse a través de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>.
+Podemos entonces dividir esta ecuación por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x,t) = g(t)\psi(x)</annotation></semantics></math>,
+obteniendo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mn>1</mn><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{1}{g(t)} \frac{dg(t)}{dt} = \frac{1}{\psi(x)} \hat{H}\psi(x) \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>El lado izquierdo es una función solo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+mientras que el lado derecho es una función solo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+(un potencial dependiente del tiempo habría arruinado esto). La única
+forma en que ambos lados pueden ser iguales entre sí para todos los
+valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+es que ambos lados sean iguales a una constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+con unidades de energía, porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+tiene unidades de energía. Obtenemos así dos ecuaciones separadas. La
+primera es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>d</mi><mi>g</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>E</mi><mi>g</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{dg}{dt} = E g \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>Esta se resuelve mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+g(t) = e^{-iEt/\hbar} \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>y la solución más general es simplemente una constante multiplicada
+por el lado derecho anterior. Del lado dependiente de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+de la igualdad obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}\psi(x) = E\psi(x) \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Esta ecuación es una ecuación de autovalores para el operador
+hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>.
+Hemos mostrado que los autovalores de los operadores hermíticos deben
+ser reales, por lo que la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+debe ser real. La ecuación anterior se denomina la ecuación de
+Schrödinger independiente del tiempo. Más explícitamente se escribe</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><msup><mi>d</mi><mn>2</mn></msup><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+\left( -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x) \right) \psi(x) = E\psi(x) \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Nótese que esta ecuación no determina la normalización global de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>.
+Por lo tanto, podemos escribir la solución completa sin pérdida de
+generalidad usando la
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(t)</annotation></semantics></math>
+dada anteriormente:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Estado estacionario:</mtext><mspace width="1.0em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">con </mtext><mspace width="0.333em"></mspace></mrow><mi>E</mi><mo>∈</mo><mi>ℝ</mi><mspace width="0.222em"></mspace><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mspace width="0.222em"></mspace><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo>=</mo><mi>E</mi><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Estado estacionario:}\quad \Psi(x, t) = e^{-iEt/\hbar}\, \psi(x), \quad \text{con } E \in \mathbb{R} \ \text{ y } \ \hat{H}\psi = E\psi \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>Nótese que no solo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+es un autoestado del operador hamiltoniano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>,
+sino que el estado estacionario completo también es un autoestado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}\Psi(x, t) = E\Psi(x, t) \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>ya que la función dependiente del tiempo en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+se cancela.</p>
+<p>Hemos notado que la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+debe ser real. Si no lo fuera, también tendríamos problemas para
+normalizar el estado estacionario de manera consistente. La condición de
+normalización para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>,
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+no fuera real, daría</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><msup><mi>E</mi><mo>*</mo></msup><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>E</mi><mo>*</mo></msup><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+1 = \int dx\, \Psi^*(x,t)\Psi(x,t) = \int dx\, e^{iE^*t/\hbar} e^{-iEt/\hbar} \psi^*(x)\psi(x) = e^{i(E^*-E)t/\hbar} \int dx\, \psi^*(x)\psi(x) = e^{2\,\mathrm{Im}(E)t/\hbar} \int dx\, \psi^*(x)\psi(x) \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>La expresión final tiene una dependencia temporal debida a la
+exponencial. Por otro lado, la condición de normalización establece que
+esta expresión debe ser igual a uno. De ello se sigue que el exponente
+debe ser cero, es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+es real. Dado esto, vemos también que la condición de normalización
+arroja</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} dx\, \psi^*(x)\psi(x) = 1 \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>¿Cómo interpretamos el autovalor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>?
+Usando (1.10) vemos que el valor esperado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+en el estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es efectivamente la energía</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>E</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+\langle\langle \hat{H} \rangle\rangle_\Psi = \int dx\, \Psi^*(x,t)\, \hat{H}\Psi(x,t) = \int dx\, \Psi^*(x,t)\, E\Psi(x,t) = E \int dx\, \Psi^*(x,t)\Psi(x,t) = E \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>Dado que el estado estacionario es un autoestado de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>,
+la incertidumbre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math>
+del hamiltoniano en un estado estacionario es cero.</p>
+<p>Hay dos observaciones importantes sobre los estados
+estacionarios:</p>
+<p><strong>(1)</strong> El valor esperado de cualquier operador
+independiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+en un estado estacionario
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+es independiente del tiempo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\langle\langle \hat{Q} \rangle\rangle_{\Psi(x,t)} = \int dx\, \Psi^*(x,t)\, \hat{Q}\Psi(x,t) = \int dx\, e^{iEt/\hbar}\psi^*(x)\, \hat{Q} e^{-iEt/\hbar}\psi(x)
+</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.14)</mtext></mrow><annotation encoding="application/x-tex">
+= \int dx\, e^{iEt/\hbar} e^{-iEt/\hbar} \psi^*(x)\hat{Q}\psi(x) = \int dx\, \psi^*(x)\hat{Q}\psi(x) = \langle\langle \hat{Q} \rangle\rangle_{\psi(x)} \qquad \text{(1.14)}
+</annotation></semantics></math></p>
+<p>ya que el último valor esperado es manifiestamente independiente del
+tiempo.</p>
+<p><strong>(2)</strong> La superposición de estados estacionarios con
+energías diferentes no es estacionaria. Esto es claro porque un estado
+estacionario requiere una solución factorizada de la ecuación de
+Schrödinger: si sumamos dos soluciones factorizadas con energías
+diferentes, estas tendrán dependencias temporales distintas y el estado
+total no podrá factorizarse. Ahora mostraremos que un observable
+independiente del tiempo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+puede tener un valor esperado dependiente del tiempo en tal estado.
+Consideremos una superposición</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>c</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>E</mi><mn>1</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>E</mi><mn>2</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.15)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x, t) = c_1 e^{-iE_1 t/\hbar} \psi_1(x) + c_2 e^{-iE_2 t/\hbar} \psi_2(x) \qquad \text{(1.15)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\psi_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\psi_2</annotation></semantics></math>
+son autoestados de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+con energías
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>1</mn></msub><annotation encoding="application/x-tex">E_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>2</mn></msub><annotation encoding="application/x-tex">E_2</annotation></semantics></math>,
+respectivamente. Consideremos un operador hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>.
+Con el sistema en el estado (1.15), su valor esperado es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\langle\langle \hat{Q} \rangle\rangle_\Psi = \int_{-\infty}^{\infty} dx\, \Psi^*(x,t)\, \hat{Q}\Psi(x,t)
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>c</mi><mn>1</mn><mo>*</mo></msubsup><msup><mi>e</mi><mrow><mi>i</mi><msub><mi>E</mi><mn>1</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msubsup><mi>ψ</mi><mn>1</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msubsup><mi>c</mi><mn>2</mn><mo>*</mo></msubsup><msup><mi>e</mi><mrow><mi>i</mi><msub><mi>E</mi><mn>2</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msubsup><mi>ψ</mi><mn>2</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>c</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>E</mi><mn>1</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>E</mi><mn>2</mn></msub><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+= \int_{-\infty}^{\infty} dx \left[ c_1^* e^{iE_1 t/\hbar}\psi_1^*(x) + c_2^* e^{iE_2 t/\hbar}\psi_2^*(x) \right] \left[ c_1 e^{-iE_1 t/\hbar}\hat{Q}\psi_1(x) + c_2 e^{-iE_2 t/\hbar}\hat{Q}\psi_2(x) \right]
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">[</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>1</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><msubsup><mi>ψ</mi><mn>1</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo>+</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>2</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><msubsup><mi>ψ</mi><mn>2</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo>+</mo><msubsup><mi>c</mi><mn>1</mn><mo>*</mo></msubsup><msub><mi>c</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mn>1</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo>+</mo><msubsup><mi>c</mi><mn>2</mn><mo>*</mo></msubsup><msub><mi>c</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mn>2</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">]</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.16)</mtext></mrow><annotation encoding="application/x-tex">
+= \int_{-\infty}^{\infty} dx \Big[ |c_1|^2 \psi_1^*\hat{Q}\psi_1 + |c_2|^2 \psi_2^*\hat{Q}\psi_2 + c_1^* c_2\, e^{i(E_1-E_2)t/\hbar}\, \psi_1^*\hat{Q}\psi_2 + c_2^* c_1\, e^{-i(E_1-E_2)t/\hbar}\, \psi_2^*\hat{Q}\psi_1 \Big] \qquad \text{(1.16)}
+</annotation></semantics></math></p>
+<p>Ahora vemos la posible dependencia temporal que surge de los términos
+cruzados. Los dos primeros términos son valores esperados simples e
+independientes del tiempo. Usando la hermiticidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{Q}</annotation></semantics></math>
+en el último término obtenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>1</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mn>1</mn></msub></msub><mo>+</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>2</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mn>2</mn></msub></msub></mrow><annotation encoding="application/x-tex">
+\langle\langle \hat{Q} \rangle\rangle_\Psi = |c_1|^2 \langle\langle \hat{Q} \rangle\rangle_{\psi_1} + |c_2|^2 \langle\langle \hat{Q} \rangle\rangle_{\psi_2}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mspace width="0.167em"></mspace><msubsup><mi>c</mi><mn>1</mn><mo>*</mo></msubsup><msub><mi>c</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mn>1</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub><msubsup><mi>c</mi><mn>2</mn><mo>*</mo></msubsup><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.17)</mtext></mrow><annotation encoding="application/x-tex">
++\, c_1^* c_2\, e^{i(E_1-E_2)t/\hbar} \int_{-\infty}^{\infty} dx\, \psi_1^*\hat{Q}\psi_2 + c_1 c_2^*\, e^{-i(E_1-E_2)t/\hbar} \int_{-\infty}^{\infty} dx\, \psi_1 (\hat{Q}\psi_2)^* \qquad \text{(1.17)}
+</annotation></semantics></math></p>
+<p>Los dos últimos términos son complejos conjugados entre sí y por lo
+tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>1</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mn>1</mn></msub></msub><mo>+</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>c</mi><mn>2</mn></msub><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>ψ</mi><mn>2</mn></msub></msub><mo>+</mo><mn>2</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi></mrow><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>c</mi><mn>1</mn><mo>*</mo></msubsup><msub><mi>c</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mn>1</mn><mo>*</mo></msubsup><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.18)</mtext></mrow><annotation encoding="application/x-tex">
+\langle\langle \hat{Q} \rangle\rangle_\Psi = |c_1|^2 \langle\langle \hat{Q} \rangle\rangle_{\psi_1} + |c_2|^2 \langle\langle \hat{Q} \rangle\rangle_{\psi_2} + 2\,\mathrm{Re}\left[ c_1^* c_2\, e^{i(E_1-E_2)t/\hbar} \int_{-\infty}^{\infty} dx\, \psi_1^*\hat{Q}\psi_2 \right] \qquad \text{(1.18)}
+</annotation></semantics></math></p>
+<p>Vemos que este valor esperado depende del tiempo si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>≠</mo><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_1 \neq E_2</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>ψ</mi><mn>1</mn></msub><mo>,</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\psi_1, \hat{Q}\psi_2)</annotation></semantics></math>
+es distinto de cero. El valor esperado completo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">⟨</mo><mover><mi>Q</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="postfix">⟩</mo><msub><mo stretchy="false" form="postfix">⟩</mo><mi mathvariant="normal">Ψ</mi></msub></mrow><annotation encoding="application/x-tex">\langle\langle \hat{Q} \rangle\rangle_\Psi</annotation></semantics></math>
+es real, como debe serlo para cualquier operador hermítico.</p>
+<h2 id="resolución-para-los-autoestados-de-energía">2. Resolución para
+los autoestados de energía</h2>
+<p>Ahora estudiaremos las soluciones de la ecuación de Schrödinger
+independiente del tiempo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>E</mi><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.19)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}\psi(x) = E\, \psi(x) \qquad \text{(2.19)}
+</annotation></semantics></math></p>
+<p>Dado un hamiltoniano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>,
+nos interesa encontrar los autoestados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y los autovalores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+que resultan ser las energías correspondientes. Quizás la característica
+más interesante de la ecuación anterior es que, en general, el valor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+no puede ser arbitrario. Al igual que las matrices de tamaño finito
+tienen un conjunto de autovalores, la ecuación de Schrödinger
+independiente del tiempo anterior puede tener un conjunto discreto de
+energías posibles. También se permite un conjunto continuo de energías
+posibles, lo cual a veces es importante. En efecto, hay muchas
+soluciones para cualquier potencial dado. Suponiendo, por conveniencia,
+que los autoestados y sus energías pueden contarse, escribimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>E</mi><mn>1</mn></msub><mspace width="2.0em"></mspace><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>E</mi><mn>2</mn></msub><mspace width="2.0em"></mspace><mi>…</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.20)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_1(x)\,, \ E_1 \qquad \psi_2(x)\,, \ E_2 \qquad \dots \qquad \text{(2.20)}
+</annotation></semantics></math></p>
+<p>Nuestra discusión anterior sobre operadores hermíticos se aplica
+aquí. Los autoestados de energía pueden organizarse para formar un
+conjunto completo de funciones ortonormales:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msubsup><mi>ψ</mi><mi>i</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.21)</mtext></mrow><annotation encoding="application/x-tex">
+\int \psi_i^*(x)\psi_j(x) = \delta_{ij} \qquad \text{(2.21)}
+</annotation></semantics></math></p>
+<p>Consideremos la ecuación de Schrödinger independiente del tiempo
+escrita como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.22)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\left(E - V(x)\right)\psi \qquad \text{(2.22)}
+</annotation></semantics></math></p>
+<p>Las soluciones
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+dependen de las propiedades del potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>.
+Es difícil hacer afirmaciones generales sobre la función de onda a menos
+que restrinjamos los tipos de potenciales. Sin duda consideraremos
+potenciales continuos. También consideraremos potenciales que no son
+continuos pero que son continuos a trozos, es decir, que tienen cierto
+número de discontinuidades. Nuestros potenciales pueden fácilmente no
+estar acotados. Permitimos funciones delta en los potenciales
+unidimensionales, pero no consideramos potencias o derivadas de
+funciones delta. Permitimos potenciales que se vuelven infinitos
+positivos más allá de ciertos puntos. Estos puntos representan paredes
+duras.</p>
+<p>Queremos entender las propiedades generales de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y el comportamiento de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+en los puntos donde el potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+puede tener discontinuidades u otras singularidades. Afirmamos: debemos
+tener una función de onda continua. Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+fuera discontinua, entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+contendría funciones delta y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>″</mo></msup><annotation encoding="application/x-tex">\psi&#39;&#39;</annotation></semantics></math>,
+en el lado izquierdo de la ecuación anterior, contendría derivadas de
+funciones delta. Esto requeriría que el lado derecho tuviera derivadas
+de funciones delta, y estas tendrían que aparecer en el potencial. Dado
+que hemos declarado que nuestros potenciales no contienen derivadas de
+funciones delta, debemos tener efectivamente una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+continua.</p>
+<p>Consideremos ahora cuatro posibilidades respecto al potencial:</p>
+<p><strong>(1)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+es continuo. En este caso, la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+y (2.22) implican que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>″</mo></msup><annotation encoding="application/x-tex">\psi&#39;&#39;</annotation></semantics></math>
+también es continua. Esto requiere que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+sea continua.</p>
+<p><strong>(2)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+tiene discontinuidades finitas. En este caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>″</mo></msup><annotation encoding="application/x-tex">\psi&#39;&#39;</annotation></semantics></math>
+tiene discontinuidades finitas: incluye el producto de una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+continua por una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+discontinua. Pero entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+debe ser continua, con derivada no continua.</p>
+<p><strong>(3)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+contiene funciones delta. En este caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>″</mo></msup><annotation encoding="application/x-tex">\psi&#39;&#39;</annotation></semantics></math>
+también contiene funciones delta: es proporcional al producto de una
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+continua y una función delta en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+Por lo tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+tiene discontinuidades finitas.</p>
+<p><strong>(4)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+contiene una pared dura. Se dice que un potencial que es finito
+inmediatamente a la izquierda de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+y se vuelve infinito para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>
+tiene una pared dura en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+En tal caso, la función de onda se anulará para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x \geq a</annotation></semantics></math>.
+La pendiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+será finita cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x \to a</annotation></semantics></math>
+por la izquierda, y se anulará para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x &gt; a</annotation></semantics></math>.
+Por lo tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+es discontinua en la pared.</p>
+<p>En los dos primeros casos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+es continua, y en los dos últimos puede tener una discontinuidad finita.
+En conclusión</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Tanto </mtext><mspace width="0.333em"></mspace></mrow><mi>ψ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> como </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> son continuas a menos que el potencial tenga funciones delta o paredes duras, en cuyo caso </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> puede tener discontinuidades finitas.</mtext></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.23)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Tanto } \psi \text{ como } \psi&#39; \text{ son continuas a menos que el potencial tenga funciones delta o paredes duras, en cuyo caso } \psi&#39; \text{ puede tener discontinuidades finitas.} \qquad \text{(2.23)}
+</annotation></semantics></math></p>
+<p>Demos un argumento ligeramente distinto para la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{d\psi}{dx}</annotation></semantics></math>
+en el caso de un potencial con una discontinuidad finita, como el
+escalón mostrado en la Fig. 1.</p>
+<p><em>Figura 1: Un potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+con una discontinuidad finita en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.</em></p>
+<p>Integremos ambos lados de (2.22) de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">a - \epsilon</annotation></semantics></math>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">a + \epsilon</annotation></semantics></math>,
+y luego tomemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon \to 0</annotation></semantics></math>.
+Encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msubsup><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.24)</mtext></mrow><annotation encoding="application/x-tex">
+\int_{a-\epsilon}^{a+\epsilon} \frac{d}{dx}\left(\frac{d\psi}{dx}\right) dx = -\frac{2m}{\hbar^2} \int_{a-\epsilon}^{a+\epsilon} dx\, (E - V(x))\psi(x) \qquad \text{(2.24)}
+</annotation></semantics></math></p>
+<p>El integrando del lado izquierdo es una derivada total, así que
+tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msub><mo>−</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.25)</mtext></mrow><annotation encoding="application/x-tex">
+\left. \frac{d\psi}{dx} \right|_{a+\epsilon} - \left. \frac{d\psi}{dx} \right|_{a-\epsilon} = \frac{2m}{\hbar^2} \int_{a-\epsilon}^{a+\epsilon} dx\, (V(x) - E)\psi(x) \qquad \text{(2.25)}
+</annotation></semantics></math></p>
+<p>Por definición, la discontinuidad de la derivada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x=a</annotation></semantics></math>
+es el límite cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon \to 0</annotation></semantics></math>
+del lado izquierdo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>a</mi></msub><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>≡</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow></munder><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msub><mo>−</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.26)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta_a\!\left(\frac{d\psi}{dx}\right) \equiv \lim_{\epsilon \to 0} \left( \left. \frac{d\psi}{dx} \right|_{a+\epsilon} - \left. \frac{d\psi}{dx} \right|_{a-\epsilon} \right) \qquad \text{(2.26)}
+</annotation></semantics></math></p>
+<p>Sustituyendo en (2.25) tenemos entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>a</mi></msub><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.27)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta_a\!\left(\frac{d\psi}{dx}\right) = \lim_{\epsilon \to 0} \frac{2m}{\hbar^2} \int_{a-\epsilon}^{a+\epsilon} dx\, (V(x) - E)\psi(x) \qquad \text{(2.27)}
+</annotation></semantics></math></p>
+<p>El potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+es discontinuo pero no infinito alrededor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>,
+tampoco
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+es infinita alrededor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>
+y, por supuesto, se supone que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+es finita. A medida que el rango de integración se hace
+infinitesimalmente pequeño alrededor de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>,
+el integrando permanece finito y la integral tiende a cero. Tenemos
+así</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>a</mi></msub><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.28)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta_a\!\left(\frac{d\psi}{dx}\right) = 0 \qquad \text{(2.28)}
+</annotation></semantics></math></p>
+<p>No hay discontinuidad en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{d\psi}{dx}</annotation></semantics></math>.
+Esto nos da una de nuestras condiciones de contorno.</p>
+<p>Para conocer la continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+reconsideramos la primera integral de la ecuación diferencial. La
+integración que llevó a (2.25), ahora aplicada al rango desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x_0 &lt; a</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+arroja</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo>=</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>x</mi><mn>0</mn></msub></msub><mo>−</mo><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><msub><mi>x</mi><mn>0</mn></msub><mi>x</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mo>′</mo></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.29)</mtext></mrow><annotation encoding="application/x-tex">
+\left. \frac{d\psi(x)}{dx} \right. = \left. \frac{d\psi}{dx} \right|_{x_0} - \frac{2m}{\hbar^2} \int_{x_0}^{x} (E - V(x&#39;))\, dx&#39; \qquad \text{(2.29)}
+</annotation></semantics></math></p>
+<p>Nótese que la integral del lado derecho es una función acotada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Ahora integramos de nuevo desde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">a - \epsilon</annotation></semantics></math>
+hasta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">a + \epsilon</annotation></semantics></math>.
+Dado que el primer término del lado derecho es una constante,
+encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mrow><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>x</mi><mn>0</mn></msub></msub><mo>⋅</mo><mn>2</mn><mi>ϵ</mi><mo>−</mo><mfrac><mrow><mn>2</mn><mi>m</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><mrow><mi>a</mi><mo>−</mo><mi>ϵ</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>ϵ</mi></mrow></msubsup><mi>d</mi><mi>x</mi><msubsup><mo>∫</mo><msub><mi>x</mi><mn>0</mn></msub><mi>x</mi></msubsup><mi>d</mi><msup><mi>x</mi><mo>′</mo></msup><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.30)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(a+\epsilon) - \psi(a-\epsilon) = \left. \frac{d\psi}{dx} \right|_{x_0} \cdot 2\epsilon - \frac{2m}{\hbar^2} \int_{a-\epsilon}^{a+\epsilon} dx \int_{x_0}^{x} dx&#39;\, (E - V(x&#39;)) \qquad \text{(2.30)}
+</annotation></semantics></math></p>
+<p>Tomando el límite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon \to 0</annotation></semantics></math>,
+el primer término del lado derecho claramente se anula y el segundo
+término también tiende a cero porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><msub><mi>x</mi><mn>0</mn></msub><mi>x</mi></msubsup><mi>d</mi><msup><mi>x</mi><mo>′</mo></msup><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\int_{x_0}^{x} dx&#39;\,(E - V(x&#39;))</annotation></semantics></math>
+es una función acotada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Como resultado tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>a</mi></msub><mi>ψ</mi><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.31)</mtext></mrow><annotation encoding="application/x-tex">
+\Delta_a \psi = 0 \qquad \text{(2.31)}
+</annotation></semantics></math></p>
+<p>lo que muestra que la función de onda es continua en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Esta es nuestra segunda condición de contorno.</p>
+<h2 id="partícula-libre-en-un-círculo">3. Partícula libre en un
+círculo</h2>
+<p>Consideremos ahora el problema de una partícula confinada a un
+círculo de circunferencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+La coordenada a lo largo del círculo se denomina
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+y podemos ver el círculo como el intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x \in [0, L]</annotation></semantics></math>
+con los extremos identificados. Quizás sea más claro matemáticamente
+pensar en el círculo como la recta real completa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+con la identificación</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∼</mo><mi>x</mi><mo>+</mo><mi>L</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.1)</mtext></mrow><annotation encoding="application/x-tex">
+x \sim x + L \qquad \text{(3.1)}
+</annotation></semantics></math></p>
+<p>lo que significa que dos puntos cuyas coordenadas están relacionadas
+de esta manera deben considerarse el mismo punto. De ello se sigue que
+tenemos la condición de periodicidad</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.2)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x + L) = \psi(x) \qquad \text{(3.2)}
+</annotation></semantics></math></p>
+<p>De esto se sigue que no solo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+es periódica, sino que todas sus derivadas también lo son.</p>
+<p>Se supone que la partícula es libre y por lo tanto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(x) = 0</annotation></semantics></math>.
+La ecuación de Schrödinger independiente del tiempo es entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>E</mi><mspace width="0.167em"></mspace><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.3)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} = E\, \psi(x) \qquad \text{(3.3)}
+</annotation></semantics></math></p>
+<p>Antes de resolverla, mostremos que toda solución debe tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E \geq 0</annotation></semantics></math>.
+Para ello multiplicamos la ecuación anterior por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi^*(x)</annotation></semantics></math>
+e integramos sobre el círculo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x \in [0, L)</annotation></semantics></math>.
+Dado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+está normalizada, obtenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>E</mi><mo>∫</mo><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>E</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.4)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\hbar^2}{2m} \int_0^L \psi^*(x)\, \frac{d^2\psi}{dx^2}\, dx = E \int \psi^*(x)\psi(x)\, dx = E \qquad \text{(3.4)}
+</annotation></semantics></math></p>
+<p>El integrando del lado izquierdo puede reescribirse como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mrow><mi>d</mi><msup><mi>ψ</mi><mo>*</mo></msup></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><mi>E</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.5)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\hbar^2}{2m} \int_0^L \left[ \frac{d}{dx}\left(\psi^* \frac{d\psi}{dx}\right) - \frac{d\psi^*}{dx}\frac{d\psi}{dx} \right] dx = E \qquad \text{(3.5)}
+</annotation></semantics></math></p>
+<p>y la derivada total se puede integrar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><msub><mrow><msup><mi>ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow></msub><mo>−</mo><msub><mrow><msup><mi>ψ</mi><mo>*</mo></msup><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msup><mrow><mo stretchy="true" form="prefix">|</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>d</mi><mi>x</mi><mo>=</mo><mi>E</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.6)</mtext></mrow><annotation encoding="application/x-tex">
+-\frac{\hbar^2}{2m} \left[ \left. \psi^* \frac{d\psi}{dx} \right|_{x=L} - \left. \psi^* \frac{d\psi}{dx} \right|_{x=0} \right] + \frac{\hbar^2}{2m} \int_0^L \left| \frac{d\psi}{dx} \right|^2 dx = E \qquad \text{(3.6)}
+</annotation></semantics></math></p>
+<p>Dado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\psi(x)</annotation></semantics></math>
+y sus derivadas son periódicas, las contribuciones de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">x = L</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>
+se cancelan y quedamos con</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msup><mrow><mo stretchy="true" form="prefix">|</mo><mfrac><mrow><mi>d</mi><mi>ψ</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>d</mi><mi>x</mi><mo>≥</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.7)</mtext></mrow><annotation encoding="application/x-tex">
+E = \frac{\hbar^2}{2m} \int_0^L \left| \frac{d\psi}{dx} \right|^2 dx \geq 0 \qquad \text{(3.7)}
+</annotation></semantics></math></p>
+<p>lo que establece nuestra afirmación. También vemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E = 0</annotation></semantics></math>
+requiere que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+sea constante (¡y no nula!).</p>
+<p>Habiendo mostrado que todas las soluciones deben tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E \geq 0</annotation></semantics></math>,
+volvamos a la ecuación de Schrödinger, que puede reescribirse como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.8)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -\frac{2mE}{\hbar^2}\, \psi \qquad \text{(3.8)}
+</annotation></semantics></math></p>
+<p>Podemos entonces definir
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>≥</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.9)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 \equiv \frac{2mE}{\hbar^2} \geq 0 \qquad \text{(3.9)}
+</annotation></semantics></math></p>
+<p>Dado que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E \geq 0</annotation></semantics></math>,
+la constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+es real. Nótese que esta definición es muy natural, ya que hace que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.10)</mtext></mrow><annotation encoding="application/x-tex">
+E = \frac{\hbar^2 k^2}{2m} \qquad \text{(3.10)}
+</annotation></semantics></math></p>
+<p>lo cual significa que, como es habitual,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>ℏ</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">p = \hbar k</annotation></semantics></math>.
+Usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mn>2</mn></msup><annotation encoding="application/x-tex">k^2</annotation></semantics></math>,
+la ecuación diferencial se convierte en la familiar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>ψ</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi>−</mi><msup><mi>k</mi><mn>2</mn></msup><mi>ψ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.11)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d^2\psi}{dx^2} = -k^2\psi \qquad \text{(3.11)}
+</annotation></semantics></math></p>
+<p>Podríamos escribir la solución general en términos de senos y cosenos
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">kx</annotation></semantics></math>,
+pero usemos exponenciales complejas:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.12)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) \sim e^{ikx} \qquad \text{(3.12)}
+</annotation></semantics></math></p>
+<p>Esto resuelve la ecuación diferencial y, además, es un autoestado de
+momento. La condición de periodicidad (3.2) requiere</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>L</mi></mrow></msup><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><mi>k</mi><mi>L</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi><mspace width="0.167em"></mspace><mo>,</mo><mspace width="0.222em"></mspace><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.13)</mtext></mrow><annotation encoding="application/x-tex">
+e^{ik(x+L)} = e^{ikx} \ \Rightarrow\ e^{ikL} = 1 \ \Rightarrow\ kL = 2\pi n\,, \ n \in \mathbb{Z} \qquad \text{(3.13)}
+</annotation></semantics></math></p>
+<p>Vemos que el momento está cuantizado porque el número de onda está
+cuantizado. El número de onda tiene los valores discretos posibles</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>n</mi></msub><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>n</mi></mrow><mi>L</mi></mfrac><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.14)</mtext></mrow><annotation encoding="application/x-tex">
+k_n \equiv \frac{2\pi n}{L}\,, \quad n \in \mathbb{Z} \qquad \text{(3.14)}
+</annotation></semantics></math></p>
+<p>Todos los enteros, positivos y negativos, están permitidos y de hecho
+son necesarios porque todos corresponden a valores distintos del momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>=</mo><mi>ℏ</mi><msub><mi>k</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">p_n = \hbar k_n</annotation></semantics></math>.
+Las soluciones de la ecuación de Schrödinger pueden entonces indexarse
+mediante el entero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>N</mi><msup><mi>e</mi><mrow><mi>i</mi><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.15)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_n(x) = N e^{ik_n x} \qquad \text{(3.15)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+es una constante de normalización real. Su valor se determina a partir
+de</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msubsup><mi>ψ</mi><mi>n</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msup><mi>N</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>N</mi><mn>2</mn></msup><mi>L</mi><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><mi>N</mi><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.16)</mtext></mrow><annotation encoding="application/x-tex">
+1 = \int_0^L \psi_n^*(x)\psi_n(x)\, dx = \int_0^L N^2\, dx = N^2 L \ \Rightarrow\ N = \frac{1}{\sqrt{L}} \qquad \text{(3.16)}
+</annotation></semantics></math></p>
+<p>así que tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi></mrow></msup><mo>=</mo><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac><mspace width="0.167em"></mspace><msup><mi>e</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>n</mi><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.17)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_n(x) = \frac{1}{\sqrt{L}}\, e^{ik_n x} = \frac{1}{\sqrt{L}}\, e^{\frac{2\pi i n x}{L}} \qquad \text{(3.17)}
+</annotation></semantics></math></p>
+<p>Las energías asociadas son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><msubsup><mi>k</mi><mi>n</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>ℏ</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi><msup><mi>L</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>ℏ</mi><mn>2</mn></msup><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><mi>m</mi><msup><mi>L</mi><mn>2</mn></msup></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.18)</mtext></mrow><annotation encoding="application/x-tex">
+E_n = \frac{\hbar^2 k_n^2}{2m} = \frac{\hbar^2\, 4\pi^2 n^2}{2mL^2} = \frac{2\pi^2 \hbar^2 n^2}{mL^2} \qquad \text{(3.18)}
+</annotation></semantics></math></p>
+<p>Hay infinitos autoestados de energía. Tenemos estados degenerados
+porque
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>n</mi></msub><annotation encoding="application/x-tex">E_n</annotation></semantics></math>
+es simplemente una función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>n</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|n|</annotation></semantics></math>
+y por lo tanto es la misma para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-n</annotation></semantics></math>.
+En efecto,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\psi_n</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mrow><mi>−</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">\psi_{-n}</annotation></semantics></math>
+tienen ambos energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>n</mi></msub><annotation encoding="application/x-tex">E_n</annotation></semantics></math>.
+El único autoestado no degenerado es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mn>0</mn></msub><mo>=</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><msqrt><mi>L</mi></msqrt></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\psi_0 = \dfrac{1}{\sqrt{L}}</annotation></semantics></math>,
+que es una función de onda constante con energía cero.</p>
+<p>Cada vez que encontramos autoestados de energía degenerados debemos
+preguntarnos qué hace diferentes a esos estados, dado que tienen la
+misma energía. Para responder a esto hay que encontrar un observable que
+tome valores distintos en los estados. Afortunadamente, en nuestro caso
+conocemos la respuesta. Nuestros estados degenerados pueden distinguirse
+por su momento:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\psi_n</annotation></semantics></math>
+tiene momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="true"><mfrac><mrow><mn>2</mn><mi>π</mi><mi>n</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{2\pi n \hbar}{L}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mrow><mi>−</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">\psi_{-n}</annotation></semantics></math>
+tiene momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mstyle displaystyle="true"><mfrac><mrow><mn>2</mn><mi>π</mi><mi>n</mi><mi>ℏ</mi></mrow><mi>L</mi></mfrac></mstyle><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\left(-\dfrac{2\pi n \hbar}{L}\right)</annotation></semantics></math>.</p>
+<p>Dados dos autoestados de energía degenerados, cualquier combinación
+lineal de estos estados es un autoestado con la misma energía. En
+efecto, si</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo>=</mo><mi>E</mi><msub><mi>ψ</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo>=</mo><mi>E</mi><msub><mi>ψ</mi><mn>2</mn></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.19)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}\psi_1 = E\psi_1\,, \qquad \hat{H}\psi_2 = E\psi_2 \qquad \text{(3.19)}
+</annotation></semantics></math></p>
+<p>entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>a</mi><msub><mi>ψ</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi><mover><mi>H</mi><mo accent="true">̂</mo></mover><msub><mi>ψ</mi><mn>2</mn></msub><mo>=</mo><mi>a</mi><mi>E</mi><msub><mi>ψ</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi><mi>E</mi><msub><mi>ψ</mi><mn>2</mn></msub><mo>=</mo><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><msub><mi>ψ</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.20)</mtext></mrow><annotation encoding="application/x-tex">
+\hat{H}(a\psi_1 + b\psi_2) = a\hat{H}\psi_1 + b\hat{H}\psi_2 = aE\psi_1 + bE\psi_2 = E(a\psi_1 + b\psi_2) \qquad \text{(3.20)}
+</annotation></semantics></math></p>
+<p>Por lo tanto podemos formar dos combinaciones lineales de los
+autoestados degenerados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\psi_n</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mrow><mi>−</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">\psi_{-n}</annotation></semantics></math>
+para obtener otra descripción de los autoestados de energía:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo>+</mo><msub><mi>ψ</mi><mrow><mi>−</mi><mi>n</mi></mrow></msub><mo>∼</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\psi_n + \psi_{-n} \sim \cos(k_n x)\,,
+</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>ψ</mi><mrow><mi>−</mi><mi>n</mi></mrow></msub><mo>∼</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>n</mi></msub><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.21)</mtext></mrow><annotation encoding="application/x-tex">
+\psi_n - \psi_{-n} \sim \sin(k_n x)\,. \qquad \text{(3.21)}
+</annotation></semantics></math></p>
+<p>Aunque estos son autoestados de energía reales, no son autoestados de
+momento. Solo nuestras exponenciales son autoestados simultáneos tanto
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>H</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{H}</annotation></semantics></math>
+como de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>.</p>
+<p>Los autoestados de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ψ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\psi_n</annotation></semantics></math>
+son automáticamente ortonormales, ya que son autoestados de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>
+sin degeneraciones (y, como recordarán, los autoestados de un operador
+hermítico con autovalores distintos son automáticamente
+ortogonales):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msubsup><mi>ψ</mi><mi>n</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ψ</mi><mi>m</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mi>L</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msup><mi>e</mi><mfrac><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo>−</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mi>x</mi></mrow><mi>L</mi></mfrac></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msub><mi>δ</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.22)</mtext></mrow><annotation encoding="application/x-tex">
+\int_0^L \psi_n^*(x)\psi_m(x)\, dx = \frac{1}{L} \int_0^L e^{\frac{2\pi i (m-n) x}{L}}\, dx = \delta_{mn} \qquad \text{(3.22)}
+</annotation></semantics></math></p>
+<p>También son completos: podemos entonces construir una función de onda
+general como una superposición que es de hecho una serie de Fourier.
+Para cualquier
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x,0)</annotation></semantics></math>
+que satisfaga la condición de periodicidad, podemos escribir</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow></munder><msub><mi>a</mi><mi>n</mi></msub><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.23)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x, 0) = \sum_{n \in \mathbb{Z}} a_n \psi_n(x) \qquad \text{(3.23)}
+</annotation></semantics></math></p>
+<p>donde, como debe comprobarse, los coeficientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>n</mi></msub><annotation encoding="application/x-tex">a_n</annotation></semantics></math>
+se determinan mediante las integrales</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi>ψ</mi><mi>n</mi><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.24)</mtext></mrow><annotation encoding="application/x-tex">
+a_n = \int_0^L dx\, \psi_n^*(x)\, \Psi(x, 0) \qquad \text{(3.24)}
+</annotation></semantics></math></p>
+<p>El estado inicial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x, 0)</annotation></semantics></math>
+se evoluciona entonces fácilmente en el tiempo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow></munder><msub><mi>a</mi><mi>n</mi></msub><msub><mi>ψ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>−</mi><mfrac><mrow><mi>i</mi><msub><mi>E</mi><mi>n</mi></msub><mi>t</mi></mrow><mi>ℏ</mi></mfrac></mrow></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.25)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi(x, t) = \sum_{n \in \mathbb{Z}} a_n \psi_n(x)\, e^{-\frac{iE_n t}{\hbar}} \qquad \text{(3.25)}
+</annotation></semantics></math></p>
+<p><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></p>
+<hr />
+<p>MIT OpenCourseWare</p>
+<p>https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I</p>
+<p>Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Andrew Turner transcribió las notas manuscritas de
+Zwiebach para crear la primera versión en LaTeX de este documento.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "about:blank";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+</body>
+</html>

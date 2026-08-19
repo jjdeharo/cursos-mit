@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Examen 1 (otoño de 2015) — 8.04 Física Cuántica I</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Examen 1 (otoño de 2015) — 8.04 Física Cuántica I</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#examen-1-test-1-otoño-de-2015"
+id="toc-examen-1-test-1-otoño-de-2015">Examen 1 (Test 1, otoño de
+2015)</a>
+<ul>
+<li><a href="#hoja-de-fórmulas" id="toc-hoja-de-fórmulas">Hoja de
+fórmulas</a></li>
+<li><a href="#problema-1.-estimación-y-unidades-10-puntos"
+id="toc-problema-1.-estimación-y-unidades-10-puntos">Problema 1.
+Estimación y unidades [10 puntos]</a></li>
+<li><a href="#problema-2.-velocidad-de-grupo-10-puntos"
+id="toc-problema-2.-velocidad-de-grupo-10-puntos">Problema 2. Velocidad
+de grupo [10 puntos]</a></li>
+<li><a href="#problema-3.-evolución-de-una-partícula-libre-15-puntos"
+id="toc-problema-3.-evolución-de-una-partícula-libre-15-puntos">Problema
+3. Evolución de una partícula libre [15 puntos]</a></li>
+<li><a href="#problema-4.-mejorando-la-detección-de-bombas-35-puntos"
+id="toc-problema-4.-mejorando-la-detección-de-bombas-35-puntos">Problema
+4. Mejorando la detección de bombas [35 puntos]</a></li>
+<li><a
+href="#problema-5.-solapamiento-entre-gaussianas-en-movimiento-30-puntos"
+id="toc-problema-5.-solapamiento-entre-gaussianas-en-movimiento-30-puntos">Problema
+5. Solapamiento entre gaussianas en movimiento [30 puntos]</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="examen-1-test-1-otoño-de-2015">Examen 1 (Test 1, otoño de
+2015)</h1>
+<p><strong>8.04, Física Cuántica I, otoño de 2015</strong></p>
+<p><strong>EXAMEN 1</strong></p>
+<p><em>Martes 20 de octubre, 9:30–11:00 pm</em></p>
+<p>Dispone de 90 minutos.</p>
+<p>Responda todos los problemas en los cuadernillos proporcionados.
+Escriba SU NOMBRE y SU SECCIÓN en su(s) cuadernillo(s).</p>
+<p>Hay cinco preguntas, con un total de 100 puntos.</p>
+<p>No se permiten libros, apuntes ni calculadoras.</p>
+<p>Muestre su trabajo CLARAMENTE.</p>
+<hr />
+<h2 id="hoja-de-fórmulas">Hoja de fórmulas</h2>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℏ</mi><mi>c</mi><mo>≃</mo><mn>197.3</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV</mtext><mo>⋅</mo><mtext mathvariant="normal">fm</mtext></mrow><annotation encoding="application/x-tex">\hbar c \simeq 197.3\ \text{MeV}\cdot\text{fm}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>e</mi></msub><msup><mi>c</mi><mn>2</mn></msup><mo>≃</mo><mn>0.511</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV</mtext></mrow><annotation encoding="application/x-tex">m_e c^2 \simeq 0.511\ \text{MeV}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>p</mi></msub><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><mn>938</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV</mtext></mrow><annotation encoding="application/x-tex">m_p c^2 = 938\ \text{MeV}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true"><mfrac><msup><mi>e</mi><mn>2</mn></msup><mrow><mi>ℏ</mi><mi>c</mi></mrow></mfrac></mstyle><mo>≃</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>137</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\dfrac{e^2}{\hbar c} \simeq \dfrac{1}{137}</annotation></semantics></math></p></li>
+<li><p>Relatividad:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>γ</mi><mi>m</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">p = \gamma m v</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>γ</mi><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E = \gamma m c^2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mn>2</mn></msup><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup><mo>+</mo><msup><mi>m</mi><mn>2</mn></msup><msup><mi>c</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">E^2 = p^2 c^2 + m^2 c^4</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>β</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\gamma = \dfrac{1}{\sqrt{1-\beta^2}}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>v</mi><mi>c</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\beta = \dfrac{v}{c}</annotation></semantics></math></p></li>
+<li><p>Fotones:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>h</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">E = h\nu</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>h</mi><mi>λ</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">p = \dfrac{h}{\lambda}</annotation></semantics></math>,
+o bien
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>ℏ</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">E = \hbar\omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>ℏ</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">p = \hbar k</annotation></semantics></math></p></li>
+<li><p>Longitudes de onda</p>
+<p>de Broglie:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>h</mi><mi>p</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\lambda = \dfrac{h}{p}</annotation></semantics></math>,
+Compton:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>C</mi></msub><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>h</mi><mrow><mi>m</mi><mi>c</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\lambda_C = \dfrac{h}{mc}</annotation></semantics></math>.</p></li>
+<li><p>Operadores de momento y posición</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mi>ℏ</mi><mi>i</mi></mfrac><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo>,</mo><mi>p</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>i</mi><mi>ℏ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>𝐩</mi><mo>=</mo><mfrac><mi>ℏ</mi><mi>i</mi></mfrac><mi>∇</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">[</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>p</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>i</mi><mi>ℏ</mi><mspace width="0.167em"></mspace><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">
+p = \frac{\hbar}{i}\frac{\partial}{\partial x}, \qquad [x,p] = i\hbar, \qquad \mathbf{p} = \frac{\hbar}{i}\nabla, \qquad [x_i, p_j] = i\hbar\,\delta_{ij}
+</annotation></semantics></math></p>
+<ul>
+<li>Ecuación de Schrödinger</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mrow><mi>∂</mi><mi mathvariant="normal">Ψ</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mfrac><msup><mi>ℏ</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><msup><mi>∇</mi><mn>2</mn></msup><mo>+</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+i\hbar\frac{\partial \Psi}{\partial t}(x,t) = \left[-\frac{\hbar^2}{2m}\nabla^2 + V(x,t)\right]\Psi(x,t),
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>∇</mi><mo>⋅</mo><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+\frac{\partial}{\partial t}\rho(x,t) + \nabla\cdot J(x,t) = 0
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>;</mo><mspace width="2.0em"></mspace><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>ℏ</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mtext mathvariant="normal">Im</mtext><mrow><mo stretchy="true" form="prefix">[</mo><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mi>∇</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+\rho(x,t) = |\Psi(x,t)|^2; \qquad J(x,t) = \frac{\hbar}{m}\,\text{Im}\left[\Psi^*\nabla\Psi\right]
+</annotation></semantics></math></p>
+<ul>
+<li>Transformadas de Fourier:</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt></mfrac><mo>∫</mo><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt></mfrac><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo>∫</mo><mi>d</mi><mi>k</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+\Psi(x) = \frac{1}{\sqrt{2\pi}}\int dk\,\Phi(k)e^{ikx}, \qquad \Phi(k) = \frac{1}{\sqrt{2\pi}}\int dx\,\Psi(x)e^{-ikx}, \qquad \int dx\,|\Psi(x)|^2 = \int dk\,|\Phi(k)|^2
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>k</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐤</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>𝐤</mi><mo>⋅</mo><mi>𝐱</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐤</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>𝐤</mi><mo>⋅</mo><mi>𝐱</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo>∫</mo><msup><mi>d</mi><mn>3</mn></msup><mi>k</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐤</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+\Psi(\mathbf{x}) = \frac{1}{(2\pi)^{3/2}}\int d^3k\,\Phi(\mathbf{k})e^{i\mathbf{k}\cdot\mathbf{x}}, \qquad \Phi(\mathbf{k}) = \frac{1}{(2\pi)^{3/2}}\int d^3x\,\Psi(\mathbf{x})e^{-i\mathbf{k}\cdot\mathbf{x}}, \qquad \int d^3x\,|\Psi(\mathbf{x})|^2 = \int d^3k\,|\Phi(\mathbf{k})|^2
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup></mrow></mfrac><mo>∫</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>𝐤</mi><mo>⋅</mo><mi>𝐱</mi></mrow></msup><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mo>=</mo><msup><mi>δ</mi><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>𝐤</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ikx}\,dx = \delta(k), \qquad \frac{1}{(2\pi)^3}\int e^{i\mathbf{k}\cdot\mathbf{x}}\,d^3x = \delta^{(3)}(\mathbf{k})
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mrow><mi>+</mi><mi>∞</mi></mrow></msubsup><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msqrt><mfrac><mi>π</mi><mi>a</mi></mfrac></msqrt><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>b</mi><mn>2</mn></msup><mrow><mn>4</mn><mi>a</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">cuando </mtext><mspace width="0.333em"></mspace></mrow><mtext mathvariant="normal">Re</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{+\infty} dx\,\exp\left(-ax^2 + bx\right) = \sqrt{\frac{\pi}{a}}\,\exp\left(\frac{b^2}{4a}\right), \qquad \text{cuando } \text{Re}(a) &gt; 0.
+</annotation></semantics></math></p>
+<ul>
+<li>Paquetes de ondas</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mtext mathvariant="normal">group</mtext></msub><mo>=</mo><mfrac><mrow><mi>d</mi><mi>ω</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi mathvariant="normal">Δ</mi><mi>k</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>x</mi><mo>≃</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">conservación de forma: </mtext><mspace width="0.333em"></mspace></mrow><mi>t</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>v</mi><mo>≤</mo><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">
+v_{\text{group}} = \frac{d\omega}{dk}, \qquad \Delta k\,\Delta x \simeq 1, \qquad \text{conservación de forma: } t\,\Delta v \le \Delta x
+</annotation></semantics></math></p>
+<ul>
+<li>Conjugación hermítica:</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup><mspace width="0.167em"></mspace><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><msup><mi>K</mi><mo>†</mo></msup><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\int dx\,(K\Psi(x,t))^*\,\Psi(x,t) = \int dx\,\Psi^*(x,t)\,(K^\dagger \Psi(x,t))
+</annotation></semantics></math></p>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mo>†</mo></msup><mo>=</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">K^\dagger = K</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+es hermítico.</p>
+<ul>
+<li>Valores esperados</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\langle Q\rangle(t) = \int dx\,\Psi^*(x,t)\,(Q\Psi(x,t))
+</annotation></semantics></math></p>
+<ul>
+<li>Evolución temporal del valor esperado. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+hermítico</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mspace width="0.167em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">[</mo><mi>Q</mi><mo>,</mo><mi>H</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">
+i\hbar\,\frac{d}{dt}\langle Q\rangle = \langle [Q,H]\rangle
+</annotation></semantics></math></p>
+<ul>
+<li>Identidad del conmutador</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>A</mi><mo>,</mo><mi>B</mi><mi>C</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo stretchy="false" form="postfix">]</mo><mi>C</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="prefix">[</mo><mi>A</mi><mo>,</mo><mi>C</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">
+[A, BC] = [A,B]C + B[A,C]
+</annotation></semantics></math></p>
+<ul>
+<li>Incertidumbre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">\Delta Q</annotation></semantics></math>
+de un operador hermítico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><msup><mi>Q</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><msup><mo stretchy="false" form="postfix">⟩</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">⟨</mo><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mo>−</mo><mo stretchy="false" form="prefix">⟨</mo><mi>Q</mi><mo stretchy="false" form="postfix">⟩</mo><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">
+(\Delta Q)^2 = \langle Q^2\rangle - \langle Q\rangle^2 = \langle (Q - \langle Q\rangle)^2\rangle
+</annotation></semantics></math></p>
+<ul>
+<li>Principio de incertidumbre:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">Δ</mi><mi>p</mi><mo>≥</mo><mstyle displaystyle="true"><mfrac><mi>ℏ</mi><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\Delta x\,\Delta p \ge \dfrac{\hbar}{2}</annotation></semantics></math></li>
+</ul>
+<hr />
+<h2 id="problema-1.-estimación-y-unidades-10-puntos">Problema 1.
+Estimación y unidades [10 puntos]</h2>
+<p>El tamaño de un protón (más técnicamente, el llamado radio de carga)
+es de aproximadamente 0.9 fm. ¿Cómo se compara su longitud de onda de
+Compton con su tamaño? Las posibles respuestas son: la longitud de onda
+de Compton es [mucho mayor, un poco mayor, un poco menor, o mucho menor]
+que el tamaño. ¿Cuál es?</p>
+<h2 id="problema-2.-velocidad-de-grupo-10-puntos">Problema 2. Velocidad
+de grupo [10 puntos]</h2>
+<p>Para una partícula relativista
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mn>2</mn></msup><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup><mo>+</mo><msup><mi>m</mi><mn>2</mn></msup><msup><mi>c</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">E^2 = p^2c^2 + m^2c^4</annotation></semantics></math>.
+Evalúe la velocidad de grupo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>g</mi></msub><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>ω</mi></mrow><mrow><mi>d</mi><mi>k</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">v_g = \dfrac{d\omega}{dk}</annotation></semantics></math>
+recordando que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>ℏ</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">E = \hbar\omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>ℏ</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">p = \hbar k</annotation></semantics></math>.
+Deje su respuesta en términos de la velocidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+de la partícula (¡sin ninguna aproximación!).</p>
+<h2 id="problema-3.-evolución-de-una-partícula-libre-15-puntos">Problema
+3. Evolución de una partícula libre [15 puntos]</h2>
+<p>Considere el estado de una partícula <em>libre</em> de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+que en el instante inicial (tiempo igual a cero) está representado por
+la función de onda</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><msub><mi>k</mi><mn>0</mn></msub><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>k</mi><mn>0</mn></msub><mo>∈</mo><mi>ℝ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Psi(x,0) = \sin k_0 x, \qquad k_0 \in \mathbb{R}.
+</annotation></semantics></math></p>
+<ol type="a">
+<li><p>Encuentre la corriente de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J(x,0)</annotation></semantics></math>.</p></li>
+<li><p>Si medimos el momento de la partícula (en el instante inicial),
+¿cuáles son los posibles valores que podemos obtener?</p></li>
+<li><p>Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi(x,t)</annotation></semantics></math>.</p></li>
+</ol>
+<h2 id="problema-4.-mejorando-la-detección-de-bombas-35-puntos">Problema
+4. Mejorando la detección de bombas [35 puntos]</h2>
+<p>Modificamos el interferómetro de Mach-Zehnder para aumentar el
+porcentaje de bombas de Elitzur-Vaidman que pueden certificarse como
+funcionales sin detonarlas.</p>
+<p>Para ello construimos un divisor de haz con reflectividad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y transmisividad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Un fotón que incide (desde cualquiera de los dos puertos) tiene una
+probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+de ser reflejado y una probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+de ser transmitido
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>+</mo><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R + T = 1</annotation></semantics></math>).
+Sean
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+las raíces cuadradas positivas:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≡</mo><msqrt><mi>R</mi></msqrt><mo>,</mo><mspace width="2.0em"></mspace><mi>t</mi><mo>≡</mo><msqrt><mi>T</mi></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r \equiv \sqrt{R}, \qquad t \equiv \sqrt{T}.
+</annotation></semantics></math></p>
+<ol type="a">
+<li>Construya la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times 2</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+que representa el divisor de haz. Para ello, considere qué ocurre cuando
+un fotón incide sobre el divisor de haz por el lado superior (la entrada
+en este caso es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}1\\0\end{pmatrix}</annotation></semantics></math>)
+y cuando incide por el lado inferior (la entrada en este caso es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}0\\1\end{pmatrix}</annotation></semantics></math>).
+Para fijar convenciones,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+tendrá todos sus elementos positivos (y reales) excepto el elemento
+inferior derecho (el elemento 2,2). Confirme que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+es unitaria.</li>
+</ol>
+<p><em>(En la figura del examen original se muestra un divisor de haz
+«BS» golpeado desde arriba y desde abajo, ilustrando las dos situaciones
+anteriores.)</em></p>
+<p>El interferómetro con los detectores D0 y D1 (mostrado a
+continuación) utiliza dos copias idénticas del divisor de haz. El fotón
+entrante llega por el lado superior.</p>
+<p><em>(La figura muestra el interferómetro completo: el fotón entra por
+arriba en el primer divisor de haz BS, se refleja en dos espejos M —uno
+en la rama superior y otro en la rama inferior, donde se sitúa la
+bomba—, y ambos caminos se recombinan en un segundo divisor de haz BS
+antes de llegar a los detectores D0 y D1.)</em></p>
+<ol start="2" type="a">
+<li><p>Se inserta una bomba defectuosa en la rama inferior del
+interferómetro. ¿Cuáles son las probabilidades de detección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+en D0 y D1, respectivamente?</p></li>
+<li><p>Se inserta una bomba en funcionamiento en la rama inferior del
+interferómetro. ¿Cuál es la probabilidad de detonación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mtext mathvariant="normal">boom</mtext></msub><annotation encoding="application/x-tex">P_{\text{boom}}</annotation></semantics></math>
+y las probabilidades de detección
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>?
+Exprese sus respuestas en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.</p></li>
+<li><p>Se prueban bombas hasta estar razonablemente seguro de que, o
+bien no funcionan, o bien son operativas. ¿Qué fracción
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+de las bombas operativas puede certificarse como buena sin detonarlas?
+Dé su respuesta en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+¿Cuál es el máximo valor posible de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>?</p></li>
+</ol>
+<h2
+id="problema-5.-solapamiento-entre-gaussianas-en-movimiento-30-puntos">Problema
+5. Solapamiento entre gaussianas en movimiento [30 puntos]</h2>
+<p>Hemos aprendido (en las tareas) que el solapamiento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\int dx\,\Psi_1^*\Psi_2</annotation></semantics></math>
+entre dos paquetes de ondas distintos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\Psi_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\Psi_2</annotation></semantics></math>
+es, en general, independiente del tiempo.</p>
+<p>El siguiente EJEMPLO parece estar en tensión con este hecho:
+consideremos dos gaussianas que coinciden en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>
+pero que se mueven en direcciones opuestas con momentos grandes
+comparados con sus incertidumbres de momento. Ahora hacemos dos
+afirmaciones:</p>
+<ol type="1">
+<li>En
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>
+el solapamiento es grande.</li>
+<li>Una vez que los centros de los paquetes están separados por un
+pequeño múltiplo de la incertidumbre de posición, el solapamiento es
+pequeño.</li>
+</ol>
+<p>El propósito de este problema es encontrar el fallo en las
+afirmaciones del EJEMPLO.</p>
+<p>Considere una partícula libre y un paquete de ondas gaussiano
+normalizado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi mathvariant="normal">Ψ</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat\Psi</annotation></semantics></math>
+en el instante inicial:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi mathvariant="normal">Ψ</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><msqrt><mi>a</mi></msqrt></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\hat\Psi(x,0) = \frac{1}{(2\pi)^{1/4}\sqrt{a}}\exp\left(-\frac{x^2}{4a^2}\right).
+</annotation></semantics></math></p>
+<p>A partir de este creamos dos paquetes de ondas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\Psi_1</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\Psi_2</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>q</mi><mi>x</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="0.167em"></mspace><mover><mi mathvariant="normal">Ψ</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\Psi_1(x,0) \equiv e^{iqx/\hbar}\,\hat\Psi(x,0),
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>q</mi><mi>x</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mspace width="0.167em"></mspace><mover><mi mathvariant="normal">Ψ</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Psi_2(x,0) \equiv e^{-iqx/\hbar}\,\hat\Psi(x,0).
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+es una cantidad real con unidades de momento.</p>
+<ol type="a">
+<li><p>¿Cuál es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle p\rangle</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi mathvariant="normal">Ψ</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\hat\Psi(x,0)</annotation></semantics></math>?
+¿Cambiará este valor esperado con el tiempo? Explique.</p></li>
+<li><p>¿Cuál es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle p\rangle</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi_1(x,0)</annotation></semantics></math>?
+¿Cuál es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>p</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle p\rangle</annotation></semantics></math>
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Psi_2(x,0)</annotation></semantics></math>?
+¿Cambian estos valores esperados con el tiempo?</p></li>
+<li><p>Calcule el solapamiento en el instante inicial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\gamma(0)</annotation></semantics></math>
+de los dos paquetes:</p></li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><msubsup><mi mathvariant="normal">Ψ</mi><mn>1</mn><mo>*</mo></msubsup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi mathvariant="normal">Ψ</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\gamma(0) = \int \Psi_1^*(x,0)\,\Psi_2(x,0)\,dx.
+</annotation></semantics></math></p>
+<p>La siguiente integral puede ser útil:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msqrt><mfrac><mi>π</mi><mi>a</mi></mfrac></msqrt><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>b</mi><mn>2</mn></msup><mrow><mn>4</mn><mi>a</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">cuando </mtext><mspace width="0.333em"></mspace></mrow><mtext mathvariant="normal">Re</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} e^{-ax^2 + bx}\,dx = \sqrt{\frac{\pi}{a}}\,\exp\left(\frac{b^2}{4a}\right), \qquad \text{cuando } \text{Re}(a) &gt; 0.
+</annotation></semantics></math></p>
+<ol start="4" type="a">
+<li>Escriba una desigualdad que exprese el hecho de que el momento de
+los paquetes de ondas es grande comparado con la incertidumbre de
+momento. ¿Qué estaba mal en las afirmaciones del EJEMPLO?</li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a
+href="https://ocw.mit.edu">https://ocw.mit.edu</a></em></p>
+<p><em>8.04 Física Cuántica I</em> <em>Primavera de 2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

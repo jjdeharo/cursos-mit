@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Capítulo 2: Experimentos con fotones</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Capítulo 2: Experimentos con fotones</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#capítulo-2-experimentos-con-fotones"
+id="toc-capítulo-2-experimentos-con-fotones">Capítulo 2: Experimentos
+con fotones</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenidos" id="toc-contenidos">Contenidos</a></li>
+<li><a href="#interferómetro-de-mach-zehnder"
+id="toc-interferómetro-de-mach-zehnder">1. Interferómetro de
+Mach-Zehnder</a></li>
+<li><a href="#bombas-de-elitzur-vaidman"
+id="toc-bombas-de-elitzur-vaidman">2. Bombas de Elitzur-Vaidman</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="capítulo-2-experimentos-con-fotones">Capítulo 2: Experimentos
+con fotones</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 2: Overview of quantum mechanics (cont.).
+Interaction-free measurements.</strong></p>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="0xNmc2tJ-YM" data-title="More on superposition. General state of a photon and spin states"><span class="video-play-icon">&#9654;</span> <strong>More on superposition. General state of a photon and spin states</strong> <span class="video-dur">(17:10)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=0xNmc2tJ-YM" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li><a
+href="https://www.youtube.com/watch?v=G3HSP3qMgKI">Entanglement</a>
+(13:07)</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="0USje5vTIKs" data-title="Mach-Zehnder interferometers and beam splitters"><span class="video-play-icon">&#9654;</span> <strong>Mach-Zehnder interferometers and beam splitters</strong> <span class="video-dur">(15:32)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=0USje5vTIKs" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="37-GdFJGSXs" data-title="Interferometer and interference"><span class="video-play-icon">&#9654;</span> <strong>Interferometer and interference</strong> <span class="video-dur">(12:26)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=37-GdFJGSXs" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li><a
+href="https://www.youtube.com/watch?v=vFZeh8bMx58">Elitzur-Vaidman
+bombs</a> (10:29)</li>
+</ul>
+<hr />
+<p>B. Zwiebach</p>
+<p>9 de febrero de 2016</p>
+<h2 id="contenidos">Contenidos</h2>
+<ol type="1">
+<li>Interferómetro de Mach-Zehnder</li>
+<li>Bombas de Elitzur-Vaidman</li>
+</ol>
+<h2 id="interferómetro-de-mach-zehnder">1. Interferómetro de
+Mach-Zehnder</h2>
+<p>Hemos discutido antes el interferómetro de Mach-Zehnder, que
+mostramos de nuevo en la Figura 1. Contiene dos divisores de haz BS1 y
+BS2 y dos espejos. Dentro del interferómetro tenemos dos haces, uno que
+va por la rama superior y otro que va por la rama inferior. Esto se
+extiende más allá de BS2: la rama superior continúa hacia D0 mientras
+que la rama inferior continúa hacia D1.</p>
+<p><em>Figura 1: El interferómetro de Mach-Zehnder.</em></p>
+<p>Los cortes verticales en la figura anterior intersecan los dos haces
+y podemos preguntarnos cuál es la probabilidad de encontrar un fotón en
+cada uno de los dos haces en ese corte. Para esto necesitamos dos
+amplitudes de probabilidad, o dos números complejos, cuyo módulo al
+cuadrado daría las probabilidades. Podemos codificar esta información en
+un vector de dos componentes como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} \alpha \\ \beta \end{pmatrix}. \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+es la amplitud de probabilidad de estar en el haz superior y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+la amplitud de probabilidad de estar en el haz inferior. Por lo tanto,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\alpha|^2</annotation></semantics></math>
+sería la probabilidad de encontrar el fotón en el haz superior y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\beta|^2</annotation></semantics></math>
+la probabilidad de encontrar el fotón en el haz inferior. Dado que el
+fotón debe encontrarse en uno de los dos haces, debemos tener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+|\alpha|^2 + |\beta|^2 = 1. \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>Siguiendo esta notación, tendríamos para los casos en que el fotón
+está definitivamente en uno u otro haz:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">fotón en el haz superior:</mtext><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">fotón en el haz inferior:</mtext><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+\text{fotón en el haz superior:}\ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad \text{fotón en el haz inferior:}\ \begin{pmatrix} 0 \\ 1 \end{pmatrix}. \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>Podemos ver el estado (1.1) como una superposición de estos dos
+estados más simples usando las reglas de la suma y multiplicación de
+vectores:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \begin{pmatrix} \alpha \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ \beta \end{pmatrix} = \alpha \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \beta \begin{pmatrix} 0 \\ 1 \end{pmatrix}. \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>En el interferómetro mostrado en la Figura 1 incluimos en la rama
+inferior un “desfasador”, una pieza de</p>
+<p><em>Figura 2: Un desfasador de factor de fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\delta}</annotation></semantics></math>.
+La amplitud se multiplica por la fase.</em></p>
+<p>material cuyo único efecto es multiplicar la amplitud de probabilidad
+por una fase fija
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\delta}</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\delta \in \mathbb{R}</annotation></semantics></math>.
+Como se muestra en la Figura 2, la amplitud de probabilidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+a la izquierda del dispositivo se convierte en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>δ</mi></mrow></msup><mi>α</mi></mrow><annotation encoding="application/x-tex">e^{i\delta}\alpha</annotation></semantics></math>
+a la derecha del dispositivo. Dado que la norma de una fase es uno, el
+desfasador no cambia la probabilidad de encontrar el fotón. Cuando la
+fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+es igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>,
+el efecto del desfasador es cambiar el signo de la función de onda, ya
+que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">e^{i\pi} = -1</annotation></semantics></math>.</p>
+<p>Consideremos ahora en detalle el efecto de los divisores de haz. Si
+el fotón incidente golpea un divisor de haz desde arriba, consideramos
+que este fotón pertenece a la rama superior y lo representamos por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 1 \\ 0 \end{pmatrix}</annotation></semantics></math>.
+Si el fotón incidente golpea el divisor de haz desde abajo, consideramos
+que este fotón pertenece a la rama inferior, y lo representamos por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 0 \\ 1 \end{pmatrix}</annotation></semantics></math>.
+Mostramos los dos casos en la Figura 3. El efecto del divisor de haz es
+dar una función de onda de salida para cada uno de los dos casos:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">BS izquierdo:</mtext><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">BS derecho:</mtext><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+\text{BS izquierdo:}\ \begin{pmatrix} 1 \\ 0 \end{pmatrix} \to \begin{pmatrix} s \\ t \end{pmatrix}, \qquad \text{BS derecho:}\ \begin{pmatrix} 0 \\ 1 \end{pmatrix} \to \begin{pmatrix} u \\ v \end{pmatrix}. \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>Como se puede ver en el diagrama, para el fotón que incide desde
+arriba,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+puede pensarse como una amplitud de reflexión y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+como un coeficiente de transmisión. De manera similar, para el fotón que
+incide desde abajo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+puede pensarse como una amplitud de reflexión y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+como un coeficiente de transmisión. Los cuatro números
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">s, t, u, v</annotation></semantics></math>,
+por linealidad, caracterizan completamente al divisor de haz. Pueden
+usarse para predecir la salida dado cualquier fotón incidente, que puede
+tener amplitudes para golpear tanto desde arriba como desde abajo. En
+efecto, un estado de fotón incidente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} \alpha \\ \beta \end{pmatrix}</annotation></semantics></math>
+daría</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi><mi>s</mi><mo>+</mo><mi>β</mi><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi><mi>t</mi><mo>+</mo><mi>β</mi><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \alpha \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \beta \begin{pmatrix} 0 \\ 1 \end{pmatrix} \to \alpha \begin{pmatrix} s \\ t \end{pmatrix} + \beta \begin{pmatrix} u \\ v \end{pmatrix} = \begin{pmatrix} \alpha s + \beta u \\ \alpha t + \beta v \end{pmatrix} = \begin{pmatrix} s &amp; u \\ t &amp; v \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix}. \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>En resumen, vemos que el BS produce el siguiente efecto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} \alpha \\ \beta \end{pmatrix} \to \begin{pmatrix} s &amp; u \\ t &amp; v \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix}. \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p><em>Figura 3: Izquierda: Un fotón incidente desde arriba;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+son las amplitudes reflejada y transmitida, respectivamente. Derecha: Un
+fotón incidente desde abajo;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+son las amplitudes reflejada y transmitida, respectivamente.</em></p>
+<p>Podemos representar la acción del divisor de haz como una
+multiplicación matricial sobre la función de onda incidente, con la
+matriz dos por dos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} s &amp; u \\ t &amp; v \end{pmatrix}. \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Debemos ahora determinar las restricciones sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">s, t, u, v</annotation></semantics></math>.
+Debido a que las probabilidades deben sumar uno, la ecuación (1.5)
+implica que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>s</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>t</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+|s|^2 + |t|^2 = 1, \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>v</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+|u|^2 + |v|^2 = 1. \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>El tipo de divisores de haz que usamos se llaman balanceados, lo que
+significa que las probabilidades de reflexión y transmisión son iguales.
+Así que las cuatro constantes deben tener el mismo módulo al
+cuadrado:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>s</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>t</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>u</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>v</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+|s|^2 = |t|^2 = |u|^2 = |v|^2 = \tfrac{1}{2}. \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>Probemos una conjetura para los valores. ¿Podríamos tener</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mi>?</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} s &amp; u \\ t &amp; v \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \end{pmatrix}\ ? \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>Esto falla si al actuar sobre funciones de onda normalizadas (o
+vectores columna) no se obtienen funciones de onda normalizadas. Así que
+probamos con un par de funciones de onda</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}, \qquad \begin{pmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}. \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>Mientras que el primer ejemplo funciona, el segundo no, ya que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mn>1</mn><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mn>1</mn><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|1|^2 + |1|^2 = 2 \neq 1</annotation></semantics></math>.
+Una solución sencilla se logra cambiando el signo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>s</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>v</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.14)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{pmatrix} s &amp; u \\ t &amp; v \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{2}} \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}. \qquad \text{(1.14)}
+</annotation></semantics></math></p>
+<p>Comprobemos que esta matriz funciona en general. Así, al actuar sobre
+un estado
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} \alpha \\ \beta \end{pmatrix}</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\alpha|^2 + |\beta|^2 = 1</annotation></semantics></math>
+encontramos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi><mo>+</mo><mi>β</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi><mo>−</mo><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.15)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} \alpha + \beta \\ \alpha - \beta \end{pmatrix}. \qquad \text{(1.15)}
+</annotation></semantics></math></p>
+<p>En efecto, el estado resultante está bien normalizado. La
+probabilidad total es lo que esperamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo stretchy="false" form="prefix">|</mo><mi>α</mi><mo>+</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo stretchy="false" form="prefix">|</mo><mi>α</mi><mo>−</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mi>α</mi><msup><mi>β</mi><mo>*</mo></msup><mo>+</mo><msup><mi>α</mi><mo>*</mo></msup><mi>β</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>+</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>−</mo><mi>α</mi><msup><mi>β</mi><mo>*</mo></msup><mo>−</mo><msup><mi>α</mi><mo>*</mo></msup><mi>β</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>α</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">|</mo><mi>β</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.16)</mtext></mrow><annotation encoding="application/x-tex">
+\tfrac{1}{2}|\alpha+\beta|^2 + \tfrac{1}{2}|\alpha-\beta|^2 = \tfrac{1}{2}\big(|\alpha|^2 + |\beta|^2 + \alpha\beta^* + \alpha^*\beta\big) + \tfrac{1}{2}\big(|\alpha|^2 + |\beta|^2 - \alpha\beta^* - \alpha^*\beta\big) = |\alpha|^2 + |\beta|^2 = 1. \qquad \text{(1.16)}
+</annotation></semantics></math></p>
+<p>El signo menos en la entrada inferior derecha de (1.14) significa que
+un fotón incidente desde abajo, al ser reflejado, tendrá su amplitud
+cambiada por un signo, o equivalentemente por un desfase de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+(¡compruébelo!). Este efecto, por supuesto, se realiza en la práctica.
+Un divisor de haz típico consiste en una placa de vidrio con un
+recubrimiento dieléctrico reflectante en un lado. El índice de
+refracción del recubrimiento se elige de manera que sea intermedio entre
+el del vidrio y el del aire. Una reflexión causa un desfase solo cuando
+la luz encuentra un material de mayor índice de refracción. Este es el
+caso en la transición de aire a recubrimiento, pero no en la transición
+de vidrio a recubrimiento. Por lo tanto, el divisor de haz representado
+por (1.14) tendría su recubrimiento en el lado inferior. Las ondas
+transmitidas no tienen desfase.</p>
+<p>Otra posibilidad para una matriz de divisor de haz es</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.17)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{\sqrt{2}} \begin{pmatrix} -1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}, \qquad \text{(1.17)}
+</annotation></semantics></math></p>
+<p>que se realizaría mediante un recubrimiento dieléctrico en el lado
+superior. Puede comprobar rápidamente que, al igual que la matriz
+anterior, su acción también conserva la probabilidad. Llamaremos BS1 al
+divisor de haz de la izquierda y BS2 al de la derecha, y sus respectivas
+matrices serán</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">BS1</mtext><mo>:</mo><mspace width="0.222em"></mspace><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">BS2</mtext><mo>:</mo><mspace width="0.222em"></mspace><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.18)</mtext></mrow><annotation encoding="application/x-tex">
+\text{BS1}:\ \frac{1}{\sqrt{2}} \begin{pmatrix} -1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}, \qquad \text{BS2}:\ \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}. \qquad \text{(1.18)}
+</annotation></semantics></math></p>
+<p>Los dos divisores de haz se combinan para formar el interferómetro
+mostrado en la Figura 4. Si ahora suponemos una función de onda de fotón
+de entrada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} \alpha \\ \beta \end{pmatrix}</annotation></semantics></math>
+desde la izquierda, la función de onda de salida que entra a los
+detectores se obtiene actuando primero con la matriz BS1 y luego con la
+matriz BS2:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">entrada:</mtext><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="1.0em"></mspace><mtext mathvariant="normal">salida:</mtext><mspace width="0.222em"></mspace><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>α</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.19)</mtext></mrow><annotation encoding="application/x-tex">
+\text{entrada:}\ \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \quad \text{salida:}\ \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} -1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 0 &amp; 2 \\ -2 &amp; 0 \end{pmatrix}\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \begin{pmatrix} \beta \\ -\alpha \end{pmatrix}. \qquad \text{(1.19)}
+</annotation></semantics></math></p>
+<p>Con la ayuda de este resultado, para cualquier estado de fotón de
+entrada podemos escribir inmediatamente el estado de fotón de salida que
+entra a los detectores.</p>
+<p>Si el haz de fotones de entrada es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 0 \\ 1 \end{pmatrix}</annotation></semantics></math>,
+la salida del interferómetro es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 1 \\ 0 \end{pmatrix}</annotation></semantics></math>,
+y por lo tanto se detectará un fotón en D0. Esto se muestra en la Figura
+5. Podemos hacer una tabla muy sencilla con los posibles resultados y
+sus respectivas probabilidades
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">Resultado</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>P</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D0</mtext></mtd><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D1</mtext></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.20)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{array}{ll}
+\text{Resultado} &amp; P \\
+\text{fotón en D0} &amp; 1 \\
+\text{fotón en D1} &amp; 0
+\end{array} \qquad \text{(1.20)}
+</annotation></semantics></math></p>
+<p><em>Figura 4: El interferómetro de Mach-Zehnder con las funciones de
+onda de entrada y salida indicadas.</em></p>
+<p><em>Figura 5: Un fotón incidente desde abajo irá hacia D0.</em></p>
+<p>Ahora bloqueemos el camino inferior, como se indica en la Figura 6.
+¿Qué sucede entonces? Es mejor seguir el proceso sistemáticamente. El
+haz de entrada, actuado por BS1, da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.21)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{\sqrt{2}} \begin{pmatrix} -1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix}. \qquad \text{(1.21)}
+</annotation></semantics></math></p>
+<p>Esto se indica en la figura, a la derecha de BS1. Luego se detiene la
+rama inferior, mientras que la rama superior continúa. La rama superior
+llega a BS2, y aquí la entrada es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}</annotation></semantics></math>,
+porque no llega nada de la rama inferior. Por lo tanto obtenemos una
+salida</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.22)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}. \qquad \text{(1.22)}
+</annotation></semantics></math></p>
+<p>En este experimento hay tres resultados posibles: el fotón puede ser
+absorbido por el bloqueo, o puede ir hacia cualquiera de los dos
+detectores.</p>
+<p><em>Figura 6: La probabilidad de detectar el fotón en D1 puede
+cambiarse bloqueando uno de los caminos.</em></p>
+<p>Como vemos en el diagrama, las probabilidades son:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">Resultado</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>P</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en el bloqueo</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D0</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D1</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.23)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{array}{ll}
+\text{Resultado} &amp; P \\
+\text{fotón en el bloqueo} &amp; \tfrac{1}{2} \\
+\text{fotón en D0} &amp; \tfrac{1}{4} \\
+\text{fotón en D1} &amp; \tfrac{1}{4}
+\end{array} \qquad \text{(1.23)}
+</annotation></semantics></math></p>
+<p>Es notable que antes de bloquear el camino inferior no podíamos
+conseguir que un fotón llegara a D1. La probabilidad de llegar a D1
+ahora es 1/4 y aumentó al bloquear un camino.</p>
+<h2 id="bombas-de-elitzur-vaidman">2. Bombas de Elitzur-Vaidman</h2>
+<p>Para ver que permitir que el fotón llegue a D1 bloqueando un camino
+es algo muy extraño, consideramos una situación imaginaria propuesta por
+los físicos Avshalom Elitzur y Lev Vaidman, de la Universidad de Tel
+Aviv, en Israel. Ellos imaginaron bombas con un tipo especial de
+disparador: un detector de fotones. Un tubo estrecho atraviesa cada
+bomba y en el medio del tubo hay un detector de fotones. Para detonar la
+bomba se envía un fotón dentro del tubo. El fotón es entonces detectado
+por el detector de fotones y la bomba explota. Si el detector de fotones
+está defectuoso, sin embargo, el fotón no es detectado en absoluto. Se
+propaga libremente a través del tubo y sale de la bomba. La bomba no
+explota.</p>
+<p>He aquí la situación que queremos abordar. Supongamos que tenemos una
+cierta cantidad de bombas de Elitzur-Vaidman (EV), pero sabemos que
+algunas de ellas se han vuelto defectuosas. ¿Cómo podríamos saber si una
+bomba es operativa sin detonarla? Supongamos, a efectos del problema,
+que no podemos examinar el detector sin destruir la bomba.</p>
+<p>Parece que nos enfrentamos a una situación imposible. Si enviamos un
+fotón al tubo del detector y no sucede nada, sabemos que la bomba está
+defectuosa, pero si la bomba es operativa, simplemente explotaría.
+Parece imposible confirmar que el detector de fotones de la bomba está
+funcionando sin probarlo. En efecto, es imposible en la física clásica.
+Sin embargo, no es imposible en la mecánica cuántica. Como veremos,
+¡podemos realizar lo que puede llamarse una medición libre de
+interacción!</p>
+<p>Ahora colocamos una bomba EV en el camino inferior del
+interferómetro, con el tubo del detector adecuadamente alineado.
+Supongamos que enviamos un fotón como se muestra. Si la bomba está
+defectuosa es como si no hubiera detector, la rama inferior del
+interferómetro está libre y todos los fotones que enviemos terminarán en
+D0,</p>
+<p><em>Figura 7: Un interferómetro de Mach-Zehnder y una bomba de
+Elitzur-Vaidman insertada en la rama inferior, con el tubo del detector
+adecuadamente alineado. Si la bomba está defectuosa, todos los fotones
+incidentes terminarán en D0. Si un fotón termina en D1 sabemos que la
+bomba es operativa, ¡aunque el fotón nunca entró en el detector de la
+bomba!</em></p>
+<p>igual que lo hicieron en la Figura 5.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">Resultado</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>P</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D0, sin explosión</mtext></mtd><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D1, sin explosión</mtext></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">la bomba explota</mtext></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.24)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{array}{ll}
+\text{Resultado} &amp; P \\
+\text{fotón en D0, sin explosión} &amp; 1 \\
+\text{fotón en D1, sin explosión} &amp; 0 \\
+\text{la bomba explota} &amp; 0
+\end{array} \qquad \text{(2.24)}
+</annotation></semantics></math></p>
+<p>Si la bomba funciona, por otro lado, tenemos la situación que
+teníamos en la Figura 6, donde colocamos un bloqueo en la rama inferior
+del interferómetro:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">Resultado</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>P</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">la bomba explota</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D0, sin explosión</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">fotón en D1, sin explosión</mtext></mtd><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.25)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{array}{ll}
+\text{Resultado} &amp; P \\
+\text{la bomba explota} &amp; \tfrac{1}{2} \\
+\text{fotón en D0, sin explosión} &amp; \tfrac{1}{4} \\
+\text{fotón en D1, sin explosión} &amp; \tfrac{1}{4}
+\end{array} \qquad \text{(2.25)}
+</annotation></semantics></math></p>
+<p>Supongamos que la bomba está funcionando. Entonces el 50% de las
+veces el fotón la golpeará y explotará, el 25% de las veces el fotón
+terminará en D0 y no podremos saber si está defectuosa o no. Pero el 25%
+de las veces el fotón terminará en D1, y dado que esto era imposible
+para una bomba defectuosa, ¡hemos aprendido que la bomba es operativa!
+Hemos aprendido esto aunque el fotón nunca haya pasado por la bomba;
+terminó en D1. Si piensa en esto, seguramente se dará cuenta de que es
+extremadamente sorprendente y contraintuitivo. Pero es cierto, y los
+experimentos (¡sin usar bombas!) han confirmado que este tipo de
+medición libre de interacción es efectivamente posible.</p>
+<p>Sarah Geller transcribió las notas manuscritas de Zwiebach para crear
+la primera versión en LaTeX de este documento.</p>
+<hr />
+<p>MIT OpenCourseWare https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "about:blank";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+</body>
+</html>

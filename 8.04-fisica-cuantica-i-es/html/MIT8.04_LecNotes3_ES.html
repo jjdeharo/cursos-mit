@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Naturaleza corpuscular de la luz y naturaleza ondulatoria de la materia</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Naturaleza corpuscular de la luz y naturaleza
+ondulatoria de la materia</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#naturaleza-corpuscular-de-la-luz-y-naturaleza-ondulatoria-de-la-materia"
+id="toc-naturaleza-corpuscular-de-la-luz-y-naturaleza-ondulatoria-de-la-materia">Naturaleza
+corpuscular de la luz y naturaleza ondulatoria de la materia</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#efecto-fotoeléctrico" id="toc-efecto-fotoeléctrico">1.
+Efecto fotoeléctrico</a></li>
+<li><a href="#dispersión-de-compton" id="toc-dispersión-de-compton">2.
+Dispersión de Compton</a></li>
+<li><a href="#ondas-de-materia" id="toc-ondas-de-materia">3. Ondas de
+materia</a></li>
+</ul></li>
+<li><a href="#apéndice-lista-de-problemas-1-problem-set-1-2016"
+id="toc-apéndice-lista-de-problemas-1-problem-set-1-2016">Apéndice:
+Lista de problemas 1 (Problem Set 1, 2016)</a>
+<ul>
+<li><a href="#problema-1" id="toc-problema-1">Problema 1</a></li>
+<li><a href="#problema-2" id="toc-problema-2">Problema 2</a></li>
+<li><a href="#problema-3" id="toc-problema-3">Problema 3</a></li>
+<li><a href="#problema-4" id="toc-problema-4">Problema 4</a></li>
+<li><a href="#problema-5" id="toc-problema-5">Problema 5</a></li>
+<li><a href="#problema-6" id="toc-problema-6">Problema 6</a></li>
+<li><a href="#problema-7" id="toc-problema-7">Problema 7</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="naturaleza-corpuscular-de-la-luz-y-naturaleza-ondulatoria-de-la-materia">Naturaleza
+corpuscular de la luz y naturaleza ondulatoria de la materia</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 3: Photoelectric effect, Compton scattering, and de
+Broglie wavelength.</strong></p>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="byEaU9ILHmw" data-title="The photoelectric effect"><span class="video-play-icon">&#9654;</span> <strong>The photoelectric effect</strong> <span class="video-dur">(22:54)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=byEaU9ILHmw" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="S9RjSQro2e0" data-title="Units of h and Compton wavelength of particles"><span class="video-play-icon">&#9654;</span> <strong>Units of h and Compton wavelength of particles</strong> <span class="video-dur">(12:39)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=S9RjSQro2e0" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="WR88_Vzfcx4" data-title="Compton Scattering"><span class="video-play-icon">&#9654;</span> <strong>Compton Scattering</strong> <span class="video-dur">(22:34)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=WR88_Vzfcx4" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="dnuZx9fZHsU" data-title="de Broglie’s proposal"><span class="video-play-icon">&#9654;</span> <strong>de Broglie’s proposal</strong> <span class="video-dur">(10:39)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=dnuZx9fZHsU" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+</ul>
+<hr />
+<p><em>B. Zwiebach</em> <em>16 de febrero de 2016</em></p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>Efecto fotoeléctrico</li>
+<li>Dispersión de Compton</li>
+<li>Ondas de materia</li>
+</ol>
+<h2 id="efecto-fotoeléctrico">1. Efecto fotoeléctrico</h2>
+<p>El efecto fotoeléctrico fue observado por primera vez por Heinrich
+Hertz en 1887. Cuando se irradian placas metálicas pulidas, observó,
+estas pueden emitir electrones, entonces llamados “foto-electrones”. Los
+electrones emitidos producen así una corriente fotoeléctrica. Las
+observaciones clave fueron:</p>
+<ul>
+<li><p>Existe una frecuencia umbral
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ν</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\nu_0</annotation></semantics></math>.
+Solo para frecuencias
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>&gt;</mo><msub><mi>ν</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\nu &gt; \nu_0</annotation></semantics></math>
+hay corriente fotoeléctrica. La frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ν</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\nu_0</annotation></semantics></math>
+depende del metal y de la configuración de los átomos en la superficie.
+También se ve afectada por las inhomogeneidades.</p></li>
+<li><p>La magnitud de la corriente fotoeléctrica es proporcional a la
+intensidad de la fuente de luz.</p></li>
+<li><p>La energía de los fotoelectrones es independiente de la
+intensidad de la fuente de luz.</p></li>
+</ul>
+<p>Una explicación natural de las características de este efecto no
+llegó hasta 1905, cuando Einstein explicó las propiedades anteriores
+postulando que la energía de la luz es transportada por cuantos
+discretos (llamados posteriormente fotones) con energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">h\nu</annotation></semantics></math>.
+Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+es la constante de Planck, la constante que Planck utilizó para ajustar
+la energía del cuerpo negro en función de la frecuencia.</p>
+<p><em>Figura 1: Los electrones en un metal están ligados. Si la energía
+del fotón es mayor que la función de trabajo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>,
+un electrón puede ser expulsado.</em></p>
+<p>Un material dado tiene una energía característica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>,
+llamada función de trabajo, que es la energía mínima requerida para
+expulsar un electrón. Esta no es fácil de calcular porque es el
+resultado de la interacción de muchos electrones con el trasfondo de
+átomos. Sin embargo, es fácil de medir. Cuando se irradia la superficie
+del material, los electrones del material absorben la energía de los
+fotones incidentes. Si la energía impartida a un electrón por la
+absorción de un solo fotón es mayor que la función de trabajo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>,
+entonces el electrón es expulsado con energía cinética
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><msup><mi>e</mi><mo>−</mo></msup></msub><annotation encoding="application/x-tex">E_{e^-}</annotation></semantics></math>
+igual a la diferencia entre la energía del fotón y la función de
+trabajo:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><msup><mi>e</mi><mo>−</mo></msup></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>W</mi><mo>=</mo><msub><mi>E</mi><mi>γ</mi></msub><mo>−</mo><mi>W</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+E_{e^-} = \frac{1}{2}mv^2 = h\nu - W = E_\gamma - W. \qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>Esta ecuación, escrita por Einstein, explica las características
+experimentales señaladas anteriormente, una vez que suponemos que los
+cuantos actúan sobre electrones individuales para expulsarlos. La
+frecuencia umbral se define mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><msub><mi>ν</mi><mn>0</mn></msub><mo>=</mo><mi>W</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+h\nu_0 = W, \qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p>ya que da lugar a un fotoelectrón con energía cero. Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>&gt;</mo><msub><mi>ν</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\nu &gt; \nu_0</annotation></semantics></math>
+los electrones serán expulsados. Aumentar la intensidad de la fuente de
+luz incrementa la tasa de llegada de fotones, lo cual incrementará la
+magnitud de la corriente, pero no cambiará la energía de los
+fotoelectrones porque no cambia la energía de cada cuanto incidente.</p>
+<p>La ecuación (1.2) permitió a Einstein hacer una predicción: la
+energía cinética de los fotoelectrones aumenta linealmente con la
+frecuencia de la luz. La predicción de Einstein fue confirmada
+experimentalmente por Millikan (1915), quien midió cuidadosamente las
+energías de los fotoelectrones y confirmó su dependencia lineal con la
+energía. El cuidadoso trabajo de Millikan le permitió determinar el
+valor de la constante de Planck
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℏ</mi><annotation encoding="application/x-tex">\hbar</annotation></semantics></math>
+con una precisión mejor que el 1%. Aun así, persistía el escepticismo y
+los físicos todavía no estaban convencidos de la naturaleza corpuscular
+de estos cuantos de luz.</p>
+<p><strong>Ejemplo:</strong> Considere luz ultravioleta con longitud de
+onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>290</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">nm</mtext></mrow><annotation encoding="application/x-tex">\lambda = 290\,\text{nm}</annotation></semantics></math>
+incidente sobre un metal con función de trabajo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mn>4.05</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">eV</mtext></mrow><annotation encoding="application/x-tex">W = 4.05\,\text{eV}</annotation></semantics></math>.
+¿Cuál es la energía del fotoelectrón y cuál es su velocidad?</p>
+<p><strong>Solución:</strong> Es útil resolver estos problemas sin tener
+que buscar constantes. Para ello, conviene recordar esta relación
+útil</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℏ</mi><mi>c</mi><mo>=</mo><mn>197.33</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV·fm</mtext><mo>,</mo><mspace width="2.0em"></mspace><mi>ℏ</mi><mo>≡</mo><mfrac><mi>h</mi><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+\hbar c = 197.33\ \text{MeV·fm}, \qquad \hbar \equiv \frac{h}{2\pi}, \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">MeV</mtext><mo>=</mo><msup><mn>10</mn><mn>6</mn></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">eV</mtext></mrow><annotation encoding="application/x-tex">\text{MeV} = 10^6\,\text{eV}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">fm</mtext><mo>=</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>15</mn></mrow></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">m</mtext></mrow><annotation encoding="application/x-tex">\text{fm} = 10^{-15}\,\text{m}</annotation></semantics></math>.
+Usemos esto para calcular la energía del fotón. En este caso,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>γ</mi></msub><mo>=</mo><mi>h</mi><mi>ν</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>ℏ</mi><mi>c</mi></mrow><mi>λ</mi></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mo>⋅</mo><mn>197.33</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV·fm</mtext></mrow><mrow><mn>290</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>9</mn></mrow></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">m</mtext></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mo>⋅</mo><mn>197.33</mn></mrow><mn>290</mn></mfrac><mspace width="0.222em"></mspace><mtext mathvariant="normal">eV</mtext><mo>≈</mo><mn>4.28</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">eV</mtext><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+E_\gamma = h\nu = \frac{2\pi\hbar c}{\lambda} = \frac{2\pi \cdot 197.33\ \text{MeV·fm}}{290 \times 10^{-9}\,\text{m}} = \frac{2\pi \cdot 197.33}{290}\ \text{eV} \approx 4.28\ \text{eV}, \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>y por tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><msup><mi>e</mi><mo>−</mo></msup></msub><mo>=</mo><msub><mi>E</mi><mi>γ</mi></msub><mo>−</mo><mi>W</mi><mo>=</mo><mn>0.23</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">eV</mtext><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+E_{e^-} = E_\gamma - W = 0.23\ \text{eV}. \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>Para calcular la energía escribimos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.23</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">eV</mtext><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>m</mi><mi>e</mi></msub><msup><mi>v</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false" form="prefix">(</mo><msub><mi>m</mi><mi>e</mi></msub><msup><mi>c</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>v</mi><mi>c</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+0.23\ \text{eV} = \frac{1}{2}m_e v^2 = \frac{1}{2}(m_e c^2)\left(\frac{v}{c}\right)^2 \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>Recordando que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>e</mi></msub><msup><mi>c</mi><mn>2</mn></msup><mo>≃</mo><mn>511</mn><mo>,</mo><mn>000</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">eV</mtext></mrow><annotation encoding="application/x-tex">m_e c^2 \simeq 511{,}000\ \text{eV}</annotation></semantics></math>
+se obtiene</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>0.46</mn><mn>511000</mn></mfrac><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>v</mi><mi>c</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mfrac><mi>v</mi><mi>c</mi></mfrac><mo>=</mo><mn>0.0009488</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{0.46}{511000} = \left(\frac{v}{c}\right)^2 \quad \Rightarrow \quad \frac{v}{c} = 0.0009488. \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>300</mn><mo>,</mo><mn>000</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">Km/s</mtext></mrow><annotation encoding="application/x-tex">c = 300{,}000\ \text{Km/s}</annotation></semantics></math>
+finalmente obtenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>≃</mo><mn>284.4</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">Km/s</mtext></mrow><annotation encoding="application/x-tex">v \simeq 284.4\ \text{Km/s}</annotation></semantics></math>.</p>
+<p>Este es un buen momento para considerar las unidades, en particular
+las unidades de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
+Podemos preguntarnos: ¿existe una cantidad física que tenga las unidades
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>?
+La respuesta es sí, como veremos ahora. De la ecuación
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>h</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">E = h\nu</annotation></semantics></math>,
+tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>h</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">[</mo><mi>E</mi><mo stretchy="false" form="postfix">]</mo></mrow><mrow><mo stretchy="false" form="prefix">[</mo><mi>ν</mi><mo stretchy="false" form="postfix">]</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>M</mi><msup><mi>L</mi><mn>2</mn></msup><mi>/</mi><msup><mi>T</mi><mn>2</mn></msup></mrow><mrow><mn>1</mn><mi>/</mi><mi>T</mi></mrow></mfrac><mo>=</mo><mi>L</mi><mo>⋅</mo><mi>M</mi><mfrac><mi>L</mi><mi>T</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+[h] = \frac{[E]}{[\nu]} = \frac{ML^2/T^2}{1/T} = L \cdot M\frac{L}{T}, \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>⋅</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\cdot]</annotation></semantics></math>
+da las unidades de una cantidad, y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+son las unidades de masa, longitud y tiempo, respectivamente. Hemos
+escrito la expresión más a la derecha como un producto de unidades de
+longitud y momento. Por lo tanto</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>h</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>×</mo><mi>p</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>L</mi><mo stretchy="false" form="postfix">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+[h] = [r \times p] = [L]. \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>¡Vemos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+tiene unidades de momento angular! De hecho, para una partícula de espín
+un medio, la magnitud del momento angular de espín es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>ℏ</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\hbar</annotation></semantics></math>.</p>
+<p>Con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>h</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>p</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[h] = [r][p]</annotation></semantics></math>
+vemos también que se tiene una manera canónica de asociar una longitud a
+cualquier partícula de una masa dada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+En efecto, usando la velocidad de la luz, podemos construir el momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>m</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">p = mc</annotation></semantics></math>,
+y entonces la longitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+se obtiene de la razón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">h/p</annotation></semantics></math>.
+Esta es de hecho la longitud de onda Compton
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\lambda_C</annotation></semantics></math>
+de una partícula:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>C</mi></msub><mo>=</mo><mfrac><mi>h</mi><mrow><mi>m</mi><mi>c</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda_C = \frac{h}{mc} \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>que tiene unidades de longitud; esto se llama la longitud de onda
+Compton de una partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Nótese que esta longitud es independiente de la velocidad de la
+partícula. ¡La longitud de onda de de Broglie de la partícula usa el
+momento verdadero de la partícula, no
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">mc</annotation></semantics></math>!
+Por lo tanto, las longitudes de onda Compton y de de Broglie no deben
+confundirse.</p>
+<p>Es posible obtener cierta intuición física para la longitud de onda
+Compton
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\lambda_C</annotation></semantics></math>
+de una partícula. Afirmamos que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\lambda_C</annotation></semantics></math>
+es la longitud de onda de un fotón cuya energía es igual a la energía en
+reposo de la partícula. En efecto, tendríamos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><mi>h</mi><mi>ν</mi><mo>=</mo><mi>h</mi><mfrac><mi>c</mi><mi>λ</mi></mfrac><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>λ</mi><mo>=</mo><mfrac><mi>h</mi><mrow><mi>m</mi><mi>c</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+mc^2 = h\nu = h\frac{c}{\lambda} \quad \Rightarrow \quad \lambda = \frac{h}{mc}, \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>confirmando la afirmación. Supongamos que se intenta localizar una
+partícula puntual de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Si se usa luz, la precisión posible en la posición de la partícula es
+aproximadamente la longitud de onda de la luz. Una vez que usamos luz
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&lt;</mo><msub><mi>λ</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">\lambda &lt; \lambda_C</annotation></semantics></math>,
+los fotones transportan más energía que la energía en reposo de la
+partícula. Es posible entonces que la energía de los fotones se
+convierta en la creación de más partículas de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+dificultando, si no imposibilitando, la localización de la partícula. La
+longitud de onda Compton es la escala de longitud en la cual necesitamos
+la teoría cuántica de campos relativista para tomar en cuenta los
+posibles procesos de creación y aniquilación de partículas.</p>
+<p>Calculemos la longitud de onda Compton del electrón:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>e</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>h</mi><mrow><msub><mi>m</mi><mi>e</mi></msub><mi>c</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>ℏ</mi><mi>c</mi></mrow><mrow><msub><mi>m</mi><mi>e</mi></msub><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mo>⋅</mo><mn>197.33</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV·fm</mtext></mrow><mrow><mn>0.511</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">MeV</mtext></mrow></mfrac><mo>=</mo><mn>2426</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">fm</mtext><mo>=</mo><mn>2.426</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">pm</mtext><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda_C(e) = \frac{h}{m_e c} = \frac{2\pi\hbar c}{m_e c^2} = \frac{2\pi \cdot 197.33\ \text{MeV·fm}}{0.511\ \text{MeV}} = 2426\ \text{fm} = 2.426\ \text{pm}. \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>Esta longitud es unas 20 veces más pequeña que el radio de Bohr (53
+pm) y unas dos mil veces el tamaño de un protón (1 fm). La longitud de
+onda Compton del electrón aparece en la fórmula del cambio de longitud
+de onda del fotón en el proceso llamado dispersión de Compton.</p>
+<h2 id="dispersión-de-compton">2. Dispersión de Compton</h2>
+<p>Originalmente Einstein no dejó claro que el cuanto de luz significara
+una partícula de luz. En 1916, sin embargo, postuló que el cuanto
+transportaría también momento además de energía, dejando el caso mucho
+más claro a favor de una partícula. En relatividad, la energía, el
+momento y la masa en reposo de una partícula están relacionados
+mediante</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mn>2</mn></msup><mo>−</mo><msup><mi>p</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><msup><mi>m</mi><mn>2</mn></msup><msup><mi>c</mi><mn>4</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.13)</mtext></mrow><annotation encoding="application/x-tex">
+E^2 - p^2 c^2 = m^2 c^4. \qquad \text{(2.13)}
+</annotation></semantics></math></p>
+<p>(Compárese esto con la ecuación clásica
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">E = p^2/2m</annotation></semantics></math>.)
+Por supuesto, también se pueden expresar la energía y el momento de la
+partícula en términos de la velocidad:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><msqrt><mrow><mn>1</mn><mo>−</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup></mfrac></mrow></msqrt></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>p</mi><mo>=</mo><mfrac><mrow><mi>m</mi><mi>v</mi></mrow><msqrt><mrow><mn>1</mn><mo>−</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup></mfrac></mrow></msqrt></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.14)</mtext></mrow><annotation encoding="application/x-tex">
+E = \frac{mc^2}{\sqrt{1 - \frac{v^2}{c^2}}}, \qquad p = \frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}. \qquad \text{(2.14)}
+</annotation></semantics></math></p>
+<p>Debería usar estas expresiones para confirmar que (2.13) se cumple
+(donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mover><mi>p</mi><mo accent="true">→</mo></mover><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">|\vec{p}| = p</annotation></semantics></math>).
+Una partícula que se mueve con la velocidad de la luz, como el fotón,
+debe tener masa en reposo nula, ya que de lo contrario su energía y
+momento serían infinitos debido a los denominadores que se anulan. Con
+la masa en reposo fijada en cero, la ecuación (2.13) da la relación
+entre la energía del fotón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">E_\gamma</annotation></semantics></math>
+y el momento del fotón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">p_\gamma</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>γ</mi></msub><mo>=</mo><msub><mi>p</mi><mi>γ</mi></msub><mi>c</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.15)</mtext></mrow><annotation encoding="application/x-tex">
+E_\gamma = p_\gamma c. \qquad \text{(2.15)}
+</annotation></semantics></math></p>
+<p>Luego, usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mi>ν</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\lambda\nu = c</annotation></semantics></math>,
+llegamos a</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>γ</mi></msub><mo>=</mo><mfrac><msub><mi>E</mi><mi>γ</mi></msub><mi>c</mi></mfrac><mo>=</mo><mfrac><mrow><mi>h</mi><mi>ν</mi></mrow><mi>c</mi></mfrac><mo>=</mo><mfrac><mi>h</mi><mi>λ</mi></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.16)</mtext></mrow><annotation encoding="application/x-tex">
+p_\gamma = \frac{E_\gamma}{c} = \frac{h\nu}{c} = \frac{h}{\lambda}. \qquad \text{(2.16)}
+</annotation></semantics></math></p>
+<p>Volveremos a ver esta relación más adelante cuando discutamos las
+ondas de materia.</p>
+<p><em>Figura 2: Luz no polarizada incidente sobre un electrón se
+dispersa en un ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
+Clásicamente, esto se describe mediante la dispersión de Thomson. La luz
+no cambia de frecuencia durante este proceso.</em></p>
+<p>Compton llevó a cabo experimentos (1923–1924) dispersando rayos X en
+un blanco de carbono. Los rayos X corresponden a energías de fotón en el
+rango de 100 eV a 100 KeV. El objetivo era dispersar fotones de rayos X
+en electrones libres, y con cierta salvedad, los electrones en los
+átomos se comportan de esa manera.</p>
+<p>La contraparte clásica del experimento de Compton es la dispersión de
+ondas electromagnéticas en electrones libres, llamada dispersión de
+Thomson. Aquí una onda electromagnética incide sobre un electrón. El
+campo eléctrico de la onda sacude al electrón, que oscila con la
+frecuencia del campo incidente. La oscilación del electrón produce un
+campo radiado, de la misma frecuencia que la radiación incidente. En la
+dispersión de Thomson clásica, la sección eficaz diferencial de
+dispersión viene dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>σ</mi></mrow><mrow><mi>d</mi><mi mathvariant="normal">Ω</mi></mrow></mfrac><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>e</mi><mn>2</mn></msup><mrow><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.17)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{d\sigma}{d\Omega} = \left(\frac{e^2}{mc^2}\right)^2 \frac{1}{2}\left(1 + \cos^2\theta\right), \qquad \text{(2.17)}
+</annotation></semantics></math></p>
+<p>donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+es el ángulo entre la onda incidente y la onda dispersada, con la
+energía radiada a la misma frecuencia que la luz incidente. Esto se
+muestra en la Figura 2. La sección eficaz tiene unidades de longitud al
+cuadrado, o área, como debe ser. Representa el área que extraería de la
+onda plana incidente la cantidad de energía que dispersa el electrón. En
+efecto, la cantidad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">e^2/(mc^2)</annotation></semantics></math>
+se llama el radio clásico del electrón y es de aproximadamente 2.8 fm,
+¡no mucho más grande que un protón!</p>
+<p>Si tratamos la luz como fotones, el proceso elemental que ocurre es
+una colisión entre dos partículas: un fotón incidente y un electrón
+aproximadamente estacionario. Se pueden demostrar rápidamente dos
+hechos:</p>
+<ul>
+<li><p>El fotón no puede ser absorbido por el electrón. Esto es
+inconsistente con la conservación de energía y momento
+(ejercicio).</p></li>
+<li><p>El fotón debe perder algo de energía y por lo tanto la longitud
+de onda final del fotón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>f</mi></msub><annotation encoding="application/x-tex">\lambda_f</annotation></semantics></math>
+debe ser mayor que la longitud de onda inicial del fotón
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\lambda_i</annotation></semantics></math>.
+Esto es claro en el sistema de referencia del laboratorio, donde el
+electrón inicialmente estacionario debe retroceder y así adquirir cierta
+energía cinética.</p></li>
+</ul>
+<p><em>Figura 3: Los resultados del experimento de dispersión de
+Compton. La longitud de onda del fotón incidente es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\lambda_i</annotation></semantics></math>,
+y la longitud de onda del fotón dispersado es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo>≃</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>+</mo><msub><mi>ℓ</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">\lambda_f \simeq \lambda_i + \ell_C</annotation></semantics></math>,
+correspondiente a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>90</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">\theta = 90°</annotation></semantics></math>.</em></p>
+<p>En efecto, las observaciones de Compton no concordaban con las
+predicciones de la dispersión de Thomson: los rayos X cambiaban de
+frecuencia tras la dispersión. Un cálculo usando la conservación de
+energía y momento muestra que el cambio de longitud de onda está
+correlacionado con el ángulo entre el fotón dispersado y el fotón
+original:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo>=</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>+</mo><mfrac><mi>h</mi><mrow><msub><mi>m</mi><mi>e</mi></msub><mi>c</mi></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>+</mo><msub><mi>λ</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.18)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda_f = \lambda_i + \frac{h}{m_e c}(1 - \cos\theta) = \lambda_i + \lambda_C(1 - \cos\theta). \qquad \text{(2.18)}
+</annotation></semantics></math></p>
+<p>Nótese la aparición de la longitud de onda Compton del electrón, la
+partícula de la cual dispersa el fotón. La pérdida máxima de energía
+para el fotón ocurre en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math>,
+donde</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo>=</mo><mn>180</mn><mi>°</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>+</mo><mn>2</mn><msub><mi>λ</mi><mi>C</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.19)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda_f(\theta = 180°) = \lambda_i + 2\lambda_C. \qquad \text{(2.19)}
+</annotation></semantics></math></p>
+<p>El cambio máximo posible de longitud de onda es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>λ</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">2\lambda_C</annotation></semantics></math>.
+Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\theta = \frac{\pi}{2}</annotation></semantics></math>
+el cambio de longitud de onda es exactamente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\lambda_C</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo>=</mo><mn>90</mn><mi>°</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>+</mo><msub><mi>λ</mi><mi>C</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.20)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda_f(\theta = 90°) = \lambda_i + \lambda_C. \qquad \text{(2.20)}
+</annotation></semantics></math></p>
+<p>El experimento de Compton usó rayos X de molibdeno con energía y
+longitud de onda</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>γ</mi></msub><mo>≈</mo><mn>17.5</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">keV</mtext><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>λ</mi><mi>i</mi></msub><mo>=</mo><mn>0.0709</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">nm</mtext><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.21)</mtext></mrow><annotation encoding="application/x-tex">
+E_\gamma \approx 17.5\ \text{keV}, \qquad \lambda_i = 0.0709\ \text{nm}, \qquad \text{(2.21)}
+</annotation></semantics></math></p>
+<p>incidiendo sobre un blanco de carbono. Colocando el detector en un
+ángulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>90</mn><mi>°</mi></mrow><annotation encoding="application/x-tex">\theta = 90°</annotation></semantics></math>,
+la gráfica de la intensidad (o número de fotones dispersados) en función
+de la longitud de onda se muestra en la Figura 2. Se encuentra un pico
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo>=</mo><mn>0.0731</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">nm</mtext></mrow><annotation encoding="application/x-tex">\lambda_f = 0.0731\ \text{nm}</annotation></semantics></math>,
+pero también un segundo pico en la longitud de onda original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>i</mi></msub><mo>=</mo><mn>0.0709</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">nm</mtext></mrow><annotation encoding="application/x-tex">\lambda_i = 0.0709\ \text{nm}</annotation></semantics></math>.</p>
+<p>El pico en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>f</mi></msub><annotation encoding="application/x-tex">\lambda_f</annotation></semantics></math>
+es el esperado:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>f</mi></msub><mo>−</mo><msub><mi>λ</mi><mi>i</mi></msub><mo>≃</mo><mn>2.2</mn><mspace width="0.222em"></mspace><mtext mathvariant="normal">pm</mtext></mrow><annotation encoding="application/x-tex">\lambda_f - \lambda_i \simeq 2.2\ \text{pm}</annotation></semantics></math>,
+que es aproximadamente la longitud de onda Compton de 2.4 pm. Dado que
+los fotones tienen energías de 17 KeV y las energías de los estados
+ligados del carbono son de aproximadamente 300 eV, el pico esperado
+representa instancias en las que el átomo es ionizado por la colisión y
+es una buena aproximación considerar los electrones expulsados. El pico
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\lambda_i</annotation></semantics></math>
+representa un proceso en el que un electrón recibe algo de momento del
+fotón pero permanece ligado. Esto no es muy improbable: el momento
+típico de un electrón ligado es en realidad comparable al momento del
+fotón. En este caso el fotón se dispersa a 90° y el momento de retroceso
+lo lleva todo el átomo. La longitud de onda Compton relevante es
+entonces la del átomo. Dado que la masa del átomo de carbono es varios
+miles de veces mayor que la masa del electrón, la longitud de onda
+Compton del átomo es mucho menor que la longitud de onda Compton del
+electrón y no debería haber cambio detectable en la longitud de onda del
+fotón.<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></p>
+<h2 id="ondas-de-materia">3. Ondas de materia</h2>
+<p>Como hemos visto, la luz se comporta tanto como partícula como onda.
+Este tipo de comportamiento se suele denominar dualidad: la realidad
+completa del objeto se captura usando tanto las características
+ondulatorias como las corpusculares del objeto. El fotón es una
+partícula de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">E_\gamma</annotation></semantics></math>,
+pero tiene frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>,
+que es un atributo ondulatorio, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>h</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">E = h\nu</annotation></semantics></math>.
+Es una partícula con momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">p_\gamma</annotation></semantics></math>
+pero también tiene una longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>,
+un atributo ondulatorio, dado por (2.16)</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mi>h</mi><msub><mi>p</mi><mi>γ</mi></msub></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.22)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda = \frac{h}{p_\gamma}. \qquad \text{(3.22)}
+</annotation></semantics></math></p>
+<p>En 1924, Louis de Broglie propuso que la dualidad onda/partícula del
+fotón era universal, y por lo tanto válida también para las partículas
+materiales. De esta manera conjeturó la naturaleza ondulatoria de la
+materia. Inspirado por (3.22), de Broglie postuló que, asociada a una
+partícula material con momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+existe una onda plana de longitud de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+dada por</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mi>h</mi><mi>p</mi></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.23)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda = \frac{h}{p}. \qquad \text{(3.23)}
+</annotation></semantics></math></p>
+<p>Esta es una propiedad plenamente cuántica: si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h \to 0</annotation></semantics></math>,
+entonces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda \to 0</annotation></semantics></math>,
+y las partículas no tienen propiedades ondulatorias. Una consecuencia
+interesante de esto es que las partículas materiales pueden difractarse
+o interferir. En el famoso experimento de Davisson-Germer (1927), los
+electrones inciden sobre una superficie metálica y se encuentra que a
+ciertos ángulos hay picos en la intensidad de los electrones
+dispersados. Los picos mostraban el efecto de interferencia constructiva
+de la dispersión en la red de átomos del metal, demostrando la
+naturaleza ondulatoria de los electrones. También se puede hacer
+interferencia de doble rendija con electrones, y el experimento se puede
+realizar disparando un electrón a la vez. Un experimento reciente
+[arXiv:1310.8343] de Eibenberger et al. reporta interferencia usando
+moléculas con 810 átomos y una masa que excede las 10 000 uma (¡eso es
+20 millones de veces la masa del electrón!).</p>
+<p>La longitud de onda de de Broglie se puede calcular para estimar si
+los efectos cuánticos son importantes. Considere para este propósito una
+partícula de masa
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+y momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+incidente sobre un objeto de tamaño
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+como se ilustra en la Figura 3. Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>h</mi><mi>/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">\lambda = h/p</annotation></semantics></math>
+la longitud de onda de de Broglie de la partícula. La naturaleza
+ondulatoria de la partícula no es importante si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+es mucho menor que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Así, la “aproximación clásica”, en la que los efectos ondulatorios son
+despreciables, requiere</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Efectos ondulatorios despreciables:</mtext><mspace width="1.0em"></mspace><mfrac><mi>λ</mi><mi>x</mi></mfrac><mo>≪</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.24)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Efectos ondulatorios despreciables:} \quad \frac{\lambda}{x} \ll 1. \qquad \text{(3.24)}
+</annotation></semantics></math></p>
+<p>Usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>h</mi><mi>/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">\lambda = h/p</annotation></semantics></math>,
+esto da</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Efectos ondulatorios despreciables:</mtext><mspace width="1.0em"></mspace><mi>x</mi><mi>p</mi><mo>≫</mo><mi>h</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.25)</mtext></mrow><annotation encoding="application/x-tex">
+\text{Efectos ondulatorios despreciables:} \quad xp \gg h, \qquad \text{(3.25)}
+</annotation></semantics></math></p>
+<p><em>Figura 4: Una partícula de momento
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+incidente sobre un obstáculo de tamaño
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</em></p>
+<p>una relación en la que ambos lados tienen unidades de momento
+angular.</p>
+<p>El comportamiento clásico es un límite sutil de la mecánica cuántica:
+un campo electromagnético clásico requiere un gran número de fotones.
+Sin embargo, cualquier estado con un número exacto y fijo de fotones,
+incluso si es grande, no es clásico. Los estados electromagnéticos
+clásicos son los llamados estados coherentes, en los que el número de
+fotones fluctúa.</p>
+<hr />
+<p>Andrew Turner transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</p>
+<hr />
+<p>MIT OpenCourseWare https://ocw.mit.edu</p>
+<p>8.04 Física Cuántica I Primavera de 2016</p>
+<p>Para obtener información sobre cómo citar estos materiales o sobre
+nuestras condiciones de uso, visite: https://ocw.mit.edu/terms.</p>
+<h1 id="apéndice-lista-de-problemas-1-problem-set-1-2016">Apéndice:
+Lista de problemas 1 (Problem Set 1, 2016)</h1>
+<p><strong>Física Cuántica I (8.04), Primavera de 2016</strong>
+<strong>Tarea 1</strong></p>
+<p><em>Instituto Tecnológico de Massachusetts</em> <em>Departamento de
+Física</em> <em>4 de febrero de 2016</em></p>
+<p><em>Fecha de entrega: jueves, 11 de febrero de 2016, 5:00pm</em></p>
+<p><strong>Avisos</strong></p>
+<ul>
+<li><p>Por favor, ponga su nombre y el número de su sección en la parte
+superior de su lista de problemas, y colóquela en la casilla de 8.05
+etiquetada con el número de su sección cerca de 8-395 antes de las
+5:00pm.</p></li>
+<li><p>Puede resultarle entretenido leer las primeras páginas del libro
+de Dirac sobre Mecánica Cuántica.</p></li>
+</ul>
+<h2 id="problema-1">Problema 1</h2>
+<p><strong>Colapso radiativo de un átomo clásico.</strong> [10
+puntos]</p>
+<p>En un universo clásico, podríamos intentar construir un átomo de
+hidrógeno colocando un electrón en una órbita circular alrededor de un
+protón. Sabemos, sin embargo, que un electrón no relativista y acelerado
+radia energía a una tasa dada por la fórmula de Larmor:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>E</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mn>2</mn><mn>3</mn></mfrac><mfrac><mrow><msup><mi>e</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mrow><msup><mi>c</mi><mn>3</mn></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{dE}{dt} = -\frac{2}{3}\frac{e^2 a^2}{c^3}.
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+es la carga del electrón y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+es la magnitud de la aceleración del electrón. Así que el átomo clásico
+puede tener un problema de estabilidad. Queremos averiguar cuán grande
+es este efecto. En las unidades con las que trabajamos, la energía
+potencial del electrón en presencia del protón es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>−</mi><msup><mi>e</mi><mn>2</mn></msup><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">V = -e^2/r</annotation></semantics></math>
+y la magnitud de la fuerza de atracción es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mn>2</mn></msup><mi>/</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">e^2/r^2</annotation></semantics></math>.</p>
+<ol type="a">
+<li><p>Demuestre que, para un electrón no relativista, la energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">\Delta E</annotation></semantics></math>
+perdida por revolución es pequeña comparada con la energía cinética
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+del electrón. Hágalo calculando el cociente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>E</mi><mi>/</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">\Delta E/K</annotation></semantics></math>.
+Por lo tanto, es posible considerar la órbita como circular en cualquier
+instante, aunque el electrón acabe cayendo en espiral hacia el
+protón.</p></li>
+<li><p>Una buena estimación del tamaño del átomo de hidrógeno es 50 pm
+(pico-metros), y una buena estimación del tamaño del núcleo es 1 fm
+(femto-metro). Compare la velocidad del electrón calculada clásicamente
+con la velocidad de la luz para un radio orbital de 50 pm, 1 pm y 1
+fm.</p></li>
+<li><p>Calcule cuánto tiempo tardaría el electrón en caer en espiral
+desde 50 pm hasta 1 pm. ¿Está justificado ignorar las correcciones
+relativistas? ¿Cambiaría mucho la respuesta usando la aproximación no
+relativista para una espiral desde 50 pm hasta 1 fm?</p></li>
+<li><p>A medida que el electrón se aproxima al protón, ¿qué le ocurre a
+su energía? ¿Existe un valor mínimo de la energía que puede tener el
+electrón?</p></li>
+</ol>
+<h2 id="problema-2">Problema 2</h2>
+<p><strong>Energías cuantizadas.</strong> [5 puntos]</p>
+<p>Considere un electrón en movimiento circular alrededor de un protón
+fijo (pesado) como modelo del átomo de hidrógeno. Sea
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>−</mi><msup><mi>e</mi><mn>2</mn></msup><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">V = -e^2/r</annotation></semantics></math>
+la energía potencial del electrón.</p>
+<ol type="a">
+<li><p>Suponiendo una órbita circular, encuentre las relaciones entre la
+energía cinética
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+del electrón, su energía potencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+y la energía total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.</p></li>
+<li><p>Suponga que la magnitud
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+del momento angular del electrón está cuantizada y es igual a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>ℏ</mi></mrow><annotation encoding="application/x-tex">n\hbar</annotation></semantics></math>,
+donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+es un entero positivo. Encuentre los valores cuantizados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>n</mi></msub><annotation encoding="application/x-tex">E_n</annotation></semantics></math>
+de la energía total y los radios orbitales asociados
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>n</mi></msub><annotation encoding="application/x-tex">r_n</annotation></semantics></math>.
+Exprese sus respuestas en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+la energía en reposo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>e</mi></msub><mo>=</mo><msub><mi>m</mi><mi>e</mi></msub><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E_e = m_e c^2</annotation></semantics></math>
+del electrón, su longitud de onda Compton
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>λ</mi><mo accent="true">‾</mo></mover><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>ℏ</mi><mrow><msub><mi>m</mi><mi>e</mi></msub><mi>c</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\bar\lambda = \dfrac{\hbar}{m_e c}</annotation></semantics></math>,
+y la constante de estructura fina
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><msup><mi>e</mi><mn>2</mn></msup><mrow><mi>ℏ</mi><mi>c</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\alpha = \dfrac{e^2}{\hbar c}</annotation></semantics></math>.</p></li>
+</ol>
+<h2 id="problema-3">Problema 3</h2>
+<p><strong>Relaciones de De Broglie y la escala de los efectos
+cuánticos.</strong> [10 puntos]</p>
+<p><strong>(a) Partículas materiales como ondas</strong></p>
+<p>Si se puede asociar una longitud de onda a toda partícula en
+movimiento, ¿por qué no somos forzosamente conscientes de esta propiedad
+en nuestra experiencia cotidiana? Para responder, calcule la longitud de
+onda de de Broglie
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>h</mi><mi>/</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">\lambda = h/p</annotation></semantics></math>
+(con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>6.6</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>34</mn></mrow></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">J·s</mtext></mrow><annotation encoding="application/x-tex">h = 6.6 \times 10^{-34}\ \text{J·s}</annotation></semantics></math>)
+de cada una de las siguientes partículas:</p>
+<ol type="i">
+<li><p>un automóvil de masa 2000 kg que viaja a una velocidad de 50 mph
+(22 m/s)</p></li>
+<li><p>una canica de masa 10 g que se mueve con una velocidad de 10
+cm/s</p></li>
+<li><p>una partícula de humo de 100 nm de diámetro y masa 1 fg agitada
+por moléculas de aire a temperatura ambiente
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>300</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">K</mtext></mrow><annotation encoding="application/x-tex">T = 300\,\text{K}</annotation></semantics></math>)
+(suponga que la partícula tiene la misma energía cinética de traslación
+que el promedio térmico de las moléculas de aire,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>E</mi><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">KE = \frac{3}{2}k_B T</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>B</mi></msub><mo>=</mo><mn>1.38</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>23</mn></mrow></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">J/K</mtext></mrow><annotation encoding="application/x-tex">k_B = 1.38 \times 10^{-23}\ \text{J/K}</annotation></semantics></math>)</p></li>
+<li><p>un átomo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi></mi><mn>87</mn></msup><mtext mathvariant="normal">Rb</mtext></mrow><annotation encoding="application/x-tex">^{87}\text{Rb}</annotation></semantics></math>
+enfriado por láser hasta una temperatura de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>100</mn><mspace width="0.167em"></mspace><mi>μ</mi><mtext mathvariant="normal">K</mtext></mrow><annotation encoding="application/x-tex">T = 100\,\mu\text{K}</annotation></semantics></math>.
+De nuevo, suponga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>E</mi><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">KE = \frac{3}{2}k_B T</annotation></semantics></math>.</p></li>
+</ol>
+<p><strong>(b) Ondas de luz como partículas</strong></p>
+<p>El efecto fotoeléctrico sugiere que la luz de frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+puede considerarse formada por fotones de energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>h</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">E = h\nu</annotation></semantics></math>,
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>6.6</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>34</mn></mrow></msup><mspace width="0.222em"></mspace><mtext mathvariant="normal">J·s</mtext></mrow><annotation encoding="application/x-tex">h = 6.6 \times 10^{-34}\ \text{J·s}</annotation></semantics></math>.</p>
+<ol type="i">
+<li><p>La luz visible tiene una longitud de onda en el rango de 400-700
+nm. ¿Cuáles son la energía y la frecuencia de un fotón de luz
+visible?</p></li>
+<li><p>El microondas de mi cocina funciona aproximadamente a 2.5 GHz con
+una potencia máxima de 300 W. ¿Cuántos fotones por segundo puede emitir?
+¿Y un láser de baja potencia (10 mW a 633 nm), o un teléfono móvil (0.25
+W a 850 MHz)?</p></li>
+<li><p>¿Cuántos fotones de microondas de ese tipo hacen falta para
+calentar 200 ml de agua en 10 °C? (La capacidad calorífica del agua es
+aproximadamente 4 J/g·K, y la densidad es 1 g/ml.)</p></li>
+<li><p>Para una potencia dada de una onda electromagnética, ¿espera que
+una descripción de onda clásica funcione mejor para frecuencias de
+radio, o para rayos X?</p></li>
+</ol>
+<h2 id="problema-4">Problema 4</h2>
+<p><strong>Práctica con números complejos.</strong> [15 puntos]</p>
+<p>Un número complejo puede escribirse tanto en forma cartesiana como en
+forma polar</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo>=</mo><mi>r</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo><mo>≡</mo><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+z = a + ib = r e^{i\theta}, \qquad |z| \equiv \sqrt{a^2 + b^2}.
+</annotation></semantics></math></p>
+<p>Los números reales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+son, respectivamente, la parte real y la parte imaginaria de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Los números reales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+son, respectivamente, la magnitud y la fase de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Llamamos a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|z|</annotation></semantics></math>
+la norma de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+Use esta definición de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+en lo que sigue:</p>
+<ol type="a">
+<li>Use desarrollos de Taylor para derivar la fórmula de Euler</li>
+</ol>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mo>+</mo><mi>i</mi><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e^{i\theta} = \cos\theta + i\sin\theta.
+</annotation></semantics></math></p>
+<ol start="2" type="a">
+<li><p>Escriba
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+y viceversa.</p></li>
+<li><p>Los números complejos se ven como vectores en un “plano complejo”
+bidimensional. La multiplicación de un número complejo por una fase (un
+número complejo de magnitud unidad) equivale a una rotación en el plano
+complejo.</p></li>
+</ol>
+<ol type="i">
+<li><p>Demuestre que la multiplicación por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+equivale a una rotación de 90°:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>z</mi><mo>=</mo><mi>r</mi><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><mi>θ</mi><mo>+</mo><mi>π</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">iz = r e^{i(\theta + \pi/2)}</annotation></semantics></math>.</p></li>
+<li><p>Escriba
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">iz</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+¿Cuál es la parte real de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">iz</annotation></semantics></math>?</p></li>
+<li><p>Demuestre que la multiplicación por
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>ϕ</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\phi}</annotation></semantics></math>
+equivale a una rotación en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.</p></li>
+</ol>
+<ol start="4" type="a">
+<li>El conjugado complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mo>*</mo></msup><annotation encoding="application/x-tex">z^*</annotation></semantics></math>
+de un número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">z = a + ib</annotation></semantics></math>
+es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">z^* = a - ib</annotation></semantics></math>.
+Un número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+es realmente real si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msup><mi>z</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">z = z^*</annotation></semantics></math>,
+lo que significa que su parte imaginaria es cero. Un número complejo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+es realmente imaginario si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>−</mi><msup><mi>z</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">z = -z^*</annotation></semantics></math>,
+lo que implica que su parte real es cero.</li>
+</ol>
+<ol type="i">
+<li><p>¿Existe un número que sea a la vez real y puramente
+imaginario?</p></li>
+<li><p>¿Qué es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>z</mi><mo>*</mo></msup><msup><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">(z^*)^*</annotation></semantics></math>?
+Demuestre que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mo>*</mo></msup><mo>=</mo><mi>r</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>θ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">z^* = r e^{-i\theta}</annotation></semantics></math>.</p></li>
+<li><p>Exprese la parte real y la parte imaginaria de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mo>*</mo></msup><annotation encoding="application/x-tex">z^*</annotation></semantics></math>.</p></li>
+<li><p>Demuestre que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><msup><mi>z</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">zz^*</annotation></semantics></math>
+es real y evalúelo para expresarlo en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+y en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|z|</annotation></semantics></math>.</p></li>
+</ol>
+<ol start="5" type="a">
+<li>Usando la fórmula de Euler, derive fórmulas para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos 2\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin 2\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>3</mn><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos 3\theta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>3</mn><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin 3\theta</annotation></semantics></math>,
+todas en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\cos\theta</annotation></semantics></math>.
+Derive fórmulas para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(A+B)</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sin(A+B)</annotation></semantics></math>,
+ambas en términos de senos y cosenos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.</li>
+</ol>
+<h2 id="problema-5">Problema 5</h2>
+<p><strong>¿Absorción?</strong> [5 puntos]</p>
+<p>Un fotón colisiona con un electrón libre. Explique por qué el fotón
+no puede ser absorbido por completo.</p>
+<h2 id="problema-6">Problema 6</h2>
+<p><strong>Interferómetro de Mach-Zehnder.</strong> [10 puntos]</p>
+<p>Considere el interferómetro de Mach-Zehnder y suponga un haz de
+entrada de la forma
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>α</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>β</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}\alpha\\ \beta\end{pmatrix}</annotation></semantics></math>.
+Llame
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+a las probabilidades de detección en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mn>0</mn></msub><annotation encoding="application/x-tex">D_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mn>1</mn></msub><annotation encoding="application/x-tex">D_1</annotation></semantics></math>.</p>
+<ol type="a">
+<li><p>Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+suponiendo que insertamos un desfasador con fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>l</mi></msub><annotation encoding="application/x-tex">\delta_l</annotation></semantics></math>
+en el brazo inferior del interferómetro.</p></li>
+<li><p>Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+suponiendo que insertamos un desfasador con fase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>u</mi></msub><annotation encoding="application/x-tex">\delta_u</annotation></semantics></math>
+en el brazo superior del interferómetro.</p></li>
+<li><p>Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+suponiendo que insertamos los dos desfasadores simultáneamente.</p></li>
+</ol>
+<h2 id="problema-7">Problema 7</h2>
+<p><strong>¡Bombas de Elitzur-Vaidman!</strong> [10 puntos]</p>
+<ol type="a">
+<li><p>Suponga que decide probar bombas con un interferómetro de
+Mach-Zehnder repetidamente hasta que el estado de una bomba dada sea
+cierto más allá de toda duda razonable. ¿Qué fracción de las bombas que
+funcionan se certifica sin detonación?</p></li>
+<li><p>Suponga que el 80% de las bombas en su posesión son defectuosas.
+Elige una al azar y la prueba con un interferómetro de Mach-Zehnder
+enviando un fotón. Detecta el fotón en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mn>0</mn></msub><annotation encoding="application/x-tex">D_0</annotation></semantics></math>.
+¿Cuál es la probabilidad de que la bomba sea defectuosa?</p></li>
+</ol>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em><a
+href="https://ocw.mit.edu">https://ocw.mit.edu</a></em></p>
+<p><em>8.04 Física Cuántica I</em> <em>Primavera de 2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite: <a
+href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Gracias a V. Vuletic por una aclaración sobre este
+punto.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "about:blank";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="B. Zwiebach (traducción al español)" />
+  <title>Capítulo 17: Transmisión resonante y efecto Ramsauer–Townsend</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
+<div class="a11y-panel" id="a11y-panel">
+  <div class="a11y-row">
+    <span class="a11y-label">Tamaño de texto</span>
+    <div class="a11y-btns" data-group="fontscale">
+      <button type="button" data-value="down">A&minus;</button>
+      <button type="button" data-value="reset">A</button>
+      <button type="button" data-value="up">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Interlineado</span>
+    <div class="a11y-btns" data-group="lineheight">
+      <button type="button" data-value="1.35">Compacto</button>
+      <button type="button" data-value="1.6">Normal</button>
+      <button type="button" data-value="2.0">Amplio</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Tipografía</span>
+    <div class="a11y-btns" data-group="fontfamily">
+      <button type="button" data-value="serif">Serif</button>
+      <button type="button" data-value="sans">Sans</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">Ancho de columna</span>
+    <div class="a11y-btns" data-group="width">
+      <button type="button" data-value="640">Estrecho</button>
+      <button type="button" data-value="860">Normal</button>
+      <button type="button" data-value="1100">Ancho</button>
+    </div>
+  </div>
+</div>
+
+<div class="fp" id="fp" hidden>
+<div class="fp-bar" id="fp-bar">
+<span class="fp-title" id="fp-title">Vídeo</span>
+<div class="fp-actions">
+<button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
+<button type="button" id="fp-close" title="Cerrar">&times;</button>
+</div>
+</div>
+<div class="fp-body" id="fp-body">
+<div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">Capítulo 17: Transmisión resonante y efecto
+Ramsauer–Townsend</h1>
+<p class="author">B. Zwiebach (traducción al español)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#capítulo-17-transmisión-resonante-y-efecto-ramsauertownsend"
+id="toc-capítulo-17-transmisión-resonante-y-efecto-ramsauertownsend">Capítulo
+17: Transmisión resonante y efecto Ramsauer–Townsend</a>
+<ul>
+<li><a href="#vídeos-de-esta-clase-youtube"
+id="toc-vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</a></li>
+<li><a href="#contenido" id="toc-contenido">Contenido</a></li>
+<li><a href="#transmisión-resonante-en-un-pozo-cuadrado"
+id="toc-transmisión-resonante-en-un-pozo-cuadrado">1. Transmisión
+resonante en un pozo cuadrado</a></li>
+<li><a href="#el-efecto-ramsauertownsend"
+id="toc-el-efecto-ramsauertownsend">2. El efecto
+Ramsauer–Townsend</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="capítulo-17-transmisión-resonante-y-efecto-ramsauertownsend">Capítulo
+17: Transmisión resonante y efecto Ramsauer–Townsend</h1>
+<h2 id="vídeos-de-esta-clase-youtube">Vídeos de esta clase
+(YouTube)</h2>
+<p><strong>Lección 17: Ramsauer-Townsend effect. Scattering in
+1D.</strong></p>
+<ul>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="EdRkQmmq7vk" data-title="Waves on the finite square well"><span class="video-play-icon">&#9654;</span> <strong>Waves on the finite square well</strong> <span class="video-dur">(15:44)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=EdRkQmmq7vk" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="KkSr0SvXfNY" data-title="Resonant transmission"><span class="video-play-icon">&#9654;</span> <strong>Resonant transmission</strong> <span class="video-dur">(17:49)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=KkSr0SvXfNY" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li><a
+href="https://www.youtube.com/watch?v=5u-9lFhCl5w">Ramsauer-Townsend
+phenomenology</a> (10:16)</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="twdF0EIbFds" data-title="Scattering in 1D. Incoming and outgoing waves"><span class="video-play-icon">&#9654;</span> <strong>Scattering in 1D. Incoming and outgoing waves</strong> <span class="video-dur">(18:05)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=twdF0EIbFds" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+<li class="video-item">
+<button type="button" class="video-play" data-vid="w49WAat6ymk" data-title="Scattered wave and phase shift"><span class="video-play-icon">&#9654;</span> <strong>Scattered wave and phase shift</strong> <span class="video-dur">(08:40)</span></button>
+<a class="video-ext" href="https://www.youtube.com/watch?v=w49WAat6ymk" target="_blank" rel="noopener">YouTube&nbsp;↗</a>
+</li>
+</ul>
+<hr />
+<p><em>B. Zwiebach</em> <em>26 de abril de 2016</em></p>
+<h2 id="contenido">Contenido</h2>
+<ol type="1">
+<li>Transmisión resonante en un pozo cuadrado</li>
+<li>El efecto Ramsauer–Townsend</li>
+</ol>
+<h2 id="transmisión-resonante-en-un-pozo-cuadrado">1. Transmisión
+resonante en un pozo cuadrado</h2>
+<p>Consideremos el pozo cuadrado finito</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">para </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.1)</mtext></mrow><annotation encoding="application/x-tex">
+V(x) =
+\begin{cases}
+0, &amp; \text{para } |x| &gt; a, \\
+-V_0, &amp; \text{para } |x| &lt; a.
+\end{cases}
+\qquad \text{(1.1)}
+</annotation></semantics></math></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V_0 &gt; 0</annotation></semantics></math>
+tiene unidades de energía. Consideramos un autoestado de energía, una
+solución de dispersión con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E &gt; 0</annotation></semantics></math>
+que representa una función de onda incidente que se aproxima al pozo
+desde la izquierda. Un ansatz para el autoestado tendrá la forma</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>A</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>+</mo><mi>B</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&lt;</mo><mi>−</mi><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>C</mi><msup><mi>e</mi><mrow><mi>i</mi><msub><mi>k</mi><mn>2</mn></msub><mi>x</mi></mrow></msup><mo>+</mo><mi>D</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><msub><mi>k</mi><mn>2</mn></msub><mi>x</mi></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>F</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>k</mi><mi>x</mi></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mi>a</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.2)</mtext></mrow><annotation encoding="application/x-tex">
+\psi(x) =
+\begin{cases}
+Ae^{ikx} + Be^{-ikx}, &amp; x &lt; -a, \\
+Ce^{ik_2 x} + De^{-ik_2 x}, &amp; |x| &lt; a, \\
+Fe^{ikx}, &amp; x &gt; a.
+\end{cases}
+\qquad \text{(1.2)}
+</annotation></semantics></math></p>
+<p><em>Figura 1: El pozo cuadrado con todas las ondas relevantes
+representadas; la onda con coeficiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+incide desde la izquierda.</em></p>
+<p>Aquí
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es el coeficiente de la onda incidente que existe para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>−</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">x &lt; -a</annotation></semantics></math>,
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+es el coeficiente de la onda reflejada (véase la Figura 1). Ambas ondas
+tienen número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+En la región del pozo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">|x| &lt; a</annotation></semantics></math>
+tenemos una onda que se mueve hacia la derecha, con coeficiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+y una onda que se mueve hacia la izquierda, con coeficiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+El número de onda en esta región se denomina
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>2</mn></msub><annotation encoding="application/x-tex">k_2</annotation></semantics></math>.
+A la derecha del pozo tenemos solo una onda, que se mueve hacia la
+derecha, con coeficiente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+y número de onda
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Nótese que, aunque el potencial es una función par de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+un autoestado de energía no normalizable no tiene por qué ser par ni
+impar. La simetría se rompe por la condición de que la onda incide desde
+la izquierda. Los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>2</mn></msub><annotation encoding="application/x-tex">k_2</annotation></semantics></math>,
+ambos positivos, quedan determinados por la ecuación de Schrödinger y
+son</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mi>E</mi></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>k</mi><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.3)</mtext></mrow><annotation encoding="application/x-tex">
+k^2 = \frac{2mE}{\hbar^2}, \qquad k_2^2 = \frac{2m(E + V_0)}{\hbar^2}. \qquad \text{(1.3)}
+</annotation></semantics></math></p>
+<p>Hay cuatro condiciones de contorno: continuidad de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
+en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>−</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">x = -a</annotation></semantics></math>
+y en
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>.
+Estas cuatro ecuaciones pueden usarse para fijar los coeficientes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+en términos de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Definimos los coeficientes de reflexión y transmisión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+de la siguiente manera:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≡</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>B</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>T</mi><mo>≡</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>F</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.4)</mtext></mrow><annotation encoding="application/x-tex">
+R \equiv \frac{|B|^2}{|A|^2}, \qquad T \equiv \frac{|F|^2}{|A|^2}. \qquad \text{(1.4)}
+</annotation></semantics></math></p>
+<p>De la conservación de la corriente de probabilidad sabemos que las
+corrientes a la izquierda y a la derecha del pozo deben ser iguales, de
+modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>−</mo><mo stretchy="false" form="prefix">|</mo><mi>B</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>F</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.5)</mtext></mrow><annotation encoding="application/x-tex">
+|A|^2 - |B|^2 = |F|^2. \qquad \text{(1.5)}
+</annotation></semantics></math></p>
+<p>Esta no es una ecuación independiente; debe deducirse de las
+condiciones de contorno. Implica que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>+</mo><mi>T</mi><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>B</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>F</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>A</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.6)</mtext></mrow><annotation encoding="application/x-tex">
+R + T = \frac{|B|^2}{|A|^2} + \frac{|F|^2}{|A|^2} = 1, \qquad \text{(1.6)}
+</annotation></semantics></math></p>
+<p>lo que muestra que nuestra definición de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+tiene sentido.</p>
+<p>Resolver para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+es directo pero un poco laborioso. Citemos simplemente el resultado que
+se obtiene. El coeficiente de transmisión es la siguiente función de la
+energía
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+del autoestado:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>T</mi></mfrac><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mfrac><msubsup><mi>V</mi><mn>0</mn><mn>2</mn></msubsup><mrow><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mn>2</mn><msub><mi>k</mi><mn>2</mn></msub><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.7)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{T} = 1 + \frac{1}{4}\frac{V_0^2}{E(E+V_0)}\sin^2(2k_2 a). \qquad \text{(1.7)}
+</annotation></semantics></math></p>
+<p>Dado que el segundo término del lado derecho es manifiestamente
+positivo, tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T \le 1</annotation></semantics></math>.
+Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E \to 0</annotation></semantics></math>,
+tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>T</mi></mfrac><mo>→</mo><mn>1</mn><mo>+</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\frac{1}{T} \to 1 + \infty</annotation></semantics></math>,
+lo que significa que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T \to 0</annotation></semantics></math>.
+Cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">E \to \infty</annotation></semantics></math>,
+tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T \to 1</annotation></semantics></math>.</p>
+<p>Podemos eliminar todas las unidades de este resultado definiendo</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>≡</mo><mfrac><mi>E</mi><msub><mi>V</mi><mn>0</mn></msub></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup><mo>≡</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.8)</mtext></mrow><annotation encoding="application/x-tex">
+e \equiv \frac{E}{V_0}, \qquad z_0^2 \equiv \frac{2ma^2 V_0}{\hbar^2}. \qquad \text{(1.8)}
+</annotation></semantics></math></p>
+<p>Entonces,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mn>2</mn></msub><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>m</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>ℏ</mi><mn>2</mn></msup></mfrac><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>e</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mn>2</mn><msub><mi>k</mi><mn>2</mn></msub><mi>a</mi><mo>=</mo><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub><msqrt><mrow><mn>1</mn><mo>+</mo><mi>e</mi></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.9)</mtext></mrow><annotation encoding="application/x-tex">
+(k_2 a)^2 = \frac{2ma^2(E+V_0)}{\hbar^2} = \frac{2ma^2 V_0}{\hbar^2}(1+e) \;\; \to \;\; 2k_2 a = 2z_0\sqrt{1+e}, \qquad \text{(1.9)}
+</annotation></semantics></math></p>
+<p>de modo que tenemos</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>T</mi></mfrac><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>4</mn><mi>e</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>e</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub><msqrt><mrow><mn>1</mn><mo>+</mo><mi>e</mi></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.10)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{1}{T} = 1 + \frac{1}{4e(1+e)}\sin^2\!\left(2z_0\sqrt{1+e}\right). \qquad \text{(1.10)}
+</annotation></semantics></math></p>
+<p>Ahora podemos ver que el pozo se vuelve transparente, haciendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T = 1</annotation></semantics></math>,
+para ciertos valores de la energía. Todo lo que necesitamos es que el
+argumento de la función seno sea un múltiplo de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub><msqrt><mrow><mn>1</mn><mo>+</mo><mi>e</mi></mrow></msqrt><mo>=</mo><mi>n</mi><mi>π</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>n</mi><mo>∈</mo><mi>ℤ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
+2z_0\sqrt{1+e} = n\pi, \quad n \in \mathbb{Z}. \qquad \text{(1.11)}
+</annotation></semantics></math></p>
+<p>No todos los enteros están permitidos. Como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e &gt; 0</annotation></semantics></math>,
+el lado izquierdo es mayor o igual que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">2z_0</annotation></semantics></math>
+y, por lo tanto,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mfrac><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow><mi>π</mi></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.12)</mtext></mrow><annotation encoding="application/x-tex">
+n \ge \frac{2z_0}{\pi}. \qquad \text{(1.12)}
+</annotation></semantics></math></p>
+<p>Llamemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>=</mo><msub><mi>e</mi><mi>n</mi></msub><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E_n = e_n V_0</annotation></semantics></math>
+a las energías asociadas. Entonces</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>n</mi></msub><mo>+</mo><mn>1</mn><mo>=</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup></mrow><mrow><mn>4</mn><msubsup><mi>z</mi><mn>0</mn><mn>2</mn></msubsup></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup><msup><mi>ℏ</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msub><mi>V</mi><mn>0</mn></msub></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.13)</mtext></mrow><annotation encoding="application/x-tex">
+e_n + 1 = \frac{n^2\pi^2}{4z_0^2} = \frac{n^2\pi^2\hbar^2}{2m(2a)^2 V_0}, \qquad \text{(1.13)}
+</annotation></semantics></math></p>
+<p>de modo que</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup><msup><mi>ℏ</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.14)</mtext></mrow><annotation encoding="application/x-tex">
+E_n + V_0 = \frac{n^2\pi^2\hbar^2}{2m(2a)^2}. \qquad \text{(1.14)}
+</annotation></semantics></math></p>
+<p>Nótese que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E_n + V_0</annotation></semantics></math>
+es la energía del estado de dispersión medida respecto al fondo del pozo
+cuadrado. El lado derecho es la energía del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-ésimo
+estado ligado del pozo cuadrado infinito de anchura
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">2a</annotation></semantics></math>.
+Obtenemos así un resultado bastante sorprendente: obtenemos transmisión
+total para aquellas energías
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E_n &gt; 0</annotation></semantics></math>
+que están en el espectro de la extensión de pozo cuadrado infinito de
+nuestro pozo cuadrado finito. La desigualdad
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mfrac><mrow><mn>2</mn><msub><mi>z</mi><mn>0</mn></msub></mrow><mi>π</mi></mfrac></mrow><annotation encoding="application/x-tex">n \ge \frac{2z_0}{\pi}</annotation></semantics></math>
+garantiza que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E_n &gt; 0</annotation></semantics></math>.
+Dado que los estados ligados del pozo cuadrado infinito se caracterizan
+por ajustar un número entero de semilongitudes de onda, tenemos una
+situación de tipo resonancia en la que la transmisión perfecta ocurre
+cuando las ondas de dispersión encajan perfectamente dentro del pozo
+cuadrado finito. El fenómeno que hemos observado se denomina
+¡transmisión resonante!</p>
+<p><em>Figura 2: Obtenemos transmisión resonante a través del pozo
+finito en las energías de estado ligado positivas de un supuesto pozo
+infinito.</em></p>
+<p>El ajuste de un número exacto de semilongitudes de onda también puede
+verse directamente a partir de la anulación de la función seno en (1.7),
+que da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">k_2(2a) = n\pi</annotation></semantics></math>,
+lo que implica</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>λ</mi></mfrac><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi><mi>π</mi><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>→</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mn>2</mn><mi>a</mi><mo>=</mo><mi>n</mi><mspace width="0.167em"></mspace><mfrac><mi>λ</mi><mn>2</mn></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.15)</mtext></mrow><annotation encoding="application/x-tex">
+\frac{2\pi}{\lambda}(2a) = n\pi \;\; \to \;\; 2a = n\,\frac{\lambda}{2}. \qquad \text{(1.15)}
+</annotation></semantics></math></p>
+<p>Mostramos en la Figura 3 el coeficiente de transmisión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mi>E</mi><mi>/</mi><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e = E/V_0</annotation></semantics></math>
+para un pozo cuadrado con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>=</mo><mn>13</mn><mi>π</mi><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">z_0 = 13\pi/4</annotation></semantics></math>.
+En este caso debemos tener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mfrac><mn>13</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">n \ge \frac{13}{2}</annotation></semantics></math>,
+es decir,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n \ge 7</annotation></semantics></math>.</p>
+<p><em>Figura 3: El coeficiente de transmisión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+en función de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+para un pozo cuadrado con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>=</mo><mn>13</mn><mi>π</mi><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">z_0 = 13\pi/4</annotation></semantics></math>.
+En las energías en las que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T = 1</annotation></semantics></math>
+tenemos dispersión resonante. Los valores de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>7</mn></msub><mo>,</mo><msub><mi>E</mi><mn>8</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">E_7, E_8, \ldots</annotation></semantics></math>
+se indican en la figura. Hay tres casos de transmisión resonante para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>E</mi><mo>&lt;</mo><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">0 &lt; E &lt; V_0</annotation></semantics></math>.
+Nótese que el espaciado entre los puntos donde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T = 1</annotation></semantics></math>
+crece a medida que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+crece.</em></p>
+<h2 id="el-efecto-ramsauertownsend">2. El efecto Ramsauer–Townsend</h2>
+<p>Carl Ramsauer y John Sealy Townsend publicaron por separado sus
+investigaciones en 1921. Estaban estudiando la dispersión elástica de
+electrones de baja energía por átomos de gases nobles. Estos gases
+tienen sus capas electrónicas completamente llenas y son a la vez muy
+poco reactivos y poseen altas energías de ionización. El potencial es
+creado por el núcleo y se hace visible a medida que el electrón
+incidente penetra en la nube electrónica. Este potencial es un potencial
+atractivo esféricamente simétrico para los electrones: una especie de
+pozo esférico finito. En el experimento, algunos electrones colisionan
+con los átomos y se dispersan, la mayoría rebotando hacia atrás.
+¡Podemos así considerar el coeficiente de reflexión
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+como un indicador (proxy) de la sección eficaz de dispersión!</p>
+<p>Ramsauer y Townsend reportaron un fenómeno muy inusual. A energías
+muy bajas, la sección eficaz de dispersión era alta. Pero la dependencia
+con la energía resultaba sorprendente. A medida que la energía
+aumentaba, la dispersión disminuía hasta acercarse a cero, para volver a
+aumentar cuando la energía se incrementaba aún más. Tal comportamiento
+misterioso no tenía una explicación clásica razonable. Lo que está en
+juego es la dispersión resonante cuántica. ¡Que la sección eficaz tienda
+a cero significa que el coeficiente de reflexión tiende a cero, y el
+coeficiente de transmisión tiende a uno! La primera transmisión
+resonante ocurre para electrones de alrededor de un electronvoltio
+(tales electrones tienen una velocidad de aproximadamente 600 km/s). La
+Figura 4 proporciona un esquema tanto de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+como de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+en función de la energía. Nuestro potencial de pozo cuadrado
+unidimensional no proporciona una buena correspondencia cuantitativa con
+los datos, pero ilustra el fenómeno físico. Se necesita un pozo cuadrado
+esférico tridimensional para un análisis cuantitativo.</p>
+<p><em>Andrew Turner transcribió las notas manuscritas de Zwiebach para
+crear la primera versión en LaTeX de este documento.</em></p>
+<p><em>Figura 4: Los coeficientes de reflexión y transmisión en función
+de la energía para el efecto Ramsauer–Townsend. Nótese que
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>+</mo><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R + T = 1</annotation></semantics></math>.
+En la flecha, tenemos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R = 0</annotation></semantics></math>,
+por lo que no hay dispersión. ¡Todos los electrones pasan directamente a
+través de los átomos del gas noble! Experimentan transmisión resonante.
+Esto ocurre por primera vez alrededor de 1 eV.</em></p>
+<hr />
+<p><em>MIT OpenCourseWare</em> <em>https://ocw.mit.edu</em></p>
+<p><em>8.04 Física Cuántica I</em> <em>Primavera de 2016</em></p>
+<p><em>Para obtener información sobre cómo citar estos materiales o
+sobre nuestras condiciones de uso, visite:
+https://ocw.mit.edu/terms.</em></p>
+<script>
+(function () {
+  var fp = document.getElementById("fp");
+  var fpBar = document.getElementById("fp-bar");
+  var fpTitle = document.getElementById("fp-title");
+  var fpIframe = document.getElementById("fp-iframe");
+  var fpMin = document.getElementById("fp-min");
+  var fpClose = document.getElementById("fp-close");
+
+  function openVideo(vid, title) {
+    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    fpIframe.title = title;
+    fpTitle.textContent = title;
+    fp.hidden = false;
+    fp.classList.remove("minimizado");
+  }
+  function closeVideo() {
+    fp.hidden = true;
+    fpIframe.src = "about:blank";
+  }
+
+  document.querySelectorAll(".video-play").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.dataset.vid, btn.dataset.title);
+    });
+  });
+  fpClose.addEventListener("click", closeVideo);
+  fpMin.addEventListener("click", function () {
+    fp.classList.toggle("minimizado");
+  });
+
+  /* arrastrar el reproductor flotante */
+  var dragging = false, offX = 0, offY = 0;
+  function startDrag(x, y) {
+    dragging = true;
+    var r = fp.getBoundingClientRect();
+    offX = x - r.left;
+    offY = y - r.top;
+    fp.style.right = "auto";
+    fp.style.bottom = "auto";
+    fp.style.left = r.left + "px";
+    fp.style.top = r.top + "px";
+  }
+  function moveDrag(x, y) {
+    if (!dragging) return;
+    var w = fp.offsetWidth, h = fp.offsetHeight;
+    var left = Math.min(Math.max(0, x - offX), window.innerWidth - w);
+    var top = Math.min(Math.max(0, y - offY), window.innerHeight - h);
+    fp.style.left = left + "px";
+    fp.style.top = top + "px";
+  }
+  function endDrag() { dragging = false; }
+
+  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
+  window.addEventListener("mouseup", endDrag);
+
+  fpBar.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchmove", function (e) {
+    var t = e.touches[0]; moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener("touchend", endDrag);
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var panel = document.getElementById("a11y-panel");
+  var toggle = document.getElementById("a11y-toggle");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("abierto");
+  });
+  document.addEventListener("click", function (e) {
+    if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
+  });
+
+  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
+  var fontIdx = 2;
+
+  var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
+  var SERIF = "\"Georgia\", \"Times New Roman\", serif";
+
+  var settings = {
+    fontscale: 100,
+    lineheight: "1.6",
+    fontfamily: "serif",
+    width: "860"
+  };
+
+  function load(key, fallback) {
+    var v = localStorage.getItem("mit804-" + key);
+    return v === null ? fallback : v;
+  }
+  function save(key, value) {
+    localStorage.setItem("mit804-" + key, value);
+  }
+
+  function applyAll() {
+    root.style.fontSize = settings.fontscale + "%";
+    root.style.setProperty("--line-height", settings.lineheight);
+    root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
+    root.style.setProperty("--content-width", settings.width + "px");
+    markActive();
+  }
+
+  function markActive() {
+    document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+      var name = group.dataset.group;
+      var current = name === "fontscale" ? null : String(settings[name]);
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("activo", name !== "fontscale" && btn.dataset.value === current);
+      });
+    });
+  }
+
+  settings.fontscale = parseInt(load("fontscale", "100"), 10);
+  fontIdx = FONT_STEPS.indexOf(settings.fontscale);
+  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  settings.lineheight = load("lineheight", "1.6");
+  settings.fontfamily = load("fontfamily", "serif");
+  settings.width = load("width", "860");
+  applyAll();
+
+  document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
+    var name = group.dataset.group;
+    group.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (name === "fontscale") {
+          var action = btn.dataset.value;
+          if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
+          else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
+          else fontIdx = 2;
+          settings.fontscale = FONT_STEPS[fontIdx];
+          save("fontscale", settings.fontscale);
+        } else {
+          settings[name] = btn.dataset.value;
+          save(name, settings[name]);
+        }
+        applyAll();
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
