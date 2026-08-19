@@ -25,6 +25,13 @@
       vertical-align: middle;
     }
   </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
@@ -40,6 +47,7 @@
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 </div>
 </div>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -71,13 +79,6 @@
       <button type="button" data-value="640">Estrecho</button>
       <button type="button" data-value="860">Normal</button>
       <button type="button" data-value="1100">Ancho</button>
-    </div>
-  </div>
-  <div class="a11y-row">
-    <span class="a11y-label">Tema</span>
-    <div class="a11y-btns" data-group="theme">
-      <button type="button" data-value="light">Claro</button>
-      <button type="button" data-value="dark">Oscuro</button>
     </div>
   </div>
 </div>
@@ -1023,8 +1024,7 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     fontscale: 100,
     lineheight: "1.6",
     fontfamily: "serif",
-    width: "860",
-    theme: "light"
+    width: "860"
   };
 
   function load(key, fallback) {
@@ -1040,7 +1040,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     root.style.setProperty("--line-height", settings.lineheight);
     root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
     root.style.setProperty("--content-width", settings.width + "px");
-    root.setAttribute("data-theme", settings.theme);
     markActive();
   }
 
@@ -1060,7 +1059,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   settings.lineheight = load("lineheight", "1.6");
   settings.fontfamily = load("fontfamily", "serif");
   settings.width = load("width", "860");
-  settings.theme = load("theme", "light");
   applyAll();
 
   document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
@@ -1082,6 +1080,37 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
       });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
 })();
 </script>
 <script>

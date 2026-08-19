@@ -25,9 +25,17 @@
       vertical-align: middle;
     }
   </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -59,13 +67,6 @@
       <button type="button" data-value="640">Estrecho</button>
       <button type="button" data-value="860">Normal</button>
       <button type="button" data-value="1100">Ancho</button>
-    </div>
-  </div>
-  <div class="a11y-row">
-    <span class="a11y-label">Tema</span>
-    <div class="a11y-btns" data-group="theme">
-      <button type="button" data-value="light">Claro</button>
-      <button type="button" data-value="dark">Oscuro</button>
     </div>
   </div>
 </div>
@@ -175,8 +176,8 @@ en forma irreducible (con la condición inicial del apartado b).</li>
 se mueve en el eje
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
 con energía potencial</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msub><mi>E</mi><mn>0</mn></msub><msup><mi>a</mi><mn>4</mn></msup></mfrac><msup><mi>x</mi><mn>4</mn></msup><mo>+</mo><mn>4</mn><mi>a</mi><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>8</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
-V(x) = \frac{E_0}{a^4} x^4 + 4a x^3 - 8a^2 x^2
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><msub><mi>E</mi><mn>0</mn></msub><msup><mi>a</mi><mn>4</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mn>4</mn></msup><mo>+</mo><mn>4</mn><mi>a</mi><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>8</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+V(x) = \frac{E_0}{a^4}\left(x^4 + 4a x^3 - 8a^2 x^2\right)
 </annotation></semantics></math></p>
 <ol type="a">
 <li>Encuentre las posiciones en las que la partícula está en equilibrio
@@ -272,8 +273,7 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     fontscale: 100,
     lineheight: "1.6",
     fontfamily: "serif",
-    width: "860",
-    theme: "light"
+    width: "860"
   };
 
   function load(key, fallback) {
@@ -289,7 +289,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     root.style.setProperty("--line-height", settings.lineheight);
     root.style.setProperty("--font-family", settings.fontfamily === "sans" ? SANS : SERIF);
     root.style.setProperty("--content-width", settings.width + "px");
-    root.setAttribute("data-theme", settings.theme);
     markActive();
   }
 
@@ -309,7 +308,6 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   settings.lineheight = load("lineheight", "1.6");
   settings.fontfamily = load("fontfamily", "serif");
   settings.width = load("width", "860");
-  settings.theme = load("theme", "light");
   applyAll();
 
   document.querySelectorAll(".a11y-btns[data-group]").forEach(function (group) {
@@ -331,6 +329,37 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
       });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
 })();
 </script>
 </body>
