@@ -10,12 +10,12 @@ SRC="$1"                       # ruta al .md
 OUT_HTML="$2"                  # ruta al .html de salida
 OUT_EPUB="$3"                  # ruta al .epub de salida
 
-# El conversor a MathML de pandoc no acepta \tag cuando lo precede una
-# secuencia suelta como "2L" o "dx" (sí cuando precede una llave o un
-# superíndice). Anteponer un grupo vacío lo hace válido en todos los casos.
+# El conversor a MathML de pandoc descarta \tag en muchos contextos (dentro
+# de \begin{cases}, tras un punto final...) y el número de ecuación
+# desaparece sin previo aviso. Se traduce a texto normal, que siempre sale.
 TMP="$(mktemp --suffix=.md)"
 trap 'rm -f "$TMP"' EXIT
-sed 's/[[:space:]]*\\tag{/{}\\tag{/g' "$SRC" > "$TMP"
+sed -E 's/[[:space:]]*\\tag\{([^}]*)\}/\\qquad\\text{(\1)}/g' "$SRC" > "$TMP"
 SRC="$TMP"
 
 # --- HTML: pandoc + el "chrome" común del curso ---
