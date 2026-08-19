@@ -57,17 +57,22 @@ la primera franja en blanco ancha o hasta la última línea de párrafo. Sirve
 igual para figuras vectoriales que para imágenes incrustadas, y respeta las
 gráficas que llevan sus propios rótulos y ejes.
 
-Antes de insertarlas conviene pasarlas a tinta opaca sobre fondo
-transparente, que es lo que permite invertirlas en el tema oscuro:
+Las guarda ya como tinta opaca sobre fondo transparente, que es lo que
+permite invertirlas en el tema oscuro, y lleva a blanco puro el gris muy
+claro para que el moteado de los apuntes escaneados no deje neblina.
 
-```python
-from PIL import Image
-import numpy as np
-g = np.array(Image.open(p).convert("L")).astype(np.int16)
-rgba = np.zeros(g.shape + (4,), dtype=np.uint8)
-rgba[..., 3] = (255 - g).clip(0, 255).astype(np.uint8)
-Image.fromarray(rgba, "RGBA").save(p, optimize=True)
+Los PDF originales no están en el repositorio. Los de 8.03 son los
+`Text_ChN.pdf` del curso; los de 8.04 se sacan de la página de cada
+recurso, que es donde aparece la URL con el hash:
+
+```bash
+curl -sL "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/resources/mit8_04s16_lecnotes1/" \
+  | grep -oE '/courses/8-04[^"]*\.pdf' | head -1
 ```
+
+Alguna figura se le escapa al recorte automático —la 8.1 y la 10.6 de
+8.03—; en esos casos se localiza la página con `pdftotext -layout` y se
+recorta a mano con `pdftoppm -r 200` más `Image.crop`.
 
 ### 4. Insertar las figuras
 
@@ -76,9 +81,11 @@ python3 insertar_figuras.py 8.03-vibraciones-ondas-es
 python3 figuras_epub.py     8.03-vibraciones-ondas-es
 ```
 
-El primero sustituye los marcadores «(Figura N: descripción)» por la imagen
-con esa descripción como pie, y coloca tras el párrafo que las cita las que
-no tenían marcador. El segundo hace lo mismo dentro de los EPUB, añadiendo
+El primero sustituye por la imagen los marcadores «(Figura N: descripción)»
+—admite también «Figuras N y M» y el rango «Figuras N-M»— y los párrafos de
+leyenda «*Figura N: descripción*», que es la forma que tienen los apuntes de
+8.04; la descripción queda como pie. Las figuras que no tienen ni marcador ni
+leyenda van tras el párrafo que las cita. El segundo hace lo mismo dentro de los EPUB, añadiendo
 las imágenes al manifiesto; ahí van sobre fondo blanco opaco, porque un
 lector en modo noche dejaría invisible la tinta negra sobre transparente.
 

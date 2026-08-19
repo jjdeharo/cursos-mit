@@ -5,6 +5,10 @@ Funciona tanto con figuras vectoriales como con imágenes incrustadas: en vez
 de buscar objetos de imagen, localiza la leyenda ("Figure N:") mediante las
 cajas de texto y recorta la tinta que queda por encima, entre la leyenda y el
 bloque de texto anterior.
+
+El PNG resultante lleva la tinta en negro sobre fondo transparente, para que
+la figura se lea igual en el tema claro y en el oscuro de la web. Los EPUB
+la aplanan luego sobre blanco (véase figuras_epub.py).
 """
 import re
 import subprocess
@@ -16,6 +20,20 @@ import numpy as np
 from PIL import Image
 
 DPI = 200
+
+# Por debajo de este gris el píxel se considera papel y se lleva a blanco
+# puro. Los PDF vectoriales ya lo están; en los apuntes escaneados evita que
+# el moteado del papel se quede como una neblina semitransparente.
+BLANCO = 240
+
+
+def a_transparente(gris):
+    """Convierte un recorte en escala de grises a PNG de tinta transparente."""
+    gris = gris.copy()
+    gris[gris >= BLANCO] = 255
+    rgba = np.zeros(gris.shape + (4,), dtype=np.uint8)
+    rgba[..., 3] = 255 - gris          # el negro queda opaco; el papel, invisible
+    return Image.fromarray(rgba, "RGBA")
 
 
 def cajas_de_texto(pdf):
@@ -137,7 +155,7 @@ def extraer(pdf, destino, prefijo):
     for num, (_, recorte, npag, texto, w, h) in sorted(
             mejores.items(), key=lambda kv: float(kv[0])):
         nombre = f"{prefijo}_fig{num}.png"
-        Image.fromarray(recorte).save(destino / nombre)
+        a_transparente(recorte).save(destino / nombre)
         resultados.append((nombre, npag, texto, w, h))
 
     return resultados

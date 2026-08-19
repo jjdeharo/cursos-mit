@@ -33,6 +33,14 @@ MARCADOR = re.compile(
     r"(</p>|)",                                        # ¿cierra el párrafo?
     re.S)
 
+# Los apuntes de 8.04 no llevan marcador: la leyenda ya está traducida como
+# un párrafo en cursiva, «<p><em>Figura N: descripción</em></p>». La imagen
+# va justo encima y esa leyenda pasa a ser el pie de la figura.
+LEYENDA = re.compile(
+    r"<p><em>Figuras?\s+([0-9]+(?:\.[0-9]+)?)\s*:"
+    r"((?:(?!</p>).)*?)</em></p>",
+    re.S)
+
 
 def expandir(n1, enlace, n2, disponibles):
     """Devuelve la lista de números que nombra un marcador."""
@@ -96,6 +104,17 @@ def procesar(ruta, doc):
         return figura_html(doc, presentes, pie) + ("" if cierra else "\n<p>")
 
     texto, n_marc = MARCADOR.subn(sustituir, texto)
+
+    def sustituir_leyenda(m):
+        num = m.group(1)
+        if num not in disponibles:
+            faltan.append(num)
+            return m.group(0)
+        usadas.add(num)
+        return figura_html(doc, [num], m.group(2))
+
+    texto, n_ley = LEYENDA.subn(sustituir_leyenda, texto)
+    n_marc += n_ley
 
     # Figuras citadas en el texto que no tenían marcador: van tras el párrafo
     # que las menciona por primera vez.

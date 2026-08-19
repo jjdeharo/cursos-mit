@@ -30,6 +30,13 @@ MARCADOR = re.compile(
     r"(</p>|)",                                        # ¿cierra el párrafo?
     re.S)
 
+# Los apuntes de 8.04 no llevan marcador: la leyenda ya está traducida como
+# un párrafo en cursiva, «<p><em>Figura N: descripción</em></p>».
+LEYENDA = re.compile(
+    r"<p><em>Figuras?\s+([0-9]+(?:\.[0-9]+)?)\s*:"
+    r"((?:(?!</p>).)*?)</em></p>",
+    re.S)
+
 CSS = """
 /* --- figuras tomadas de los PDF originales del curso --- */
 figure.figura { margin: 1.5em 0; text-align: center; page-break-inside: avoid; }
@@ -103,7 +110,9 @@ def procesar(epub, doc):
     salida = []
     for info, datos in entradas:
         nombre = info.filename
-        if nombre.endswith(".xhtml") and b"<em>(Figura" in datos:
+        # No basta con buscar el marcador: hay documentos (los apuntes de
+        # 8.04) que no lo llevan y solo citan las figuras en la prosa.
+        if nombre.endswith(".xhtml") and re.search(rb"[Ff]iguras?\s+[0-9]", datos):
             texto = datos.decode("utf-8")
 
             def sub(m):
@@ -117,6 +126,15 @@ def procesar(epub, doc):
                 return bloque(hay, m.group(4)) + ("" if m.group(5) else "\n<p>")
 
             texto = MARCADOR.sub(sub, texto)
+
+            def sub_leyenda(m):
+                num = m.group(1)
+                if num not in disponibles:
+                    return m.group(0)
+                usadas.add(num)
+                return bloque([num], m.group(2))
+
+            texto = LEYENDA.sub(sub_leyenda, texto)
 
             # Figuras citadas en el texto pero sin marcador propio.
             for num in sorted(set(disponibles) - usadas,

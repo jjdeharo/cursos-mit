@@ -211,6 +211,20 @@ li.video-item {
   .a11y-panel { top: auto; bottom: 58px; right: 13px; }
 }
 
+/* --- figuras tomadas de los PDF originales del curso --- */
+figure.figura { margin: 1.8rem 0; text-align: center; }
+figure.figura img { max-width: 100%; height: auto; }
+/* Son dibujos de línea guardados como tinta opaca sobre fondo transparente,
+   así que encajan con cualquier fondo y basta invertirlos en tema oscuro. */
+html[data-theme="dark"] figure.figura img { filter: invert(1); }
+figure.figura figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9em;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: italic;
+}
+
 /* --- navegación de vuelta al curso y a la portada --- */
 .migas {
   font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
