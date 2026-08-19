@@ -22,9 +22,10 @@ FIGS = Path(sys.argv[2]) if len(sys.argv) > 2 else RAIZ / "herramientas" / "figu
 # El paréntesis descriptivo puede ocupar el párrafo entero o llevar prosa
 # detrás. La descripción nunca cruza un </p>: sin ese límite, un marcador
 # sin cierre propio se comería el marcado hasta el siguiente del documento.
+# El marcador puede nombrar una figura, dos unidas por «y», o un rango «N-M».
 MARCADOR = re.compile(
     r"<p><em>\(Figuras?\s+([0-9]+(?:\.[0-9]+)?)"      # primer número
-    r"(?:\s*y\s*([0-9]+(?:\.[0-9]+)?))?"              # opcional: "y N"
+    r"(?:\s*(y|[-–])\s*([0-9]+(?:\.[0-9]+)?))?"       # opcional: «y N» o «-N»
     r"\s*:?((?:(?!</p>|<p>).)*?)\)</em>"               # descripción
     r"(</p>|)",                                        # ¿cierra el párrafo?
     re.S)
@@ -52,10 +53,30 @@ def sobre_blanco(origen):
     return buf.getvalue()
 
 
+def expandir(n1, enlace, n2, disponibles):
+    """Devuelve la lista de números que nombra un marcador."""
+    if not n2:
+        return [n1]
+    if enlace == "y":
+        return [n1, n2]
+    pre1, _, suf1 = n1.rpartition(".")
+    pre2, _, suf2 = n2.rpartition(".")
+    if pre1 != pre2 or not suf1.isdigit() or not suf2.isdigit():
+        return [n1, n2]
+    return [f"{pre1}.{i}" for i in range(int(suf1), int(suf2) + 1)
+            if f"{pre1}.{i}" in disponibles]
+
+
 def bloque(nums, pie):
     imgs = "\n".join(
         f'<img src="../images/fig{n}.png" alt="Figura {n}" />' for n in nums)
-    etiqueta = "Figura " + " y ".join(nums) + (":" if pie.strip() else "")
+    if len(nums) > 2:
+        etiqueta = f"Figuras {nums[0]}-{nums[-1]}"
+    elif len(nums) == 2:
+        etiqueta = f"Figuras {nums[0]} y {nums[1]}"
+    else:
+        etiqueta = f"Figura {nums[0]}"
+    etiqueta += ":" if pie.strip() else ""
     return (f'<figure class="figura">\n{imgs}\n'
             f'<figcaption>{etiqueta}{pie}</figcaption>\n</figure>')
 
@@ -86,14 +107,14 @@ def procesar(epub, doc):
             texto = datos.decode("utf-8")
 
             def sub(m):
-                nums = [n for n in (m.group(1), m.group(2)) if n]
+                nums = expandir(m.group(1), m.group(2), m.group(3), disponibles)
                 hay = [n for n in nums if n in disponibles]
                 if not hay:
                     return m.group(0)
                 usadas.update(hay)
                 # Si el marcador no cerraba el párrafo, hay que reabrirlo
                 # para que la prosa siguiente no quede fuera de <p>.
-                return bloque(hay, m.group(3)) + ("" if m.group(4) else "\n<p>")
+                return bloque(hay, m.group(4)) + ("" if m.group(5) else "\n<p>")
 
             texto = MARCADOR.sub(sub, texto)
 
