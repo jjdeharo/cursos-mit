@@ -4,9 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>8.04 Física Cuántica I (español)</title>
+<script>
+  (function () {
+    var t = localStorage.getItem("mit-tema");
+    if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+    document.documentElement.setAttribute("data-theme", t || "light");
+  })();
+</script>
 <style>
   :root {
     --azul: #0b3d91;
+    --azul-header: #0b3d91;
     --azul-claro: #eef2fb;
     --texto: #1a1a1a;
     --muted: #5a5a5a;
@@ -14,6 +22,45 @@
     --fondo: #fdfdfb;
     --verde: #1e7a3c;
     --verde-claro: #eaf6ee;
+    --verde-borde: #bfe0cb;
+    --panel: #ffffff;
+    --sombra: rgba(11,61,145,0.08);
+    --aviso-texto: #23345c;
+    --rojo-bg: #fdeaea;
+    --rojo-bg-hover: #fbd7d7;
+    --rojo-texto: #a12626;
+    --rojo-borde: #f3caca;
+    --morado-bg: #f4ecff;
+    --morado-texto: #5a2ea6;
+    --morado-borde: #ddc9f5;
+    --celeste-bg: #e8eeff;
+    --celeste-borde: #c3d3f5;
+    --examen-bg: #fff8ec;
+    --examen-texto: #8a5a00;
+  }
+  html[data-theme="dark"] {
+    --azul: #86aaff;
+    --azul-claro: #1c2433;
+    --texto: #e7e7e5;
+    --muted: #aab0bb;
+    --borde: #333844;
+    --fondo: #14171c;
+    --verde-claro: #16241b;
+    --verde-borde: #2c4534;
+    --panel: #1c2027;
+    --sombra: rgba(0,0,0,0.35);
+    --aviso-texto: #cfd8f0;
+    --rojo-bg: #3a2020;
+    --rojo-bg-hover: #4a2727;
+    --rojo-texto: #ff9b9b;
+    --rojo-borde: #5c2f2f;
+    --morado-bg: #2a2138;
+    --morado-texto: #c9a6ff;
+    --morado-borde: #4a3766;
+    --celeste-bg: #1c2433;
+    --celeste-borde: #333f5c;
+    --examen-bg: #332711;
+    --examen-texto: #e8b95f;
   }
   * { box-sizing: border-box; }
   body {
@@ -23,7 +70,7 @@
     color: var(--texto);
   }
   header {
-    background: var(--azul);
+    background: var(--azul-header);
     color: white;
     padding: 3rem 1.5rem 2.5rem;
     text-align: center;
@@ -43,7 +90,7 @@
     padding: 1rem 1.2rem;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
-    color: #23345c;
+    color: var(--aviso-texto);
   }
 
   /* --- barra de progreso --- */
@@ -51,7 +98,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: #fff;
+    background: var(--panel);
     border: 1px solid var(--borde);
     border-radius: 8px;
     padding: 0.8rem 1rem;
@@ -60,7 +107,7 @@
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(11,61,145,0.08);
+    box-shadow: 0 2px 8px var(--sombra);
   }
   .progreso-barra {
     flex: 1 1 200px;
@@ -78,16 +125,16 @@
   }
   .progreso-texto { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
   .progreso button {
-    background: #fdeaea;
-    color: #a12626;
-    border: 1px solid #f3caca;
+    background: var(--rojo-bg);
+    color: var(--rojo-texto);
+    border: 1px solid var(--rojo-borde);
     border-radius: 5px;
     padding: 0.35rem 0.7rem;
     font-size: 0.8rem;
     cursor: pointer;
     white-space: nowrap;
   }
-  .progreso button:hover { background: #fbd7d7; }
+  .progreso button:hover { background: var(--rojo-bg-hover); }
 
   h2.parte {
     color: var(--azul);
@@ -132,9 +179,9 @@
   }
   .fmt a + a { margin-left: 0.35rem; }
   .fmt a:hover { filter: brightness(0.94); }
-  .fmt a.epub { background: #f4ecff; color: #5a2ea6; border-color: #ddc9f5; }
-  .fmt a.html { background: var(--verde-claro); color: var(--verde); border-color: #bfe0cb; }
-  .fmt a.pk { background: #e8eeff; color: var(--azul); border-color: #c3d3f5; }
+  .fmt a.epub { background: var(--morado-bg); color: var(--morado-texto); border-color: var(--morado-borde); }
+  .fmt a.html { background: var(--verde-claro); color: var(--verde); border-color: var(--verde-borde); }
+  .fmt a.pk { background: var(--celeste-bg); color: var(--azul); border-color: var(--celeste-borde); }
   /* En el móvil los tres botones caben igual, pero solo si se les quita el
      ancho mínimo y se deja de reservar un tercio de la fila para el tema. */
   @media (max-width: 640px) {
@@ -150,8 +197,8 @@
   }
   .extra { color: var(--muted); font-size: 0.85rem; }
 
-  tr.examen td { background: #fff8ec; font-weight: 600; }
-  tr.examen td.tema { color: #8a5a00; }
+  tr.examen td { background: var(--examen-bg); font-weight: 600; }
+  tr.examen td.tema { color: var(--examen-texto); }
 
   tr.visto td.tema { color: var(--muted); text-decoration: line-through; text-decoration-color: #b7c3d6; }
   tr.visto { background: var(--verde-claro); }
@@ -169,9 +216,27 @@
     color: var(--muted);
   }
   footer a { color: var(--azul); }
+
+  .theme-toggle {
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    z-index: 101;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--borde);
+    background: var(--panel);
+    color: var(--azul);
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--sombra);
+  }
 </style>
 </head>
 <body>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
 
 <header>
   <h1>8.04 Física Cuántica I</h1>
@@ -331,6 +396,38 @@
     });
     updateBar({});
   });
+})();
+</script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
 })();
 </script>
 
