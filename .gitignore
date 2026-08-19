@@ -3,3 +3,8 @@
 
 # Copias que crea el cliente de sincronización al escribir en paralelo
 *conflicted copy*
+
+# Figuras recortadas de los PDF originales: material intermedio, se
+# regenera con herramientas/extraer_figuras.py
+herramientas/figuras/
+__pycache__/

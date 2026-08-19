@@ -1,0 +1,8 @@
+  <script>
+    (function () {
+      var t = localStorage.getItem("mit-tema");
+      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      document.documentElement.setAttribute("data-theme", t || "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="estilo.css" />
