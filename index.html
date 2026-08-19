@@ -69,6 +69,52 @@
     color: var(--aviso-texto);
   }
   .aviso a { color: inherit; }
+  .aviso p { margin: 0.6rem 0 0; }
+  .aviso p:first-child { margin-top: 0; }
+
+  /* --- desplegables de información común --- */
+  .detalles {
+    margin-bottom: 2rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .detalles + .detalles { margin-top: -1.4rem; }
+  .detalles summary {
+    padding: 0.75rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--azul);
+    list-style: none;
+  }
+  .detalles summary::-webkit-details-marker { display: none; }
+  .detalles summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.15s ease;
+  }
+  .detalles[open] summary::before { transform: rotate(90deg); }
+  .detalles summary:hover { background: var(--azul-claro); }
+  .detalles-cuerpo {
+    padding: 0 1.2rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+    border-top: 1px solid var(--borde);
+    padding-top: 0.9rem;
+  }
+  .detalles-cuerpo p { margin: 0 0 0.7rem; }
+  .detalles-cuerpo p:last-child { margin-bottom: 0; }
+  .detalles-cuerpo a { color: var(--azul); }
+  .detalles-cuerpo code {
+    background: var(--azul-claro);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+
   .cursos {
     display: grid;
     grid-template-columns: 1fr;
@@ -140,8 +186,34 @@
 <main>
 
 <div class="aviso">
-  Estas son traducciones <strong>no oficiales</strong> de materiales de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>, generadas con asistencia de inteligencia artificial y no revisadas por el MIT ni por los profesores de cada curso. Cada documento está disponible como <strong>EPUB</strong> (con fórmulas en MathML nativo) y como <strong>HTML</strong> (leer en el navegador), además de un enlace <strong>Leer</strong> que abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a> y guarda por dónde vas. Licencia <strong>CC BY-NC-SA 4.0</strong> — ver el <code>LICENSE.md</code> de cada curso.
+  Estas son traducciones <strong>no oficiales</strong> de materiales de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>, generadas con asistencia de inteligencia artificial y <strong>no revisadas</strong> por el MIT ni por los profesores de cada curso. Licencia <strong>CC BY-NC-SA 4.0</strong>.
 </div>
+
+<details class="detalles">
+  <summary>Formatos disponibles: EPUB, HTML y Leer</summary>
+  <div class="detalles-cuerpo">
+    <p>Cada documento de ambos cursos está disponible en tres formas:</p>
+    <p><strong>EPUB</strong> — descarga para lectores de libros electrónicos, con las fórmulas en MathML nativo (no como imágenes), por lo que se ven nítidas a cualquier tamaño de letra. Compatible con Apple Books, Thorium Reader, calibre, Google Play Books, etc.</p>
+    <p><strong>HTML</strong> — para leer directamente en el navegador, con los vídeos de clase incrustados y un panel de ajustes de lectura (tamaño de letra, interlineado, tipografía y ancho de columna).</p>
+    <p><strong>Leer</strong> — abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a>, que guarda por dónde ibas, las notas y los subrayados.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>Los vídeos de clase están en inglés: cómo escucharlos en español</summary>
+  <div class="detalles-cuerpo">
+    <p>Las páginas HTML de ambos cursos incluyen los vídeos originales del MIT, que están en inglés. Desde Chrome puedes escucharlos doblados: en el reproductor de YouTube, pulsa el icono de <strong>engranaje ⚙ → Pista de audio</strong> y elige tu idioma (muchos vídeos educativos tienen doblaje automático con IA).</p>
+    <p>Si esa opción no está disponible, activa los <strong>subtítulos con traducción en directo</strong> de Chrome en <code>chrome://settings/accessibility</code>.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>Licencia y atribución</summary>
+  <div class="detalles-cuerpo">
+    <p>Los materiales originales son de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a> y se distribuyen bajo licencia <strong>CC BY-NC-SA 4.0</strong>; estas traducciones mantienen la misma licencia. Puedes ver el detalle en el <code>LICENSE.md</code> de cada curso, junto con la atribución a su autor original.</p>
+    <p>Para más información sobre cómo citar estos materiales o sobre las condiciones de uso del MIT, visita <a href="https://ocw.mit.edu/terms">ocw.mit.edu/terms</a>.</p>
+  </div>
+</details>
 
 <div class="cursos">
 
