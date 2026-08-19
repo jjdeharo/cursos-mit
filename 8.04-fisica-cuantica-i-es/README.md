@@ -4,7 +4,7 @@ Traducción al español, no oficial, de los apuntes de clase ("Lecture Notes"), 
 
 El material se distribuye como **23 archivos EPUB**, con todas las fórmulas matemáticas renderizadas como **MathML nativo** (no como imágenes), por lo que se ven nítidas a cualquier tamaño de letra y son compatibles con lectores como Apple Books, Thorium Reader, calibre, Google Play Books, etc.
 
-📖 Página del proyecto (GitHub Pages): *(añade aquí la URL una vez publicado el repositorio)*
+📖 Página del proyecto (GitHub Pages): https://jjdeharo.github.io/cursos-mit/8.04-fisica-cuantica-i-es/
 
 ## Contenido
 

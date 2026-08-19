@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos de MIT traducidos al español</title>
+<script>
+  (function () {
+    var t = localStorage.getItem("mit-tema");
+    if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+    document.documentElement.setAttribute("data-theme", t || "light");
+  })();
+</script>
+<style>
+  :root {
+    --azul: #0b3d91;
+    --azul-header: #0b3d91;
+    --azul-claro: #eef2fb;
+    --texto: #1a1a1a;
+    --muted: #5a5a5a;
+    --borde: #dde2ee;
+    --fondo: #fdfdfb;
+    --verde: #1e7a3c;
+    --verde-claro: #eaf6ee;
+    --panel: #ffffff;
+    --sombra: rgba(11,61,145,0.08);
+    --aviso-texto: #23345c;
+  }
+  html[data-theme="dark"] {
+    --azul: #86aaff;
+    --azul-claro: #1c2433;
+    --texto: #e7e7e5;
+    --muted: #aab0bb;
+    --borde: #333844;
+    --fondo: #14171c;
+    --verde: #4caf6f;
+    --verde-claro: #16241b;
+    --panel: #1c2027;
+    --sombra: rgba(0,0,0,0.35);
+    --aviso-texto: #cfd8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+  }
+  header {
+    background: var(--azul-header);
+    color: white;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 0.6rem; font-size: 2.1rem; }
+  header p { margin: 0.3rem 0; opacity: 0.92; max-width: 640px; margin-left: auto; margin-right: auto; }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .aviso {
+    background: var(--azul-claro);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: var(--aviso-texto);
+  }
+  .aviso a { color: inherit; }
+  .cursos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .curso {
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+    text-decoration: none;
+    color: var(--texto);
+    box-shadow: 0 2px 8px var(--sombra);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .curso:hover { transform: translateY(-2px); box-shadow: 0 6px 16px var(--sombra); }
+  .curso-codigo {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--azul);
+    background: var(--azul-claro);
+    border-radius: 5px;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .curso h2 { margin: 0 0 0.4rem; font-size: 1.3rem; color: var(--texto); }
+  .curso p { margin: 0.25rem 0; color: var(--muted); font-size: 0.95rem; }
+  .curso .prof { font-size: 0.85rem; }
+  .curso .flecha { color: var(--azul); font-weight: 600; font-size: 0.85rem; }
+
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--azul); }
+
+  .theme-toggle {
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    z-index: 101;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--borde);
+    background: var(--panel);
+    color: var(--azul);
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--sombra);
+  }
+</style>
+</head>
+<body>
+
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+
+<header>
+  <h1>Cursos de MIT traducidos al español</h1>
+  <p>Traducciones no oficiales, generadas con asistencia de inteligencia artificial, de materiales de MIT OpenCourseWare</p>
+</header>
+
+<main>
+
+<div class="aviso">
+  Estas son traducciones <strong>no oficiales</strong> de materiales de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>, generadas con asistencia de inteligencia artificial y no revisadas por el MIT ni por los profesores de cada curso. Cada documento está disponible como <strong>EPUB</strong> (con fórmulas en MathML nativo) y como <strong>HTML</strong> (leer en el navegador), además de un enlace <strong>Leer</strong> que abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a> y guarda por dónde vas. Licencia <strong>CC BY-NC-SA 4.0</strong> — ver el <code>LICENSE.md</code> de cada curso.
+</div>
+
+<div class="cursos">
+
+  <a class="curso" href="8.03-vibraciones-ondas-es/">
+    <span class="curso-codigo">8.03SC</span>
+    <h2>Física III: Vibraciones y Ondas</h2>
+    <p>Osciladores, modos normales, ondas en cuerdas, electromagnetismo, óptica geométrica y física, polarización, interferencia y difracción.</p>
+    <p class="prof">Prof. Yen-Jie Lee — 13 capítulos del libro de texto + 10 listas de problemas</p>
+    <p class="flecha">Entrar al curso →</p>
+  </a>
+
+  <a class="curso" href="8.04-fisica-cuantica-i-es/">
+    <span class="curso-codigo">8.04</span>
+    <h2>Física Cuántica I</h2>
+    <p>Interpretación de la función de onda, ecuación de Schrödinger, potenciales unidimensionales, oscilador armónico, momento angular y espín.</p>
+    <p class="prof">Prof. Barton Zwiebach — 22 apuntes de clase + listas de problemas y exámenes</p>
+    <p class="flecha">Entrar al curso →</p>
+  </a>
+
+</div>
+
+<div class="aviso" style="margin-top: 2rem;">
+  📘 Se recomienda cursar primero <strong>8.03SC</strong> (oscilaciones, ondas y óptica) antes de <strong>8.04</strong> (mecánica cuántica), ya que este último da por conocidos varios de esos conceptos.
+</div>
+
+</main>
+
+<footer>
+  <p>Traducciones generadas con asistencia de IA a partir de materiales de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>. Licencia CC BY-NC-SA 4.0. Código fuente en <a href="https://github.com/jjdeharo/cursos-mit">github.com/jjdeharo/cursos-mit</a>.</p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var KEY = "mit-tema";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function setIcon(theme) {
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
+  setIcon(root.getAttribute("data-theme"));
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(KEY, next);
+    root.setAttribute("data-theme", next);
+    setIcon(next);
+  });
+
+  if (mq) {
+    mq.addEventListener("change", function (e) {
+      if (!localStorage.getItem(KEY)) {
+        var theme = e.matches ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        setIcon(theme);
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

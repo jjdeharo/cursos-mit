@@ -2,11 +2,11 @@
 
 Traducción al español, no oficial, de los materiales del curso **[8.03SC Physics III: Vibrations and Waves](https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/)** (Fall 2016) del **Prof. Yen-Jie Lee**, impartido en el MIT y publicado por MIT OpenCourseWare.
 
-Este curso es el **prerrequisito recomendado** de [8.04 Física Cuántica I](https://jjdeharo.github.io/8.04-fisica-cuantica-i-es/): conviene cursar 8.03SC (oscilaciones, ondas, electromagnetismo y óptica) antes de 8.04 (mecánica cuántica).
+Este curso es el **prerrequisito recomendado** de [8.04 Física Cuántica I](https://jjdeharo.github.io/cursos-mit/8.04-fisica-cuantica-i-es/): conviene cursar 8.03SC (oscilaciones, ondas, electromagnetismo y óptica) antes de 8.04 (mecánica cuántica).
 
 El material se distribuye como archivos **EPUB**, con las fórmulas matemáticas renderizadas como **MathML nativo** (no como imágenes), por lo que se ven nítidas a cualquier tamaño de letra y son compatibles con lectores como Apple Books, Thorium Reader, calibre, Google Play Books, etc.
 
-📖 Página del proyecto (GitHub Pages): *(añade aquí la URL una vez publicado el repositorio)*
+📖 Página del proyecto (GitHub Pages): https://jjdeharo.github.io/cursos-mit/8.03-vibraciones-ondas-es/
 
 ## Contenido
 
