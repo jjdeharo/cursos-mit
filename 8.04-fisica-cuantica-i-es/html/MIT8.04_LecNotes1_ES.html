@@ -1493,15 +1493,107 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   var fpMin = document.getElementById("fp-min");
   var fpClose = document.getElementById("fp-close");
 
+  /* --- por dónde iba cada vídeo ---
+     El iframe sólo dice el segundo en curso a través de la API de YouTube,
+     que se carga la primera vez que se abre un vídeo. Si no llega a cargar
+     (sin conexión, bloqueada), todo lo demás sigue funcionando igual: lo
+     único que se pierde es la reanudación. */
+  var TIEMPOS_KEY = "mit804-fp-tiempos";
+  var MINIMO = 10;        // por debajo de esto no merece la pena reanudar
+  var MARGEN = 3;         // se vuelve un poco atrás, para retomar el hilo
+  var RECUERDA = 60;      // vídeos recordados, para no engordar sin medida
+  var player = null, vidActual = null, reloj = null, terminado = false;
+
+  function tiempos() {
+    try { return JSON.parse(localStorage.getItem(TIEMPOS_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function guardarTiempos(t) {
+    var ids = Object.keys(t);
+    while (ids.length > RECUERDA) delete t[ids.shift()];
+    try { localStorage.setItem(TIEMPOS_KEY, JSON.stringify(t)); } catch (e) {}
+  }
+  function recordar(vid, segundos) {
+    if (!vid || !(segundos > MINIMO)) return;
+    var t = tiempos();
+    delete t[vid];               // al reinsertarlo pasa a ser el más reciente
+    t[vid] = Math.floor(segundos);
+    guardarTiempos(t);
+  }
+  function olvidar(vid) {
+    var t = tiempos();
+    if (vid in t) { delete t[vid]; guardarTiempos(t); }
+  }
+  function apuntarTiempo() {
+    if (terminado || !player || !player.getCurrentTime) return;
+    var t, dur;
+    try {
+      t = player.getCurrentTime();
+      dur = player.getDuration ? player.getDuration() : 0;
+    } catch (e) { return; }
+    if (typeof t !== "number" || !isFinite(t)) return;
+    /* Dejarlo en los últimos segundos es haberlo visto: no hay nada que
+       reanudar, y si no la próxima vez arrancaría en los títulos de crédito. */
+    if (dur > 0 && dur - t < 15) { olvidar(vidActual); return; }
+    recordar(vidActual, t);
+  }
+
+  function cargarApiYT(seguir) {
+    if (window.YT && window.YT.Player) { seguir(); return; }
+    if (!document.getElementById("yt-api")) {
+      var s = document.createElement("script");
+      s.id = "yt-api";
+      s.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(s);
+    }
+    var previo = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (previo) previo();
+      seguir();
+    };
+  }
+
+  function seguirVideo() {
+    if (reloj) { clearInterval(reloj); reloj = null; }
+    player = null;
+    cargarApiYT(function () {
+      try {
+        player = new YT.Player(fpIframe, {
+          events: {
+            onStateChange: function (e) {
+              /* Terminado: la próxima vez, desde el principio. */
+              if (e.data === 0) { terminado = true; olvidar(vidActual); }
+              else apuntarTiempo();
+            }
+          }
+        });
+      } catch (e) { player = null; }
+      reloj = setInterval(apuntarTiempo, 5000);
+    });
+  }
+
   function openVideo(vid, title) {
-    fpIframe.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1";
+    var desde = tiempos()[vid] || 0;
+    var url = "https://www.youtube.com/embed/" + vid + "?autoplay=1&enablejsapi=1";
+    /* En file:// el origen es "null" y YouTube rechaza la llamada. */
+    if (location.protocol === "http:" || location.protocol === "https:") {
+      url += "&origin=" + encodeURIComponent(location.origin);
+    }
+    if (desde > MINIMO) url += "&start=" + Math.max(0, desde - MARGEN);
+    fpIframe.src = url;
     fpIframe.title = title;
     fpTitle.textContent = title;
+    vidActual = vid;
+    terminado = false;
     fp.hidden = false;
     fp.classList.remove("minimizado");
     aplicarModo();
+    seguirVideo();
   }
   function closeVideo() {
+    apuntarTiempo();                              // por dónde se deja
+    if (reloj) { clearInterval(reloj); reloj = null; }
+    player = null;
     fp.hidden = true;
     raiz.style.setProperty("--fp-dock", "0px");   // el texto recupera el sitio
     /* Cambiar el src no basta: Firefox mantiene vivo el reproductor de
@@ -1513,6 +1605,9 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     fpIframe.parentNode.replaceChild(limpio, fpIframe);
     fpIframe = limpio;
   }
+
+  /* Cerrar la pestaña o irse a otro capítulo también cuenta como dejarlo. */
+  window.addEventListener("pagehide", apuntarTiempo);
 
   document.querySelectorAll(".video-play").forEach(function (btn) {
     btn.addEventListener("click", function () {
