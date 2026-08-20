@@ -13,6 +13,7 @@ repositorio, así que no hace falta configurar nada.
 | `ghostscript` (`gs`) | Comprimir los PDF resultantes |
 | `poppler-utils` (`pdftotext`, `pdftoppm`) | Leer los PDF originales del MIT |
 | Python 3 con `pillow` y `numpy` | Recortar y preparar las figuras |
+| Python 3 con `beautifulsoup4` | Limpiar el HTML al pasarlo a Markdown |
 
 ## Flujo de trabajo
 
@@ -46,7 +47,26 @@ lectores aportan los suyos.
 > ajustes de lectura y el tamaño y la colocación del reproductor. Para 8.04 hay
 > que cambiarlo a `mit804-` en `plantillas/after.html`, en todas las claves. El tema sí es común a todo el sitio (`mit-tema`).
 
-### 3. Extraer las figuras de los PDF originales
+### 3. Generar la versión en Markdown (para dársela a una IA)
+
+```bash
+python3 generar_markdown.py                      # los dos cursos
+python3 generar_markdown.py 8.04-fisica-cuantica-i-es
+```
+
+Deja en `CURSO/markdown/` un fichero por documento y otro con el curso entero,
+con las fórmulas en LaTeX. Sale del HTML porque es el único formato que
+conserva el LaTeX original de cada fórmula, dentro del MathML
+(`<annotation encoding="application/x-tex">`); del PDF no se puede recuperar,
+porque al extraer el texto las fórmulas se deshacen en caracteres sueltos.
+
+Se descarta lo que no es contenido (reproductor, panel de lectura, migas,
+índice, scripts), los vídeos quedan como enlaces a YouTube y las figuras
+apuntan a su dirección publicada. Necesita `pandoc` y `python3-bs4`.
+
+Conviene rehacerlo después de tocar los HTML, para que no se queden atrás.
+
+### 4. Extraer las figuras de los PDF originales
 
 ```bash
 python3 extraer_figuras.py ORIGINAL.pdf figuras/MIT8.03_TextCh1_ES fig
@@ -74,7 +94,7 @@ Alguna figura se le escapa al recorte automático —la 8.1 y la 10.6 de
 8.03—; en esos casos se localiza la página con `pdftotext -layout` y se
 recorta a mano con `pdftoppm -r 200` más `Image.crop`.
 
-### 4. Insertar las figuras
+### 5. Insertar las figuras
 
 ```bash
 python3 insertar_figuras.py 8.03-vibraciones-ondas-es
@@ -92,7 +112,7 @@ lector en modo noche dejaría invisible la tinta negra sobre transparente.
 Ambos saltan los documentos ya procesados: volver a pasarlos duplicaría las
 figuras.
 
-### 5. Navegación y PDF
+### 6. Navegación y PDF
 
 ```bash
 python3 navegacion.py                              # migas de pan, los dos cursos
