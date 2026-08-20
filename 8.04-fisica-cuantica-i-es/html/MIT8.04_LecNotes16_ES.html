@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 
@@ -1225,6 +1226,78 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;
