@@ -277,6 +277,9 @@ figure.figura figcaption {
 @media print {
   /* Controles de pantalla que no tienen sentido sobre el papel. */
   .a11y-toggle, .theme-toggle, .a11y-panel, .fp, .migas { display: none !important; }
+  /* Sobre el papel no hay barras que valgan, y una caja de scroll por
+     fórmula impide que la página se pagine con normalidad. */
+  math[display="block"] { overflow: visible; padding-bottom: 0; }
   /* El PDF se imprime siempre en claro, aunque se exporte con el tema oscuro. */
   html, html[data-theme="dark"] {
     color-scheme: light;
