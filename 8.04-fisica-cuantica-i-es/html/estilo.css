@@ -41,6 +41,14 @@ h1 { border-bottom: 3px solid var(--accent); padding-bottom: 0.4rem; }
 h2 { border-bottom: 1px solid var(--border); padding-bottom: 0.2rem; margin-top: 2.5rem; }
 a { color: var(--accent); }
 math { font-size: 1.05em; }
+/* Una fórmula en bloque más ancha que la columna se desplaza dentro de su
+   propia caja: sin esto la barra horizontal es la de la página entera y
+   arrastra también al texto. */
+math[display="block"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.2em;
+}
 .footer-nav { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-family: sans-serif; font-size: 0.9em; }
 blockquote { border-left: 4px solid var(--accent); margin-left: 0; padding-left: 1rem; color: var(--muted); }
 code { background: var(--code-bg); padding: 0.1rem 0.3rem; border-radius: 3px; }

@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 <button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar el tema" aria-label="Cambiar el tema">🌗</button>
@@ -705,9 +706,10 @@ M^{-1}K\,A^k = \omega_k^2\,A^k\,. \qquad \text{(4.52)}
 <p>Como ya conocemos la forma de los modos normales, esto es directo.
 Por ejemplo, podemos comparar las primeras componentes de estos dos
 vectores:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mi>k</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>4</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>D</mi><msup><mi>e</mi><mrow><mn>6</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>8</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>10</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>m</mi><mo>=</mo><mfrac><mi>E</mi><mi>m</mi></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>B</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>C</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>2</mn><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>k</mi></msup><mfrac><mi>D</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.53)</mtext></mrow><annotation encoding="application/x-tex">
-\omega_k^2 = \left(E-Be^{2ik\pi/6}-Ce^{4ik\pi/6}-De^{6ik\pi/6}-Ce^{8ik\pi/6}-Be^{10ik\pi/6}\right)/m = \frac{E}{m}-\frac{2B}{m}\cos\frac{k\pi}{3}-\frac{2C}{m}\cos\frac{2k\pi}{3}-(-1)^k\frac{D}{m}\,. \qquad \text{(4.53)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>ω</mi><mi>k</mi><mn>2</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>E</mi><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>2</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>4</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>D</mi><msup><mi>e</mi><mrow><mn>6</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>8</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo>−</mo><mi>B</mi><msup><mi>e</mi><mrow><mn>10</mn><mi>i</mi><mi>k</mi><mi>π</mi><mi>/</mi><mn>6</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>m</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>E</mi><mi>m</mi></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>B</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mfrac><mrow><mn>2</mn><mi>C</mi></mrow><mi>m</mi></mfrac><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mn>2</mn><mi>k</mi><mi>π</mi></mrow><mn>3</mn></mfrac><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>k</mi></msup><mfrac><mi>D</mi><mi>m</mi></mfrac><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4.53)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\omega_k^2 &amp;= \left(E-Be^{2ik\pi/6}-Ce^{4ik\pi/6}-De^{6ik\pi/6}-Ce^{8ik\pi/6}-Be^{10ik\pi/6}\right)/m\\
+&amp;= \frac{E}{m}-\frac{2B}{m}\cos\frac{k\pi}{3}-\frac{2C}{m}\cos\frac{2k\pi}{3}-(-1)^k\frac{D}{m}\,. \qquad \text{(4.53)}
+\end{aligned}</annotation></semantics></math></p>
 <p>Note que
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><msubsup><mi>ω</mi><mn>5</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\omega_1^2=\omega_5^2</annotation></semantics></math>
 y
@@ -1041,6 +1043,78 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;

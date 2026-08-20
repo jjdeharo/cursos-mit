@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 <button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar el tema" aria-label="Cambiar el tema">🌗</button>
@@ -1967,7 +1968,11 @@ sobre todo el volumen del líquido:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mi>π</mi><mrow><mn>4</mn><mi>k</mi></mrow></mfrac><mi>ρ</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mi>d</mi><mi>y</mi><mspace width="0.167em"></mspace><msup><mi>ω</mi><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">cosh</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>k</mi><mi>y</mi><mo>=</mo><mfrac><mi>π</mi><mrow><mn>8</mn><msup><mi>k</mi><mn>2</mn></msup></mrow></mfrac><mi>ρ</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>ω</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11.135)</mtext></mrow><annotation encoding="application/x-tex">= \frac{\pi}{4k}\rho W\varepsilon^2\int_0^L dy\,\omega^2\sin^2\omega t\,\cosh 2ky = \frac{\pi}{8k^2}\rho W\varepsilon^2\omega^2\sinh 2kL\,\sin^2\omega t.\qquad\text{(11.135)}</annotation></semantics></math></p>
 <h4 id="relación-de-dispersión">Relación de dispersión</h4>
 <p>El total de (11.127)-(11.135) es</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mtext mathvariant="normal">grav</mtext></msub><mo>+</mo><msub><mi>V</mi><mtext mathvariant="normal">sup</mtext></msub><mo>+</mo><mi>K</mi><mi>E</mi><mo>=</mo><mfrac><mi>π</mi><mrow><mn>4</mn><mi>k</mi></mrow></mfrac><mi>ρ</mi><mi>g</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mfrac><mi>π</mi><mrow><mn>4</mn><mi>k</mi></mrow></mfrac><mi>T</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mfrac><mi>π</mi><mrow><mn>8</mn><msup><mi>k</mi><mn>2</mn></msup></mrow></mfrac><mi>ρ</mi><mi>W</mi><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>ε</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mi>⋯</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11.136)</mtext></mrow><annotation encoding="application/x-tex">V_{\text{grav}} + V_{\text{sup}} + KE = \frac{\pi}{4k}\rho g W\varepsilon^2\sinh^2 kL\,\cos^2\omega t + \frac{\pi}{4k}T W\varepsilon^2 k^2\sinh^2 kL\,\cos^2\omega t + \frac{\pi}{8k^2}\rho W\omega^2\varepsilon^2\sinh 2kL\,\sin^2\omega t + \cdots.\qquad\text{(11.136)}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mtext mathvariant="normal">grav</mtext></msub><mo>+</mo><msub><mi>V</mi><mtext mathvariant="normal">sup</mtext></msub><mo>+</mo><mi>K</mi><mi>E</mi><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mfrac><mi>π</mi><mrow><mn>4</mn><mi>k</mi></mrow></mfrac><mi>ρ</mi><mi>g</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><mfrac><mi>π</mi><mrow><mn>4</mn><mi>k</mi></mrow></mfrac><mi>T</mi><mi>W</mi><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>k</mi><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><mfrac><mi>π</mi><mrow><mn>8</mn><msup><mi>k</mi><mn>2</mn></msup></mrow></mfrac><mi>ρ</mi><mi>W</mi><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>ε</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>k</mi><mi>L</mi><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mi>⋯</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11.136)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+V_{\text{grav}} + V_{\text{sup}} + KE = {} &amp; \frac{\pi}{4k}\rho g W\varepsilon^2\sinh^2 kL\,\cos^2\omega t\\
+&amp; + \frac{\pi}{4k}T W\varepsilon^2 k^2\sinh^2 kL\,\cos^2\omega t\\
+&amp; + \frac{\pi}{8k^2}\rho W\omega^2\varepsilon^2\sinh 2kL\,\sin^2\omega t + \cdots.\qquad\text{(11.136)}
+\end{aligned}</annotation></semantics></math></p>
 <p>Esto debe ser constante en el tiempo, lo que implica</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><msup><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>g</mi><mi>k</mi><mo>+</mo><mfrac><mi>T</mi><mi>ρ</mi></mfrac><msup><mi>k</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mrow><mi mathvariant="normal">sinh</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>k</mi><mi>L</mi></mrow></mfrac><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>g</mi><mi>k</mi><mo>+</mo><mfrac><mi>T</mi><mi>ρ</mi></mfrac><msup><mi>k</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi mathvariant="normal">tanh</mi><mo>&#8289;</mo></mrow><mi>k</mi><mi>L</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11.137)</mtext></mrow><annotation encoding="application/x-tex">\omega^2 = \frac{2\sinh^2 kL\left(gk + \frac{T}{\rho}k^3\right)}{\sinh 2kL} = \left(gk + \frac{T}{\rho}k^3\right)\tanh kL,\qquad\text{(11.137)}</annotation></semantics></math></p>
 <p>donde
@@ -3744,6 +3749,78 @@ href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;

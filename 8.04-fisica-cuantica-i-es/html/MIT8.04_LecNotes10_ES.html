@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 
@@ -275,9 +276,10 @@ normalización para
 si
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
 no fuera real, daría</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><msup><mi>E</mi><mo>*</mo></msup><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>E</mi><mo>*</mo></msup><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mrow><annotation encoding="application/x-tex">
-1 = \int dx\, \Psi^*(x,t)\Psi(x,t) = \int dx\, e^{iE^*t/\hbar} e^{-iEt/\hbar} \psi^*(x)\psi(x) = e^{i(E^*-E)t/\hbar} \int dx\, \psi^*(x)\psi(x) = e^{2\,\mathrm{Im}(E)t/\hbar} \int dx\, \psi^*(x)\psi(x) \qquad \text{(1.11)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">Ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><msup><mi>E</mi><mo>*</mo></msup><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>E</mi><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>E</mi><mo>*</mo></msup><mo>−</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup><mo>∫</mo><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><msup><mi>ψ</mi><mo>*</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1.11)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+1 &amp;= \int dx\, \Psi^*(x,t)\Psi(x,t) = \int dx\, e^{iE^*t/\hbar} e^{-iEt/\hbar} \psi^*(x)\psi(x)\\
+&amp;= e^{i(E^*-E)t/\hbar} \int dx\, \psi^*(x)\psi(x) = e^{2\,\mathrm{Im}(E)t/\hbar} \int dx\, \psi^*(x)\psi(x) \qquad \text{(1.11)}
+\end{aligned}</annotation></semantics></math></p>
 <p>La expresión final tiene una dependencia temporal debida a la
 exponencial. Por otro lado, la condición de normalización establece que
 esta expresión debe ser igual a uno. De ello se sigue que el exponente
@@ -504,9 +506,10 @@ es discontinua en la pared.</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ψ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\psi&#39;</annotation></semantics></math>
 es continua, y en los dos últimos puede tener una discontinuidad finita.
 En conclusión</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Tanto </mtext><mspace width="0.333em"></mspace></mrow><mi>ψ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> como </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> son continuas a menos que el potencial tenga funciones delta o paredes duras, en cuyo caso </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> puede tener discontinuidades finitas.</mtext></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.23)</mtext></mrow><annotation encoding="application/x-tex">
-\text{Tanto } \psi \text{ como } \psi&#39; \text{ son continuas a menos que el potencial tenga funciones delta o paredes duras, en cuyo caso } \psi&#39; \text{ puede tener discontinuidades finitas.} \qquad \text{(2.23)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mtext mathvariant="normal">Tanto </mtext><mspace width="0.333em"></mspace></mrow><mi>ψ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> como </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> son continuas a menos que el potencial tenga funciones</mtext></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mtext mathvariant="normal">delta o paredes duras, en cuyo caso </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>ψ</mi><mo>′</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> puede tener discontinuidades finitas.</mtext></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2.23)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{gathered}
+\text{Tanto } \psi \text{ como } \psi&#39; \text{ son continuas a menos que el potencial tenga funciones}\\
+\text{delta o paredes duras, en cuyo caso } \psi&#39; \text{ puede tener discontinuidades finitas.} \qquad \text{(2.23)}
+\end{gathered}</annotation></semantics></math></p>
 <p>Demos un argumento ligeramente distinto para la continuidad de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
 y
@@ -1030,6 +1033,78 @@ href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;

@@ -551,11 +551,19 @@ $$C_R(\omega) = A\,\frac{1}{2\pi}\frac{1}{2\Omega - \Gamma}\left(\frac{\Gamma}{\
 
 Ahora podemos trabajar hacia atrás en (10.100) y (10.101) para obtener las transformadas de Fourier. Sabemos de (10.55) que cada término es la transformada de Fourier de una exponencial. Es directo, aunque tedioso, volver a juntarlos. El resultado se reproduce abajo (nótese que hemos combinado los dos términos de cada expresión proporcionales a $1/(2\Omega - i\omega)$):
 
-$$\psi_\tau(x, t) = \frac{2\Omega}{2\Omega - \Gamma}\,\theta(t - x/v)\,A e^{-\Gamma(t - x/v)} - \frac{4\Omega\Gamma}{4\Omega^2 - \Gamma^2}\,\theta(t - x/v)\,A e^{-2\Omega(t - x/v)} + \frac{2\Omega}{2\Omega + \Gamma}\,\theta(-t + x/v)\,A e^{\Gamma(t - x/v)} \tag{10.102}$$
+$$\begin{aligned}
+\psi_\tau(x, t) = {} & \frac{2\Omega}{2\Omega - \Gamma}\,\theta(t - x/v)\,A e^{-\Gamma(t - x/v)}\\
+& - \frac{4\Omega\Gamma}{4\Omega^2 - \Gamma^2}\,\theta(t - x/v)\,A e^{-2\Omega(t - x/v)}\\
+& + \frac{2\Omega}{2\Omega + \Gamma}\,\theta(-t + x/v)\,A e^{\Gamma(t - x/v)} \tag{10.102}
+\end{aligned}$$
 
 y
 
-$$\psi_r(x, t) = \frac{2\Gamma}{2\Omega - \Gamma}\,\theta(t + x/v)\,A e^{-\Gamma(t + x/v)} - \frac{4\Omega\Gamma}{4\Omega^2 - \Gamma^2}\,\theta(t + x/v)\,A e^{-2\Omega(t + x/v)} - \frac{2\Gamma}{2\Omega + \Gamma}\,\theta(-t - x/v)\,A e^{\Gamma(t + x/v)} \tag{10.103}$$
+$$\begin{aligned}
+\psi_r(x, t) = {} & \frac{2\Gamma}{2\Omega - \Gamma}\,\theta(t + x/v)\,A e^{-\Gamma(t + x/v)}\\
+& - \frac{4\Omega\Gamma}{4\Omega^2 - \Gamma^2}\,\theta(t + x/v)\,A e^{-2\Omega(t + x/v)}\\
+& - \frac{2\Gamma}{2\Omega + \Gamma}\,\theta(-t - x/v)\,A e^{\Gamma(t + x/v)} \tag{10.103}
+\end{aligned}$$
 
 donde
 

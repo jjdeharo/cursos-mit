@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 <button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar el tema" aria-label="Cambiar el tema">🌗</button>
@@ -726,9 +727,11 @@ I = \begin{pmatrix} 1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1 \end{pmatrix}\,.
 <p>La matriz identidad
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N\times N</annotation></semantics></math>
 satisface</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>A</mi><mo>=</mo><mi>A</mi><mi>I</mi><mo>=</mo><mi>A</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>N</mi><mo>×</mo><mi>N</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>A</mi><mo>;</mo><mspace width="2.0em"></mspace><mi>I</mi><mi>B</mi><mo>=</mo><mi>B</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>N</mi><mo>×</mo><mi>M</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>B</mi><mo>;</mo><mspace width="2.0em"></mspace><mi>C</mi><mi>I</mi><mo>=</mo><mi>C</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>M</mi><mo>×</mo><mi>N</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>C</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.27)</mtext></mrow><annotation encoding="application/x-tex">
-IA=AI=A \text{ para cualquier matriz } N\times N,\ A;\qquad IB=B \text{ para cualquier matriz } N\times M,\ B;\qquad CI=C \text{ para cualquier matriz } M\times N,\ C. \qquad \text{(3.27)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>I</mi><mi>A</mi><mo>=</mo><mi>A</mi><mi>I</mi><mo>=</mo><mi>A</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>N</mi><mo>×</mo><mi>N</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>A</mi><mo>;</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>I</mi><mi>B</mi><mo>=</mo><mi>B</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>N</mi><mo>×</mo><mi>M</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>B</mi><mo>;</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>C</mi><mi>I</mi><mo>=</mo><mi>C</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> para cualquier matriz </mtext><mspace width="0.333em"></mspace></mrow><mi>M</mi><mo>×</mo><mi>N</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>C</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.27)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+&amp; IA=AI=A \text{ para cualquier matriz } N\times N,\ A;\\
+&amp; IB=B \text{ para cualquier matriz } N\times M,\ B;\\
+&amp; CI=C \text{ para cualquier matriz } M\times N,\ C. \qquad \text{(3.27)}
+\end{aligned}</annotation></semantics></math></p>
 <p>Nos concentraremos principalmente en matrices «cuadradas» (es decir,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N\times N</annotation></semantics></math>).</p>
 <p>Las matrices nos permiten manejar muchas ecuaciones lineales a la
@@ -903,9 +906,12 @@ es la matriz de cofactores, definida por sus elementos como sigue:</p>
 (\tilde A)_{jk} = \det A^{(jk)} \qquad \text{(3.35)}
 </annotation></semantics></math></p>
 <p>con</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>=</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>=</mo><mi>k</mi><mo>;</mo><mspace width="2.0em"></mspace><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>=</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>≠</mo><mi>k</mi><mo>;</mo><mspace width="2.0em"></mspace><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>≠</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>=</mo><mi>k</mi><mo>;</mo><mspace width="2.0em"></mspace><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msub><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>≠</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>≠</mo><mi>k</mi><mspace width="0.167em"></mspace><mi>.</mi></mrow><annotation encoding="application/x-tex">
-A^{(jk)}_{\ell m} = 1 \text{ si } m=j \text{ y } \ell=k;\qquad A^{(jk)}_{\ell m}=0 \text{ si } m=j \text{ y } \ell\neq k;\qquad A^{(jk)}_{\ell m}=0 \text{ si } m\neq j \text{ y } \ell=k;\qquad A^{(jk)}_{\ell m}=A_{\ell m} \text{ si } m\neq j \text{ y } \ell\neq k\,.
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>=</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>=</mo><mi>k</mi><mo>;</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>=</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>≠</mo><mi>k</mi><mo>;</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>≠</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>=</mo><mi>k</mi><mo>;</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>A</mi><mrow><mi>ℓ</mi><mi>m</mi></mrow></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> si </mtext><mspace width="0.333em"></mspace></mrow><mi>m</mi><mo>≠</mo><mi>j</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> y </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>≠</mo><mi>k</mi><mspace width="0.167em"></mspace><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+A^{(jk)}_{\ell m} &amp;= 1 \text{ si } m=j \text{ y } \ell=k;\\
+A^{(jk)}_{\ell m} &amp;= 0 \text{ si } m=j \text{ y } \ell\neq k;\\
+A^{(jk)}_{\ell m} &amp;= 0 \text{ si } m\neq j \text{ y } \ell=k;\\
+A^{(jk)}_{\ell m} &amp;= A_{\ell m} \text{ si } m\neq j \text{ y } \ell\neq k\,.
+\end{aligned}</annotation></semantics></math></p>
 <p>En otras palabras,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">A^{(jk)}</annotation></semantics></math>
 se obtiene de la matriz
@@ -2266,9 +2272,10 @@ luego compararemos el resultado con (3.137). El determinante es</p>
 \left(\frac{g}{\ell}+\frac{\kappa}{m}-\omega^2-i\gamma\omega\right)^2 - \left(\frac{\kappa}{m}\right)^2 = \left(\frac{g}{\ell}+\frac{2\kappa}{m}-\omega^2-i\gamma\omega\right)\cdot\left(\frac{g}{\ell}-\omega^2-i\gamma\omega\right)\,. \qquad \text{(3.143)}
 </annotation></semantics></math></p>
 <p>Aplicando (3.34), encontramos</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><msup><mo stretchy="false" form="postfix">]</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mi>κ</mi></mrow><mi>m</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mi>κ</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>κ</mi><mi>/</mi><mi>m</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>κ</mi><mi>/</mi><mi>m</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mi>κ</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.144)</mtext></mrow><annotation encoding="application/x-tex">
-[M^{-1}K-\omega^2-i\gamma\omega]^{-1} = \frac{1}{\left(\frac{g}{\ell}+\frac{2\kappa}{m}-\omega^2-i\gamma\omega\right)\left(\frac{g}{\ell}-\omega^2-i\gamma\omega\right)} \begin{pmatrix} g/\ell+\kappa/m-\omega^2-i\gamma\omega &amp; \kappa/m\\ \kappa/m &amp; g/\ell+\kappa/m-\omega^2-i\gamma\omega \end{pmatrix}\,. \qquad \text{(3.144)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">[</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><msup><mo stretchy="false" form="postfix">]</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mi>κ</mi></mrow><mi>m</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mi>κ</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>κ</mi><mi>/</mi><mi>m</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>κ</mi><mi>/</mi><mi>m</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>g</mi><mi>/</mi><mi>ℓ</mi><mo>+</mo><mi>κ</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.144)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+[M^{-1}K-\omega^2-i\gamma\omega]^{-1} = {} &amp; \frac{1}{\left(\frac{g}{\ell}+\frac{2\kappa}{m}-\omega^2-i\gamma\omega\right)\left(\frac{g}{\ell}-\omega^2-i\gamma\omega\right)}\\
+&amp; \begin{pmatrix} g/\ell+\kappa/m-\omega^2-i\gamma\omega &amp; \kappa/m\\ \kappa/m &amp; g/\ell+\kappa/m-\omega^2-i\gamma\omega \end{pmatrix}\,. \qquad \text{(3.144)}
+\end{aligned}</annotation></semantics></math></p>
 <p>Si aislamos la contribución de los dos ceros del denominador de
 (3.144), podemos escribir</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msup><mi>M</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>K</mi><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><msup><mo stretchy="false" form="postfix">]</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>g</mi><mi>ℓ</mi></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mi>κ</mi></mrow><mi>m</mi></mfrac><mo>−</mo><msup><mi>ω</mi><mn>2</mn></msup><mo>−</mo><mi>i</mi><mi>γ</mi><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3.145)</mtext></mrow><annotation encoding="application/x-tex">
@@ -2776,6 +2783,78 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;

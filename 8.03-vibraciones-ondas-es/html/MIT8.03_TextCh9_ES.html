@@ -47,6 +47,7 @@
 </div>
 <div class="fp-body" id="fp-body">
 <div class="video-wrapper"><iframe id="fp-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="fp-resize" id="fp-resize" title="Arrastra para cambiar el tamaño; doble clic para el tamaño original"></div>
 </div>
 </div>
 <button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar el tema" aria-label="Cambiar el tema">🌗</button>
@@ -569,9 +570,11 @@ k\left(1+\tan^2kx\right)\frac{\partial x}{\partial t} = \frac{1-R}{1+R}\,\frac{\
 <p>Hemos dejado
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1+\tan^2kx)</annotation></semantics></math>
 en (9.23) para poder eliminarlo usando (9.22). Así,</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>x</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mspace width="0.167em"></mspace><mfrac><mi>ω</mi><mi>k</mi></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mspace width="0.167em"></mspace><mfrac><mi>ω</mi><mi>k</mi></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>v</mi><mspace width="0.167em"></mspace><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>R</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9.24)</mtext></mrow><annotation encoding="application/x-tex">
-\frac{\partial x}{\partial t} = \frac{1-R}{1+R}\,\frac{\omega}{k}\,\frac{1}{\left(1+\tan^2kx\right)\cos^2\omega t} = \frac{1-R}{1+R}\,\frac{\omega}{k}\,\frac{1}{\left(1+\left(\frac{1-R}{1+R}\right)^2\tan^2\omega t\right)\cos^2\omega t} = v\,\frac{(1+R)(1-R)}{(1+R)^2\cos^2\omega t+(1-R)^2\sin^2\omega t} \qquad \text{(9.24)}
-</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mi>∂</mi><mi>x</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mspace width="0.167em"></mspace><mfrac><mi>ω</mi><mi>k</mi></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>k</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mspace width="0.167em"></mspace><mfrac><mi>ω</mi><mi>k</mi></mfrac><mspace width="0.167em"></mspace><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>R</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>R</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>v</mi><mspace width="0.167em"></mspace><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>R</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mi>ω</mi><mi>t</mi></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9.24)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\frac{\partial x}{\partial t} &amp;= \frac{1-R}{1+R}\,\frac{\omega}{k}\,\frac{1}{\left(1+\tan^2kx\right)\cos^2\omega t}\\
+&amp;= \frac{1-R}{1+R}\,\frac{\omega}{k}\,\frac{1}{\left(1+\left(\frac{1-R}{1+R}\right)^2\tan^2\omega t\right)\cos^2\omega t}\\
+&amp;= v\,\frac{(1+R)(1-R)}{(1+R)^2\cos^2\omega t+(1-R)^2\sin^2\omega t} \qquad \text{(9.24)}
+\end{aligned}</annotation></semantics></math></p>
 <p>donde
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>ω</mi><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">v=\omega/k</annotation></semantics></math>
 es la velocidad de fase. Cuando
@@ -1927,6 +1930,78 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   fpMin.addEventListener("click", function () {
     fp.classList.toggle("minimizado");
   });
+
+  /* --- cambiar el tamaño del reproductor ---
+     El alto lo pone el aspect-ratio 16/9 del contenedor, así que basta con
+     gobernar el ancho. Se recuerda entre documentos, como el resto de
+     ajustes de lectura. */
+  var fpResize = document.getElementById("fp-resize");
+  var ANCHO_KEY = "mit803-fp-ancho";
+  var ANCHO_MIN = 220;
+
+  /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
+     16/9, así que un ancho grande se traduce enseguida en mucho alto. */
+  function anchoMaximo() {
+    var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
+    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+  }
+
+  /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
+  function mantenerDentro() {
+    if (!fp.style.left) return;   // sigue anclado abajo a la derecha
+    var r = fp.getBoundingClientRect();
+    fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
+    fp.style.top = Math.max(0, Math.min(parseFloat(fp.style.top), window.innerHeight - r.height)) + "px";
+  }
+
+  function fijarAncho(px) {
+    px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
+    fp.style.width = px + "px";
+    mantenerDentro();
+    return px;
+  }
+
+  var anchoGuardado = parseInt(localStorage.getItem(ANCHO_KEY), 10);
+  if (anchoGuardado) fijarAncho(anchoGuardado);
+
+  /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
+  window.addEventListener("resize", function () {
+    if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
+  });
+
+  if (fpResize) {
+    fpResize.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      /* Con la captura del puntero el arrastre sigue funcionando aunque el
+         cursor entre en el iframe, que si no se quedaría los eventos. */
+      fpResize.setPointerCapture(e.pointerId);
+      var r = fp.getBoundingClientRect();
+      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+         esquina superior izquierda mientras dura el arrastre. */
+      fp.style.right = "auto";
+      fp.style.bottom = "auto";
+      fp.style.left = r.left + "px";
+      fp.style.top = r.top + "px";
+      var x0 = e.clientX, w0 = r.width;
+
+      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function soltar() {
+        fpResize.removeEventListener("pointermove", mover);
+        fpResize.removeEventListener("pointerup", soltar);
+        fpResize.removeEventListener("pointercancel", soltar);
+        localStorage.setItem(ANCHO_KEY, parseInt(fp.style.width, 10));
+      }
+      fpResize.addEventListener("pointermove", mover);
+      fpResize.addEventListener("pointerup", soltar);
+      fpResize.addEventListener("pointercancel", soltar);
+    });
+
+    /* Doble clic en el tirador: vuelve al tamaño de partida. */
+    fpResize.addEventListener("dblclick", function () {
+      fp.style.width = "";
+      localStorage.removeItem(ANCHO_KEY);
+    });
+  }
 
   /* arrastrar el reproductor flotante */
   var dragging = false, offX = 0, offY = 0;

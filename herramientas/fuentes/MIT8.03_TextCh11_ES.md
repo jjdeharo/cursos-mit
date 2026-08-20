@@ -813,7 +813,11 @@ $$= \frac{\pi}{4k}\rho W\varepsilon^2\int_0^L dy\,\omega^2\sin^2\omega t\,\cosh 
 
 El total de (11.127)-(11.135) es
 
-$$V_{\text{grav}} + V_{\text{sup}} + KE = \frac{\pi}{4k}\rho g W\varepsilon^2\sinh^2 kL\,\cos^2\omega t + \frac{\pi}{4k}T W\varepsilon^2 k^2\sinh^2 kL\,\cos^2\omega t + \frac{\pi}{8k^2}\rho W\omega^2\varepsilon^2\sinh 2kL\,\sin^2\omega t + \cdots. \tag{11.136}$$
+$$\begin{aligned}
+V_{\text{grav}} + V_{\text{sup}} + KE = {} & \frac{\pi}{4k}\rho g W\varepsilon^2\sinh^2 kL\,\cos^2\omega t\\
+& + \frac{\pi}{4k}T W\varepsilon^2 k^2\sinh^2 kL\,\cos^2\omega t\\
+& + \frac{\pi}{8k^2}\rho W\omega^2\varepsilon^2\sinh 2kL\,\sin^2\omega t + \cdots. \tag{11.136}
+\end{aligned}$$
 
 Esto debe ser constante en el tiempo, lo que implica
 
