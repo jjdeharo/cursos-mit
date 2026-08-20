@@ -49,7 +49,7 @@ Todos los archivos están en la carpeta [`epubs/`](epubs/) y su equivalente en H
 
 Los vídeos de clase enlazados en cada apunte están en inglés. Si el vídeo dispone de audio en español, puedes seleccionarlo en YouTube desde ⚙️ **Configuración → Pista de audio → español**. Algunos vídeos cuentan con doblaje automático generado mediante IA.
 
-Si no hay una pista de audio en español, Chrome puede generar subtítulos automáticamente y traducirlos al español. Activa **Subtítulos automáticos** y **Traducción instantánea** en `chrome://settings/accessibility` y selecciona **español** como idioma de traducción.
+Si no hay una pista de audio en español, Chrome puede generar subtítulos automáticamente y traducirlos al español. Activa **Subtítulos automáticos** y **Traducción instantánea** en `chrome://settings/captions` y selecciona **español** como idioma de traducción.
 
 Esta misma explicación está en la [página de inicio](https://jjdeharo.github.io/cursos-mit/), junto a los formatos disponibles y la licencia.
 

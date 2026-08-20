@@ -112,6 +112,18 @@
   .detalles-cuerpo p { margin: 0 0 0.7rem; }
   .detalles-cuerpo p:last-child { margin-bottom: 0; }
   .detalles-cuerpo a { color: var(--azul); }
+  .copiar {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--azul-claro);
+    color: var(--azul);
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+    cursor: pointer;
+  }
+  .copiar:hover { filter: brightness(0.96); }
+  .copiar.copiado { color: var(--verde); border-color: var(--verde); }
   .detalles-cuerpo code {
     background: var(--azul-claro);
     padding: 0.1rem 0.35rem;
@@ -225,7 +237,7 @@
 <details class="detalles">
   <summary>Los vídeos están en inglés: cómo seguirlos en español</summary>
   <div class="detalles-cuerpo">
-    <p>Si el vídeo tiene audio en español, se elige en YouTube en ⚙️ <strong>Configuración → Pista de audio</strong>. Si no lo tiene, Chrome puede subtitularlo y traducirlo: <strong>Subtítulos automáticos</strong> y <strong>Traducción instantánea</strong> en <code>chrome://settings/accessibility</code>.</p>
+    <p>Si el vídeo tiene audio en español, se elige en YouTube en ⚙️ <strong>Configuración → Pista de audio</strong>. Si no lo tiene, Chrome puede subtitularlo y traducirlo: <strong>Subtítulos automáticos</strong> y <strong>Traducción instantánea</strong> en <button type="button" class="copiar" data-url="chrome://settings/captions" title="Chrome no deja abrir esta dirección desde una página web: se copia para que la pegues en una pestaña nueva">chrome://settings/captions</button>.</p>
   </div>
 </details>
 
@@ -288,6 +300,30 @@
   /* Otra pesta\u00f1a ha cambiado el tema. */
   window.addEventListener("storage", function (e) {
     if (e.key === KEY || e.key === null) aplicar();
+  });
+})();
+</script>
+
+<script>
+/* Un enlace a chrome:// no funciona: el navegador bloquea la navegación desde
+   una página web. Lo útil que puede hacer un clic es dejar la dirección en el
+   portapapeles para pegarla en una pestaña nueva. */
+(function () {
+  document.querySelectorAll(".copiar").forEach(function (btn) {
+    var texto = btn.textContent;
+    btn.addEventListener("click", function () {
+      var url = btn.dataset.url;
+      function avisar(ok) {
+        btn.textContent = ok ? "copiado \u2713 pégalo en una pestaña nueva" : url;
+        btn.classList.toggle("copiado", ok);
+        setTimeout(function () { btn.textContent = texto; btn.classList.remove("copiado"); }, 2500);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { avisar(true); }, function () { avisar(false); });
+      } else {
+        avisar(false);
+      }
+    });
   });
 })();
 </script>
