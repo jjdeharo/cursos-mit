@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg: #fdfdfb;
   --text: #1a1a1a;
   --muted: #444;
@@ -13,6 +14,7 @@
   --line-height: 1.6;
 }
 html[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #14171c;
   --text: #e7e7e5;
   --muted: #aab0bb;
@@ -254,6 +256,7 @@ figure.figura figcaption {
   .a11y-toggle, .theme-toggle, .a11y-panel, .fp, .migas { display: none !important; }
   /* El PDF se imprime siempre en claro, aunque se exporte con el tema oscuro. */
   html, html[data-theme="dark"] {
+    color-scheme: light;
     --bg: #ffffff;
     --text: #000000;
     --muted: #444444;

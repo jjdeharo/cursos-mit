@@ -28,14 +28,16 @@
   <script>
     (function () {
       var t = localStorage.getItem("mit-tema");
-      if (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
-      document.documentElement.setAttribute("data-theme", t || "light");
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", t);
     })();
   </script>
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro/oscuro">🌙</button>
+<button type="button" class="theme-toggle" id="theme-toggle" title="Cambiar el tema" aria-label="Cambiar el tema">🌗</button>
 <button type="button" class="a11y-toggle" id="a11y-toggle" title="Ajustes de lectura" aria-label="Ajustes de lectura">Aa</button>
 <div class="a11y-panel" id="a11y-panel">
   <div class="a11y-row">
@@ -1717,33 +1719,51 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</em></p>
 </script>
 <script>
 (function () {
+  /* Tres modos: "auto" sigue al sistema (no se guarda nada), "light" y
+     "dark" son una elección manual que se recuerda en este navegador. */
   var root = document.documentElement;
   var btn = document.getElementById("theme-toggle");
   var KEY = "mit-tema";
   var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  var MODOS = ["auto", "light", "dark"];
+  var ICONO = { auto: "\uD83C\uDF17", light: "\u2600\uFE0F", dark: "\uD83C\uDF19" };
+  var NOMBRE = { auto: "autom\u00e1tico (el del sistema)", light: "claro", dark: "oscuro" };
 
-  function setIcon(theme) {
-    btn.textContent = theme === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
-    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  function modo() {
+    var v = localStorage.getItem(KEY);
+    return MODOS.indexOf(v) === -1 ? "auto" : v;
   }
-  setIcon(root.getAttribute("data-theme"));
 
-  btn.addEventListener("click", function () {
-    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    localStorage.setItem(KEY, next);
-    root.setAttribute("data-theme", next);
-    setIcon(next);
-  });
+  function aplicar() {
+    var m = modo();
+    root.setAttribute("data-theme", m === "auto" ? (mq && mq.matches ? "dark" : "light") : m);
+    if (!btn) return;
+    btn.textContent = ICONO[m];
+    var etiqueta = "Tema: " + NOMBRE[m] + ". Pulsa para cambiarlo.";
+    btn.title = etiqueta;
+    btn.setAttribute("aria-label", etiqueta);
+  }
 
-  if (mq) {
-    mq.addEventListener("change", function (e) {
-      if (!localStorage.getItem(KEY)) {
-        var theme = e.matches ? "dark" : "light";
-        root.setAttribute("data-theme", theme);
-        setIcon(theme);
-      }
+  aplicar();
+
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var siguiente = MODOS[(MODOS.indexOf(modo()) + 1) % MODOS.length];
+      if (siguiente === "auto") localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, siguiente);
+      aplicar();
     });
   }
+
+  /* El sistema cambia de tema: solo se nota si el modo es "auto". */
+  if (mq) {
+    if (mq.addEventListener) mq.addEventListener("change", aplicar);
+    else if (mq.addListener) mq.addListener(aplicar);
+  }
+  /* Otra pesta\u00f1a ha cambiado el tema. */
+  window.addEventListener("storage", function (e) {
+    if (e.key === KEY || e.key === null) aplicar();
+  });
 })();
 </script>
 </body>
