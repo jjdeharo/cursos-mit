@@ -111,6 +111,9 @@
     background: var(--panel);
     overflow: hidden;
   }
+  /* Varios desplegables seguidos: se juntan para que no parezcan
+     una lista de avisos. */
+  .detalles + .detalles { margin-top: -1.1rem; }
   .detalles summary {
     padding: 0.75rem 1.2rem;
     cursor: pointer;
@@ -316,26 +319,35 @@
 <main>
 
 <div class="aviso">
-  Traducción <strong>no oficial</strong>, generada con asistencia de inteligencia artificial y no revisada por el MIT ni por el Prof. Lee. En la <a href="../">página de inicio</a> tienes los formatos disponibles (EPUB, PDF, HTML y Leer), la licencia y cómo escuchar los vídeos en español.
-</div>
-
-<div class="aviso">
-  📘 El curso está completo: los 13 capítulos del libro de texto, las 10 listas de problemas y los exámenes (los 2 del curso y los 5 de práctica, estos últimos con soluciones). Este curso es el <strong>prerrequisito recomendado</strong> de <a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a>: conviene cursar 8.03SC (oscilaciones, ondas y óptica) antes de 8.04 (mecánica cuántica).
+  Traducción <strong>no oficial</strong>, generada con IA y no revisada por el MIT. Licencia CC BY-NC-SA 4.0. <a href="../">Formatos, licencia y vídeos en español</a>.
 </div>
 
 <details class="detalles">
-  <summary>Dar el curso a una IA (ChatGPT, Claude, NotebookLM…)</summary>
+  <summary>Dar el curso a una IA</summary>
   <div class="detalles-cuerpo">
-    <p>En <a href="markdown/">markdown/</a> está el curso entero en Markdown, con las fórmulas en LaTeX: es el formato que mejor entiende un modelo de lenguaje. Hay un fichero por documento y uno con <a href="markdown/8_03_curso_completo_ES.md">todo el curso junto</a> (1.0 MB), que es el que conviene subir a un chat.</p>
-    <p><strong>No le des el PDF.</strong> Al extraer su texto las fórmulas se deshacen: <code>\frac{a}{b}</code> acaba como caracteres sueltos y desordenados, y el modelo lee ecuaciones que no dicen lo que ponía. En el Markdown cada fórmula sigue siendo LaTeX, tal como se escribió.</p>
-    <p>Los vídeos van como enlaces a YouTube y las figuras apuntan a su dirección en este sitio, así que se pueden consultar desde la conversación.</p>
+    <p>El botón <strong>MD</strong> de cada fila da el documento en Markdown, con las fórmulas en LaTeX. También está <a href="markdown/8_03_curso_completo_ES.md">el curso entero</a> (1,0 MB), aunque capítulo a capítulo funciona mejor.</p>
+    <p>No le des el PDF: al extraer su texto las fórmulas se deshacen.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>Las animaciones que cita el libro</summary>
+  <div class="detalles-cuerpo">
+    <p>El texto remite a menudo a animaciones («este movimiento está animado en el programa 12-1»): son las que acompañaban al libro de Howard Georgi, hoy en <a href="https://sites.harvard.edu/hgeorgi/wave-programs/" target="_blank" rel="noopener">Wave Programs</a>. Cada mención lleva ya su enlace, así que basta con pulsar el número.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>¿Dónde está la óptica?</summary>
+  <div class="detalles-cuerpo">
+    <p>Los títulos del libro no usan la palabra, así que queda repartida: la <strong>óptica geométrica</strong> —ley de Snell, prismas, reflexión total interna, lentes, telescopios y microscopios, el arcoíris— está en el <strong>capítulo 11</strong> (secciones 11.2 y 11.6-11.7); la <strong>óptica física</strong> ocupa los capítulos <strong>12</strong> (polarización, láminas de onda, ángulo de Brewster) y <strong>13</strong> (interferencia, difracción, redes, película delgada).</p>
   </div>
 </details>
 
 <details class="detalles">
   <summary>Qué de este curso te hará falta en 8.04</summary>
   <div class="detalles-cuerpo">
-    <p><a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a> da por sabida buena parte de este curso y no la vuelve a deducir: no es sólo que «venga bien», es que sus apuntes arrancan directamente desde aquí. Si sabes que vas a seguir con cuántica, éstos son los capítulos que conviene dejar bien asentados y en qué se convierte cada uno.</p>
+    <p>Este curso es el prerrequisito recomendado de <a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a>, que da por sabida buena parte de él y no la vuelve a deducir: no es sólo que «venga bien», es que sus apuntes arrancan directamente desde aquí. Si sabes que vas a seguir con cuántica, éstos son los capítulos que conviene dejar bien asentados y en qué se convierte cada uno.</p>
 
     <ul class="repaso">
     <li class="clave"><a class="cap" href="html/MIT8.03_TextCh1_ES.html">Cap. 1 — Oscilación armónica</a><span class="marca">clave</span><br>La notación compleja <em>e</em><sup>−<em>iωt</em></sup> que 8.04 usa sin presentarla, y el oscilador que reaparece cuantizado en los apuntes <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes13_ES.html">13</a> y <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes14_15_ES.html">14-15</a>.</li>
@@ -354,22 +366,13 @@
   </div>
 </details>
 
-<div class="aviso">
-  ▶️ <strong>Los «programas» del libro.</strong> El texto remite a menudo a animaciones («este movimiento está animado en el programa 12-1»). Son las que acompañaban al libro de Howard Georgi, hoy publicadas por él mismo en <a href="https://sites.harvard.edu/hgeorgi/wave-programs/" target="_blank" rel="noopener">Wave Programs</a> y ejecutables en el navegador. En la traducción cada mención lleva ya su enlace, así que basta con pulsar el número.
-</div>
-
-<div class="aviso">
-  🔎 <strong>¿Dónde está la óptica?</strong> El MIT divide 8.03 en tres partes: <em>Vibraciones y ondas mecánicas</em> (clases 1-11), <em>Ondas electromagnéticas</em> (clases 12-16) y <em>Óptica</em> (clases 17-24). Los títulos del libro de texto no usan la palabra, así que la óptica queda repartida así: la <strong>óptica geométrica</strong> —ley de Snell, prismas, reflexión total interna, lentes, telescopios y microscopios, el arcoíris— está en el <strong>capítulo 11</strong> (secciones 11.2 y 11.6-11.7); la <strong>óptica física</strong> ocupa los capítulos <strong>12</strong> (polarización, láminas de onda, ángulo de Brewster) y <strong>13</strong> (interferencia, difracción, redes, película delgada).
-</div>
-
 <div class="progreso">
   <span class="progreso-texto" id="progreso-texto">0 / 30 completado</span>
   <div class="progreso-barra"><div id="progreso-relleno"></div></div>
   <button id="reset-btn" type="button">Poner todo a cero</button>
 </div>
 
-<p class="extra">📄 <strong>MD</strong> es el capítulo en Markdown con las fórmulas en LaTeX, el formato que conviene darle a una IA. También está <a href="markdown/8_03_curso_completo_ES.md">el curso entero en un solo fichero</a> (1.0 MB), aunque para estudiar con ella funciona mejor capítulo a capítulo.</p>
-<p class="extra">Marca la casilla de cada tema a medida que lo vayas viendo. El progreso se guarda automáticamente en este navegador (no se sube a ningún servidor).</p>
+<p class="extra">El progreso se guarda en este navegador.</p>
 
 <h2 class="parte">Capítulos del libro de texto</h2>
 <p class="parte-desc">Los apuntes principales del curso, capítulo a capítulo.</p>

@@ -111,6 +111,9 @@
     background: var(--panel);
     overflow: hidden;
   }
+  /* Varios desplegables seguidos: se juntan para que no parezcan
+     una lista de avisos. */
+  .detalles + .detalles { margin-top: -1.1rem; }
   .detalles summary {
     padding: 0.75rem 1.2rem;
     cursor: pointer;
@@ -315,26 +318,21 @@
 <main>
 
 <div class="aviso">
-  Traducción <strong>no oficial</strong>, generada con asistencia de inteligencia artificial y no revisada por el MIT ni por el Prof. Zwiebach. En la <a href="../">página de inicio</a> tienes los formatos disponibles (EPUB, PDF, HTML y Leer), la licencia y cómo escuchar los vídeos en español.
-</div>
-
-<div class="aviso">
-  📘 Conviene haber cursado antes <a href="../8.03-vibraciones-ondas-es/">8.03SC Vibraciones y Ondas</a> (oscilaciones, ondas y óptica), el prerrequisito recomendado de este curso.
+  Traducción <strong>no oficial</strong>, generada con IA y no revisada por el MIT. Licencia CC BY-NC-SA 4.0. <a href="../">Formatos, licencia y vídeos en español</a>.
 </div>
 
 <details class="detalles">
-  <summary>Dar el curso a una IA (ChatGPT, Claude, NotebookLM…)</summary>
+  <summary>Dar el curso a una IA</summary>
   <div class="detalles-cuerpo">
-    <p>En <a href="markdown/">markdown/</a> está el curso entero en Markdown, con las fórmulas en LaTeX: es el formato que mejor entiende un modelo de lenguaje. Hay un fichero por documento y uno con <a href="markdown/8_04_curso_completo_ES.md">todo el curso junto</a> (0.6 MB), que es el que conviene subir a un chat.</p>
-    <p><strong>No le des el PDF.</strong> Al extraer su texto las fórmulas se deshacen: <code>\frac{a}{b}</code> acaba como caracteres sueltos y desordenados, y el modelo lee ecuaciones que no dicen lo que ponía. En el Markdown cada fórmula sigue siendo LaTeX, tal como se escribió.</p>
-    <p>Los vídeos van como enlaces a YouTube y las figuras apuntan a su dirección en este sitio, así que se pueden consultar desde la conversación.</p>
+    <p>El botón <strong>MD</strong> de cada fila da el documento en Markdown, con las fórmulas en LaTeX. También está <a href="markdown/8_04_curso_completo_ES.md">el curso entero</a> (0,6 MB), aunque capítulo a capítulo funciona mejor.</p>
+    <p>No le des el PDF: al extraer su texto las fórmulas se deshacen.</p>
   </div>
 </details>
 
 <details class="detalles">
   <summary>Qué repasar de 8.03 antes de empezar</summary>
   <div class="detalles-cuerpo">
-    <p>Este curso da por sabida buena parte de 8.03 y no vuelve a deducirla. Si vas con prisa, los seis capítulos imprescindibles bastan para llegar hasta el apunte 17 sin lagunas.</p>
+    <p>El prerrequisito recomendado es <a href="../8.03-vibraciones-ondas-es/">8.03SC Vibraciones y Ondas</a>: este curso da por sabida buena parte y no vuelve a deducirla. Si vas con prisa, los seis capítulos imprescindibles bastan para llegar hasta el apunte 17 sin lagunas.</p>
 
     <h3>Imprescindibles</h3>
     <ul class="repaso">
@@ -364,8 +362,7 @@
   <button id="reset-btn" type="button">Poner todo a cero</button>
 </div>
 
-<p class="extra">📄 <strong>MD</strong> es el capítulo en Markdown con las fórmulas en LaTeX, el formato que conviene darle a una IA. También está <a href="markdown/8_04_curso_completo_ES.md">el curso entero en un solo fichero</a> (0.6 MB), aunque para estudiar con ella funciona mejor capítulo a capítulo.</p>
-<p class="extra">Marca la casilla de cada tema a medida que lo vayas viendo. El progreso se guarda automáticamente en este navegador (no se sube a ningún servidor).</p>
+<p class="extra">El progreso se guarda en este navegador.</p>
 
 <h2 class="parte">Parte 1 — Conceptos básicos</h2>
 <p class="parte-desc">Interpretación de la función de onda, ecuación de Schrödinger, operadores hermíticos y productos internos, paquetes de onda, evolución temporal, teorema de Ehrenfest e incertidumbre.</p>
