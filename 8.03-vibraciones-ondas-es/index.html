@@ -103,6 +103,64 @@
     color: var(--aviso-texto);
   }
 
+  /* --- desplegable de lo que hará falta en 8.04 --- */
+  .detalles {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .detalles summary {
+    padding: 0.75rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--azul);
+    list-style: none;
+  }
+  .detalles summary::-webkit-details-marker { display: none; }
+  .detalles summary::before {
+    content: "\25B8";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.15s ease;
+  }
+  .detalles[open] summary::before { transform: rotate(90deg); }
+  .detalles summary:hover { background: var(--azul-claro); }
+  .detalles-cuerpo {
+    padding: 0.9rem 1.2rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+    border-top: 1px solid var(--borde);
+  }
+  .detalles-cuerpo p { margin: 0 0 0.8rem; }
+  .detalles-cuerpo a { color: var(--azul); }
+  .repaso { list-style: none; margin: 0; padding: 0; }
+  .repaso li {
+    margin-bottom: 0.6rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--borde);
+    line-height: 1.45;
+  }
+  .repaso li:last-child { margin-bottom: 0; }
+  .repaso li.clave { border-left-color: var(--verde); }
+  .repaso .cap { font-weight: 600; color: var(--texto); }
+  .repaso .marca {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 0.05rem 0.4rem;
+    margin-left: 0.4rem;
+    vertical-align: 0.08em;
+    background: var(--azul-claro);
+    color: var(--muted);
+  }
+  .repaso li.clave .marca { background: var(--verde-claro); color: var(--verde); }
+
   /* --- barra de progreso --- */
   .progreso {
     position: sticky;
@@ -263,6 +321,28 @@
 <div class="aviso">
   📘 El curso está completo: los 13 capítulos del libro de texto, las 10 listas de problemas y los exámenes (los 2 del curso y los 5 de práctica, estos últimos con soluciones). Este curso es el <strong>prerrequisito recomendado</strong> de <a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a>: conviene cursar 8.03SC (oscilaciones, ondas y óptica) antes de 8.04 (mecánica cuántica).
 </div>
+
+<details class="detalles">
+  <summary>Qué de este curso te hará falta en 8.04</summary>
+  <div class="detalles-cuerpo">
+    <p><a href="../8.04-fisica-cuantica-i-es/">8.04 Física Cuántica I</a> da por sabida buena parte de este curso y no la vuelve a deducir: no es sólo que «venga bien», es que sus apuntes arrancan directamente desde aquí. Si sabes que vas a seguir con cuántica, éstos son los capítulos que conviene dejar bien asentados y en qué se convierte cada uno.</p>
+
+    <ul class="repaso">
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh1_ES.html">Cap. 1 — Oscilación armónica</a><span class="marca">clave</span><br>La notación compleja <em>e</em><sup>−<em>iωt</em></sup> que 8.04 usa sin presentarla, y el oscilador que reaparece cuantizado en los apuntes <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes13_ES.html">13</a> y <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes14_15_ES.html">14-15</a>.</li>
+    <li><a class="cap" href="html/MIT8.03_TextCh2_ES.html">Cap. 2 — Oscilación forzada y resonancia</a><span class="marca">útil</span><br>La forma de una resonancia y su desfase vuelven en dispersión: transmisión resonante y Ramsauer–Townsend (<a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes17_ES.html">apunte 17</a>) y teorema de Levinson (<a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes19_ES.html">apunte 19</a>).</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh3_ES.html">Cap. 3 — Modos normales</a><span class="marca">clave</span><br>La idea que se traslada entera: modo normal ↔ estado estacionario, con sus autovalores y la superposición de modos de distinta frecuencia. Es el andamiaje del <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes10_ES.html">apunte 10</a>.</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh5_ES.html">Cap. 5 — Ondas</a><span class="marca">clave</span><br>Relación de dispersión y el vocabulario de <em>k</em> y ω que se usa en todo 8.04.</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh6_ES.html">Cap. 6 — Límite continuo y series de Fourier</a><span class="marca">clave</span><br>El paso de la cuerda con cuentas al continuo. Los modos de una cuerda fija por ambos extremos <strong>son</strong> el pozo cuadrado infinito del <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes11_ES.html">apunte 11</a>.</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh8_ES.html">Cap. 8 — Ondas viajeras</a><span class="marca">clave</span><br>Velocidad de fase frente a la de grupo (<a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes4_ES.html">apunte 4</a>) y, sobre todo, reflexión y transmisión al cambiar de medio: eso es el potencial escalón con sus coeficientes <em>R</em> y <em>T</em> (<a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes16_ES.html">apunte 16</a>).</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh9_ES.html">Cap. 9 — La frontera en el infinito</a><span class="marca">clave</span><br>Ondas evanescentes y reflexión interna total: el decaimiento exponencial en la región clásicamente prohibida, o sea el pozo finito y el efecto túnel (apuntes <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes11_ES.html">11</a> y <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes12_ES.html">12</a>).</li>
+    <li class="clave"><a class="cap" href="html/MIT8.03_TextCh10_ES.html">Cap. 10 — Señales y análisis de Fourier</a><span class="marca">clave</span><br>El más importante de todos. La transformada de Fourier, los paquetes de onda y la relación Δω·Δ<em>t</em> ≳ 1 son el principio de incertidumbre y el espacio de momentos (apuntes <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes7_ES.html">7</a> y <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes8_ES.html">8</a>).</li>
+    <li><a class="cap" href="html/MIT8.03_TextCh12_ES.html">Cap. 12 — Polarización</a><span class="marca">útil</span><br>Los experimentos con fotones del <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes2_ES.html">apunte 2</a> se montan sobre polarizadores: superposición y elección de base, explicadas con algo que ya conoces en versión clásica.</li>
+    <li><a class="cap" href="html/MIT8.03_TextCh13_ES.html">Cap. 13 — Interferencia y difracción</a><span class="marca">útil</span><br>La doble rendija del <a href="../8.04-fisica-cuantica-i-es/html/MIT8.04_LecNotes3_ES.html">apunte 3</a>, ahora con electrones. La película delgada y la capa antirreflejo son el mismo cálculo que la transmisión resonante.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;">Los capítulos 4 (simetrías), 7 (sonido) y 11 (óptica geométrica) no reaparecen en 8.04: cúrsalos por sí mismos, no como preparación.</p>
+  </div>
+</details>
 
 <div class="aviso">
   ▶️ <strong>Los «programas» del libro.</strong> El texto remite a menudo a animaciones («este movimiento está animado en el programa 12-1»). Son las que acompañaban al libro de Howard Georgi, hoy publicadas por él mismo en <a href="https://sites.harvard.edu/hgeorgi/wave-programs/" target="_blank" rel="noopener">Wave Programs</a> y ejecutables en el navegador. En la traducción cada mención lleva ya su enlace, así que basta con pulsar el número.
