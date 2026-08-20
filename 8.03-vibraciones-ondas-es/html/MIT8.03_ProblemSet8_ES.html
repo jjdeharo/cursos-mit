@@ -231,8 +231,11 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     if (!panel.contains(e.target) && e.target !== toggle) panel.classList.remove("abierto");
   });
 
-  var FONT_STEPS = [80, 90, 100, 112, 125, 140, 160, 180, 200];
-  var fontIdx = 2;
+  /* Pasos de ~5 % alrededor del 100 %, que se van abriendo en los extremos:
+     saltos menores dan un ajuste fino donde de verdad se lee. */
+  var FONT_STEPS = [75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 130, 140, 150, 165, 180, 200];
+  var BASE_IDX = FONT_STEPS.indexOf(100);
+  var fontIdx = BASE_IDX;
 
   var SANS = "-apple-system, \"Helvetica Neue\", Arial, sans-serif";
   var SERIF = "\"Georgia\", \"Times New Roman\", serif";
@@ -272,7 +275,14 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
 
   settings.fontscale = parseInt(load("fontscale", "100"), 10);
   fontIdx = FONT_STEPS.indexOf(settings.fontscale);
-  if (fontIdx === -1) { fontIdx = 2; settings.fontscale = 100; }
+  if (fontIdx === -1) {
+    /* Guardado con una escala anterior: se lleva al paso más próximo. */
+    fontIdx = BASE_IDX;
+    for (var i = 0; i < FONT_STEPS.length; i++) {
+      if (Math.abs(FONT_STEPS[i] - settings.fontscale) < Math.abs(FONT_STEPS[fontIdx] - settings.fontscale)) fontIdx = i;
+    }
+    settings.fontscale = FONT_STEPS[fontIdx];
+  }
   settings.lineheight = load("lineheight", "1.6");
   settings.fontfamily = load("fontfamily", "serif");
   settings.width = load("width", "860");
@@ -286,7 +296,7 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
           var action = btn.dataset.value;
           if (action === "up") fontIdx = Math.min(fontIdx + 1, FONT_STEPS.length - 1);
           else if (action === "down") fontIdx = Math.max(fontIdx - 1, 0);
-          else fontIdx = 2;
+          else fontIdx = BASE_IDX;
           settings.fontscale = FONT_STEPS[fontIdx];
           save("fontscale", settings.fontscale);
         } else {

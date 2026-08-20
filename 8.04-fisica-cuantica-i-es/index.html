@@ -103,6 +103,57 @@
     color: var(--aviso-texto);
   }
 
+  /* --- desplegable de repaso previo --- */
+  .detalles {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .detalles summary {
+    padding: 0.75rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--azul);
+    list-style: none;
+  }
+  .detalles summary::-webkit-details-marker { display: none; }
+  .detalles summary::before {
+    content: "\25B8";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.15s ease;
+  }
+  .detalles[open] summary::before { transform: rotate(90deg); }
+  .detalles summary:hover { background: var(--azul-claro); }
+  .detalles-cuerpo {
+    padding: 0.9rem 1.2rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+    border-top: 1px solid var(--borde);
+  }
+  .detalles-cuerpo p { margin: 0 0 0.8rem; }
+  .detalles-cuerpo a { color: var(--azul); }
+  .detalles-cuerpo h3 {
+    margin: 1.1rem 0 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--texto);
+  }
+  .detalles-cuerpo h3:first-child { margin-top: 0; }
+  .repaso { list-style: none; margin: 0; padding: 0; }
+  .repaso li {
+    margin-bottom: 0.55rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--borde);
+    line-height: 1.45;
+  }
+  .repaso li:last-child { margin-bottom: 0; }
+  .repaso .cap { font-weight: 600; color: var(--texto); }
+
   /* --- barra de progreso --- */
   .progreso {
     position: sticky;
@@ -269,6 +320,33 @@
 <div class="aviso">
   📘 Conviene haber cursado antes <a href="../8.03-vibraciones-ondas-es/">8.03SC Vibraciones y Ondas</a> (oscilaciones, ondas y óptica), el prerrequisito recomendado de este curso.
 </div>
+
+<details class="detalles">
+  <summary>Qué repasar de 8.03 antes de empezar</summary>
+  <div class="detalles-cuerpo">
+    <p>Este curso da por sabida buena parte de 8.03 y no vuelve a deducirla. Si vas con prisa, los seis capítulos imprescindibles bastan para llegar hasta el apunte 17 sin lagunas.</p>
+
+    <h3>Imprescindibles</h3>
+    <ul class="repaso">
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh10_ES.html">Cap. 10 — Señales y análisis de Fourier</a><br>El más importante. La transformada de Fourier, los paquetes de onda y la relación Δω·Δt ≳ 1 son el principio de incertidumbre y el espacio de momentos (apuntes 7 y 8).</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh1_ES.html">Cap. 1 — Oscilación armónica</a><br>La notación compleja <em>e</em><sup>−<em>iωt</em></sup> que 8.04 usa sin presentarla, y el oscilador que reaparece cuantizado (apuntes 13 a 15).</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh3_ES.html">Cap. 3 — Modos normales</a><br>La idea que se traslada entera: modo normal ↔ estado estacionario, con sus autovalores y la superposición de modos de distinta frecuencia. Es el andamiaje del apunte 10.</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh5_ES.html">Cap. 5 — Ondas</a><br>Relación de dispersión y el vocabulario de <em>k</em> y ω que se usa en todo el curso.</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh6_ES.html">Cap. 6 — Límite continuo y series de Fourier</a><br>El paso de la cuerda con cuentas al continuo. Los modos de una cuerda fija por ambos extremos <strong>son</strong> el pozo cuadrado infinito (apunte 11).</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh8_ES.html">Cap. 8 — Ondas viajeras</a><br>Velocidad de fase frente a la de grupo (apunte 4) y, sobre todo, reflexión y transmisión al cambiar de medio: eso es el potencial escalón con sus coeficientes <em>R</em> y <em>T</em> (apunte 16).</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh9_ES.html">Cap. 9 — La frontera en el infinito</a><br>Ondas evanescentes y reflexión interna total: el decaimiento exponencial en la región clásicamente prohibida, o sea el pozo finito y el efecto túnel (apuntes 11 y 12).</li>
+    </ul>
+
+    <h3>Útiles, para cuando lleguen</h3>
+    <ul class="repaso">
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh2_ES.html">Cap. 2 — Oscilación forzada y resonancia</a><br>La forma de una resonancia y su desfase reaparecen en dispersión: transmisión resonante y Ramsauer–Townsend (apunte 17) y teorema de Levinson (apunte 19).</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh12_ES.html">Cap. 12 — Polarización</a><br>Los experimentos con fotones del apunte 2 se montan sobre polarizadores: superposición y elección de base, explicadas con algo que ya conoces en versión clásica.</li>
+    <li><a class="cap" href="../8.03-vibraciones-ondas-es/html/MIT8.03_TextCh13_ES.html">Cap. 13 — Interferencia y difracción</a><br>La doble rendija del apunte 3, ahora con electrones. La película delgada y la capa antirreflejo son el mismo cálculo que la transmisión resonante.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;">Los capítulos 4 (simetrías), 7 (sonido) y 11 (óptica geométrica) no hacen falta para entrar en 8.04.</p>
+  </div>
+</details>
 
 <div class="progreso">
   <span class="progreso-texto" id="progreso-texto">0 / 23 completado</span>
