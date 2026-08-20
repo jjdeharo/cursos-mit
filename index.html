@@ -84,7 +84,7 @@
     background: var(--panel);
     overflow: hidden;
   }
-  .detalles + .detalles { margin-top: -1.4rem; }
+  .detalles + .detalles { margin-top: -1.1rem; }
   .detalles summary {
     padding: 0.75rem 1.2rem;
     cursor: pointer;
@@ -120,6 +120,7 @@
   }
 
   .cursos {
+    margin-bottom: 2.5rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.2rem;
@@ -189,37 +190,6 @@
 
 <main>
 
-<div class="aviso">
-  Estas son traducciones <strong>no oficiales</strong> de materiales de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>, generadas con asistencia de inteligencia artificial y <strong>no revisadas</strong> por el MIT ni por los profesores de cada curso. Licencia <strong>CC BY-NC-SA 4.0</strong>.
-</div>
-
-<details class="detalles">
-  <summary>Formatos disponibles: EPUB, HTML y Leer</summary>
-  <div class="detalles-cuerpo">
-    <p>Cada documento de ambos cursos está disponible en tres formas:</p>
-    <p><strong>EPUB</strong> — descarga para lectores de libros electrónicos, con las fórmulas en MathML nativo (no como imágenes), por lo que se ven nítidas a cualquier tamaño de letra. Compatible con Apple Books, Thorium Reader, calibre, Google Play Books, etc.</p>
-    <p><strong>HTML</strong> — para leer directamente en el navegador, con los vídeos de clase incrustados y un panel de ajustes de lectura (tamaño de letra, interlineado, tipografía y ancho de columna). El reproductor de vídeo se puede acoplar a un lado —el texto se aparta para no quedar tapado—, moverlo libremente o cambiarle el tamaño, y recuerda por dónde ibas en cada clase para retomarla donde la dejaste.</p>
-    <p><strong>Leer</strong> — abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a>, que guarda por dónde ibas, las notas y los subrayados.</p>
-    <p><strong>Markdown</strong> — en la carpeta <code>markdown/</code> de cada curso, con las fórmulas en LaTeX. Es lo que conviene darle a una IA (ChatGPT, Claude, NotebookLM): del PDF, al extraer el texto, las fórmulas salen deshechas.</p>
-  </div>
-</details>
-
-<details class="detalles">
-  <summary>Los vídeos de clase están en inglés: cómo seguirlos en español</summary>
-  <div class="detalles-cuerpo">
-    <p>Las páginas HTML de ambos cursos incluyen los vídeos originales del MIT, que están en inglés. Si el vídeo dispone de audio en español, puedes seleccionarlo en YouTube desde ⚙️ <strong>Configuración → Pista de audio → español</strong>. Algunos vídeos cuentan con doblaje automático generado mediante IA.</p>
-    <p>Si no hay una pista de audio en español, Chrome puede generar subtítulos automáticamente y traducirlos al español. Activa <strong>Subtítulos automáticos</strong> y <strong>Traducción instantánea</strong> en <code>chrome://settings/accessibility</code> y selecciona <strong>español</strong> como idioma de traducción.</p>
-  </div>
-</details>
-
-<details class="detalles">
-  <summary>Licencia y atribución</summary>
-  <div class="detalles-cuerpo">
-    <p>Los materiales originales son de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a> y se distribuyen bajo licencia <strong>CC BY-NC-SA 4.0</strong>; estas traducciones mantienen la misma licencia. Puedes ver el detalle en el <code>LICENSE.md</code> de cada curso, junto con la atribución a su autor original.</p>
-    <p>Para más información sobre cómo citar estos materiales o sobre las condiciones de uso del MIT, visita <a href="https://ocw.mit.edu/terms">ocw.mit.edu/terms</a>.</p>
-  </div>
-</details>
-
 <div class="cursos">
 
   <a class="curso" href="8.03-vibraciones-ondas-es/">
@@ -235,14 +205,36 @@
     <h2>Física Cuántica I</h2>
     <p>Interpretación de la función de onda, ecuación de Schrödinger, potenciales unidimensionales, oscilador armónico, momento angular y espín.</p>
     <p class="prof">Prof. Barton Zwiebach — 22 apuntes de clase + listas de problemas y exámenes</p>
+    <p class="prof">Conviene cursar antes 8.03SC, cuyos conceptos da por sabidos.</p>
     <p class="flecha">Entrar al curso →</p>
   </a>
 
 </div>
 
-<div class="aviso" style="margin-top: 2rem;">
-  📘 Se recomienda cursar primero <strong>8.03SC</strong> (oscilaciones, ondas y óptica) antes de <strong>8.04</strong> (mecánica cuántica), ya que este último da por conocidos varios de esos conceptos.
-</div>
+<details class="detalles">
+  <summary>Formatos de cada documento</summary>
+  <div class="detalles-cuerpo">
+    <p><strong>HTML</strong> — en el navegador, con los vídeos de clase y ajustes de lectura.<br>
+    <strong>EPUB</strong> — para lectores de libros; las fórmulas se ven nítidas a cualquier tamaño.<br>
+    <strong>PDF</strong> — para imprimir.<br>
+    <strong>Leer</strong> — abre el EPUB en <a href="https://pagekeeper.github.io/">PageKeeper</a>, que guarda las notas y por dónde ibas.<br>
+    <strong>MD</strong> — Markdown con las fórmulas en LaTeX, para dárselo a una IA.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>Los vídeos están en inglés: cómo seguirlos en español</summary>
+  <div class="detalles-cuerpo">
+    <p>Si el vídeo tiene audio en español, se elige en YouTube en ⚙️ <strong>Configuración → Pista de audio</strong>. Si no lo tiene, Chrome puede subtitularlo y traducirlo: <strong>Subtítulos automáticos</strong> y <strong>Traducción instantánea</strong> en <code>chrome://settings/accessibility</code>.</p>
+  </div>
+</details>
+
+<details class="detalles">
+  <summary>Licencia y atribución</summary>
+  <div class="detalles-cuerpo">
+    <p>Los materiales originales son de <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>, con licencia <strong>CC BY-NC-SA 4.0</strong>, que estas traducciones mantienen. El <code>LICENSE.md</code> de cada curso lleva la atribución a su autor; las condiciones del MIT, en <a href="https://ocw.mit.edu/terms">ocw.mit.edu/terms</a>.</p>
+  </div>
+</details>
 
 </main>
 
