@@ -41,6 +41,7 @@
 <div class="fp-bar" id="fp-bar">
 <span class="fp-title" id="fp-title">Vídeo</span>
 <div class="fp-actions">
+<button type="button" id="fp-dock" title="Cambiar la colocación del reproductor">&#8677;</button>
 <button type="button" id="fp-min" title="Minimizar/restaurar">&#8211;</button>
 <button type="button" id="fp-close" title="Cerrar">&times;</button>
 </div>
@@ -1498,9 +1499,11 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     fpTitle.textContent = title;
     fp.hidden = false;
     fp.classList.remove("minimizado");
+    aplicarModo();
   }
   function closeVideo() {
     fp.hidden = true;
+    raiz.style.setProperty("--fp-dock", "0px");   // el texto recupera el sitio
     /* Cambiar el src no basta: Firefox mantiene vivo el reproductor de
        YouTube y el vídeo se sigue oyendo. Hay que sacar el iframe del
        documento y poner otro nuevo en su lugar. */
@@ -1529,15 +1532,69 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   var ANCHO_KEY = "mit804-fp-ancho";
   var ANCHO_MIN = 220;
 
+  /* --- dónde se coloca el reproductor ---
+     Flotando tapa la columna aunque a los lados sobre sitio; acoplado, el
+     texto se aparta y se puede leer mientras se ve el vídeo. */
+  var raiz = document.documentElement;
+  var fpDock = document.getElementById("fp-dock");
+  var MODO_KEY = "mit804-fp-modo";
+  var MODOS_FP = ["derecha", "izquierda", "flotante"];
+  var ICONO_FP = { derecha: "\u21E5", izquierda: "\u21E4", flotante: "\u2750" };
+  var NOMBRE_FP = { derecha: "acoplado a la derecha", izquierda: "acoplado a la izquierda", flotante: "flotante" };
+  /* Por debajo de esto, apartar el texto lo dejaría en un hilo: sólo flotante. */
+  var ANCHO_PARA_ACOPLAR = 1000;
+
+  function modoFp() {
+    var v = localStorage.getItem(MODO_KEY);
+    if (MODOS_FP.indexOf(v) === -1) v = "derecha";
+    if (v !== "flotante" && window.innerWidth < ANCHO_PARA_ACOPLAR) v = "flotante";
+    return v;
+  }
+
+  function aplicarModo() {
+    var m = modoFp();
+    var acoplado = m !== "flotante";
+    fp.classList.toggle("acoplado", acoplado);
+    raiz.classList.toggle("fp-dock-der", m === "derecha");
+    raiz.classList.toggle("fp-dock-izq", m === "izquierda");
+    if (acoplado) {
+      /* Un arrastre anterior deja posiciones a mano que aquí estorban. */
+      fp.style.left = fp.style.top = fp.style.right = fp.style.bottom = "";
+    }
+    raiz.style.setProperty("--fp-dock", acoplado && !fp.hidden ? (fp.style.width || "360px") : "0px");
+    if (fpDock) {
+      fpDock.textContent = ICONO_FP[m];
+      var t = "Reproductor " + NOMBRE_FP[m] + ". Pulsa para cambiar.";
+      fpDock.title = t;
+      fpDock.setAttribute("aria-label", t);
+    }
+  }
+
+  if (fpDock) {
+    fpDock.addEventListener("click", function () {
+      var v = localStorage.getItem(MODO_KEY);
+      if (MODOS_FP.indexOf(v) === -1) v = "derecha";
+      localStorage.setItem(MODO_KEY, MODOS_FP[(MODOS_FP.indexOf(v) + 1) % MODOS_FP.length]);
+      aplicarModo();
+      fijarAncho(parseInt(fp.style.width, 10) || fp.getBoundingClientRect().width);
+    });
+  }
+
+
   /* Ni más ancho que la ventana ni tan alto que no quepa: el vídeo crece en
      16/9, así que un ancho grande se traduce enseguida en mucho alto. */
   function anchoMaximo() {
     var porAlto = (window.innerHeight - 32 - (fpBar.offsetHeight || 40)) * 16 / 9;
-    return Math.max(ANCHO_MIN, Math.min(window.innerWidth - 32, porAlto));
+    /* Acoplado hay que dejarle sitio al texto; flotante puede ocupar casi todo. */
+    var porAncho = fp.classList.contains("acoplado")
+      ? window.innerWidth - 420
+      : window.innerWidth - 32;
+    return Math.max(ANCHO_MIN, Math.min(porAncho, porAlto));
   }
 
   /* Al crecer podría irse fuera de la pantalla, y con él el tirador. */
   function mantenerDentro() {
+    if (fp.classList.contains("acoplado")) return;
     if (!fp.style.left) return;   // sigue anclado abajo a la derecha
     var r = fp.getBoundingClientRect();
     fp.style.left = Math.max(0, Math.min(parseFloat(fp.style.left), window.innerWidth - r.width)) + "px";
@@ -1548,6 +1605,10 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
     px = Math.max(ANCHO_MIN, Math.min(Math.round(px), anchoMaximo()));
     fp.style.width = px + "px";
     mantenerDentro();
+    /* Acoplado, la banda que se reserva al texto es el ancho del panel. */
+    if (fp.classList.contains("acoplado") && !fp.hidden) {
+      raiz.style.setProperty("--fp-dock", px + "px");
+    }
     return px;
   }
 
@@ -1556,8 +1617,11 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
 
   /* Si la ventana se encoge, el reproductor no puede quedarse más ancho. */
   window.addEventListener("resize", function () {
+    aplicarModo();   // una ventana estrecha ya no admite acoplado
     if (fp.style.width) fijarAncho(parseInt(fp.style.width, 10));
   });
+
+  aplicarModo();
 
   if (fpResize) {
     fpResize.addEventListener("pointerdown", function (e) {
@@ -1566,15 +1630,20 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
          cursor entre en el iframe, que si no se quedaría los eventos. */
       fpResize.setPointerCapture(e.pointerId);
       var r = fp.getBoundingClientRect();
-      /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
-         esquina superior izquierda mientras dura el arrastre. */
-      fp.style.right = "auto";
-      fp.style.bottom = "auto";
-      fp.style.left = r.left + "px";
-      fp.style.top = r.top + "px";
+      if (!fp.classList.contains("acoplado")) {
+        /* Anclado por la derecha, ensanchar lo desplazaría; se ancla por la
+           esquina superior izquierda mientras dura el arrastre. */
+        fp.style.right = "auto";
+        fp.style.bottom = "auto";
+        fp.style.left = r.left + "px";
+        fp.style.top = r.top + "px";
+      }
       var x0 = e.clientX, w0 = r.width;
+      /* Acoplado a la derecha el tirador está en el borde izquierdo, así que
+         el panel crece cuando el puntero va hacia la izquierda. */
+      var signo = raiz.classList.contains("fp-dock-der") ? -1 : 1;
 
-      function mover(ev) { fijarAncho(w0 + (ev.clientX - x0)); }
+      function mover(ev) { fijarAncho(w0 + signo * (ev.clientX - x0)); }
       function soltar() {
         fpResize.removeEventListener("pointermove", mover);
         fpResize.removeEventListener("pointerup", soltar);
@@ -1615,11 +1684,15 @@ href="https://ocw.mit.edu/terms">https://ocw.mit.edu/terms</a>.</p>
   }
   function endDrag() { dragging = false; }
 
-  fpBar.addEventListener("mousedown", function (e) { startDrag(e.clientX, e.clientY); });
+  fpBar.addEventListener("mousedown", function (e) {
+    if (fp.classList.contains("acoplado")) return;   // acoplado no se mueve
+    startDrag(e.clientX, e.clientY);
+  });
   window.addEventListener("mousemove", function (e) { moveDrag(e.clientX, e.clientY); });
   window.addEventListener("mouseup", endDrag);
 
   fpBar.addEventListener("touchstart", function (e) {
+    if (fp.classList.contains("acoplado")) return;
     var t = e.touches[0]; startDrag(t.clientX, t.clientY);
   }, { passive: true });
   window.addEventListener("touchmove", function (e) {

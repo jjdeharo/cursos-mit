@@ -230,6 +230,33 @@ li.video-item {
 }
 .a11y-btns button:hover { filter: brightness(0.96); }
 .a11y-btns button.activo { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* --- reproductor acoplado a un lado ---
+   Flotando sobre la columna tapa lo que se está leyendo, aunque a los lados
+   sobre espacio. Acoplado, se reserva una banda para él y el texto se
+   recoloca en lo que queda: se lee y se ve el vídeo a la vez. */
+html.fp-dock-der { padding-right: var(--fp-dock, 0px); }
+html.fp-dock-izq { padding-left: var(--fp-dock, 0px); }
+.fp.acoplado {
+  top: 0;
+  bottom: auto;
+  border-radius: 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.fp.acoplado .fp-bar { cursor: default; }
+html.fp-dock-der .fp.acoplado { right: 0; left: auto; }
+html.fp-dock-izq .fp.acoplado { left: 0; right: auto; }
+/* El tirador se pasa al lado que da al texto, que es por donde hay sitio. */
+html.fp-dock-der .fp.acoplado .fp-resize {
+  right: auto;
+  left: 0;
+  cursor: nesw-resize;
+  transform: scaleX(-1);
+}
+/* Los botones fijos de la esquina no pueden quedar debajo del panel. */
+html.fp-dock-der .a11y-toggle { right: calc(var(--fp-dock, 0px) + 13px); }
+html.fp-dock-der .theme-toggle { right: calc(var(--fp-dock, 0px) + 61px); }
+html.fp-dock-der .a11y-panel { right: calc(var(--fp-dock, 0px) + 13px); }
+
 @media (max-width: 480px) {
   .a11y-toggle { top: auto; bottom: 13px; right: 13px; }
   .theme-toggle { top: auto; bottom: 13px; right: 61px; }

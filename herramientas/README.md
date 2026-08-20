@@ -42,9 +42,9 @@ tema, panel de lectura y hoja de estilos— a partir de las plantillas de
 [`plantillas/`](plantillas/). El EPUB va sin esos añadidos, porque los
 lectores aportan los suyos.
 
-> Las plantillas usan el prefijo `mit803-` para guardar los ajustes de lectura
-> en `localStorage`. Para 8.04 hay que cambiarlo a `mit804-` en
-> `plantillas/after.html`. El tema sí es común a todo el sitio (`mit-tema`).
+> Las plantillas usan el prefijo `mit803-` para guardar en `localStorage` los
+> ajustes de lectura y el tamaño y la colocación del reproductor. Para 8.04 hay
+> que cambiarlo a `mit804-` en `plantillas/after.html`, en todas las claves. El tema sí es común a todo el sitio (`mit-tema`).
 
 ### 3. Extraer las figuras de los PDF originales
 
